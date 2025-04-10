@@ -224,6 +224,7 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   showReviews?: boolean;
   reviewsRating?: number;
   reviewsCount ?: number;
+  images?: Array<Image>;
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {

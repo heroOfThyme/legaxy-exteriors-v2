@@ -17,6 +17,22 @@ const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
 };
+
+const heroImages = [
+  {
+    src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    alt: 'Business Team',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
+    alt: 'Office Space',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    alt: 'Digital Marketing',
+  },
+];
+
 ---
 
 <Layout metadata={metadata}>
@@ -33,11 +49,13 @@ const metadata = {
         text: 'Get a Quote',
         href: '#',
       },
+      {
+        variant: 'secondary',
+        text: 'Contact Us',
+        href: '#',
+      },
     ]}
-    image={{
-      src: '~/assets/images/hero-main.png',
-      alt: 'Landscaping work',
-    }}
+    images={heroImages}
   >
     <!-- Background using slot with imported image -->
     <div slot="bg" class="absolute inset-0">

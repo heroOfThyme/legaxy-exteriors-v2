@@ -11,7 +11,8 @@ const {
   tagline,
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
-  image = await Astro.slots.render('image'),
+  images = [], // New prop for multiple images
+  image = await Astro.slots.render('image'), // Keep original image prop for backward compatibility
   
   // Reviews options
   showReviews = false,
@@ -21,6 +22,9 @@ const {
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
+// Prepare images for slider - use images array if provided, otherwise use single image
+const sliderImages = images.length > 0 ? images : (image ? [image] : []);
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
@@ -111,27 +115,181 @@ const {
         <!-- Additional content slot -->
         <slot name="content-after" />
       </div>
+      
       <div class="basis-1/2">
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl intersect-once intercept-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width={600}
-                  height={600}
-                  {...image}
-                />
+        {/* Image display - either slider or single image */}
+        <div class="relative m-auto max-w-5xl intersect-once intercept-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
+          {sliderImages.length > 0 ? (
+            <div class="hero-slider-container relative overflow-hidden rounded-md">
+              <div class="hero-slider-wrapper flex transition-transform duration-500 ease-in-out">
+                {sliderImages.map((img, index) => (
+                  <div class="hero-slide w-full flex-shrink-0">
+                    <Image
+                      class="mx-auto rounded-md w-full"
+                      widths={[400, 768, 1024, 2040]}
+                      sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                      loading={index === 0 ? "eager" : "lazy"}
+                      width={600}
+                      height={600}
+                      {...img}
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              {sliderImages.length > 1 && (
+                <>
+                  <!-- Navigation Arrows -->
+                  <button 
+                    class="slider-nav-btn slider-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 dark:bg-gray-800/70 rounded-full p-2 shadow-lg hover:bg-white dark:hover:bg-gray-800 focus:outline-none z-10"
+                    aria-label="Previous slide"
+                  >
+                    <Icon name="tabler:chevron-left" class="w-6 h-6" />
+                  </button>
+                  <button 
+                    class="slider-nav-btn slider-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 dark:bg-gray-800/70 rounded-full p-2 shadow-lg hover:bg-white dark:hover:bg-gray-800 focus:outline-none z-10"
+                    aria-label="Next slide"
+                  >
+                    <Icon name="tabler:chevron-right" class="w-6 h-6" />
+                  </button>
+                  
+                  <!-- Pagination Dots -->
+                  <div class="slider-pagination absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                    {sliderImages.map((_, index) => (
+                      <button 
+                        class={`slider-dot w-3 h-3 rounded-full ${index === 0 ? 'bg-white scale-125' : 'bg-white/50'} hover:bg-white focus:outline-none`}
+                        data-index={index}
+                        aria-label={`Go to slide ${index + 1}`}
+                      ></button>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
-          )
-        }
+          ) : (
+            /* Fallback if no images */
+            <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-full min-h-[300px] flex items-center justify-center">
+              <p class="text-gray-500 dark:text-gray-400">No image provided</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+{/* Add the slider script for all instances */}
+<script>
+  // Hero Slider Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      const sliderContainers = document.querySelectorAll('.hero-slider-container');
+      
+      sliderContainers.forEach(container => {
+        const wrapper = container.querySelector('.hero-slider-wrapper');
+        if (!wrapper) return; // Early return if wrapper not found
+        
+        const slides = container.querySelectorAll('.hero-slide');
+        const prevBtn = container.querySelector('.slider-prev');
+        const nextBtn = container.querySelector('.slider-next');
+        const dots = container.querySelectorAll('.slider-dot');
+        
+        if (slides.length <= 1) return;
+        
+        let currentIndex = 0;
+        let autoAdvanceInterval: number | undefined;
+        
+        // Set initial active state
+        updateSlider();
+        
+        // Start auto-advance
+        startAutoAdvance();
+        
+        // Event listeners for navigation
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            goToSlide((currentIndex - 1 + slides.length) % slides.length);
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            goToSlide((currentIndex + 1) % slides.length);
+          });
+        }
+        
+        // Event listeners for pagination dots
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            goToSlide(index);
+          });
+        });
+        
+        // Pause auto-advance when user interacts with the slider
+        container.addEventListener('mouseenter', () => {
+          stopAutoAdvance();
+        });
+        
+        // Resume auto-advance when user leaves the slider
+        container.addEventListener('mouseleave', () => {
+          startAutoAdvance();
+        });
+        
+        // Helper functions
+        function startAutoAdvance() {
+          stopAutoAdvance(); // Clear any existing interval
+          autoAdvanceInterval = window.setInterval(() => {
+            goToSlide((currentIndex + 1) % slides.length);
+          }, 5000); // Fixed 5 second interval
+        }
+        
+        function stopAutoAdvance() {
+          if (autoAdvanceInterval) {
+            window.clearInterval(autoAdvanceInterval);
+          }
+        }
+        
+        function goToSlide(index: number) {
+          currentIndex = index;
+          updateSlider();
+          // Reset the timer when manually changing slides
+          if (autoAdvanceInterval) {
+            stopAutoAdvance();
+            startAutoAdvance();
+          }
+        }
+        
+        // Update the slider's position and active states
+        function updateSlider() {
+          // Update slide position - using type assertion to tell TypeScript this element has style
+          (wrapper as HTMLElement).style.transform = `translateX(-${currentIndex * 100}%)`;
+          
+          // Update active dot
+          dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+              dot.classList.add('bg-white', 'scale-125');
+              dot.classList.remove('bg-white/50');
+            } else {
+              dot.classList.remove('bg-white', 'scale-125');
+              dot.classList.add('bg-white/50');
+            }
+          });
+        }
+      });
+    } catch (error) {
+      console.error('Error initializing hero slider:', error);
+    }
+  });
+</script>
+
+<style>
+  .hero-slider-wrapper {
+    width: 100%;
+    display: flex;
+  }
+  
+  .hero-slide {
+    width: 100%;
+    flex-shrink: 0;
+  }
+</style>
