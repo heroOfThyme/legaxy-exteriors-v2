@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
+
+export interface Props {
+  rating?: number;
+  reviewCount?: number;
+  variant?: 'full' | 'compact';
+  darkMode?: boolean;
+  reviewUrl?: string;
+  showButton?: boolean;
+  buttonText?: string;
+}
+
+const {
+  rating = 4.9,
+  reviewCount = 234,
+  variant = 'full',
+  darkMode = false,
+  reviewUrl = "https://g.page/r/review-url",
+  showButton = false,
+  buttonText = "Leave a Review",
+} = Astro.props;
+
+// Generate the star elements based on rating
+const fullStars = Math.floor(rating);
+const hasHalfStar = rating % 1 >= 0.5;
+const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+// Color class based on dark mode
+const starColorClass = 'text-yellow-400';
+const textColorClass = darkMode ? 'text-white' : 'text-gray-800';
+const subtextColorClass = darkMode ? 'text-gray-300' : 'text-gray-600';
+---
+
+{variant === 'compact' ? (
+  <div class="flex items-center space-x-1 rtl:space-x-reverse">
+    <div class="flex items-center">
+      {Array(fullStars).fill(0).map(() => (
+        <Icon name="tabler:star-filled" class={`w-4 h-4 ${starColorClass}`} />
+      ))}
+      
+      {hasHalfStar && (
+        <Icon name="tabler:star-half-filled" class={`w-4 h-4 ${starColorClass}`} />
+      )}
+      
+      {Array(emptyStars).fill(0).map(() => (
+        <Icon name="tabler:star" class={`w-4 h-4 ${starColorClass}`} />
+      ))}
+    </div>
+    
+    <p class={`text-sm ${textColorClass} font-medium`}>
+      {rating.toFixed(1)}
+      <span class={`text-sm font-normal ${subtextColorClass}`}>
+        ({reviewCount} Google Reviews)
+      </span>
+    </p>
+  </div>
+) : (
+  <div class="flex flex-col items-center">
+    <div class="flex items-center mb-2">
+      {Array(fullStars).fill(0).map(() => (
+        <Icon name="tabler:star-filled" class={`w-8 h-8 ${starColorClass}`} />
+      ))}
+      
+      {hasHalfStar && (
+        <Icon name="tabler:star-half-filled" class={`w-8 h-8 ${starColorClass}`} />
+      )}
+      
+      {Array(emptyStars).fill(0).map(() => (
+        <Icon name="tabler:star" class={`w-8 h-8 ${starColorClass}`} />
+      ))}
+    </div>
+    
+    <p class={`text-xl ${textColorClass} font-bold mb-1`}>
+      {rating.toFixed(1)} out of 5
+    </p>
+    
+    <p class={`text-sm ${subtextColorClass} mb-3`}>
+      Based on {reviewCount} Google Reviews
+    </p>
+    
+    {showButton && (
+      <Button 
+        variant="primary" 
+        href={reviewUrl}
+        target="_blank"
+      >
+        {buttonText}
+      </Button>
+    )}
+  </div>
+)}

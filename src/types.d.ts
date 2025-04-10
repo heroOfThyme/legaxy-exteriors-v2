@@ -217,6 +217,13 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   content?: string;
   actions?: string | CallToAction[];
   image?: string | unknown;
+
+  backgroundImage?: string | ImageMetadata | null;
+  overlayOpacity?: number;
+  backgroundBlur?: number;
+  showReviews?: boolean;
+  reviewsRating?: number;
+  reviewsCount ?: number;
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {

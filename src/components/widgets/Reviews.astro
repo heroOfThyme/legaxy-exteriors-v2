@@ -1,0 +1,86 @@
+---
+import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  rating?: number;  // Rating out of 5
+  reviewCount?: number;
+  platform?: string; // "Google", "Yelp", etc.
+  highlightColor?: string; // Color for stars
+  showAverage?: boolean; // Whether to show the average text
+  
+  id?: string;
+  isDark?: boolean;
+  classes?: Record<string, string>;
+  bg?: string;
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  rating = 5,
+  reviewCount = 0,
+  platform = "Google",
+  highlightColor = "",
+  showAverage = true,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+// Generate the star elements based on rating
+const fullStars = Math.floor(rating);
+const hasHalfStar = rating % 1 >= 0.5;
+const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+// Color class for stars
+const starColorClass = highlightColor || 'text-yellow-400';
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+
+  <div class="flex flex-col items-center justify-center py-8">
+    <!-- Stars display -->
+    <div class="flex items-center mb-4">
+      {Array(fullStars).fill(0).map(() => (
+        <Icon name="tabler:star-filled" class={`w-8 h-8 ${starColorClass}`} />
+      ))}
+      
+      {hasHalfStar && (
+        <Icon name="tabler:star-half-filled" class={`w-8 h-8 ${starColorClass}`} />
+      )}
+      
+      {Array(emptyStars).fill(0).map(() => (
+        <Icon name="tabler:star" class={`w-8 h-8 ${starColorClass}`} />
+      ))}
+    </div>
+    
+    <!-- Rating information -->
+    <div class="text-center">
+      {showAverage && (
+        <p class="text-xl font-bold mb-1">
+          {rating.toFixed(1)} out of 5
+        </p>
+      )}
+      
+      {reviewCount > 0 && (
+        <p class="text-muted">
+          Based on {reviewCount} {reviewCount === 1 ? 'review' : 'reviews'} on {platform}
+        </p>
+      )}
+    </div>
+    
+    <!-- Additional content slot -->
+    <div class="mt-6">
+      <slot />
+    </div>
+  </div>
+</WidgetWrapper>

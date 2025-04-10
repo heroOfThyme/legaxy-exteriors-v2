@@ -1,5 +1,7 @@
 ---
 import '@fontsource-variable/inter';
+import "@fontsource/chakra-petch/700.css";
+import "@fontsource/open-sans";
 
 // 'DM Sans'
 // Nunito
@@ -20,44 +22,45 @@ import '@fontsource-variable/inter';
 ---
 
 <style is:inline>
-  :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+:root {
+  --aw-font-sans: 'Inter Variable';
+  --aw-font-serif: 'Inter Variable';
+  --aw-font-heading: 'Inter Variable';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+  /* Landscaping theme colors - light mode */
+  --aw-color-primary: rgb(34 139 34); /* Forest Green */
+  --aw-color-secondary: rgb(0 100 0); /* Dark Green */
+  --aw-color-accent: rgb(107 142 35); /* Olive Drab */
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+  --aw-color-text-heading: rgb(0 0 0);
+  --aw-color-text-default: rgb(16 16 16);
+  --aw-color-text-muted: rgb(16 16 16 / 66%);
+  --aw-color-bg-page: rgb(255 255 255);
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
+  --aw-color-bg-page-dark: rgb(5 30 15);
 
-    ::selection {
-      background-color: lavender;
-    }
+  ::selection {
+    background-color: rgb(144 238 144); /* Light Green */
   }
+}
 
-  .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+.dark {
+  --aw-font-sans: 'Open Sans';
+  --aw-font-serif: 'Open Sans';
+  --aw-font-heading: 'Chakra Petch';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+  /* Landscaping theme colors - dark mode */
+  --aw-color-primary: #019c01; /* Lawn Green */
+  --aw-color-secondary: #32cd32; /* Lime Green */
+  --aw-color-accent: rgb(173 255 47); /* Green Yellow */
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+  --aw-color-text-heading: rgb(240 255 240);
+  --aw-color-text-default: rgb(230 250 230);
+  --aw-color-text-muted: rgb(230 250 230 / 66%);
+  --aw-color-bg-page: #050505;
 
-    ::selection {
-      background-color: black;
-      color: snow;
-    }
+  ::selection {
+    background-color: rgb(34 139 34);
+    color: white;
   }
 </style>

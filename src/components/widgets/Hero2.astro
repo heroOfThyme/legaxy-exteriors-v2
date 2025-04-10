@@ -1,6 +1,7 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
 
 import type { Hero as Props } from '~/types';
 
@@ -8,11 +9,15 @@ const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
-
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
-
+  
+  // Reviews options
+  showReviews = false,
+  reviewsRating = 4.9,
+  reviewsCount = 150,
+  
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
@@ -21,19 +26,22 @@ const {
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
-      {bg ? <Fragment set:html={bg} /> : null}
+      {bg && <Fragment set:html={bg} />}
     </slot>
   </div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
     <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8">
       <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
         {
           tagline && (
             <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
-              set:html={tagline}
-            />
+              class="text-base text-secondary dark:text-green-600 font-bold tracking-wide uppercase intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter flex items-center justify-center lg:justify-start"
+            >
+              <Icon name="tabler:plant-2" class="w-5 h-5 mr-2 inline-block text-green-600" />
+              <span set:html={tagline} />
+            </p>
           )
         }
         {
@@ -71,6 +79,37 @@ const {
           }
         </div>
         {content && <Fragment set:html={content} />}
+        
+        <!-- Google Reviews Section -->
+        {showReviews && (
+          <div class="mt-6 lg:mt-4 inline-flex items-center px-4 py-2 bg-white/80 dark:bg-gray-900/80 rounded-lg backdrop-blur-sm">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <div class="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Icon 
+                    name={i < Math.floor(reviewsRating) 
+                      ? "tabler:star-filled" 
+                      : (i < Math.floor(reviewsRating) + 0.5 && reviewsRating % 1 >= 0.5)
+                        ? "tabler:star-half-filled"
+                        : "tabler:star"
+                    } 
+                    class="w-4 h-4 text-yellow-400" 
+                  />
+                ))}
+              </div>
+              
+              <p class="text-sm text-gray-800 dark:text-white font-medium">
+                {reviewsRating.toFixed(1)}
+                <span class="text-sm font-normal text-gray-600 dark:text-gray-300 ml-1">
+                  ({reviewsCount} Google Reviews)
+                </span>
+              </p>
+            </div>
+          </div>
+        )}
+        
+        <!-- Additional content slot -->
+        <slot name="content-after" />
       </div>
       <div class="basis-1/2">
         {
