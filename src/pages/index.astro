@@ -2,16 +2,14 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero2 from '~/components/widgets/Hero2.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Image from '~/components/common/Image.astro';
+import Services from '~/components/widgets/Services.astro';
+import CompanyValues from '~/components/widgets/CompanyValues.astro';
+import OurWork from '~/components/widgets/OurWork.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -32,7 +30,6 @@ const heroImages = [
     alt: 'Digital Marketing',
   },
 ];
-
 ---
 
 <Layout metadata={metadata}>
@@ -59,276 +56,211 @@ const heroImages = [
   >
     <!-- Background using slot with imported image -->
     <div slot="bg" class="absolute inset-0">
-      <Image
-        src="/images/hero-mainv2.png"
-        alt="Background"
-        class="w-full h-full object-cover"
-      />
+      <Image src="/images/hero-mainv2.png" alt="Background" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-black opacity-75"></div>
     </div>
   </Hero2>
 
-  <!-- Note Widget ******************* -->
-
-  <Note />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
-    items={[
+  <!-- Services Widget ******************* -->
+  <Services
+    tagline="Our Expertise"
+    title="Professional Services"
+    subtitle="Comprehensive solutions for all your outdoor needs"
+    columns={3}
+    highlight={true}
+    viewAllButton={{
+      enabled: true,
+      text: 'View All Services',
+      href: '/services',
+      icon: 'tabler:arrow-right',
+    }}
+    services={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Sod Installation',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Expert sod installation for an instant, lush lawn. We prepare the soil, install premium quality sod, and provide guidance on proper care.',
+        image:
+          'https://images.unsplash.com/photo-1599076480850-ac4094e95374?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        icon: 'tabler:garden-cart',
+        callToAction: {
+          text: 'Explore Options',
+          href: '/services/sod',
+          icon: 'tabler:arrow-right',
+        },
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Hydro-Seeding',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Efficient and cost-effective hydro-seeding services to establish new lawns quickly with even coverage and strong root development.',
+        image:
+          'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        icon: 'tabler:spray',
+        callToAction: {
+          text: 'Get Started',
+          href: '/services/hydro-seeding',
+          icon: 'tabler:arrow-right',
+        },
       },
       {
-        title: 'Best Practices',
+        title: 'Excavation',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          'Comprehensive excavation services for site preparation, land clearing, grading, and foundation work with precision equipment and experienced operators.',
+        image:
+          'https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80',
+        icon: 'tabler:bulldozer',
+        callToAction: {
+          text: 'Learn More',
+          href: '/services/excavation',
+          icon: 'tabler:arrow-right',
+        },
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Trenching',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
+          'Specialized trenching services for utility installation, drainage systems, and other underground infrastructure with minimal disruption to your property.',
+        image:
+          'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        icon: 'tabler:line-dashed',
+        callToAction: {
+          text: 'View Projects',
+          href: '/services/trenching',
+          icon: 'tabler:arrow-right',
+        },
       },
       {
-        title: 'Search Engine Optimization (SEO)',
+        title: 'Drainage Solutions',
         description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
+          'Custom drainage system design and installation to effectively manage water flow, prevent erosion, and protect your landscape and structures.',
+        image:
+          'https://images.unsplash.com/photo-1620578603763-11312fe4inaugurating&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
+        icon: 'tabler:droplet',
+        callToAction: {
+          text: 'Explore Solutions',
+          href: '/services/drainage',
+          icon: 'tabler:arrow-right',
+        },
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Driveways',
         description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          "Professional driveway installation and repair using quality materials like concrete, asphalt, or pavers, enhancing your property's curb appeal and functionality.",
+        image:
+          'https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80',
+        icon: 'tabler:road',
+        callToAction: {
+          text: 'View Options',
+          href: '/services/driveways',
+          icon: 'tabler:arrow-right',
+        },
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
+  <!-- Company Values Widget ********** -->
+  <CompanyValues
+    tagline="About Legacy Exteriors"
+    title="Transforming Landscapes Since 2005"
+    subtitle="Committed to quality, craftsmanship, and customer satisfaction"
+    companyDescription="At Legacy Exteriors, we believe that your outdoor space is an extension of your home and a reflection of your lifestyle. Founded in 2005, our company has grown from a small local operation to a trusted leader in landscaping and excavation services throughout the region. <br><br>What sets us apart is our commitment to quality craftsmanship, attention to detail, and dedication to customer satisfaction. We don't just complete projects – we build lasting relationships with our clients by exceeding expectations at every stage."
+    googleRating={{
+      score: 4.9,
+      count: 173,
+    }}
+    values={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Exceptional Quality',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'We never compromise on quality. From the materials we select to the techniques we employ, excellence is our standard at every step.',
+        icon: 'tabler:premium-rights',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Environmental Responsibility',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'We implement sustainable practices that protect and enhance the natural environment while creating beautiful outdoor spaces.',
+        icon: 'tabler:leaf',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Transparent Communication',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          "We maintain clear, open communication throughout your project, ensuring you're informed and confident every step of the way.",
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Attention to Detail',
+        description:
+          'Our meticulous approach ensures that every aspect of your project receives the careful attention it deserves.',
+        icon: 'tabler:zoom-check',
       },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+    ownerImage="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+    ownerName="Michael Johnson"
+    ownerTitle="Founder & Owner"
+    image="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
+    callToAction={{
+      text: 'Learn More About Us',
+      href: '/about',
+      icon: 'tabler:arrow-right',
+      variant: 'secondary',
     }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
+    bg="<div class='absolute inset-0 bg-green-50 dark:bg-slate-800/60'></div>"
   />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
+  <!-- OurWork Widget -->
+  <OurWork
+  tagline="Portfolio"
+  title="Our Recent Projects"
+  subtitle="Explore some of our finest landscaping and excavation work"
+  displayType="masonry"
+  projects={[
+    {
+      image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      alt: "Backyard landscape design with garden beds and stone pathway",
+      category: "Landscape Design"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80",
+      alt: "Patio with stone fire pit and outdoor seating",
+      category: "Outdoor Living"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      alt: "Garden planting with colorful perennials",
+      category: "Garden & Planting"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80",
+      alt: "Excavation work for new home construction",
+      category: "Excavation"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1598435021978-92f303374520?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1615&q=80",
+      alt: "Retaining wall with integrated lighting",
+      category: "Hardscape"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
+      alt: "New concrete driveway installation",
+      category: "Driveways"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+      alt: "Irrigation system installation for large property",
+      category: "Irrigation Systems"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1422260702938-7487328079eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80",
+      alt: "Decorative stone pathway with night lighting",
+      category: "Outdoor Lighting"
+    }
+  ]}
+  callToAction={{
+    text: "View All Projects",
+    href: "/our-work",
+    icon: "tabler:arrow-right", 
+    variant: "primary"
+  }}
+  bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-900/30'></div>"
+/>
 
   <!-- HighlightedPosts Widget ******* -->
 

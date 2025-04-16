@@ -1,0 +1,334 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+import type { Widget } from '~/types';
+import type { ImageMetadata } from 'astro';
+
+export interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  projects?: Array<{
+    image: string | ImageMetadata;
+    alt?: string;
+    category?: string;
+    description?: string;
+    width?: number;
+    height?: number;
+  }>;
+  callToAction?: {
+    text: string;
+    href: string;
+    icon?: string;
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
+  };
+  displayType?: 'grid' | 'masonry';
+  classes?: {
+    container?: string;
+    headline?: string;
+    gallery?: string;
+    item?: string;
+  };
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  projects = [],
+  callToAction = {
+    text: 'View All Projects',
+    href: '/our-work',
+    icon: 'tabler:arrow-right',
+    variant: 'secondary',
+  },
+  displayType = 'masonry',
+  classes = {},
+  id,
+  isDark = false,
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+// Helper function to safely get image source
+const getImageSrc = (image: string | ImageMetadata) => {
+  if (!image) return '';
+  if (typeof image === 'string') return image;
+  return image.src || '';
+};
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    tagline={tagline}
+    classes={{
+      container: 'max-w-xl sm:mx-auto lg:max-w-2xl mb-8',
+      title: 'text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading',
+      subtitle: 'max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400',
+    }}
+  />
+
+  {/* Grid layout gallery */}
+  {
+    displayType === 'grid' && (
+      <div
+        class={twMerge('grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 my-gallery', classes?.gallery)}
+      >
+        {projects.map((project, index) => (
+          <figure
+            class={twMerge(
+              'relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group aspect-square intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade cursor-pointer',
+              classes?.item
+            )}
+            style={{ animationDelay: `${index * 100}ms` }}
+            itemscope
+            itemtype="http://schema.org/ImageObject"
+          >
+            <a
+              href={getImageSrc(project.image)}
+              data-pswp-width={project.width || 1200}
+              data-pswp-height={project.height || 800}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image
+                src={project.image}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                alt={project.alt || 'Project thumbnail'}
+                width={400}
+                height={400}
+                widths={[200, 400, 800]}
+                loading={index < 4 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="bg-white dark:bg-gray-800 rounded-full p-3">
+                    <Icon name="tabler:zoom-in" class="w-6 h-6 text-primary" />
+                  </div>
+                </div>
+              </div>
+              {project.category && (
+                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <span class="text-white text-sm font-medium">{project.category}</span>
+                </div>
+              )}
+            </a>
+            {project.description && (
+              <figcaption itemprop="caption description" class="hidden">
+                {project.category ? `${project.category} - ` : ''}
+                {project.description}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </div>
+    )
+  }
+
+  {/* Masonry layout gallery */}
+  {
+    displayType === 'masonry' && (
+      <div class={twMerge('grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 my-gallery', classes?.gallery)}>
+        {/* First column */}
+        <div class="grid gap-3 md:gap-6">
+          {projects
+            .filter((_, index) => index % 3 === 0)
+            .map((project, index) => (
+              <figure
+                class={twMerge(
+                  'relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade cursor-pointer',
+                  classes?.item
+                )}
+                style={{ animationDelay: `${index * 100}ms` }}
+                itemscope
+                itemtype="http://schema.org/ImageObject"
+              >
+                <a
+                  href={getImageSrc(project.image)}
+                  data-pswp-width={project.width || 1200}
+                  data-pswp-height={project.height || 800}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src={project.image}
+                    class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                    alt={project.alt || 'Project thumbnail'}
+                    width={600}
+                    height={Math.floor(Math.random() * 200) + 300}
+                    widths={[300, 600, 900]}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div class="bg-white dark:bg-gray-800 rounded-full p-3">
+                        <Icon name="tabler:zoom-in" class="w-6 h-6 text-primary" />
+                      </div>
+                    </div>
+                  </div>
+                  {project.category && (
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <span class="text-white text-sm font-medium">{project.category}</span>
+                    </div>
+                  )}
+                </a>
+                {project.description && (
+                  <figcaption itemprop="caption description" class="hidden">
+                    {project.category ? `${project.category} - ` : ''}
+                    {project.description}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+        </div>
+
+        {/* Second column */}
+        <div class="grid gap-3 md:gap-6">
+          {projects
+            .filter((_, index) => index % 3 === 1)
+            .map((project, index) => (
+              <figure
+                class={twMerge(
+                  'relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade cursor-pointer',
+                  classes?.item
+                )}
+                style={{ animationDelay: `${(index + 1) * 100}ms` }}
+                itemscope
+                itemtype="http://schema.org/ImageObject"
+              >
+                <a
+                  href={getImageSrc(project.image)}
+                  data-pswp-width={project.width || 1200}
+                  data-pswp-height={project.height || 800}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src={project.image}
+                    class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                    alt={project.alt || 'Project thumbnail'}
+                    width={600}
+                    height={Math.floor(Math.random() * 200) + 350}
+                    widths={[300, 600, 900]}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div class="bg-white dark:bg-gray-800 rounded-full p-3">
+                        <Icon name="tabler:zoom-in" class="w-6 h-6 text-primary" />
+                      </div>
+                    </div>
+                  </div>
+                  {project.category && (
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <span class="text-white text-sm font-medium">{project.category}</span>
+                    </div>
+                  )}
+                </a>
+                {project.description && (
+                  <figcaption itemprop="caption description" class="hidden">
+                    {project.category ? `${project.category} - ` : ''}
+                    {project.description}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+        </div>
+
+        {/* Third column */}
+        <div class="grid gap-3 md:gap-6">
+          {projects
+            .filter((_, index) => index % 3 === 2)
+            .map((project, index) => (
+              <figure
+                class={twMerge(
+                  'relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade cursor-pointer',
+                  classes?.item
+                )}
+                style={{ animationDelay: `${(index + 2) * 100}ms` }}
+                itemscope
+                itemtype="http://schema.org/ImageObject"
+              >
+                <a
+                  href={getImageSrc(project.image)}
+                  data-pswp-width={project.width || 1200}
+                  data-pswp-height={project.height || 800}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src={project.image}
+                    class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                    alt={project.alt || 'Project thumbnail'}
+                    width={600}
+                    height={Math.floor(Math.random() * 200) + 400}
+                    widths={[300, 600, 900]}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div class="bg-white dark:bg-gray-800 rounded-full p-3">
+                        <Icon name="tabler:zoom-in" class="w-6 h-6 text-primary" />
+                      </div>
+                    </div>
+                  </div>
+                  {project.category && (
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <span class="text-white text-sm font-medium">{project.category}</span>
+                    </div>
+                  )}
+                </a>
+                {project.description && (
+                  <figcaption itemprop="caption description" class="hidden">
+                    {project.category ? `${project.category} - ` : ''}
+                    {project.description}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    callToAction && (
+      <div class="flex justify-center mt-10 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        <Button
+          variant={callToAction.variant || 'secondary'}
+          href={callToAction.href}
+          text={callToAction.text}
+          icon={callToAction.icon}
+        />
+      </div>
+    )
+  }
+</WidgetWrapper>
+
+<!-- PhotoSwipe initialization script - super basic, minimal implementation -->
+<script>
+  // Updated imports for PhotoSwipe v5+
+  import PhotoSwipe from 'photoswipe';
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  // Once the DOM is ready, initialize PhotoSwipe with minimal options
+  document.addEventListener('DOMContentLoaded', function () {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.my-gallery',
+      children: 'a',
+      pswpModule: PhotoSwipe
+    });
+
+    lightbox.init();
+  });
+</script>
