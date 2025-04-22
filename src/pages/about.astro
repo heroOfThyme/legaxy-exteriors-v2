@@ -1,228 +1,332 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Content from '~/components/widgets/Content.astro';
+import CompanyValues from '~/components/widgets/CompanyValues.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Icon } from 'astro-icon/components';
 
 const metadata = {
-  title: 'About us',
+  title: 'About Legacy Exteriors | Windsor Born and Raised',
+  description: 'Learn about Legacy Exteriors Inc., a Windsor-based excavation and landscaping company founded by a lifelong equipment operator with deep local roots and a passion for quality work.',
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
   <Hero
-    tagline="About us"
+    tagline="Our Story"
+    title="Windsor Born and Raised"
+    subtitle="Legacy Exteriors Inc. is built on a foundation of local expertise, lifelong experience, and a commitment to exceptional craftsmanship."
     image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
+      src: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Legacy Exteriors founder',
     }}
   >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-tr from-green-900/70 via-transparent to-green-900/70"></div>
     </Fragment>
   </Hero>
 
+  <!-- Content Widget **************** -->
+  <Content>
+    <Fragment slot="title">
+      Building a Legacy in <br class="block sm:hidden" />Windsor-Essex
+    </Fragment>
+    <Fragment slot="image">
+      <img
+        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+        alt="Legacy Exteriors founder"
+        class="rounded-lg shadow-lg"
+      />
+    </Fragment>
+    <Fragment slot="content">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Our Journey</h2>
+        <p class="mb-4 text-lg">
+          After years of working for my father in the industry and running equipment from the age of 7, I decided to embark on a new chapter and founded Legacy Exteriors Inc. in January 2022. Growing up in Windsor-Essex gave me a unique understanding of the region's landscape, soil conditions, and seasonal challenges.
+        </p>
+        <p class="mb-4 text-lg">
+          My experience operating equipment from such a young age has given me a deep appreciation for precision work, safety, and craftsmanship. What started as working alongside my father has grown into a passion for transforming properties throughout Windsor and Essex County.
+        </p>
+        <p class="mb-4 text-lg font-medium">
+          We provide highly skilled equipment operation in a safe, timely manner. We take pride in our work and thoroughly enjoy this career path. I enjoy meeting new customers and working with them to assist in their visions.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="btn-primary px-6 py-3.5 text-white rounded-md text-center font-semibold">
+            <div class="flex items-center justify-center">
+              <Icon name="tabler:message" class="w-5 h-5 mr-2" />
+              <span>Contact Us</span>
+            </div>
+          </a>
+          <a href="/services" class="btn-secondary px-6 py-3.5 rounded-md text-center font-semibold">
+            <div class="flex items-center justify-center">
+              <Icon name="tabler:shovel" class="w-5 h-5 mr-2" />
+              <span>Explore Our Services</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
   <!-- Stats Widget ****************** -->
-
   <Stats
-    title="Statistics about us"
+    title="Our Growth Since 2022"
+    subtitle="From humble beginnings to becoming a trusted name in Windsor-Essex"
     stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
+      { title: 'Projects Completed', amount: '250+' },
+      { title: 'Equipment Units', amount: '12+' },
+      { title: 'Happy Clients', amount: '200+' },
+      { title: 'Windsor Communities Served', amount: '15+' },
+    ]}
+    bg="bg-green-50 dark:bg-slate-800"
+  />
+
+  <!-- CompanyValues Widget ********** -->
+  <CompanyValues
+    tagline="Our Commitment"
+    title="Windsor-Essex Is Our Home"
+    subtitle="Our local roots give us unique insights and a personal investment in every project we undertake"
+    companyDescription="As a Windsor native, I've experienced firsthand the unique challenges and opportunities our region presents. From our heavy clay soils to our seasonal weather patterns, our local knowledge allows us to provide solutions specifically tailored to Windsor-Essex properties.<br><br>We believe in building relationships, not just completing jobs. Many of our clients become repeat customers and refer us to their friends and family – something we take great pride in. Our commitment to quality, transparency, and reliability has helped us grow entirely through word-of-mouth and customer referrals."
+    googleRating={{
+      score: 4.9,
+      count: 87,
+    }}
+    values={[
+      {
+        title: 'Local Expertise',
+        description:
+          'Deep understanding of Windsor-Essex soil conditions, drainage challenges, and regional building requirements',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Skilled Craftsmanship',
+        description:
+          'Years of hands-on equipment operation and excavation experience translated into precision and quality',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Personal Attention',
+        description:
+          'Direct communication with the owner and a customized approach to each unique project',
+        icon: 'tabler:user-check',
+      },
+      {
+        title: 'Community Focus',
+        description:
+          'Dedicated to improving properties throughout our community and supporting local businesses',
+        icon: 'tabler:home-heart',
+      },
+    ]}
+    ownerImage="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+    ownerName="Alex Johnson"
+    ownerTitle="Founder & Owner"
+    image="https://images.unsplash.com/photo-1567613814045-a5263066619a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-800/60'></div>"
+  />
+
+  <!-- Features Widget ************** -->
+  <Features
+    id="services"
+    tagline="What We Do"
+    title="Our Core Services"
+    subtitle="From excavation and trenching to driveways and drainage solutions, we provide comprehensive exterior services"
+    items={[
+      {
+        title: 'Excavation & Grading',
+        description:
+          'Precision earthwork for residential and commercial projects, with expert grading for proper drainage and stability.',
+        icon: 'tabler:bulldozer',
+      },
+      {
+        title: 'Trenching',
+        description:
+          'Professional trenching for utilities, drainage systems, and irrigation with minimal disruption to your property.',
+        icon: 'tabler:line-dashed',
+      },
+      {
+        title: 'Driveways',
+        description:
+          'Custom driveway installation and repair services using quality materials built to withstand Windsors climate.',
+        icon: 'tabler:road',
+      },
+      {
+        title: 'Drainage Solutions',
+        description:
+          'Comprehensive water management services to protect your property from water damage and erosion.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Septic Systems',
+        description:
+          'Expert installation and repair of septic tanks and systems for efficient, reliable waste management.',
+        icon: 'tabler:toilet-paper',
+      },
+      {
+        title: 'Landscape Preparation',
+        description:
+          'Professional site preparation, grading, and hardscaping to create the foundation for beautiful outdoor spaces.',
+        icon: 'tabler:garden-cart',
+      },
     ]}
   />
 
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
-    columns={3}
-    isBeforeContent={true}
+  <!-- Content Widget **************** -->
+  <Content
+    isReversed
+    title="Our Equipment & Capabilities"
+    subtitle="Professional-grade machinery operated with precision and expertise"
     items={[
       {
-        title: 'Educational',
+        title: 'Modern Fleet',
         description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
+          'Well-maintained excavators, skid steers, dozers, and specialized equipment for projects of all sizes.',
+        icon: 'tabler:tractor',
       },
       {
-        title: 'Interior Design',
+        title: 'Experienced Operators',
         description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
+          'Skilled equipment operators with years of experience handling challenging terrain and complex requirements.',
+        icon: 'tabler:user-check',
       },
       {
-        title: 'Photography',
+        title: 'Versatile Applications',
         description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
+          'Capable of handling everything from precise residential work to larger commercial and agricultural projects.',
+        icon: 'tabler:adjustments',
       },
       {
-        title: 'Blog',
+        title: 'Safety Focus',
         description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
+          'Strict adherence to safety protocols and best practices to protect your property and our team.',
+        icon: 'tabler:shield-check',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80',
+      alt: 'Legacy Exteriors equipment',
     }}
   />
 
-  <!-- Steps2 Widget ****************** -->
+  <!-- Testimonial Quote Section -->
+  <div class="relative bg-green-50 dark:bg-slate-800 py-16 px-4 sm:px-6 lg:py-24">
+    <div class="absolute inset-0">
+      <div class="bg-green-50 dark:bg-slate-800 h-1/3 sm:h-2/3"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto">
+      <div class="text-center">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+          Thank You to Our Customers
+        </h2>
+      </div>
+      <div class="mt-12 bg-white dark:bg-slate-900 rounded-lg shadow-xl overflow-hidden">
+        <div class="relative px-6 py-10 sm:px-10 sm:py-16">
+          <div aria-hidden="true" class="absolute inset-0 -mt-72 sm:-mt-32 md:mt-0">
+            <svg
+              class="absolute inset-0 h-full w-full"
+              width="404"
+              height="392"
+              fill="none"
+              viewBox="0 0 404 392"
+            >
+              <defs>
+                <pattern
+                  id="pattern-circles"
+                  x="0"
+                  y="0"
+                  width="20"
+                  height="20"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="10" cy="10" r="3" class="text-green-100 dark:text-green-900/20" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width="404" height="392" fill="url(#pattern-circles)" />
+            </svg>
+          </div>
+          <div class="relative">
+            <div class="text-2xl leading-9 font-medium text-gray-900 dark:text-white">
+              <Icon name="tabler:quote" class="absolute top-0 left-0 h-8 w-8 text-green-500 -translate-x-6 -translate-y-6" />
+              <p class="text-lg sm:text-xl italic">
+                "Finally, I would like to thank all customers, past, present and future for their business and their referrals! Your trust and support have been the foundation of our growth, and I'm grateful for the opportunity to serve the Windsor-Essex community."
+              </p>
+            </div>
+            <footer class="mt-8">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <img
+                    class="h-10 w-10 rounded-full"
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                    alt="Founder"
+                  />
+                </div>
+                <div class="ml-4">
+                  <div class="text-base font-medium text-gray-900 dark:text-white">Alex Johnson</div>
+                  <div class="text-base font-medium text-green-600 dark:text-green-400">Founder, Legacy Exteriors Inc.</div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
-    items={[
+  <!-- Social Media Section -->
+  <div class="bg-white dark:bg-slate-900 py-16 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Connect With Us</h2>
+      <p class="text-xl mb-8 text-muted dark:text-slate-400">
+        Follow us on social media for project updates, behind-the-scenes content, and special promotions.
+      </p>
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="text-gray-900 dark:text-white hover:text-green-500 dark:hover:text-green-400">
+          <span class="sr-only">Instagram</span>
+          <Icon name="tabler:brand-instagram" class="h-10 w-10" />
+        </a>
+        <a href="#" class="text-gray-900 dark:text-white hover:text-green-500 dark:hover:text-green-400">
+          <span class="sr-only">Facebook</span>
+          <Icon name="tabler:brand-facebook" class="h-10 w-10" />
+        </a>
+        <a href="#" class="text-gray-900 dark:text-white hover:text-green-500 dark:hover:text-green-400">
+          <span class="sr-only">Twitter</span>
+          <Icon name="tabler:brand-x" class="h-10 w-10" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    tagline="Ready to get started?"
+    backgroundImage="https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    overlayOpacity={0.7}
+    showLeaves={true}
+    actions={[
       {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+        variant: 'primary',
+        text: 'Contact Us Today',
+        href: '/contact',
+        icon: 'tabler:message',
       },
       {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+        variant: 'secondary',
+        text: 'View Our Work',
+        href: '/our-work',
       },
     ]}
-  />
+    isDark={true}
+  >
+    <Fragment slot="title">
+      Let's Build Your <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Legacy Together</span>
+    </Fragment>
 
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
+    <Fragment slot="subtitle">
+      Whether you're planning a new driveway, need drainage solutions, or are starting a major excavation project,
+      <br class="hidden md:inline" />we're here to help with personalized service and local expertise.
+    </Fragment>
+  </CallToAction>
 </Layout>

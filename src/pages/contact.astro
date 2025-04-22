@@ -3,21 +3,38 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import { Icon } from 'astro-icon/components';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Contact Legacy Exteriors | Windsor-Essex Professional Excavation & Landscaping',
+  description: 'Get in touch with Legacy Exteriors for your excavation, drainage, driveway, and landscaping needs in Windsor and Essex County. Call us at 519-791-1506 or fill out our contact form.',
 };
+
+// Service areas - Windsor-Essex region cities and towns
+const serviceAreas = [
+  'Windsor', 'Tecumseh', 'LaSalle', 'Amherstburg', 
+  'Essex', 'Kingsville', 'Lakeshore', 'Leamington',
+  'Belle River', 'Harrow', 'McGregor', 'Maidstone',
+  'St. Clair Beach', 'Stoney Point', 'Cottam'
+];
 ---
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
+  <HeroText
+    tagline="Contact Us"
+    title="Let's Get to Work"
+    subtitle="Fill out the form below, send us an email, or call and get answers to your home needs straight away!"
+  />
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
+  <!-- Contact Form Widget ************** -->
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="Send Us a Message"
+    subtitle="We're here to help with your project needs. Fill out the form and we'll get back to you promptly."
     inputs={[
       {
         type: 'text',
@@ -29,6 +46,11 @@ const metadata = {
         name: 'email',
         label: 'Email',
       },
+      {
+        type: 'tel',
+        name: 'phone',
+        label: 'Phone',
+      },
     ]}
     textarea={{
       label: 'Message',
@@ -37,42 +59,277 @@ const metadata = {
       label:
         'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
     }}
-    description="Our support team typically responds within 24 business hours."
+    button="Send Message"
+    description="We typically respond within 24 business hours."
   />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="We are here to help!"
+  <!-- Content Widget for Business Info *** -->
+  <Content
+    isReversed
+    title="Company Information"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
         title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
+        description: '<a href="tel:+15197911506" class="hover:text-primary">1-519-791-1506</a>',
+        icon: 'tabler:phone',
       },
       {
         title: 'Email',
-        description: 'contact@support.com',
+        description: '<a href="mailto:info@legacyexteriorsinc.com" class="hover:text-primary">info@legacyexteriorsinc.com</a>',
         icon: 'tabler:mail',
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        title: 'Weekday Hours',
+        description: 'Monday – Friday: 8:00 AM – 10:00 PM',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Weekend Hours',
+        description: 'Saturday – Sunday: 8:00 AM – 8:00 PM',
+        icon: 'tabler:calendar',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <div class="mt-4 mb-8">
+        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Follow Us on Social Media</h3>
+        <div class="flex space-x-4 mt-5">
+          <a href="#" aria-label="Facebook" class="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary/10 transition-colors">
+            <Icon name="tabler:brand-facebook" class="w-6 h-6 text-primary" />
+          </a>
+          <a href="#" aria-label="Instagram" class="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary/10 transition-colors">
+            <Icon name="tabler:brand-instagram" class="w-6 h-6 text-primary" />
+          </a>
+          <a href="#" aria-label="Twitter" class="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary/10 transition-colors">
+            <Icon name="tabler:brand-x" class="w-6 h-6 text-primary" />
+          </a>
+        </div>
+      </div>
+    </Fragment>
+    
+    <Fragment slot="image">
+      <div class="relative h-full">
+        <!-- Enhanced Service Area Map Component -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700 p-6 h-full">
+          <h3 class="text-xl font-bold mb-4">Areas We Serve</h3>
+          
+          <!-- Better Visual Service Area Map -->
+          <div class="relative w-full h-80 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
+            <div class="absolute inset-0">
+              <!-- More detailed Essex County Map -->
+              <svg viewBox="0 0 500 400" class="w-full h-full">
+                <!-- Background texture -->
+                <defs>
+                  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(100,100,100,0.1)" stroke-width="0.5"/>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <!-- Water bodies -->
+                <path 
+                  d="M0,300 L500,300 L500,400 L0,400 Z" 
+                  class="fill-blue-200 dark:fill-blue-900/30" 
+                />
+                <text x="250" y="390" text-anchor="middle" class="text-sm fill-blue-800 dark:fill-blue-400 font-medium">Lake Erie</text>
+                
+                <path 
+                  d="M0,0 L0,300 L50,300 L50,0 Z" 
+                  class="fill-blue-200 dark:fill-blue-900/30" 
+                />
+                <text x="25" y="150" text-anchor="middle" transform="rotate(-90 25,150)" class="text-sm fill-blue-800 dark:fill-blue-400 font-medium">Detroit River</text>
+                
+                <path 
+                  d="M0,0 L500,0 L500,50 L0,50 Z" 
+                  class="fill-blue-200 dark:fill-blue-900/30" 
+                />
+                <text x="250" y="25" text-anchor="middle" class="text-sm fill-blue-800 dark:fill-blue-400 font-medium">Lake St. Clair</text>
+                
+                <!-- Essex County outline (simplified) -->
+                <path 
+                  d="M50,50 L450,50 L450,300 L50,300 Z" 
+                  class="fill-gray-200 dark:fill-gray-700 stroke-gray-400 dark:stroke-gray-600" 
+                  stroke-width="2"
+                  fill-opacity="0.7"
+                />
+                
+                <!-- Windsor service area -->
+                <path 
+                  d="M100,175 L275,175 A50,50 0 0,1 275,275 L100,275 Z" 
+                  class="fill-primary/30 stroke-primary" 
+                  stroke-width="2"
+                  fill-opacity="0.8"
+                />
+                
+                <!-- City markers with improved visibility -->
+                <!-- Windsor -->
+                <circle cx="170" cy="230" r="10" class="fill-primary" />
+                <text x="170" y="265" text-anchor="middle" class="text-sm font-bold fill-gray-900 dark:fill-white">Windsor</text>
+                
+                <!-- Tecumseh -->
+                <circle cx="290" cy="175" r="6" class="fill-primary/70" />
+                <text x="290" y="160" text-anchor="middle" class="text-sm fill-gray-800 dark:fill-white">Tecumseh</text>
+                
+                <!-- LaSalle -->
+                <circle cx="100" cy="200" r="6" class="fill-primary/70" />
+                <text x="100" y="185" text-anchor="middle" class="text-sm fill-gray-800 dark:fill-white">LaSalle</text>
+                
+                <!-- Amherstburg -->
+                <circle cx="75" cy="250" r="6" class="fill-primary/70" />
+                <text x="75" y="235" text-anchor="middle" class="text-sm fill-gray-800 dark:fill-white">Amherstburg</text>
+                
+                <!-- Lakeshore -->
+                <circle cx="380" cy="130" r="6" class="fill-primary/70" />
+                <text x="380" y="115" text-anchor="middle" class="text-sm fill-gray-800 dark:fill-white">Lakeshore</text>
+                
+                <!-- Leamington -->
+                <circle cx="380" cy="250" r="6" class="fill-primary/70" />
+                <text x="380" y="235" text-anchor="middle" class="text-sm fill-gray-800 dark:fill-white">Leamington</text>
+                
+                <!-- Kingsville -->
+                <circle cx="330" cy="280" r="6" class="fill-primary/70" />
+                <text x="330" y="265" text-anchor="middle" class="text-sm fill-gray-800 dark:fill-white">Kingsville</text>
+                
+                <!-- Essex -->
+                <circle cx="220" cy="150" r="6" class="fill-primary/70" />
+                <text x="220" y="135" text-anchor="middle" class="text-sm fill-gray-800 dark:fill-white">Essex</text>
+                
+                <!-- Compass -->
+                <g transform="translate(420, 80)">
+                  <circle cx="0" cy="0" r="15" class="fill-gray-200 dark:fill-gray-700 stroke-gray-400 dark:stroke-gray-600" stroke-width="1" />
+                  <path d="M0,-12 L0,12 M-12,0 L12,0" stroke="currentColor" stroke-width="1" class="stroke-gray-500 dark:stroke-gray-400" />
+                  <text x="0" y="-16" text-anchor="middle" class="text-xs fill-gray-600 dark:fill-gray-300">N</text>
+                </g>
+                
+                <!-- Legend -->
+                <g transform="translate(75, 80)">
+                  <rect x="0" y="0" width="120" height="60" rx="4" class="fill-white dark:fill-gray-800 opacity-80" />
+                  <text x="60" y="15" text-anchor="middle" class="text-xs font-medium fill-gray-900 dark:fill-white">Service Area Legend</text>
+                  <circle cx="15" cy="30" r="5" class="fill-primary" />
+                  <text x="25" y="33" class="text-xs fill-gray-900 dark:fill-white">Main Service Area</text>
+                  <circle cx="15" cy="45" r="3" class="fill-primary/70" />
+                  <text x="25" y="48" class="text-xs fill-gray-900 dark:fill-white">Surrounding Areas</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Service Areas List -->
+          <div class="mt-6">
+            <h4 class="font-bold text-lg mb-3">Communities We Serve:</h4>
+            <div class="flex flex-wrap gap-2">
+              {serviceAreas.map(area => (
+                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                  {area}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget for Contact Categories -->
+  <Features2
+    title="We're Here to Help!"
+    subtitle="Whether you have questions, need a quote, or want to schedule a consultation, we're ready to assist you."
+    items={[
+      {
+        title: 'General Information',
+        description:
+          'Questions about our services, coverage area, or company? Were happy to provide all the information you need to make informed decisions about your property.',
+        icon: 'tabler:info-circle',
+      },
+      {
+        title: 'Request a Quote',
+        description:
+          'Ready to start your project? Contact us for a comprehensive, no-obligation quote tailored to your specific needs and property conditions.',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Schedule a Consultation',
+        description:
+          'Not sure exactly what you need? Schedule an on-site consultation with our experts to assess your property and discuss potential solutions.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Emergency Services',
+        description:
+          'Dealing with urgent drainage issues or other time-sensitive problems? Contact us right away for prompt assistance.',
+        icon: 'tabler:alert-triangle',
+      },
+    ]}
+    classes={{ container: 'max-w-6xl' }}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What Our Customers Say"
+    subtitle="Don't just take our word for it - hear from homeowners throughout Windsor-Essex who have worked with Legacy Exteriors."
+    testimonials={[
+      {
+        testimonial:
+          "We had major drainage issues after heavy rains and Legacy Exteriors provided a comprehensive solution that completely solved the problem. Their response time was quick and the work was completed professionally and on schedule.",
+        name: 'Michael Wilson',
+        job: 'South Windsor Homeowner',
+      },
+      {
+        testimonial:
+          "Alex and his team installed our driveway with incredible attention to detail. The preparation work was thorough and the finished product looks amazing. Communication throughout the project was excellent.",
+        name: 'Jennifer Davis',
+        job: 'Tecumseh Resident',
+      },
+      {
+        testimonial:
+          "After getting multiple quotes for our excavation project, we chose Legacy Exteriors based on their knowledge and fair pricing. They navigated our property's challenges expertly and left everything clean and properly graded.",
+        name: 'Robert Thompson',
+        job: 'LaSalle Property Owner',
+      },
+    ]}
+    callToAction={{
+      text: 'Read more testimonials',
+      href: '/testimonials',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about working with Legacy Exteriors."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'How do I request a quote for my project?',
+        description:
+          "You can request a quote by filling out our contact form above, calling us directly at 519-791-1506, or sending an email to info@legacyexteriorsinc.com. For most projects, we'll need to schedule a site visit to assess your specific needs and provide an accurate estimate.",
+      },
+      {
+        title: 'What areas do you service in Windsor-Essex?',
+        description:
+          "We provide service throughout Windsor and all of Essex County, including Tecumseh, LaSalle, Amherstburg, Essex, Kingsville, Lakeshore, Leamington, and surrounding communities. If you're unsure if we service your area, please contact us.",
+      },
+      {
+        title: 'How quickly can you start on my project?',
+        description:
+          "Our schedule varies depending on the season and current workload. For smaller projects, we can often begin within 1-2 weeks of quote approval. Larger projects typically require 2-4 weeks of lead time. We prioritize emergency drainage issues and will make every effort to address urgent situations promptly.",
+      },
+      {
+        title: 'Do you provide written estimates?',
+        description:
+          "Yes, we provide detailed written estimates for all projects. Our estimates include a breakdown of costs, timeline expectations, and the scope of work to be performed. We believe in transparency throughout the process so you know exactly what to expect.",
+      },
+      {
+        title: 'What payment methods do you accept?',
+        description:
+          "We accept several payment methods including cheques, e-transfers, and cash. For larger projects, we typically work with a payment schedule that includes a deposit to secure your place in our schedule and milestone payments as the project progresses.",
+      },
+      {
+        title: 'Do you offer warranties on your work?',
+        description:
+          "Yes, we stand behind our work with warranties that vary by service type. Our excavation, drainage, and driveway installations all come with workmanship warranties. We're happy to discuss the specific warranty terms for your project during the quote process.",
       },
     ]}
   />

@@ -1,0 +1,332 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import OurWork from '~/components/widgets/OurWork.astro';
+
+const metadata = {
+  title: 'Professional Trenching Services in Windsor | Legacy Exteriors',
+  description: 'Expert utility, drainage, and irrigation trenching services in Windsor and Essex County. Precise, safe, and efficient underground installations with minimal property disruption.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Professional Trenching Services"
+    title="Expert Trenching Solutions in Windsor"
+    subtitle="Safe, precise, and efficient trenching for utilities, drainage, and irrigation systems with minimal disruption to your property."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Quote',
+        href: '/contact?service=trenching',
+        icon: 'tabler:message',
+      },
+      { 
+        text: 'View Services', 
+        href: '#services',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Professional trenching equipment in Windsor',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/70 via-transparent to-gray-900/70"></div>
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    title="Trusted Trenching Experts"
+    subtitle="Experienced professionals with specialized equipment for precision results"
+    stats={[
+      { title: 'Years Experience', amount: '18+' },
+      { title: 'Linear Feet Trenched', amount: '50K+' },
+      { title: 'Projects Completed', amount: '400+' },
+      { title: 'Customer Satisfaction', amount: '99%' },
+    ]}
+    bg="bg-blue-50 dark:bg-slate-800"
+  />
+
+  <!-- Features Widget ************** -->
+  <Features
+    id="services"
+    tagline="Our Services"
+    title="Comprehensive Trenching Solutions"
+    subtitle="From utilities and drainage to irrigation systems, our trenching services meet all your underground installation needs."
+    items={[
+      {
+        title: 'Utility Trenching',
+        description:
+          'Expert trenching for water, sewer, gas, and electrical lines at the correct depth and according to all regulations.',
+        icon: 'tabler:plug',
+      },
+      {
+        title: 'Drainage Trenching',
+        description:
+          'Precision trenching for French drains, catch basins, and other drainage systems to protect your property from water damage.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Irrigation Trenching',
+        description:
+          'Specialized trenching for irrigation systems, ensuring efficient water delivery for healthy landscapes.',
+        icon: 'tabler:plant',
+      },
+      {
+        title: 'Precision & Safety',
+        description:
+          'State-of-the-art equipment and best practices to ensure accurate, safe trenching with minimal property disruption.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Site Restoration',
+        description:
+          'Complete restoration of your property including backfilling, grading, and reseeding of affected areas.',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Custom Solutions',
+        description:
+          'Tailored trenching services for unique project requirements and challenging site conditions.',
+        icon: 'tabler:adjustments',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Specialized Equipment',
+        description:
+          'Our fleet includes trenchers of various sizes and capacities to handle projects from narrow residential jobs to wider commercial applications.',
+        icon: 'tabler:tractor',
+      },
+      {
+        title: 'Minimal Disruption',
+        description:
+          'Our techniques and equipment minimize impact on surrounding landscapes, driveways, and structures during trenching operations.',
+        icon: 'tabler:home-check',
+      },
+      {
+        title: 'Utility Location',
+        description:
+          'We thoroughly locate and mark existing underground utilities before trenching to prevent accidental damage and ensure safety.',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1563341591-ad0a969037c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      alt: 'Trenching machinery in operation',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Precise Execution</h3>
+      <p>
+        At Legacy Exteriors, our trenching services combine technical expertise with careful execution to ensure optimal results for your project.
+      </p>
+      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
+        <li>Precise depth and width measurements</li>
+        <li>Proper slope calculations for drainage</li>
+        <li>Clean, straight trenches for utilities</li>
+        <li>Careful soil management and handling</li>
+        <li>Compliance with all safety regulations</li>
+      </ul>
+      <p class="mb-5">
+        Our attention to detail during trenching ensures proper installation of utilities and drainage systems, preventing future problems and costly repairs.
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- OurWork Widget **************** -->
+  <OurWork
+    tagline="Portfolio"
+    title="Our Trenching Projects"
+    subtitle="View some of our recent trenching work across Windsor and Essex County"
+    displayType="grid"
+    projects={[
+      {
+        image:
+          'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        alt: 'Utility trenching for new subdivision',
+        category: 'Utility Trenching',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        alt: 'French drain installation trenching',
+        category: 'Drainage Solutions',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1563341591-ad0a969037c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        alt: 'Irrigation system trenching for commercial property',
+        category: 'Irrigation Trenching',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1581026537053-aaba91a931a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        alt: 'Electrical conduit trenching',
+        category: 'Utility Trenching',
+      },
+    ]}
+    callToAction={{
+      text: 'View All Projects',
+      href: '/our-work',
+      icon: 'tabler:arrow-right',
+      variant: 'secondary',
+    }}
+    bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-900/30'></div>"
+  />
+
+  <!-- Steps2 Widget ****************** -->
+  <Steps2
+    title="Our Trenching Process"
+    subtitle="We follow a systematic approach to ensure safe, efficient, and precise trenching for your project."
+    items={[
+      {
+        title: 'Site Assessment & Planning',
+        description:
+          'We evaluate your site, identify utility locations, determine the optimal trenching path, and develop a detailed plan.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Utility Location',
+        description:
+          'We work with Ontario One Call and use specialized equipment to identify and mark all existing underground utilities.',
+        icon: 'tabler:radar',
+      },
+      {
+        title: 'Precision Trenching',
+        description:
+          'Our skilled operators execute the trenching plan with exact depth and width specifications for your specific needs.',
+        icon: 'tabler:line-dashed',
+      },
+      {
+        title: 'Utility Installation',
+        description:
+          'We place utilities, drainage pipes, or irrigation lines in the trench with proper bedding materials as required.',
+        icon: 'tabler:layout-bottombar',
+      },
+      {
+        title: 'Backfilling & Restoration',
+        description:
+          'We properly backfill trenches, compact soil as needed, and restore your property to its original condition.',
+        icon: 'tabler:arrow-back-up',
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about our trenching services in Windsor and Essex County."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'How deep do you typically trench for different utilities?',
+        description:
+          "Trenching depth varies by utility type and local code requirements. In Windsor-Essex, water lines are typically installed 4-5 feet deep to protect from freezing. Electrical conduits require at least 24 inches of cover, while irrigation lines are usually 12-18 inches deep. Gas and sewer lines have their own specific requirements. We ensure all trenching meets or exceeds local building codes.",
+      },
+      {
+        title: 'Will trenching damage my lawn or landscaping?',
+        description:
+          "While trenching does disturb the soil in the immediate path, we take steps to minimize impact on your property. We carefully remove and preserve sod where possible, use the appropriate sized equipment for your job, and fully restore the area after completion. This includes proper soil compaction, grading, and either replacing saved sod or providing new seed/sod as needed.",
+      },
+      {
+        title: 'How long does a typical residential trenching project take?',
+        description:
+          "Most residential trenching projects are completed within 1-3 days, depending on the length of the trench, soil conditions, and complexity. Utility trenching for a new home typically takes 1-2 days, while smaller irrigation or drainage trenching can often be completed in a single day. We provide specific timelines during the quote process based on your project's requirements.",
+      },
+      {
+        title: 'How do you handle rocky soil or clay during trenching?',
+        description:
+          "Windsor-Essex is known for its heavy clay soils, which we're well-equipped to handle. For clay soil, we use specialized trenching equipment with adequate power and appropriate teeth/chains. For areas with rocks or extremely compacted soil, we may use a combination of mechanical trenching and hand-digging techniques. Rest assured that our experience with local soil conditions ensures efficient work regardless of challenges.",
+      },
+      {
+        title: 'Do I need permits for trenching on my property?',
+        description:
+          "In most cases, trenching that involves utility installations requires permits from Windsor or Essex County municipalities. This is particularly true for water, sewer, and gas connections. Our team handles the permit application process for you, ensuring all work is properly documented and compliant with local regulations.",
+      },
+      {
+        title: 'Can you trench through difficult areas like driveways or walkways?',
+        description:
+          "Yes, we have techniques for trenching through or under hardscaped areas. When possible, we use boring equipment to tunnel beneath driveways and walkways without disturbing the surface. When trenching across these areas is necessary, we use precision cutting equipment to create clean lines that can be properly restored after the utility installation is complete.",
+      },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What Our Customers Say"
+    subtitle="Hear from property owners throughout Windsor-Essex who have benefited from our professional trenching services."
+    testimonials={[
+      {
+        testimonial:
+          "Legacy Exteriors did an outstanding job trenching for our irrigation system installation. They worked around our extensive landscaping with minimal disruption, and their cleanup was thorough. The entire system works perfectly thanks to their precise trenching and attention to detail.",
+        name: 'Jennifer Davis',
+        job: 'South Windsor Homeowner',
+      },
+      {
+        testimonial:
+          "We had serious drainage issues on our property that required extensive French drain installation. The trenching team at Legacy was efficient and knowledgeable, working through our heavy clay soil with ease. They maintained perfect grade for proper water flow, and the restoration was excellent.",
+        name: 'Robert Thompson',
+        job: 'LaSalle Resident',
+      },
+      {
+        testimonial:
+          "As a contractor, I've worked with many trenching companies, and Legacy Exteriors consistently delivers the best results. Their utility trenching for our housing development was precise, on schedule, and properly documented. Their team works safely and efficiently, making my job easier.",
+        name: 'Michael Wilson',
+        job: 'Local Building Contractor',
+      },
+    ]}
+    callToAction={{
+      text: 'Read more testimonials',
+      href: '/testimonials',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    tagline="Spring Utility Special"
+    backgroundImage="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+    overlayOpacity={0.7}
+    showLeaves={false}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Your Trenching Project',
+        href: '/contact?service=trenching',
+        icon: 'tabler:line-dashed',
+      },
+      {
+        variant: 'secondary',
+        text: 'Learn More',
+        href: '#services',
+      },
+    ]}
+    isDark={true}
+  >
+    <Fragment slot="title">
+      Underground Utility Installation <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Made Simple</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Book your trenching project before June 15th and receive complimentary site restoration.
+      <br class="hidden md:inline" />Professional trenching, utility installation, and complete property restoration with expert care.
+    </Fragment>
+  </CallToAction>
+</Layout>

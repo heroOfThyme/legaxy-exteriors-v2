@@ -1,0 +1,369 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import OurWork from '~/components/widgets/OurWork.astro';
+
+const metadata = {
+  title: 'Landscape Grading & Preparation Services in Windsor | Legacy Exteriors',
+  description: 'Expert landscape grading, preparation, and hardscaping services in Windsor and Essex County. Creating the perfect foundation for beautiful, functional outdoor spaces.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Professional Landscape Services"
+    title="Expert Landscape Preparation & Grading"
+    subtitle="Transform your outdoor space with professional landscape grading, drainage solutions, and hardscape installations designed for Windsor's unique climate."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Quote',
+        href: '/contact?service=landscaping',
+        icon: 'tabler:message',
+      },
+      { 
+        text: 'View Services', 
+        href: '#services',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      alt: 'Professional landscape grading and preparation in Windsor',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-tr from-green-900/70 via-transparent to-green-900/70"></div>
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    title="Transforming Windsor's Landscapes"
+    subtitle="Creating the perfect foundation for beautiful, functional outdoor spaces"
+    stats={[
+      { title: 'Years Experience', amount: '18+' },
+      { title: 'Projects Completed', amount: '550+' },
+      { title: 'Square Feet Graded', amount: '1.5M+' },
+      { title: 'Customer Satisfaction', amount: '99%' },
+    ]}
+    bg="bg-green-50 dark:bg-slate-800"
+  />
+
+  <!-- Features Widget ************** -->
+  <Features
+    id="services"
+    tagline="Our Services"
+    title="Professional Landscape Solutions"
+    subtitle="We focus on the crucial groundwork and structural elements that ensure your landscape is built on a solid foundation."
+    items={[
+      {
+        title: 'Landscape Grading',
+        description:
+          'Expert land grading to create proper drainage, prevent water issues, and prepare your property for further landscaping.',
+        icon: 'tabler:shovel',
+      },
+      {
+        title: 'Drainage Solutions',
+        description:
+          'Custom drainage system design and installation to protect your landscape and structures from water damage.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Hardscape Installation',
+        description:
+          'Professional installation of patios, walkways, retaining walls, and other hardscape features built to last.',
+        icon: 'tabler:wall',
+      },
+      {
+        title: 'Sod Installation',
+        description:
+          'Proper ground preparation and professional installation of sod for an instant, beautiful lawn.',
+        icon: 'tabler:garden-cart',
+      },
+      {
+        title: 'Land Clearing',
+        description:
+          'Efficient removal of unwanted vegetation, rocks, and debris to prepare your property for landscaping.',
+        icon: 'tabler:bulldozer',
+      },
+      {
+        title: 'Erosion Control',
+        description:
+          'Implementation of measures to prevent soil erosion and protect your property from damage.',
+        icon: 'tabler:barrier-block',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Proper Water Management',
+        description:
+          'Our landscape grading and drainage solutions prevent costly water damage to your home and landscape investments.',
+        icon: 'tabler:home-shield',
+      },
+      {
+        title: 'Soil Assessment',
+        description:
+          'We analyze your soil composition and make necessary amendments to ensure proper drainage and plant support.',
+        icon: 'tabler:test-pipe',
+      },
+      {
+        title: 'Climate-Adapted Solutions',
+        description:
+          'Our landscape preparations account for Windsors unique seasonal challenges to create durable outdoor spaces.',
+        icon: 'tabler:temperature-sun',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
+      alt: 'Professional landscape grading and hardscaping',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building On Solid Ground</h3>
+      <p>
+        At Legacy Exteriors, we focus on the critical earthwork and preparation that form the foundation of any successful landscape project. Our expertise in grading and soil management ensures:
+      </p>
+      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
+        <li>Proper water drainage away from structures</li>
+        <li>Stable base for hardscaping features</li>
+        <li>Reduction of standing water and mosquito breeding grounds</li>
+        <li>Prevention of basement and foundation water issues</li>
+        <li>Erosion control and soil stabilization</li>
+      </ul>
+      <p class="mb-5">
+        We create the perfect canvas for your outdoor space, ensuring longevity and functionality for whatever design elements you choose to add.
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- OurWork Widget **************** -->
+  <OurWork
+    tagline="Portfolio"
+    title="Our Landscape Projects"
+    subtitle="View examples of our professional landscape preparation, grading, and hardscaping work across Windsor-Essex"
+    displayType="grid"
+    projects={[
+      {
+        image:
+          'https://images.unsplash.com/photo-1604014091681-901e7dc7a5f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        alt: 'Backyard grading and preparation',
+        category: 'Landscape Grading',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
+        alt: 'Stone patio installation',
+        category: 'Hardscaping',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1599076480850-ac4094e95374?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        alt: 'Sod installation after grading',
+        category: 'Sod Installation',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        alt: 'French drain installation',
+        category: 'Drainage Solutions',
+      },
+    ]}
+    callToAction={{
+      text: 'View All Projects',
+      href: '/our-work',
+      icon: 'tabler:arrow-right',
+      variant: 'secondary',
+    }}
+    bg="<div class='absolute inset-0 bg-green-50 dark:bg-slate-900/30'></div>"
+  />
+
+  <!-- Steps2 Widget ****************** -->
+  <Steps2
+    title="Our Landscape Process"
+    subtitle="We follow a systematic approach to transform your outdoor space with proper preparation and grading."
+    items={[
+      {
+        title: 'Site Assessment & Planning',
+        description:
+          'We evaluate your propertys topography, soil conditions, drainage patterns, and existing features to develop a comprehensive plan.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Land Clearing & Preparation',
+        description:
+          'We clear the area of debris, unwanted vegetation, and obstacles, preparing the site for grading and new features.',
+        icon: 'tabler:bulldozer',
+      },
+      {
+        title: 'Grading & Drainage Installation',
+        description:
+          'We reshape the land to proper grades and install drainage systems to ensure water flows away from structures.',
+        icon: 'tabler:arrow-guide',
+      },
+      {
+        title: 'Hardscape Construction',
+        description:
+          'We build patios, walkways, retaining walls, and other hardscape features with proper foundations and materials.',
+        icon: 'tabler:wall',
+      },
+      {
+        title: 'Final Grading & Sod Installation',
+        description:
+          'We perform final grading of soil and install sod or prepare the surface for seeding to complete your landscape.',
+        icon: 'tabler:garden-cart',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isReversed
+    title="Hardscape Features"
+    subtitle="Durable, functional landscape elements built on proper foundations"
+    items={[
+      {
+        title: 'Patios & Walkways',
+        description:
+          'Custom-designed stone or paver installations with proper base preparation for longevity and stability.',
+        icon: 'tabler:garden-cart',
+      },
+      {
+        title: 'Retaining Walls',
+        description:
+          'Engineered walls that manage elevation changes, prevent erosion, and create usable space on sloped properties.',
+        icon: 'tabler:wall',
+      },
+      {
+        title: 'Drainage Features',
+        description:
+          'Swales, French drains, catch basins, and dry creeks that manage water flow while enhancing landscape aesthetics.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Erosion Control',
+        description:
+          'Stabilization measures including retaining walls, ground covers, and strategic grading to protect your property.',
+        icon: 'tabler:barrier-block',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1598884047257-9e58fed3a46c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
+      alt: 'Stone retaining wall and patio',
+    }}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about our landscape preparation and grading services in Windsor."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'Why is proper landscape grading so important in Windsor?',
+        description:
+          "Windsor's clay-heavy soils and seasonal freeze-thaw cycles make proper grading essential. Without it, water can pool around foundations, basements can flood, and hardscaping features can shift and crack. Our grading services ensure that water flows away from structures, preventing expensive water damage and extending the life of your landscape features. We account for Windsor's unique soil and climate conditions in all our grading work.",
+      },
+      {
+        title: 'What should I expect during the landscape preparation process?',
+        description:
+          "Our landscape preparation typically begins with clearing unwanted vegetation and debris. Next comes rough grading to establish the basic contours of your landscape. We then install drainage systems if needed, followed by any hardscape features. Final grading prepares the soil for sod or seeding. Throughout the process, our team works efficiently while minimizing disruption to your property. Most residential projects take 3-7 days depending on scope and complexity.",
+      },
+      {
+        title: 'Do you install plants, trees, and garden beds?',
+        description:
+          "We focus primarily on the structural and groundwork aspects of landscaping rather than planting. Our expertise is in creating the proper foundation through grading, drainage solutions, and hardscape installation. We prepare your landscape with the proper soil conditions and can install sod, but for extensive planting of trees, shrubs, and garden design, we recommend working with one of our trusted softscape partners after we've completed the foundational work.",
+      },
+      {
+        title: 'How do you address drainage issues in my landscape?',
+        description:
+          "We approach drainage issues with a comprehensive assessment of your property's water patterns. Solutions may include regrading to create proper slopes away from structures, installing French drains or catch basins in problem areas, creating swales to direct water flow, or installing permeable hardscaping that allows water to penetrate. Our drainage solutions are designed specifically for Windsor's climate and soil conditions to provide long-lasting protection.",
+      },
+      {
+        title: 'What types of hardscaping do you install?',
+        description:
+          "We specialize in installing patios, walkways, retaining walls, steps, and other structural landscape elements using materials like natural stone, concrete pavers, and block systems. All our hardscape installations include proper excavation, base preparation, and drainage considerations to ensure longevity and prevent shifting or settling. We focus on creating durable, functional spaces that complement your property.",
+      },
+      {
+        title: 'How do you ensure your landscape work withstands Windsors seasonal changes?',
+        description:
+          "Our landscape installations are designed specifically for Windsor's climate challenges. We install deeper foundations for hardscaping to account for frost penetration, use flexible paver systems that accommodate ground movement, and implement proper drainage to prevent water damage during thaws and heavy rains. Our extensive experience with local conditions allows us to create landscapes that remain stable and attractive through all seasons.",
+      },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What Our Customers Say"
+    subtitle="Hear from homeowners throughout Windsor-Essex who have transformed their properties with our landscape services."
+    testimonials={[
+      {
+        testimonial:
+          "Legacy Exteriors solved serious drainage issues that had plagued our backyard for years. Their expert grading and drainage installation has kept our basement dry through several major storms. They also installed a beautiful paver patio that hasn't shifted a bit despite our clay soil.",
+        name: 'Jennifer Wilson',
+        job: 'South Windsor Resident',
+      },
+      {
+        testimonial:
+          "After buying a new construction home with a completely bare yard, I hired Legacy to handle the grading and hardscaping. Their work provided the perfect foundation for my landscape. The sod installation was flawless, and the retaining wall they built to manage my sloped backyard is both functional and attractive.",
+        name: 'Michael Johnson',
+        job: 'LaSalle Homeowner',
+      },
+      {
+        testimonial:
+          "As a contractor, I've partnered with Legacy Exteriors on numerous projects. Their landscape preparation and grading work is exceptional. They understand Windsor's unique soil and drainage challenges, and their attention to detail in creating proper foundations for landscapes saves my clients headaches down the road.",
+        name: 'David Thompson',
+        job: 'Local Building Contractor',
+      },
+    ]}
+    callToAction={{
+      text: 'Read more testimonials',
+      href: '/testimonials',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    tagline="Spring Landscape Special"
+    backgroundImage="https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    overlayOpacity={0.7}
+    showLeaves={true}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Your Landscape Assessment',
+        href: '/contact?service=landscaping',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        variant: 'secondary',
+        text: 'View Our Portfolio',
+        href: '/our-work',
+      },
+    ]}
+    isDark={true}
+  >
+    <Fragment slot="title">
+      Transform Your Outdoor Space <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">From The Ground Up</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Book your landscape grading and preparation project before June 15th and receive a complimentary drainage assessment.
+      <br class="hidden md:inline" />Professional evaluation, detailed quote, and expert recommendations for your property's specific needs.
+    </Fragment>
+  </CallToAction>
+</Layout>

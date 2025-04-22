@@ -1,0 +1,369 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import OurWork from '~/components/widgets/OurWork.astro';
+
+const metadata = {
+  title: 'Drainage & Septic Services in Windsor | Legacy Exteriors',
+  description: 'Professional drainage solutions and septic system services in Windsor and Essex County. Protect your property with expert water management and waste system installation.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Professional Water Management"
+    title="Expert Drainage & Septic Solutions"
+    subtitle="Protect your property from water damage and ensure efficient waste management with our comprehensive drainage and septic services designed for Windsor's climate."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Quote',
+        href: '/contact?service=drainage',
+        icon: 'tabler:message',
+      },
+      { 
+        text: 'View Services', 
+        href: '#services',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Professional drainage installation in Windsor',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/70 via-transparent to-blue-900/70"></div>
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    title="Protecting Windsor Properties"
+    subtitle="Our expertise in water management and waste systems keeps your property safe and functional"
+    stats={[
+      { title: 'Years Experience', amount: '18+' },
+      { title: 'Systems Installed', amount: '450+' },
+      { title: 'Properties Protected', amount: '850+' },
+      { title: 'Customer Satisfaction', amount: '99%' },
+    ]}
+    bg="bg-blue-50 dark:bg-slate-800"
+  />
+
+  <!-- Features Widget ************** -->
+  <Features
+    id="services"
+    tagline="Our Services"
+    title="Comprehensive Water Management"
+    subtitle="From drainage solutions to septic systems, we provide complete services to protect your property and manage waste effectively."
+    items={[
+      {
+        title: 'Drainage System Design',
+        description:
+          'Custom drainage systems designed specifically for your propertys unique topography, soil conditions, and water flow patterns.',
+        icon: 'tabler:dashboard',
+      },
+      {
+        title: 'French Drains',
+        description:
+          'Installation of gravel-filled trenches with perforated pipes to collect and redirect groundwater away from foundations and structures.',
+        icon: 'tabler:line-dashed',
+      },
+      {
+        title: 'Surface Drainage',
+        description:
+          'Implementation of swales, catch basins, and proper grading to manage rainwater runoff and prevent flooding.',
+        icon: 'tabler:arrow-guide',
+      },
+      {
+        title: 'Erosion Control',
+        description:
+          'Measures to prevent soil erosion including retaining walls, ground covers, and strategic water management.',
+        icon: 'tabler:barrier-block',
+      },
+      {
+        title: 'Septic Tank Installation',
+        description:
+          'Complete septic system installation with proper sizing, excavation, tank placement, and leach field configuration.',
+        icon: 'tabler:toilet-paper',
+      },
+      {
+        title: 'Septic System Repairs',
+        description:
+          'Expert diagnosis and repair of septic system issues including leaks, clogs, and damaged components.',
+        icon: 'tabler:tools',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Prevent Costly Damage',
+        description:
+          'Our drainage solutions protect your foundation, basement, and landscape from water damage that can cost thousands to repair.',
+        icon: 'tabler:home-shield',
+      },
+      {
+        title: 'Environmental Protection',
+        description:
+          'Proper drainage and septic systems prevent pollutants from entering groundwater and local waterways.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Long-Term Solutions',
+        description:
+          'We design and install systems built to last through Windsors seasonal changes and weather patterns.',
+        icon: 'tabler:calendar',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1620578603763-11312fe4inaugurating?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
+      alt: 'Drainage system installation',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Water Management Experts</h3>
+      <p>
+        At Legacy Exteriors, we understand the unique water management challenges faced by Windsor-Essex property owners. Our approach includes:
+      </p>
+      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
+        <li>Comprehensive property assessment to identify problem areas</li>
+        <li>Custom solutions tailored to your specific drainage issues</li>
+        <li>Integration with existing landscape and hardscape features</li>
+        <li>Attention to soil composition and groundwater patterns</li>
+        <li>Systems designed to handle Windsor's heavy seasonal rainfall</li>
+      </ul>
+      <p class="mb-5">
+        We address both immediate drainage problems and implement preventative measures to protect your property for years to come.
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- OurWork Widget **************** -->
+  <OurWork
+    tagline="Portfolio"
+    title="Our Drainage & Septic Projects"
+    subtitle="View examples of our professional drainage solutions and septic system installations across Windsor-Essex"
+    displayType="grid"
+    projects={[
+      {
+        image:
+          'https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        alt: 'French drain installation',
+        category: 'French Drains',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        alt: 'Surface drainage system',
+        category: 'Surface Drainage',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1617155093730-a8bf47be792d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        alt: 'Septic system installation',
+        category: 'Septic Systems',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1562184151-c8cd69a7a71f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
+        alt: 'Catch basin installation',
+        category: 'Stormwater Management',
+      },
+    ]}
+    callToAction={{
+      text: 'View All Projects',
+      href: '/our-work',
+      icon: 'tabler:arrow-right',
+      variant: 'secondary',
+    }}
+    bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-900/30'></div>"
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isReversed
+    title="Septic System Services"
+    subtitle="Professional installation and repair of residential and commercial septic systems"
+    items={[
+      {
+        title: 'Complete System Installation',
+        description:
+          'Comprehensive septic system installation including tank placement, drain field configuration, and all necessary connections.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'System Design',
+        description:
+          'Custom septic system design based on property size, soil conditions, household size, and usage requirements.',
+        icon: 'tabler:dashboard',
+      },
+      {
+        title: 'Excavation & Site Prep',
+        description:
+          'Professional excavation with proper depth, dimensions, and preparation for septic tank and leach field installation.',
+        icon: 'tabler:bulldozer',
+      },
+      {
+        title: 'Repairs & Troubleshooting',
+        description:
+          'Expert diagnosis and repair of septic system issues including leaks, clogs, broken pipes, and tank problems.',
+        icon: 'tabler:tools',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1617155093730-a8bf47be792d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Septic system installation',
+    }}
+  />
+
+  <!-- Steps2 Widget ****************** -->
+  <Steps2
+    title="Our Drainage Solution Process"
+    subtitle="We follow a systematic approach to identify and resolve your property's water management challenges."
+    items={[
+      {
+        title: 'Property Assessment',
+        description:
+          'We thoroughly evaluate your property, identify problem areas, and analyze water flow patterns and soil conditions.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Custom Solution Design',
+        description:
+          'Based on our assessment, we design a drainage system tailored to your specific needs and property conditions.',
+        icon: 'tabler:dashboard',
+      },
+      {
+        title: 'Excavation & Preparation',
+        description:
+          'We carefully excavate the necessary areas with minimal disruption to your property and prepare for system installation.',
+        icon: 'tabler:shovel',
+      },
+      {
+        title: 'System Installation',
+        description:
+          'Our team installs drainage components including pipes, aggregate, fabric, catch basins, and other necessary elements.',
+        icon: 'tabler:droplet-cog',
+      },
+      {
+        title: 'Final Grading & Restoration',
+        description:
+          'We complete the project with proper grading and restore your landscape to its original condition or better.',
+        icon: 'tabler:garden-cart',
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about our drainage and septic services in Windsor-Essex."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'What are the warning signs of drainage problems on my property?',
+        description:
+          "Common indicators of drainage issues include: standing water that doesn't dissipate within 24 hours after rainfall, water pooling near your foundation, basement dampness or flooding, eroding soil in your yard, water stains on basement walls, mold or mildew growth, and damaged or dying grass in consistently wet areas. If you notice any of these signs on your Windsor property, it's best to address them promptly before they lead to costly structural damage.",
+      },
+      {
+        title: 'What type of drainage solution is best for Windsors clay soil?',
+        description:
+          "Windsor's heavy clay soil presents unique drainage challenges because it doesn't allow water to percolate easily. For these conditions, we typically recommend a combination approach: French drains with proper filtration fabric to prevent clogging, strategic surface grading, and sometimes subsurface drainage layers using coarse aggregates. In severe cases, we may install sump systems in conjunction with foundation drains. Each property requires a custom solution based on specific conditions and the severity of water issues.",
+      },
+      {
+        title: 'How do you determine if my property needs a French drain?',
+        description:
+          "We assess several factors to determine if a French drain is appropriate: persistent standing water issues, water flowing toward your foundation, basement water infiltration, soil composition, property slope, and the source of excess water. French drains are particularly effective in Windsor's clay soil when installed with the correct aggregate, drainage pipe, and proper slope. During our free assessment, we'll evaluate these factors and recommend whether a French drain is the right solution for your specific drainage issues.",
+      },
+      {
+        title: 'Whats involved in septic system installation?',
+        description:
+          "A complete septic system installation includes: site evaluation and soil testing, system design and permitting, excavation of the tank area and drain field, tank placement and connection, installation of the drain field pipes and aggregate, backfilling and initial compaction, and final grading of the surface. In Windsor-Essex, we must also account for the high water table in some areas and clay soil considerations. Most residential installations take 2-5 days depending on system size and site conditions.",
+      },
+      {
+        title: 'How do I know if my septic system needs repair?',
+        description:
+          "Signs that your septic system needs attention include: slow drains throughout your home, gurgling sounds in the plumbing, sewage backups, unusually lush or green grass over the drain field, standing water or soggy ground near the tank or drain field, strong sewage odors around your property, and septic alarm activation (if your system has one). If you notice any of these warning signs, it's important to have your system professionally inspected right away to prevent more serious failures.",
+      },
+      {
+        title: 'Do you handle drainage permits and approvals in Windsor?',
+        description:
+          "Yes, we manage all necessary permits and approvals for both drainage and septic work. In Windsor-Essex, significant drainage modifications that alter natural water flow patterns or connect to municipal systems require permits. Septic systems always require permits and must meet specific codes. Our team handles the entire permitting process, including applications, drawings, inspections, and final approvals, ensuring your project complies with all local regulations.",
+      },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What Our Customers Say"
+    subtitle="Hear from property owners throughout Windsor-Essex who have resolved water management issues with our services."
+    testimonials={[
+      {
+        testimonial:
+          "After years of basement flooding during heavy rains, I called Legacy Exteriors. They installed a comprehensive drainage system around my foundation and connected it to a proper discharge point away from my home. Even through this past spring's record rainfall, my basement stayed completely dry. Their work was professional and surprisingly non-disruptive to my landscape.",
+        name: 'Robert Davis',
+        job: 'Tecumseh Homeowner',
+      },
+      {
+        testimonial:
+          "Legacy Exteriors installed our rural property's septic system with impressive efficiency. They handled all permits, designed a system specifically for our household size and property characteristics, and completed the installation ahead of schedule. Their excavation work was precise, and they restored the area beautifully. Five years later, we've had zero issues with the system.",
+        name: 'Sarah Mitchell',
+        job: 'Essex County Resident',
+      },
+      {
+        testimonial:
+          "Our backyard was basically unusable due to standing water after every rainfall. Legacy Exteriors installed a combination of surface grading, French drains, and a dry creek bed that not only solved our drainage issues but actually enhanced the appearance of our landscape. Their knowledge of Windsor's clay soil conditions was evident in their solution design. Now we can enjoy our backyard year-round.",
+        name: 'Michael Thompson',
+        job: 'South Windsor Homeowner',
+      },
+    ]}
+    callToAction={{
+      text: 'Read more testimonials',
+      href: '/testimonials',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    tagline="Spring Drainage Special"
+    backgroundImage="https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+    overlayOpacity={0.7}
+    showLeaves={false}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Drainage Assessment',
+        href: '/contact?service=drainage',
+        icon: 'tabler:droplet',
+      },
+      {
+        variant: 'secondary',
+        text: 'Learn More',
+        href: '#services',
+      },
+    ]}
+    isDark={true}
+  >
+    <Fragment slot="title">
+      Protect Your Property <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Before The Next Rain</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Book your drainage project before May 31st and receive a complimentary downspout extension system.
+      <br class="hidden md:inline" />Professional assessment, custom solution design, and expert installation to keep your property dry.
+    </Fragment>
+  </CallToAction>
+</Layout>
