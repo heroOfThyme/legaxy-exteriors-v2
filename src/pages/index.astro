@@ -10,6 +10,7 @@ import Image from '~/components/common/Image.astro';
 import Services from '~/components/widgets/Services.astro';
 import CompanyValues from '~/components/widgets/CompanyValues.astro';
 import OurWork from '~/components/widgets/OurWork.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -207,61 +208,68 @@ const heroImages = [
 
   <!-- OurWork Widget -->
   <OurWork
-  tagline="Portfolio"
-  title="Our Recent Projects"
-  subtitle="Explore some of our finest landscaping and excavation work"
-  displayType="grid"
-  projects={[
-    {
-      image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      alt: "Backyard landscape design with garden beds and stone pathway",
-      category: "Landscape Design"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80",
-      alt: "Patio with stone fire pit and outdoor seating",
-      category: "Outdoor Living"
-      
-    },
-    {
-      image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      alt: "Garden planting with colorful perennials",
-      category: "Garden & Planting"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80",
-      alt: "Excavation work for new home construction",
-      category: "Excavation"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1598435021978-92f303374520?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1615&q=80",
-      alt: "Retaining wall with integrated lighting",
-      category: "Hardscape"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
-      alt: "New concrete driveway installation",
-      category: "Driveways"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      alt: "Irrigation system installation for large property",
-      category: "Irrigation Systems"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1422260702938-7487328079eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80",
-      alt: "Decorative stone pathway with night lighting",
-      category: "Outdoor Lighting"
-    }
-  ]}
-  callToAction={{
-    text: "View All Projects",
-    href: "/our-work",
-    icon: "tabler:arrow-right", 
-    variant: "primary"
-  }}
-  bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-900/30'></div>"
-/>
+    tagline="Portfolio"
+    title="Our Recent Projects"
+    subtitle="Explore some of our finest landscaping and excavation work"
+    displayType="grid"
+    projects={[
+      {
+        image:
+          'https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        alt: 'Backyard landscape design with garden beds and stone pathway',
+        category: 'Landscape Design',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
+        alt: 'Patio with stone fire pit and outdoor seating',
+        category: 'Outdoor Living',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        alt: 'Garden planting with colorful perennials',
+        category: 'Garden & Planting',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80',
+        alt: 'Excavation work for new home construction',
+        category: 'Excavation',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1598435021978-92f303374520?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1615&q=80',
+        alt: 'Retaining wall with integrated lighting',
+        category: 'Hardscape',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80',
+        alt: 'New concrete driveway installation',
+        category: 'Driveways',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        alt: 'Irrigation system installation for large property',
+        category: 'Irrigation Systems',
+      },
+      {
+        image:
+          'https://images.unsplash.com/photo-1422260702938-7487328079eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80',
+        alt: 'Decorative stone pathway with night lighting',
+        category: 'Outdoor Lighting',
+      },
+    ]}
+    callToAction={{
+      text: 'View All Projects',
+      href: '/our-work',
+      icon: 'tabler:arrow-right',
+      variant: 'primary',
+    }}
+    bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-900/30'></div>"
+  />
 
   <!-- HighlightedPosts Widget ******* -->
 
@@ -271,6 +279,74 @@ const heroImages = [
                         Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
                         Astro is a very interesting technology. Thanks.
                 `}
+  />
+
+  <!-- Testimonials Widget ********* -->
+  <Testimonials
+    tagline="Customer Reviews"
+    title="What Our Clients Say"
+    subtitle="Don't just take our word for it. Here's what our satisfied customers have to say about our landscaping and excavation services."
+    googleBranding={true}
+    totalReviews={{
+      count: 187,
+      average: 4.9,
+    }}
+    reviewUrl="https://g.page/r/your-google-review-link"
+    testimonials={[
+      {
+        name: 'Jennifer Miller',
+        job: 'Homeowner',
+        testimonial:
+          'Legacy Exteriors completely transformed our backyard! The team was professional, on time, and the quality of work exceeded our expectations. Our new patio and landscaping look better than we imagined.',
+        rating: 5,
+        date: 'August 15, 2024',
+        verifiedCustomer: true,
+        highlight: true,
+      },
+      {
+        name: 'Robert Johnson',
+        job: 'Property Manager',
+        testimonial:
+          "We've used Legacy Exteriors for multiple commercial properties. Their drainage solutions solved flooding issues we've struggled with for years. Reliable, thorough, and excellent communication throughout.",
+        rating: 5,
+        date: 'July 22, 2024',
+        verifiedCustomer: true,
+      },
+      {
+        name: 'Sarah Thompson',
+        testimonial:
+          'The excavation work they did for our new home construction was precise and efficient. They worked well with our builder and kept the project on schedule. Would definitely recommend their services!',
+        rating: 5,
+        date: 'September 3, 2024',
+      },
+      {
+        name: 'David Wilson',
+        job: 'Landscape Architect',
+        testimonial:
+          'As a landscape architect, I have high standards for execution. Legacy Exteriors is one of the few companies I trust to implement my designs exactly as specified. Their attention to detail is outstanding.',
+        rating: 5,
+        date: 'June 14, 2024',
+        verifiedCustomer: true,
+      },
+      {
+        name: 'Emily Rodriguez',
+        testimonial:
+          'The hydro-seeding service was fantastic! Our lawn came in beautifully and evenly. The crew was knowledgeable and gave us great advice on maintenance. Great value for the quality received.',
+        rating: 4.5,
+        date: 'August 29, 2024',
+      },
+      {
+        name: 'Michael Barnes',
+        job: 'Homeowner',
+        testimonial:
+          "We had a complex drainage problem that multiple companies couldn't solve. Legacy Exteriors not only fixed it but also improved our overall landscaping. Their expertise made all the difference.",
+        rating: 5,
+        date: 'July 8, 2024',
+        highlight: true,
+        verifiedCustomer: true,
+      },
+    ]}
+    bg="<div class='absolute inset-0 bg-green-50 dark:bg-slate-800/60'></div>"
   />
 
   <!-- FAQs Widget ******************* -->
@@ -326,25 +402,30 @@ const heroImages = [
   />
 
   <!-- CallToAction Widget *********** -->
-
   <CallToAction
+    tagline="Limited Time Offer"
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Get Your Free Estimate',
+        href: '/contact',
+        icon: 'tabler:bulldozer',
+      },
+      {
+        variant: 'secondary',
+        text: 'View Our Services',
+        href: '/services',
       },
     ]}
+    isDark={true}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Spring Cleanup Special <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">15% Off</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Book your spring cleanup before May 31st and receive 15% off.
+      <br class="hidden md:inline" />Prepare your property for the growing season with our professional services.
     </Fragment>
   </CallToAction>
 </Layout>

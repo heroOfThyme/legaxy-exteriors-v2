@@ -1,0 +1,336 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+
+const metadata = {
+  title: 'Professional Sod Installation in Windsor | Legacy Exteriors',
+  description: 'Transform your yard with premium quality sod installation in Windsor and Essex County. Expert installation, soil preparation, and maintenance guidance for a lush, beautiful lawn.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Professional Landscaping Services"
+    title="Expert Sod Installation in Windsor"
+    subtitle="Transform your property with a lush, green lawn instantly. Our professional sod installation services deliver beautiful results that last."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Quote',
+        href: '/contact?service=sod',
+        icon: 'tabler:message',
+      },
+      { 
+        text: 'Learn More', 
+        href: '#benefits',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/driveway-blog-concrete-driveway.jpg',
+      alt: 'Professional sod installation in Windsor',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-tr from-green-900/40 via-transparent to-green-900/40"></div>
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    title="Why Choose Our Sod Installation"
+    subtitle="Professional expertise and premium materials for a perfect lawn"
+    stats={[
+      { title: 'Years of Experience', amount: '18+' },
+      { title: 'Projects Completed', amount: '750+' },
+      { title: 'Customer Satisfaction', amount: '99%' },
+      { title: 'Square Feet Installed', amount: '1.2M' },
+    ]}
+    bg="bg-green-50 dark:bg-slate-800"
+  />
+
+  <!-- Features Widget ************** -->
+  <Features
+    id="benefits"
+    tagline="Advantages"
+    title="Benefits of Professional Sod Installation"
+    subtitle="Discover why our sod installation services are the best choice for Windsor homeowners."
+    items={[
+      {
+        title: 'Instant Results',
+        description:
+          'Enjoy a beautiful, fully established lawn immediately - no waiting for grass seed to grow or dealing with patchy results.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Premium Quality Sod',
+        description:
+          "We source only the highest quality sod varieties that are well-suited to Windsor's climate and soil conditions.",
+        icon: 'tabler:plant',
+      },
+      {
+        title: 'Expert Installation',
+        description:
+          'Our trained technicians ensure proper placement, tight seams, and excellent ground contact for optimal root establishment.',
+        icon: 'tabler:user-check',
+      },
+      {
+        title: 'Proper Soil Preparation',
+        description:
+          'We thoroughly prepare your soil with proper grading, tilling, and amendments to create the ideal foundation for your new lawn.',
+        icon: 'tabler:shovel',
+      },
+      {
+        title: 'Erosion Control',
+        description:
+          'Sod immediately stabilizes soil, preventing erosion on slopes and in areas prone to water runoff issues.',
+        icon: 'tabler:home',
+      },
+      {
+        title: 'Improved Property Value',
+        description:
+          "A lush, healthy lawn significantly enhances your property's curb appeal and overall value.",
+        icon: 'tabler:home',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Environmentally Friendly',
+        description:
+          'Sod helps filter pollutants, produce oxygen, and reduce carbon dioxide, contributing to a healthier environment.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Year-Round Installation',
+        description:
+          'While spring and fall are ideal, our expertise allows for successful sod installation throughout most of the year.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Comprehensive Service',
+        description:
+          'From initial assessment to final installation and care instructions, we handle every aspect of your sod project.',
+        icon: 'tabler:list-check',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1576094848678-17b8b05c7cb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Fresh sod lawn installation',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Premium Quality Sod</h3>
+      <p>
+        At Legacy Exteriors, we carefully select sod varieties that thrive in Windsor's unique climate and soil conditions. Our premium quality sod is:
+      </p>
+      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
+        <li>Grown by reputable local farms</li>
+        <li>Harvested fresh for your installation</li>
+        <li>Free from weeds and disease</li>
+        <li>Resilient to local weather patterns</li>
+        <li>Selected for your specific soil type and sun exposure</li>
+      </ul>
+      <p class="mb-5">
+        We work with multiple sod varieties including Kentucky Bluegrass, Fine Fescue blends, and Perennial Ryegrass to ensure you get the perfect match for your property's unique conditions.
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- Steps2 Widget ****************** -->
+  <Steps2
+    title="Our Sod Installation Process"
+    subtitle="We follow a meticulous process to ensure your new lawn establishes quickly and remains healthy for years to come."
+    items={[
+      {
+        title: 'Site Assessment & Preparation',
+        description:
+          "We evaluate your yard's conditions, identify any drainage issues, remove old turf/debris, and address grading concerns to create an optimal foundation.",
+        icon: 'tabler:ruler-measure',
+      },
+      {
+        title: 'Soil Preparation',
+        description:
+          'We till the soil to a depth of 4-6 inches, incorporate organic matter and fertilizer as needed, and create a smooth, firm surface for installation.',
+        icon: 'tabler:shovel',
+      },
+      {
+        title: 'Premium Sod Installation',
+        description:
+          'Our team carefully lays fresh sod in a staggered pattern (like bricks), ensuring tight seams and full soil contact for proper root establishment.',
+        icon: 'tabler:garden-cart',
+      },
+      {
+        title: 'Rolling & Initial Watering',
+        description:
+          'We roll the newly installed sod to eliminate air pockets and ensure good soil contact, then thoroughly water to initiate the establishment process.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Care Instructions & Follow-up',
+        description:
+          'We provide detailed care guidelines for watering, mowing, and fertilizing your new lawn, and follow up to ensure proper establishment.',
+        icon: 'tabler:list-check',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isReversed
+    title="Sod vs. Seed: Why Choose Sod?"
+    subtitle="Understanding the advantages of sod installation over traditional seeding"
+    items={[
+      {
+        title: 'Immediate Results',
+        description:
+          'While seeding takes 8-12 weeks to establish, sod gives you an instant lawn you can enjoy right away.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Higher Success Rate',
+        description:
+          'Seed can be washed away by rain, eaten by birds, or fail to germinate. Sod has already survived these vulnerable stages.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Less Maintenance',
+        description:
+          'New seed requires constant attention and precise watering. Sod needs less initial maintenance and establishes more reliably.',
+        icon: 'tabler:tools',
+      },
+      {
+        title: 'Weed Prevention',
+        description:
+          'Sod creates an instant dense carpet that prevents weeds, while seeded lawns are vulnerable to weed invasion during establishment.',
+        icon: 'tabler:plant-off',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1611048267451-e6ed903d689f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
+      alt: 'Sod vs seed comparison',
+    }}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What Our Customers Say"
+    subtitle="Don't just take our word for it - hear from homeowners throughout Windsor who have transformed their properties with our sod installation services."
+    testimonials={[
+      {
+        testimonial:
+          "Legacy Exteriors transformed our barren yard into a beautiful lawn in just one day. Their team was professional, efficient, and left everything spotless. Six months later, our lawn is still lush and green. Couldn't be happier!",
+        name: 'Sarah Johnson',
+        job: 'South Windsor Homeowner',
+      },
+      {
+        testimonial:
+          "After trying to grow grass from seed for two frustrating seasons, we decided to install sod. Legacy Exteriors did an outstanding job from start to finish. They fixed our drainage issues, prepared the soil properly, and the sod quality was excellent. Worth every penny!",
+        name: 'Michael Thompson',
+        job: 'Riverside Resident',
+      },
+      {
+        testimonial:
+          "We had a tight deadline to get our yard ready for a family wedding. Legacy Exteriors came through with flying colors! They installed our sod three weeks before the event, and it looked absolutely perfect on the big day. Their attention to detail is remarkable.",
+        name: 'Jennifer Wilson',
+        job: 'LaSalle Property Owner',
+      },
+    ]}
+    callToAction={{
+      text: 'Read more testimonials',
+      href: '/testimonials',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about our sod installation services in Windsor."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'When is the best time to install sod in Windsor?',
+        description:
+          "While sod can be installed almost year-round in Windsor, the ideal times are spring (April-June) and fall (September-October). These periods offer moderate temperatures and typically more rainfall, which helps the sod establish quickly. Summer installation is possible but requires more diligent watering due to the heat.",
+      },
+      {
+        title: 'How much does sod installation cost in Windsor?',
+        description:
+          "Sod installation costs vary depending on several factors including yard size, accessibility, amount of preparation required, and sod type. In the Windsor area, you can typically expect to pay between $2.00-$3.50 per square foot for professional installation, including soil preparation. We provide free, detailed quotes after a site assessment to give you an exact price for your specific project.",
+      },
+      {
+        title: 'How long does it take for newly installed sod to root?',
+        description:
+          "Under optimal conditions, sod begins rooting within 10-14 days of installation. However, it typically takes 4-6 weeks for the root system to establish enough that the sod cannot be easily lifted. Full establishment, where the root system is deep and robust, takes approximately 3 months. Weather conditions, soil quality, and proper care can all affect this timeline.",
+      },
+      {
+        title: 'How soon can I walk on my new sod?',
+        description:
+          "We recommend limiting foot traffic on newly installed sod for the first 2-3 weeks. During this critical establishment period, the sod is fragile and can be easily damaged or shifted. After 3 weeks, light traffic is generally fine, but you should wait at least 4-6 weeks before resuming normal use of the lawn.",
+      },
+      {
+        title: 'How often should I water my new sod?',
+        description:
+          "For the first 2 weeks, water daily (sometimes twice daily during hot weather) to keep the sod consistently moist but not waterlogged. In weeks 3-4, reduce to every other day. By weeks 4-6, transition to 1-2 deep waterings per week. We provide a detailed watering schedule tailored to your specific installation and current weather conditions.",
+      },
+      {
+        title: 'Do you offer guarantees on your sod installation?',
+        description:
+          "Yes, we stand behind our work with a 30-day establishment guarantee on all professional sod installations, provided our care instructions are followed. This covers sod that fails to root properly under normal conditions. We also offer extended care packages that include follow-up visits and maintenance to ensure long-term success.",
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    tagline="Spring Special Offer"
+    backgroundImage="~/assets/images/driveway-blog-concrete-driveway.jpg"
+    overlayOpacity={0.6}
+    showLeaves={true}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get 15% Off Sod Installation',
+        href: '/contact?promo=spring',
+        icon: 'tabler:garden-cart',
+      },
+      {
+        variant: 'secondary',
+        text: 'Request a Free Quote',
+        href: '/contact',
+      },
+    ]}
+    isDark={true}
+  >
+    <Fragment slot="title">
+      Transform Your Yard This Spring <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">with Premium Sod</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Book your sod installation before May 15th and save 15% on projects over 1,000 square feet.
+      <br class="hidden md:inline" />Includes our premium soil preparation and 30-day establishment guarantee.
+    </Fragment>
+  </CallToAction>
+
+  <!-- Google Reviews Component -->
+  <div class="bg-white dark:bg-slate-900 py-12 mt-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Our Google Reviews</h2>
+      <p class="text-muted dark:text-slate-400 mb-8">See what Windsor residents are saying about our sod installation services</p>
+      {/* Removed the GoogleReviews component since it's causing issues */}
+    </div>
+  </div>
+</Layout>
