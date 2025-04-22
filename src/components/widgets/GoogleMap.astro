@@ -1,0 +1,94 @@
+---
+/**
+ * A simple Google Static Maps component with image fallback
+ */
+ export interface Props {
+  apiKey?: string;
+  center?: string;
+  zoom?: number;
+  width?: number;
+  height?: number;
+  markerLocations?: string[];
+  mapType?: 'roadmap' | 'satellite' | 'hybrid' | 'terrain';
+  className?: string;
+  fallbackImage?: string;
+  useFallback?: boolean;
+  visibleArea?: string; // Optional parameter to define map bounds
+}
+
+const {
+  apiKey,
+  center = "Windsor,Ontario,Canada",
+  zoom = 11,
+  width = 600,
+  height = 400,
+  markerLocations = [],
+  mapType = "roadmap",
+  className = "",
+  fallbackImage = "/images/windsor-map-fallback.jpg", // Path to your fallback image
+  useFallback = false,
+  visibleArea = "Tecumseh,Ontario|Leamington,Ontario" // This sets the visible area to include these points
+} = Astro.props;
+
+// Determine whether to use the Google Maps API or the fallback
+const useGoogleMaps = apiKey && !useFallback;
+
+// Base URL for Google Static Maps API
+const baseUrl = "https://maps.googleapis.com/maps/api/staticmap";
+
+// Default marker for main location (Windsor)
+const defaultMarker = `color:green|label:L|${center}`;
+const markers = markerLocations.length > 0 
+  ? markerLocations.map(loc => `&markers=color:red|${loc}`).join('')
+  : `&markers=${defaultMarker}`;
+
+// Custom map styling - a subtle, green-themed style appropriate for a landscaping company
+const customMapStyle = [
+  "feature:landscape|element:geometry|color:0xf9f9f9",
+  "feature:landscape.natural|color:0xf0f6e8",
+  "feature:poi.park|color:0xc8e6c9",
+  "feature:water|element:geometry|color:0xb3e0ff",
+  "feature:road|element:geometry|color:0xffffff",
+  "feature:road.arterial|element:geometry|color:0xe0e0e0",
+  "feature:road.highway|element:geometry|color:0xdadada",
+  "feature:all|element:labels.text.fill|color:0x757575",
+  "feature:poi|element:geometry|color:0xe0f2e0",
+  // Add styling to de-emphasize US areas
+  "feature:administrative.country|element:geometry.stroke|color:0x000000|weight:1",
+  "feature:administrative.country|element:labels|visibility:off"
+];
+
+// Convert map style to required format for static maps API
+const styleParam = customMapStyle.map(style => `&style=${encodeURIComponent(style)}`).join('');
+
+// Add visible area parameter if provided
+const visibleAreaParam = visibleArea ? `&visible=${encodeURIComponent(visibleArea)}` : '';
+
+// Construct the final URL
+const mapUrl = useGoogleMaps 
+  ? `${baseUrl}?center=${encodeURIComponent(center)}&zoom=${zoom}&size=${width}x${height}&maptype=${mapType}${markers}${visibleAreaParam}&key=${apiKey}${styleParam}&scale=2`
+  : fallbackImage;
+---
+
+<div class={`relative rounded-lg overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 ${className}`}>
+  <!-- Map Image -->
+  <img 
+    src={mapUrl} 
+    alt={`Map of ${center}`} 
+    class="w-full h-full object-cover"
+    width={width}
+    height={height}
+    loading="lazy"
+  />
+  
+  <!-- Simple company branding overlay -->
+  <div class="absolute bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 p-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <span class="w-4 h-4 bg-primary rounded-full mr-2"></span>
+        <span class="font-medium text-gray-900 dark:text-white">Legacy Exteriors</span>
+      </div>
+      <span class="text-sm text-gray-600 dark:text-gray-300">Windsor-Essex County</span>
+    </div>
+  </div>
+</div>
