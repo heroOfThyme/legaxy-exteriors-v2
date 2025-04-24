@@ -1,0 +1,93 @@
+---
+import Image from '~/components/common/Image.astro';
+import type { ImageMetadata } from 'astro';
+
+export interface Props {
+  src: string | ImageMetadata;
+  alt: string;
+  aspectRatio?: '16:9' | '4:3' | '3:2' | '1:1' | '21:9';
+  height?: 'small' | 'medium' | 'large' | 'full' | string;
+  width?: 'auto' | 'full' | 'constrained';
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  objectPosition?: string;
+  caption?: string;
+  class?: string;
+  rounded?: boolean;
+  shadow?: boolean;
+  align?: 'left' | 'center' | 'right';
+}
+
+const {
+  src,
+  alt,
+  aspectRatio = '16:9',
+  height = 'medium',
+  width = 'full',
+  objectFit = 'cover',
+  objectPosition = 'center',
+  caption,
+  class: className = '',
+  rounded = true,
+  shadow = true,
+  align = 'center',
+} = Astro.props;
+
+// Define height values
+const heightMap = {
+  small: 'h-48', // 192px
+  medium: 'h-64', // 256px
+  large: 'h-96', // 384px
+  full: 'h-auto', // original height
+};
+
+// Define aspect ratio values
+const aspectRatioMap = {
+  '16:9': 'aspect-video',
+  '4:3': 'aspect-[4/3]',
+  '3:2': 'aspect-[3/2]',
+  '1:1': 'aspect-square',
+  '21:9': 'aspect-[21/9]',
+};
+
+// Get the classes based on props
+const frameHeight =
+  typeof height === 'string' && height in heightMap ? heightMap[height as keyof typeof heightMap] : height;
+
+const aspectClass = aspectRatioMap[aspectRatio];
+
+// Width constraints based on aspect ratio and height
+const widthClass =
+  width === 'auto'
+    ? aspectRatio === '1:1' && height === 'small'
+      ? 'w-48'
+      : aspectRatio === '1:1' && height === 'medium'
+        ? 'w-64'
+        : aspectRatio === '1:1' && height === 'large'
+          ? 'w-96'
+          : 'w-full'
+    : width === 'constrained'
+      ? 'w-full max-w-4xl'
+      : 'w-full';
+
+// Alignment classes
+const alignmentClass = align === 'left' ? 'mr-auto' : align === 'right' ? 'ml-auto' : 'mx-auto';
+
+const roundedClass = rounded ? 'rounded-lg overflow-hidden' : '';
+const shadowClass = shadow ? 'shadow-lg' : '';
+---
+
+<figure class={`relative ${widthClass} ${alignmentClass} ${className}`}>
+  <div class={`relative ${frameHeight} ${aspectClass} ${roundedClass} ${shadowClass} overflow-hidden bg-transparent`}>
+    <Image
+      src={src}
+      alt={alt}
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, 800px"
+      loading="lazy"
+      decoding="async"
+      style={`object-fit: ${objectFit}; object-position: ${objectPosition};`}
+    />
+  </div>
+  {caption && <figcaption class="mt-2 text-sm text-center text-gray-600 dark:text-gray-400">{caption}</figcaption>}
+</figure>

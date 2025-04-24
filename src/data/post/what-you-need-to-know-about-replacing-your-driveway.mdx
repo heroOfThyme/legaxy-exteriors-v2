@@ -10,6 +10,8 @@ image: '~/assets/images/driveway-blog-concrete-driveway.jpg'
 ---
 
 import BeforeAfter from '~/components/widgets/BeforeAfter.astro';
+import ImageFrame from '~/components/widgets/ImageFrame.astro';
+import ImageCompare from '~/components/widgets/ImageCompare.astro';
 
 ## Introduction
 
@@ -39,7 +41,7 @@ Removing gravel and concrete driveways is a seriously **demanding** job. Operati
       alt: "New concrete driveway with proper drainage",
       label: "After - September 2024"
     }}
-    imageAspect="1:1"
+    imageAspect="16:9"
     variant="blog-full"
   >
 </BeforeAfter>
@@ -68,3 +70,19 @@ The **skilled team** of professionals at Legacy Exteriors Inc. _gets_ driveways.
 If there’s one thing we want you to keep in mind, it’s the time you’ll save by **choosing us**. We’re experts at providing clean, long-lasting work, finishing projects efficiently, and providing environmentally safe waste disposal once we finish. With years of experience working with his father in the industry, as well as running equipment from the age of seven, Alex is accomplished at all the above – as is his crew.
 
 Ready to have the most **magnificent** new driveway in all of Windsor and Essex County? Don’t pick up the phone more than _once_ – **call** [(519) 791-1506](tel:+15197911506) or **navigate** to [our contact us page](/contact). We’d love to hear about how we can **improve** your driveway situation.
+
+<ImageFrame
+  src="~/assets/images/driveway-blog-concrete-driveway.jpg"
+  alt="Complete driveway installation showing full property width"
+  aspectRatio="21:9"
+  height="large"
+  objectPosition="70% 30%"
+/>
+
+<ImageCompare
+  beforeImage={{ src: "/public/images/hero-mainv2.png", label: "Before" }}
+  afterImage={{ src: "/public/images/iStock-508072701.jpg", label: "After" }}
+  title="Image Comparison"
+  subtitle="Drag the slider to compare"
+  startingPosition={0}
+/>

@@ -1,0 +1,161 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { ImageMetadata } from 'astro';
+import type { Widget } from '~/types';
+
+export interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  beforeImage: {
+    src: string | ImageMetadata;
+    label?: string;
+  };
+  afterImage: {
+    src: string | ImageMetadata;
+    label?: string;
+  };
+  startingPosition?: number;
+  className?: string;
+  aspectRatio?: string;
+  height?: string;
+  classes?: {
+    container?: string;
+    wrapper?: string;
+  };
+}
+
+const {
+  beforeImage,
+  afterImage,
+  startingPosition = 50,
+  className = '',
+  aspectRatio = '16:9',
+  height = 'h-96',
+  classes = {},
+  id,
+  isDark = false,
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+// Helper function to get image source
+const getImageSrc = (image: string | ImageMetadata) => {
+  if (typeof image === 'string') return image;
+  return image.src;
+};
+
+// Define aspect ratio values
+const aspectRatioMap: { [key: string]: string } = {
+  '16:9': 'aspect-video',
+  '4:3': 'aspect-[4/3]',
+  '3:2': 'aspect-[3/2]',
+  '1:1': 'aspect-square',
+  '21:9': 'aspect-[21/9]',
+};
+
+const aspectClass = aspectRatioMap[aspectRatio] || 'aspect-video';
+
+// Generate unique ID for this instance
+const comparisonId = `image-compare-${Math.random().toString(36).substr(2, 9)}`;
+
+// Get label options if provided
+const beforeLabel = beforeImage.label || 'Before';
+const afterLabel = afterImage.label || 'After';
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class={`relative ${aspectClass} ${height} ${className}`}>
+    <div 
+      id={comparisonId} 
+      class={`image-compare ${classes?.wrapper ?? ''}`}
+      data-before-label={beforeLabel}
+      data-after-label={afterLabel}
+      data-starting-position={startingPosition}
+    >
+      <img src={getImageSrc(beforeImage.src)} alt={beforeLabel} />
+      <img src={getImageSrc(afterImage.src)} alt={afterLabel} />
+    </div>
+  </div>
+  
+  <!-- Optional content slot for description -->
+  <slot />
+</WidgetWrapper>
+
+<!-- Initialize the image comparison viewer -->
+<script>
+  import ImageCompare from 'image-compare-viewer';
+  
+  // Wait for the page to fully load
+  document.addEventListener('astro:page-load', () => {
+    const containers = document.querySelectorAll('.image-compare');
+    
+    containers.forEach((container) => {
+      // Get the labels from the container's data attributes
+      const containerElement = container as HTMLElement;
+      const beforeLabel = containerElement.dataset.beforeLabel || 'Before';
+      const afterLabel = containerElement.dataset.afterLabel || 'After';
+      const startingPosition = parseInt(containerElement.dataset.startingPosition || '50');
+      
+      const viewer = new ImageCompare(container as HTMLElement, {
+        // Options
+        controlColor: '#ffffff',
+        controlShadow: true,
+        showLabels: true,
+        labelOptions: {
+          before: beforeLabel,
+          after: afterLabel,
+          onHover: false
+        },
+        smoothing: true,
+        smoothingAmount: 100,
+        hoverStart: false,
+        verticalMode: false,
+        startingPoint: startingPosition
+      }).mount();
+    });
+  });
+</script>
+
+<style>
+  /* Import image-compare-viewer styles */
+  @import "image-compare-viewer/dist/image-compare-viewer.min.css";
+  
+  /* Additional custom styling */
+  .image-compare {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .image-compare img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .icv {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  
+  .icv__label {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.375rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+  }
+  
+  .icv__control-line {
+    background-color: #ffffff !important;
+    width: 3px !important;
+  }
+  
+  .icv__control {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 9999px !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2) !important;
+  }
+</style>
