@@ -4,9 +4,8 @@ title: 'Moving earth? Choose the right excavation team!'
 excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
 categories:
   - 'Excavation'
-image: '~/assets/images/driveway-blog-concrete-driveway.jpg'
+image: '~/assets/images/blogs/moving-earth-choose-the-right-excavation-team/moving-earth-blog-main.png'
 ---
-
 
 **Moving earth? Choose the right excavation team!**
 

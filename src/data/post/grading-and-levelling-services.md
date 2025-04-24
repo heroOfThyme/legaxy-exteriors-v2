@@ -4,7 +4,7 @@ title: 'Grading & Levelling Services'
 excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
 categories:
   - "Drainage"
-image: '~/assets/images/driveway-blog-concrete-driveway.jpg'
+image: '~/assets/images/blogs/grading-and-levelling-services/grading-levelling-blog-main.png'
 ---
 
 Uneven terrain can be a common issue for many homeowners. However, professional grading and levelling services can help you transform your landscape into a beautiful, functional space. In this blog post, we’ll discuss the importance of grading and levelling, the process involved, and how our services at Legacy Exteriors can create the perfect outdoor environment for you.

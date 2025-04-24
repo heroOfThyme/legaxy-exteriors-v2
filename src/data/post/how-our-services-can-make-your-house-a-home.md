@@ -9,7 +9,7 @@ categories:
   - "Landscaping"
   - "Sod"
   - "Trenching"
-image: '~/assets/images/driveway-blog-concrete-driveway.jpg'
+image: '~/assets/images/blogs/how-our-services-can-make-your-house-a-home/how-our-services-blog-main.png'
 ---
 
 **Introduction**
