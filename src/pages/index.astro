@@ -3,8 +3,6 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero2 from '~/components/widgets/Hero2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Image from '~/components/common/Image.astro';
 import Services from '~/components/widgets/Services.astro';
@@ -13,8 +11,26 @@ import OurWork from '~/components/widgets/OurWork.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Legacy Exteriors | Professional Excavation Services in Windsor, Ontario',
   ignoreTitleTemplate: true,
+  description: 'Expert excavation, trenching, drainage, and site preparation services in Windsor-Essex. Trusted contractor since 2022. Free estimates available.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    url: 'https://legacyexteriors.ca',
+    siteName: 'Legacy Exteriors',
+    title: 'Legacy Exteriors | Professional Excavation Services in Windsor, Ontario',
+    description: 'Expert excavation, trenching, drainage, and site preparation services. Trusted Windsor contractor since 2022. Free estimates available.',
+    images: [
+      {
+        url: '~/assets/images/about/legacy-exteriors-equipment-line.png',
+        width: 1200,
+        height: 630,
+        alt: 'Legacy Exteriors - Professional Excavation Services',
+      },
+    ],
+  },
+  canonical: 'https://legacyexteriorsinc.com',
 };
 
 const heroImages = [
@@ -35,22 +51,22 @@ const heroImages = [
 
 <Layout metadata={metadata}>
   <Hero2
-    tagline="Professional Landscaping"
-    title="Transform Your Outdoor Space"
-    subtitle="Expert landscaping design and maintenance services"
+    tagline="Windsor's Trusted Excavation Experts"
+    title="Transform Your Property with Professional Excavation Services"
+    subtitle="From Sod and landscaping work, to drainage systems, basement walk-outs, driveways, and more, Legacy Exteriors delivers precise excavation solutions that exceed expectations. Serving Windsor-Essex with integrity for over 10 years."
     showReviews={true}
-    reviewsRating={4.9}
-    reviewsCount={187}
+    reviewsRating={5}
+    reviewsCount={28}
     actions={[
       {
         variant: 'primary',
-        text: 'Get a Quote',
-        href: '#',
+        text: 'Get a Free Estimate',
+        href: '/contact',
       },
       {
         variant: 'secondary',
-        text: 'Contact Us',
-        href: '#',
+        text: 'View Our Projects',
+        href: '/work',
       },
     ]}
     images={heroImages}
@@ -65,65 +81,31 @@ const heroImages = [
   <!-- Services Widget ******************* -->
   <Services
     tagline="Our Expertise"
-    title="Professional Services"
-    subtitle="Comprehensive solutions for all your outdoor needs"
+    title="Professional Excavation & Landscaping Services"
+    subtitle="From foundation excavation to landscape design, we provide comprehensive solutions that transform properties with precision and care."
     columns={3}
     highlight={true}
-    viewAllButton={{
-      enabled: true,
-      text: 'View All Services',
-      href: '/services',
-      icon: 'tabler:arrow-right',
-    }}
     services={[
       {
-        title: 'Sod Installation',
+        title: 'Expert Excavation',
         description:
-          'Expert sod installation for an instant, lush lawn. We prepare the soil, install premium quality sod, and provide guidance on proper care.',
-        image:
-          'https://images.unsplash.com/photo-1599076480850-ac4094e95374?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-        icon: 'tabler:garden-cart',
-        callToAction: {
-          text: 'Explore Options',
-          href: '/services/sod',
-          icon: 'tabler:arrow-right',
-        },
-      },
-      {
-        title: 'Hydro-Seeding',
-        description:
-          'Efficient and cost-effective hydro-seeding services to establish new lawns quickly with even coverage and strong root development.',
-        image:
-          'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-        icon: 'tabler:spray',
-        callToAction: {
-          text: 'Get Started',
-          href: '/services/hydro-seeding',
-          icon: 'tabler:arrow-right',
-        },
-      },
-      {
-        title: 'Excavation',
-        description:
-          'Comprehensive excavation services for site preparation, land clearing, grading, and foundation work with precision equipment and experienced operators.',
-        image:
-          'https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80',
+          'Full-service excavation solutions for residential and commercial projects. Our skilled operators handle site preparation, foundation digging, grading, and land clearing with precision equipment.',
+        image: '~/assets/images/services/excavation/excavation-services-main.png',
         icon: 'tabler:bulldozer',
         callToAction: {
-          text: 'Learn More',
+          text: 'Explore Excavation',
           href: '/services/excavation',
           icon: 'tabler:arrow-right',
         },
       },
       {
-        title: 'Trenching',
+        title: 'Precision Trenching',
         description:
-          'Specialized trenching services for utility installation, drainage systems, and other underground infrastructure with minimal disruption to your property.',
-        image:
-          'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+          'Professional trenching services for utility lines, irrigation systems, and drainage installations. We ensure accurate depth and grade while minimizing disruption to your existing landscape.',
+        image: '~/assets/images/services/trenching/trenching-services-main.png',
         icon: 'tabler:line-dashed',
         callToAction: {
-          text: 'View Projects',
+          text: 'Explore Trenching',
           href: '/services/trenching',
           icon: 'tabler:arrow-right',
         },
@@ -131,79 +113,106 @@ const heroImages = [
       {
         title: 'Drainage Solutions',
         description:
-          'Custom drainage system design and installation to effectively manage water flow, prevent erosion, and protect your landscape and structures.',
-        image:
-          'https://images.unsplash.com/photo-1620578603763-11312fe4inaugurating&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
+          'Comprehensive drainage systems tailored to protect your property. We design and install French drains, catch basins, swales, and complete water management solutions.',
+        image: '~/assets/images/services/drainage/drainage-service-main.png',
         icon: 'tabler:droplet',
         callToAction: {
-          text: 'Explore Solutions',
+          text: 'Explore Drainage',
           href: '/services/drainage',
           icon: 'tabler:arrow-right',
         },
       },
       {
-        title: 'Driveways',
+        title: 'Driveway Construction',
         description:
-          "Professional driveway installation and repair using quality materials like concrete, asphalt, or pavers, enhancing your property's curb appeal and functionality.",
-        image:
-          'https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80',
+          'Premium driveway installation and renovation services. From excavation to finishing, we work with concrete, asphalt, and interlocking pavers to create durable, attractive entrances.',
+        image: '~/assets/images/services/driveways/driveway-service-main.png',
         icon: 'tabler:road',
         callToAction: {
-          text: 'View Options',
+          text: 'Explore Driveways',
           href: '/services/driveways',
           icon: 'tabler:arrow-right',
         },
       },
+      {
+        title: 'Professional Landscaping',
+        description:
+          'Transform your outdoor space with our complete landscape design and installation services. We create harmonious environments using quality plants, trees, and hardscape elements.',
+        image: '~/assets/images/services/landscaping/landscaping-service-main.png',
+        icon: 'tabler:plant',
+        callToAction: {
+          text: 'Explore Landscaping',
+          href: '/services/landscaping',
+          icon: 'tabler:arrow-right',
+        },
+      },
+      {
+        title: 'Sod Installation',
+        description:
+          'Achieve an instant, lush lawn with our professional sod installation service. We handle proper soil preparation, premium sod selection, and provide maintenance guidance for lasting results.',
+        image: '~/assets/images/services/sod/sod-service-main.png',
+        icon: 'tabler:garden-cart',
+        callToAction: {
+          text: 'Explore Sod',
+          href: '/services/sod',
+          icon: 'tabler:arrow-right',
+        },
+      },
     ]}
+    viewAllButton={{
+      enabled: true,
+      text: 'View All Services',
+      href: '/services',
+      icon: 'tabler:arrow-right',
+    }}
   />
 
   <!-- Company Values Widget ********** -->
   <CompanyValues
     tagline="About Legacy Exteriors"
-    title="Transforming Landscapes Since 2005"
-    subtitle="Committed to quality, craftsmanship, and customer satisfaction"
-    companyDescription="At Legacy Exteriors, we believe that your outdoor space is an extension of your home and a reflection of your lifestyle. Founded in 2005, our company has grown from a small local operation to a trusted leader in landscaping and excavation services throughout the region. <br><br>What sets us apart is our commitment to quality craftsmanship, attention to detail, and dedication to customer satisfaction. We don't just complete projects – we build lasting relationships with our clients by exceeding expectations at every stage."
+    title="Building Trust Since 2022"
+    subtitle="Where precision meets dedication in every excavation project"
+    companyDescription="At Legacy Exteriors, we understand that successful excavation projects require more than just heavy equipment – they demand expertise, precision, and unwavering commitment to quality. Since 2022, we've built our reputation on delivering exceptional results for homeowners and businesses throughout the region.<br><br>Our dedication to excellence extends beyond the job site. We believe in building lasting relationships with our clients through transparent communication, professional service, and the highest standards of workmanship. Every project we undertake reflects our commitment to transforming properties while exceeding expectations."
     googleRating={{
-      score: 4.9,
-      count: 173,
+      score: 5,
+      count: 28,
     }}
     values={[
       {
-        title: 'Exceptional Quality',
+        title: 'Quality Craftsmanship',
         description:
-          'We never compromise on quality. From the materials we select to the techniques we employ, excellence is our standard at every step.',
+          'Excellence is non-negotiable. From initial consultation to project completion, we maintain the highest standards in equipment, materials, and craftsmanship.',
         icon: 'tabler:premium-rights',
       },
       {
-        title: 'Environmental Responsibility',
+        title: 'Safety First',
         description:
-          'We implement sustainable practices that protect and enhance the natural environment while creating beautiful outdoor spaces.',
-        icon: 'tabler:leaf',
+          'We prioritize safety above all else. Our team follows strict protocols to protect your property, our workers, and your family throughout every project.',
+        icon: 'tabler:shield-check',
       },
       {
-        title: 'Transparent Communication',
+        title: 'Professional Integrity',
         description:
-          "We maintain clear, open communication throughout your project, ensuring you're informed and confident every step of the way.",
-        icon: 'tabler:message-circle',
+          'Honesty and transparency guide every interaction. We provide clear timelines, accurate estimates, and regular updates to keep you informed and confident.',
+        icon: 'tabler:certificate',
       },
       {
-        title: 'Attention to Detail',
+        title: 'Precision Execution',
         description:
-          'Our meticulous approach ensures that every aspect of your project receives the careful attention it deserves.',
-        icon: 'tabler:zoom-check',
+          'Every detail matters. Our experienced operators use advanced equipment and proven techniques to ensure precise results that meet exact specifications.',
+        icon: 'tabler:target',
       },
     ]}
-    ownerImage="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-    ownerName="Michael Johnson"
+    ownerName="Alexander Orton-Meunier"
     ownerTitle="Founder & Owner"
-    image="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
+    image="~/assets/images/about/alex-orton-selfie.png"
     callToAction={{
       text: 'Learn More About Us',
       href: '/about',
       icon: 'tabler:arrow-right',
       variant: 'secondary',
     }}
-    bg="<div class='absolute inset-0 bg-green-50 dark:bg-slate-800/60'></div>"
+    bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-950/50'></div>"
   />
 
   <!-- OurWork Widget -->
@@ -268,7 +277,6 @@ const heroImages = [
       icon: 'tabler:arrow-right',
       variant: 'primary',
     }}
-    bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-900/30'></div>"
   />
 
   <!-- HighlightedPosts Widget ******* -->
@@ -288,122 +296,75 @@ const heroImages = [
     subtitle="Don't just take our word for it. Here's what our satisfied customers have to say about our landscaping and excavation services."
     googleBranding={true}
     totalReviews={{
-      count: 187,
-      average: 4.9,
+      count: 28,
+      average: 5,
     }}
     reviewUrl="https://g.page/r/your-google-review-link"
     testimonials={[
       {
-        name: 'Jennifer Miller',
+        name: 'Adam',
         job: 'Homeowner',
         testimonial:
-          'Legacy Exteriors completely transformed our backyard! The team was professional, on time, and the quality of work exceeded our expectations. Our new patio and landscaping look better than we imagined.',
+          'Amazing experience with Alex having him remove an old concrete pad. Bro knows how to use a Bobcat. He definitely went above and beyond with attention to detail and cleaning up the site. Plus he blew my mind by handing me a branded spice mix instead of a business card. 10/10 would hire again.',
         rating: 5,
-        date: 'August 15, 2024',
+        date: 'July 22, 2024',
         verifiedCustomer: true,
         highlight: true,
       },
       {
-        name: 'Robert Johnson',
-        job: 'Property Manager',
+        name: 'Julia Danes',
+        job: 'Homeowner',
         testimonial:
-          "We've used Legacy Exteriors for multiple commercial properties. Their drainage solutions solved flooding issues we've struggled with for years. Reliable, thorough, and excellent communication throughout.",
+          'Alex and Ramy were an absolute pleasure to deal with! Courteous, pleasant, professional and cleaned up after their respective jobs. Cement driveway looks absolutely fabulous. I would definitely recommend and use again!! Well done fellas!',
         rating: 5,
-        date: 'July 22, 2024',
+        date: 'August 15, 2024',
         verifiedCustomer: true,
       },
       {
-        name: 'Sarah Thompson',
+        name: 'Ebhrahim Shaikh',
         testimonial:
-          'The excavation work they did for our new home construction was precise and efficient. They worked well with our builder and kept the project on schedule. Would definitely recommend their services!',
+          'I had the great pleasure of dealing with Alex. He is very passionate about his work and delivered on time with great detail to perfection. He is an asset to the business community and I would love to see him grow. Just to put things into context, even though it was likely the hottest day of the year, he knew the urgency of my work and lived up to his word and completed my project on time. Thanks for the amazing experience And I will highly recommend you!',
         rating: 5,
-        date: 'September 3, 2024',
+        date: 'June 26, 2024',
+        verifiedCustomer: true,
       },
       {
-        name: 'David Wilson',
-        job: 'Landscape Architect',
+        name: 'Bob Woodward',
+        job: 'Homeowner',
         testimonial:
-          'As a landscape architect, I have high standards for execution. Legacy Exteriors is one of the few companies I trust to implement my designs exactly as specified. Their attention to detail is outstanding.',
+          'Legacy exteriors did an amazing job for me transforming my backyard without the pool anymore we can enjoy the beauty of their workmanship friendly and professional they are 10 out of 10 in our books thank you Legacy for such a beautiful job.',
         rating: 5,
         date: 'June 14, 2024',
         verifiedCustomer: true,
       },
       {
-        name: 'Emily Rodriguez',
+        name: 'Ashley Emans',
         testimonial:
-          'The hydro-seeding service was fantastic! Our lawn came in beautifully and evenly. The crew was knowledgeable and gave us great advice on maintenance. Great value for the quality received.',
-        rating: 4.5,
-        date: 'August 29, 2024',
+          'Excellent service! Very accomodating. Positives: Responsiveness, Punctuality, Quality, Professionalism, Value',
+        rating: 5,
+        date: 'August 29, 2022',
+        verifiedCustomer: true,
       },
       {
-        name: 'Michael Barnes',
+        name: 'Nick Kelly',
         job: 'Homeowner',
         testimonial:
-          "We had a complex drainage problem that multiple companies couldn't solve. Legacy Exteriors not only fixed it but also improved our overall landscaping. Their expertise made all the difference.",
+          "Alex went out of his way to make sure I was happy with his services and I was very impressed by his workmanship. He made the process simple and painless from start to finish. Would definitely recommend.",
         rating: 5,
-        date: 'July 8, 2024',
+        date: 'Jun 13, 2023',
         highlight: true,
         verifiedCustomer: true,
       },
     ]}
-    bg="<div class='absolute inset-0 bg-green-50 dark:bg-slate-800/60'></div>"
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
+    bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-950/50'></div>"
   />
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
     tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    showLeaves={false}
+    overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
@@ -411,20 +372,15 @@ const heroImages = [
         href: '/contact',
         icon: 'tabler:bulldozer',
       },
-      {
-        variant: 'secondary',
-        text: 'View Our Services',
-        href: '/services',
-      },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Spring Cleanup Special <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">15% Off</span>
+      Sod Installation Package <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">10% Off</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book your spring cleanup before May 31st and receive 15% off.
+      Book consultation before August 31st and receive 10% off a sod installation package.
       <br class="hidden md:inline" />Prepare your property for the growing season with our professional services.
     </Fragment>
   </CallToAction>

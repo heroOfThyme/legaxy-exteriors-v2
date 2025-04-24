@@ -1,6 +1,7 @@
 ---
 import type { Headline as Props } from '~/types';
 import { twMerge } from 'tailwind-merge';
+import { Icon } from 'astro-icon/components';
 
 const {
   title = await Astro.slots.render('title'),
@@ -19,9 +20,16 @@ const {
 {
   (title || subtitle || tagline) && (
     <div class={twMerge('mb-8 md:mx-auto md:mb-12 text-center', containerClass)}>
-      {tagline && (
-        <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" set:html={tagline} />
-      )}
+      {
+          tagline && (
+            <p
+              class="text-base text-secondary dark:text-green-600 font-bold tracking-wide uppercase intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter flex items-center justify-center"
+            >
+              <Icon name="tabler:backhoe" class="w-5 h-5 mr-2 inline-block text-green-600" />
+              <span set:html={tagline} />
+            </p>
+          )
+        }
       {title && (
         <h2
           class={twMerge('font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl', titleClass)}

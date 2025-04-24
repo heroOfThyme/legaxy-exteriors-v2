@@ -2,13 +2,30 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Services from '~/components/widgets/Services.astro';
-import Features from '~/components/widgets/Features.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import { Icon } from 'astro-icon/components';
+import Steps from '~/components/widgets/Steps.astro';
 
 const metadata = {
-  title: 'Our Services - Legacy Exteriors',
-  description: 'Explore our comprehensive range of landscaping, excavation, and property improvement services designed to enhance the beauty and functionality of your outdoor space.',
+  title: 'Expert Excavation & Landscaping Services | Legacy Exteriors Windsor',
+  description: 'Professional excavation, drainage solutions, landscaping, and driveway services in Windsor-Essex. Trusted contractor since 2022. Quality workmanship guaranteed.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    url: 'https://legacyexteriorsinc.com/services',
+    siteName: 'Legacy Exteriors',
+    title: 'Professional Excavation & Landscaping Services | Legacy Exteriors',
+    description: 'Comprehensive excavation, landscaping, and property improvement services in Windsor-Essex. Expert solutions for residential and commercial projects.',
+    images: [
+      {
+        url: '~/assets/images/services/excavation/excavation-services-main.png',
+        width: 1200,
+        height: 630,
+        alt: 'Legacy Exteriors - Professional Excavation & Landscaping Services',
+      },
+    ],
+  },
+  canonical: 'https://legacyexteriorsin.com/services',
 };
 ---
 
@@ -16,108 +33,114 @@ const metadata = {
   <!-- Hero Widget ******************* -->
   <Hero
     tagline="Professional Services"
-    title="Complete Outdoor Solutions"
-    subtitle="From landscaping and excavation to drainage systems and driveways, we provide comprehensive services to transform your property with expert craftsmanship and attention to detail."
+    title="Comprehensive Excavation & Property Services"
+    subtitle="Legacy Exteriors delivers expert excavation, landscaping, and property improvement solutions throughout Windsor-Essex. From residential projects to commercial developments, we transform properties with precision, expertise, and dedication to quality."
     actions={[
       {
         variant: 'primary',
-        text: 'Get A Quote',
+        text: 'Get Your Free Estimate',
         href: '/contact',
         icon: 'tabler:message',
       },
-      { text: 'View Services', href: '#services' },
+      { text: 'Explore Services', href: '#services' },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: '~/assets/images/services/landscaping/landscaping-service-main.png',
       alt: 'Legacy Exteriors professional services',
     }}
   />
 
   <!-- Services Widget ************** -->
-  <div id="services">
-    <Services
-      tagline="What We Offer"
-      title="Our Professional Services"
-      subtitle="Comprehensive solutions for all your outdoor space needs"
-      columns={3}
-      highlight={true}
-      services={[
-        {
-          title: "Landscaping",
-          description: "Complete landscape design and installation services, including plants, trees, shrubs, and hardscape features to create beautiful outdoor spaces.",
-          image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          icon: "tabler:plant",
-          callToAction: {
-            text: "Learn More",
-            href: "/services/landscaping",
-            icon: "tabler:arrow-right"
-          }
+  <Services
+    id="services"
+    tagline="Our Expertise"
+    title="Professional Excavation & Landscaping Services"
+    subtitle="From foundation excavation to landscape design, we provide comprehensive solutions that transform properties with precision and care."
+    columns={3}
+    highlight={true}
+    services={[
+      {
+        title: 'Expert Excavation',
+        description:
+          'Full-service excavation solutions for residential and commercial projects. Our skilled operators handle site preparation, foundation digging, grading, and land clearing with precision equipment.',
+        image: '~/assets/images/services/excavation/excavation-services-main.png',
+        icon: 'tabler:bulldozer',
+        callToAction: {
+          text: 'Explore Excavation',
+          href: '/services/excavation',
+          icon: 'tabler:arrow-right',
         },
-        {
-          title: "Sod Installation",
-          description: "Expert sod installation for an instant, lush lawn. We prepare the soil, install premium quality sod, and provide guidance on proper care.",
-          image: "https://images.unsplash.com/photo-1599076480850-ac4094e95374?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-          icon: "tabler:garden-cart",
-          callToAction: {
-            text: "Explore Options",
-            href: "/services/sod",
-            icon: "tabler:arrow-right"
-          }
+      },
+      {
+        title: 'Precision Trenching',
+        description:
+          'Professional trenching services for utility lines, irrigation systems, and drainage installations. We ensure accurate depth and grade while minimizing disruption to your existing landscape.',
+        image: '~/assets/images/services/trenching/trenching-services-main.png',
+        icon: 'tabler:line-dashed',
+        callToAction: {
+          text: 'Explore Trenching',
+          href: '/services/trenching',
+          icon: 'tabler:arrow-right',
         },
-        {
-          title: "Excavation",
-          description: "Comprehensive excavation services for site preparation, land clearing, grading, and foundation work with precision equipment and experienced operators.",
-          image: "https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80",
-          icon: "tabler:bulldozer",
-          callToAction: {
-            text: "Learn More",
-            href: "/services/excavation",
-            icon: "tabler:arrow-right"
-          }
+      },
+      {
+        title: 'Drainage Solutions',
+        description:
+          'Comprehensive drainage systems tailored to protect your property. We design and install French drains, catch basins, swales, and complete water management solutions.',
+        image: '~/assets/images/services/drainage/drainage-service-main.png',
+        icon: 'tabler:droplet',
+        callToAction: {
+          text: 'Explore Drainage',
+          href: '/services/drainage',
+          icon: 'tabler:arrow-right',
         },
-        {
-          title: "Trenching",
-          description: "Specialized trenching services for utility installation, drainage systems, and other underground infrastructure with minimal disruption to your property.",
-          image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-          icon: "tabler:line-dashed",
-          callToAction: {
-            text: "View Projects",
-            href: "/services/trenching",
-            icon: "tabler:arrow-right"
-          }
+      },
+      {
+        title: 'Driveway Construction',
+        description:
+          'Premium driveway installation and renovation services. From excavation to finishing, we work with concrete, asphalt, and interlocking pavers to create durable, attractive entrances.',
+        image: '~/assets/images/services/driveways/driveway-service-main.png',
+        icon: 'tabler:road',
+        callToAction: {
+          text: 'Explore Driveways',
+          href: '/services/driveways',
+          icon: 'tabler:arrow-right',
         },
-        {
-          title: "Drainage Solutions",
-          description: "Custom drainage system design and installation to effectively manage water flow, prevent erosion, and protect your landscape and structures.",
-          image: "https://images.unsplash.com/photo-1620578603763-11312fe4inaugurating&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80",
-          icon: "tabler:droplet",
-          callToAction: {
-            text: "Explore Solutions",
-            href: "/services/drainage",
-            icon: "tabler:arrow-right"
-          }
+      },
+      {
+        title: 'Professional Landscaping',
+        description:
+          'Transform your outdoor space with our complete landscape design and installation services. We create harmonious environments using quality plants, trees, and hardscape elements.',
+        image: '~/assets/images/services/landscaping/landscaping-service-main.png',
+        icon: 'tabler:plant',
+        callToAction: {
+          text: 'Explore Landscaping',
+          href: '/services/landscaping',
+          icon: 'tabler:arrow-right',
         },
-        {
-          title: "Driveways",
-          description: "Professional driveway installation and repair using quality materials like concrete, asphalt, or pavers, enhancing your property's curb appeal and functionality.",
-          image: "https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
-          icon: "tabler:road",
-          callToAction: {
-            text: "View Options",
-            href: "/services/driveways",
-            icon: "tabler:arrow-right"
-          }
-        }
-      ]}
-    />
-  </div>
+      },
+      {
+        title: 'Sod Installation',
+        description:
+          'Achieve an instant, lush lawn with our professional sod installation service. We handle proper soil preparation, premium sod selection, and provide maintenance guidance for lasting results.',
+        image: '~/assets/images/services/sod/sod-service-main.png',
+        icon: 'tabler:garden-cart',
+        callToAction: {
+          text: 'Explore Sod',
+          href: '/services/sod',
+          icon: 'tabler:arrow-right',
+        },
+      },
+    ]}
+  />
 
   <!-- Features Widget ************** -->
-  <Features
+  <Features3
     id="features"
     tagline="Our Advantage"
     title="Why Choose Legacy Exteriors"
     subtitle="We deliver exceptional quality, reliability, and craftsmanship on every project, large or small."
+    columns={3}
     items={[
       {
         title: 'Experienced Team',
@@ -158,77 +181,56 @@ const metadata = {
     ]}
   />
 
-  <!-- Service Categories Section -->
-  <div class="bg-blue-50 dark:bg-slate-800 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Service Categories</h2>
-        <p class="text-xl text-muted mb-10">Explore our service offerings by category</p>
-      </div>
-      
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Landscaping Category -->
-        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
-          <div class="p-8 text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-              <Icon name="tabler:plant" class="w-8 h-8 text-primary" />
-            </div>
-            <h3 class="text-2xl font-bold mb-3">Landscaping Services</h3>
-            <p class="text-muted mb-4">Complete landscape design, installation and maintenance</p>
-            <ul class="text-left mb-6 space-y-2">
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Landscape Installation</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Sod Installation</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Hydro-Seeding</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Seasonal Services</li>
-            </ul>
-            <a href="/services/landscaping" class="inline-flex items-center font-semibold text-primary">
-              View All Landscaping Services <Icon name="tabler:arrow-right" class="w-5 h-5 ml-1" />
-            </a>
-          </div>
-        </div>
-        
-        <!-- Excavation Category -->
-        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
-          <div class="p-8 text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-              <Icon name="tabler:bulldozer" class="w-8 h-8 text-primary" />
-            </div>
-            <h3 class="text-2xl font-bold mb-3">Excavation Services</h3>
-            <p class="text-muted mb-4">Professional site preparation and earthwork</p>
-            <ul class="text-left mb-6 space-y-2">
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Land Clearing</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Site Grading</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Trenching</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Foundation Work</li>
-            </ul>
-            <a href="/services/excavation" class="inline-flex items-center font-semibold text-primary">
-              View All Excavation Services <Icon name="tabler:arrow-right" class="w-5 h-5 ml-1" />
-            </a>
-          </div>
-        </div>
-        
-        <!-- Property Improvement Category -->
-        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
-          <div class="p-8 text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-              <Icon name="tabler:home" class="w-8 h-8 text-primary" />
-            </div>
-            <h3 class="text-2xl font-bold mb-3">Property Improvements</h3>
-            <p class="text-muted mb-4">Essential infrastructure and property enhancements</p>
-            <ul class="text-left mb-6 space-y-2">
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Drainage Systems</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Septic Systems</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Driveways</li>
-              <li class="flex items-center"><Icon name="tabler:circle-check" class="w-5 h-5 text-primary mr-2" /> Outdoor Lighting</li>
-            </ul>
-            <a href="/services/property-improvements" class="inline-flex items-center font-semibold text-primary">
-              View All Property Improvements <Icon name="tabler:arrow-right" class="w-5 h-5 ml-1" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Steps Widget -->
+  <Steps
+    id="steps"
+    tagline="Our Process"
+    title="How We Work"
+    subtitle="We follow a structured process to ensure your project is completed on time, within budget, and to your satisfaction."
+    items={[
+      {
+        title: 'Consultation',
+        description:
+          'We begin with a thorough consultation to understand your needs, preferences, and project goals.',
+        icon: 'tabler:message',
+      },
+      {
+        title: 'Site Assessment',
+        description:
+          'Our team conducts a detailed site assessment to evaluate conditions and determine the best approach for your project.',
+        icon: 'tabler:map',
+      },
+      {
+        title: 'Project Planning',
+        description:
+          'We develop a comprehensive project plan, including timelines, materials, and costs, ensuring transparency and clarity.',
+        icon: 'tabler:clipboard-list',
+      },
+      {
+        title: 'Execution',
+        description:
+          'Our skilled team executes the project with precision, adhering to the highest standards of quality and safety.',
+        icon: 'tabler:hammer',
+      },
+      {
+        title: 'Final Inspection',
+        description:
+          'We conduct a final inspection to ensure every detail meets our quality standards and your expectations.',
+        icon: 'tabler:check',
+      },
+      {
+        title: 'Follow-Up',
+        description:
+          'After project completion, we follow up to ensure your satisfaction and address any questions or concerns.',
+        icon: 'tabler:phone-check',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/services/excavation/excavation-services-main.png',
+      alt: 'Legacy Exteriors excavation services',
+    }}
+  />
+  <!-- Testimonials Widget ********** -->
 
   <!-- CallToAction Widget *********** -->
   <CallToAction

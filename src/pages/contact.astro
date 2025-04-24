@@ -16,23 +16,7 @@ const metadata = {
 };
 
 // Service areas - Windsor-Essex region cities and towns
-const serviceAreas = [
-  'Windsor',
-  'Tecumseh',
-  'LaSalle',
-  'Amherstburg',
-  'Essex',
-  'Kingsville',
-  'Lakeshore',
-  'Leamington',
-  'Belle River',
-  'Harrow',
-  'McGregor',
-  'Maidstone',
-  'St. Clair Beach',
-  'Stoney Point',
-  'Cottam',
-];
+const serviceAreas = ['Windsor', 'Tecumseh', 'LaSalle', 'Essex', 'Lakeshore'];
 ---
 
 <Layout metadata={metadata}>
@@ -137,141 +121,140 @@ const serviceAreas = [
       <div class="relative h-full">
         <!-- Google Maps Component -->
         <GoogleMap
-          apiKey="AIzaSyCI4V6NhZ-cRpflyhPVPpUe4cNtbEUiPeo" 
-          center="Windsor,Ontario,Canada"
+          apiKey="AIzaSyCI4V6NhZ-cRpflyhPVPpUe4cNtbEUiPeo"
+          center="42.25,-82.85"
           zoom={10}
           width={600}
           height={400}
-
-          visibleArea="Tecumseh,Ontario|Leamington,Ontario|Kingsville,Ontario|Essex,Ontario" 
-
-
+          region="ca"
           markerLocations={[
-            "Windsor,Ontario,Canada",
-            "Tecumseh,Ontario,Canada",
-            "LaSalle,Ontario,Canada"
+            'Windsor,Ontario,Canada',
+            'Tecumseh,Ontario,Canada',
+            'LaSalle,Ontario,Canada',
+            'Oldcastle,Ontario,Canada',
+            'Essex,Ontario,Canada',
+            'Lakeshore,Ontario,Canada',
           ]}
           className="h-full w-full mb-6"
-          fallbackImage="/images/windsor-map-fallback.jpg" 
+          fallbackImage="/images/windsor-map-fallback.jpg"
         />
-        
+
         <!-- Service Areas List -->
         <div class="mt-6">
           <h4 class="font-bold text-lg mb-3">Communities We Serve:</h4>
           <div class="flex flex-wrap gap-2">
-            {serviceAreas.map(area => (
-              <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                {area}
-              </span>
-            ))}
+            {
+              serviceAreas.map((area) => (
+                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-medium">{area}</span>
+              ))
+            }
           </div>
         </div>
       </div>
     </Fragment>
-    
+  </Content>
 
-    <!-- Features2 Widget for Contact Categories -->
-    <Features2
-      title="We're Here to Help!"
-      subtitle="Whether you have questions, need a quote, or want to schedule a consultation, we're ready to assist you."
-      items={[
-        {
-          title: 'General Information',
-          description:
-            'Questions about our services, coverage area, or company? Were happy to provide all the information you need to make informed decisions about your property.',
-          icon: 'tabler:info-circle',
-        },
-        {
-          title: 'Request a Quote',
-          description:
-            'Ready to start your project? Contact us for a comprehensive, no-obligation quote tailored to your specific needs and property conditions.',
-          icon: 'tabler:calculator',
-        },
-        {
-          title: 'Schedule a Consultation',
-          description:
-            'Not sure exactly what you need? Schedule an on-site consultation with our experts to assess your property and discuss potential solutions.',
-          icon: 'tabler:calendar',
-        },
-        {
-          title: 'Emergency Services',
-          description:
-            'Dealing with urgent drainage issues or other time-sensitive problems? Contact us right away for prompt assistance.',
-          icon: 'tabler:alert-triangle',
-        },
-      ]}
-      classes={{ container: 'max-w-6xl' }}
-    />
+  <!-- Features2 Widget for Contact Categories -->
+  <Features2
+    title="We're Here to Help!"
+    subtitle="Whether you have questions, need a quote, or want to schedule a consultation, we're ready to assist you."
+    items={[
+      {
+        title: 'General Information',
+        description:
+          'Questions about our services, coverage area, or company? Were happy to provide all the information you need to make informed decisions about your property.',
+        icon: 'tabler:info-circle',
+      },
+      {
+        title: 'Request a Quote',
+        description:
+          'Ready to start your project? Contact us for a comprehensive, no-obligation quote tailored to your specific needs and property conditions.',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Schedule a Consultation',
+        description:
+          'Not sure exactly what you need? Schedule an on-site consultation with our experts to assess your property and discuss potential solutions.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Emergency Services',
+        description:
+          'Dealing with urgent drainage issues or other time-sensitive problems? Contact us right away for prompt assistance.',
+        icon: 'tabler:alert-triangle',
+      },
+    ]}
+    classes={{ container: 'max-w-6xl' }}
+  />
 
-    <!-- Testimonials Widget *********** -->
-    <Testimonials
-      title="What Our Customers Say"
-      subtitle="Don't just take our word for it - hear from homeowners throughout Windsor-Essex who have worked with Legacy Exteriors."
-      testimonials={[
-        {
-          testimonial:
-            'We had major drainage issues after heavy rains and Legacy Exteriors provided a comprehensive solution that completely solved the problem. Their response time was quick and the work was completed professionally and on schedule.',
-          name: 'Michael Wilson',
-          job: 'South Windsor Homeowner',
-        },
-        {
-          testimonial:
-            'Alex and his team installed our driveway with incredible attention to detail. The preparation work was thorough and the finished product looks amazing. Communication throughout the project was excellent.',
-          name: 'Jennifer Davis',
-          job: 'Tecumseh Resident',
-        },
-        {
-          testimonial:
-            "After getting multiple quotes for our excavation project, we chose Legacy Exteriors based on their knowledge and fair pricing. They navigated our property's challenges expertly and left everything clean and properly graded.",
-          name: 'Robert Thompson',
-          job: 'LaSalle Property Owner',
-        },
-      ]}
-      callToAction={{
-        text: 'Read more testimonials',
-        href: '/testimonials',
-        icon: 'tabler:chevron-right',
-      }}
-    />
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What Our Customers Say"
+    subtitle="Don't just take our word for it - hear from homeowners throughout Windsor-Essex who have worked with Legacy Exteriors."
+    testimonials={[
+      {
+        testimonial:
+          'We had major drainage issues after heavy rains and Legacy Exteriors provided a comprehensive solution that completely solved the problem. Their response time was quick and the work was completed professionally and on schedule.',
+        name: 'Michael Wilson',
+        job: 'South Windsor Homeowner',
+      },
+      {
+        testimonial:
+          'Alex and his team installed our driveway with incredible attention to detail. The preparation work was thorough and the finished product looks amazing. Communication throughout the project was excellent.',
+        name: 'Jennifer Davis',
+        job: 'Tecumseh Resident',
+      },
+      {
+        testimonial:
+          "After getting multiple quotes for our excavation project, we chose Legacy Exteriors based on their knowledge and fair pricing. They navigated our property's challenges expertly and left everything clean and properly graded.",
+        name: 'Robert Thompson',
+        job: 'LaSalle Property Owner',
+      },
+    ]}
+    callToAction={{
+      text: 'Read more testimonials',
+      href: '/testimonials',
+      icon: 'tabler:chevron-right',
+    }}
+  />
 
-    <!-- FAQs Widget ******************* -->
-    <FAQs
-      title="Frequently Asked Questions"
-      subtitle="Find answers to common questions about working with Legacy Exteriors."
-      tagline="FAQs"
-      classes={{ container: 'max-w-6xl' }}
-      items={[
-        {
-          title: 'How do I request a quote for my project?',
-          description:
-            "You can request a quote by filling out our contact form above, calling us directly at 519-791-1506, or sending an email to info@legacyexteriorsinc.com. For most projects, we'll need to schedule a site visit to assess your specific needs and provide an accurate estimate.",
-        },
-        {
-          title: 'What areas do you service in Windsor-Essex?',
-          description:
-            "We provide service throughout Windsor and all of Essex County, including Tecumseh, LaSalle, Amherstburg, Essex, Kingsville, Lakeshore, Leamington, and surrounding communities. If you're unsure if we service your area, please contact us.",
-        },
-        {
-          title: 'How quickly can you start on my project?',
-          description:
-            'Our schedule varies depending on the season and current workload. For smaller projects, we can often begin within 1-2 weeks of quote approval. Larger projects typically require 2-4 weeks of lead time. We prioritize emergency drainage issues and will make every effort to address urgent situations promptly.',
-        },
-        {
-          title: 'Do you provide written estimates?',
-          description:
-            'Yes, we provide detailed written estimates for all projects. Our estimates include a breakdown of costs, timeline expectations, and the scope of work to be performed. We believe in transparency throughout the process so you know exactly what to expect.',
-        },
-        {
-          title: 'What payment methods do you accept?',
-          description:
-            'We accept several payment methods including cheques, e-transfers, and cash. For larger projects, we typically work with a payment schedule that includes a deposit to secure your place in our schedule and milestone payments as the project progresses.',
-        },
-        {
-          title: 'Do you offer warranties on your work?',
-          description:
-            "Yes, we stand behind our work with warranties that vary by service type. Our excavation, drainage, and driveway installations all come with workmanship warranties. We're happy to discuss the specific warranty terms for your project during the quote process.",
-        },
-      ]}
-    />
-  </Content></Layout
->
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about working with Legacy Exteriors."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'How do I request a quote for my project?',
+        description:
+          "You can request a quote by filling out our contact form above, calling us directly at 519-791-1506, or sending an email to info@legacyexteriorsinc.com. For most projects, we'll need to schedule a site visit to assess your specific needs and provide an accurate estimate.",
+      },
+      {
+        title: 'What areas do you service in Windsor-Essex?',
+        description:
+          "We provide service throughout Windsor and all of Essex County, including Tecumseh, LaSalle, Amherstburg, Essex, Kingsville, Lakeshore, Leamington, and surrounding communities. If you're unsure if we service your area, please contact us.",
+      },
+      {
+        title: 'How quickly can you start on my project?',
+        description:
+          'Our schedule varies depending on the season and current workload. For smaller projects, we can often begin within 1-2 weeks of quote approval. Larger projects typically require 2-4 weeks of lead time. We prioritize emergency drainage issues and will make every effort to address urgent situations promptly.',
+      },
+      {
+        title: 'Do you provide written estimates?',
+        description:
+          'Yes, we provide detailed written estimates for all projects. Our estimates include a breakdown of costs, timeline expectations, and the scope of work to be performed. We believe in transparency throughout the process so you know exactly what to expect.',
+      },
+      {
+        title: 'What payment methods do you accept?',
+        description:
+          'We accept several payment methods including cheques, e-transfers, and cash. For larger projects, we typically work with a payment schedule that includes a deposit to secure your place in our schedule and milestone payments as the project progresses.',
+      },
+      {
+        title: 'Do you offer warranties on your work?',
+        description:
+          "Yes, we stand behind our work with warranties that vary by service type. Our excavation, drainage, and driveway installations all come with workmanship warranties. We're happy to discuss the specific warranty terms for your project during the quote process.",
+      },
+    ]}
+  />
+</Layout>

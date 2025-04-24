@@ -27,7 +27,7 @@ const {
 const sliderImages = images.length > 0 ? images : (image ? [image] : []);
 ---
 
-<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
+<section class="relative md:-mt-[96px] not-prose" {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
       {bg && <Fragment set:html={bg} />}
@@ -43,7 +43,7 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
             <p
               class="text-base text-secondary dark:text-green-600 font-bold tracking-wide uppercase intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter flex items-center justify-center lg:justify-start"
             >
-              <Icon name="tabler:plant-2" class="w-5 h-5 mr-2 inline-block text-green-600" />
+              <Icon name="tabler:backhoe" class="w-5 h-5 mr-2 inline-block text-green-600" />
               <span set:html={tagline} />
             </p>
           )
@@ -51,7 +51,7 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
+              class="text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
               set:html={title}
             />
           )
@@ -86,7 +86,7 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
         
         <!-- Google Reviews Section -->
         {showReviews && (
-          <div class="mt-6 lg:mt-4 inline-flex items-center px-4 py-2 bg-white/80 dark:bg-gray-900/80 rounded-lg backdrop-blur-sm">
+          <div class="mt-6 lg:mt-4 inline-flex items-center px-4 py-2 bg-white/80 dark:bg-gray-700/80 rounded-lg backdrop-blur-sm intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter">
             <div class="flex items-center space-x-1 rtl:space-x-reverse">
               <div class="flex items-center">
                 {[...Array(5)].map((_, i) => (

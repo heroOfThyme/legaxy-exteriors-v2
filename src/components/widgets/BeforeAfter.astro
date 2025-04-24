@@ -1,0 +1,122 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Image from '~/components/common/Image.astro';
+import type { ImageMetadata } from 'astro';
+import type { Widget } from '~/types';
+
+export interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  beforeImage: {
+    src: string | ImageMetadata;
+    alt: string;
+    label?: string;
+  };
+  afterImage: {
+    src: string | ImageMetadata;
+    alt: string;
+    label?: string;
+  };
+  layout?: 'side-by-side' | 'slider'; // For future expansion
+  variant?: 'full-width' | 'contained' | 'blog-full'; // Display variants
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAspect?: string;
+  classes?: {
+    container?: string;
+    imageWrapper?: string;
+    image?: string;
+    label?: string;
+  };
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  beforeImage,
+  afterImage,
+  layout = 'side-by-side',
+  variant = 'contained',
+  imageWidth = 900,
+  imageHeight = 600,
+  imageAspect = '3:2',
+  classes = {},
+  id,
+  isDark = false,
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+// Set container class based on variant
+const containerClass = 
+  variant === 'full-width' ? 'max-w-7xl mx-auto px-4 sm:px-6' :
+  variant === 'blog-full' ? 'w-full px-4 sm:px-6' :
+  'max-w-3xl mx-auto';
+---
+
+<WidgetWrapper 
+  id={id} 
+  isDark={isDark} 
+  containerClass={`${containerClass} ${classes?.container ?? ''}`} 
+  bg={bg}
+>
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    tagline={tagline}
+    classes={{
+      container: 'max-w-3xl mx-auto text-center mb-8',
+      title: 'text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading',
+      subtitle: 'max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400',
+    }}
+  />
+  
+  <div class="grid md:grid-cols-2 gap-4 md:gap-8 items-start">
+    <!-- Before Image -->
+    <div class={`relative group ${classes?.imageWrapper ?? ''}`}>
+      {beforeImage.label && (
+        <div class={`absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-md font-medium z-10 ${classes?.label ?? ''}`}>
+          {beforeImage.label || 'Before'}
+        </div>
+      )}
+      <Image
+        src={beforeImage.src}
+        alt={beforeImage.alt}
+        width={imageWidth}
+        height={imageHeight}
+        widths={[400, 768, 900]}
+        aspectRatio={imageAspect}
+        layout="cover"
+        class={`rounded-lg shadow-lg w-full ${classes?.image ?? ''}`}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    
+    <!-- After Image -->
+    <div class={`relative group ${classes?.imageWrapper ?? ''}`}>
+      {afterImage.label && (
+        <div class={`absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-md font-medium z-10 ${classes?.label ?? ''}`}>
+          {afterImage.label || 'After'}
+        </div>
+      )}
+      <Image
+        src={afterImage.src}
+        alt={afterImage.alt}
+        width={imageWidth}
+        height={imageHeight}
+        widths={[400, 768, 900]}
+        aspectRatio={imageAspect}
+        layout="cover"
+        class={`rounded-lg shadow-lg w-full ${classes?.image ?? ''}`}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+  
+  <!-- Optional content slot for description -->
+  <slot />
+</WidgetWrapper>
