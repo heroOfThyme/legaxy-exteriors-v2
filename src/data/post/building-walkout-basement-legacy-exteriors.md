@@ -1,7 +1,7 @@
 ---
 publishDate: 2024-04-19
 title: 'Building a Walkout Basement? Run to Legacy Exteriors Inc!'
-excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
+excerpt: "Transform your basement into a money-making asset! Learn how walkout basements with exterior doors create perfect rental spaces, home offices, or family retreats. Legacy Exteriors Inc. handles excavation and waterproofing to maximize your home's value and income potential."
 tags:
   - "Excavation"
   - "Landscaping"

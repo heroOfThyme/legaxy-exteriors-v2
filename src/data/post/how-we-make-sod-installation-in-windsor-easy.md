@@ -1,8 +1,8 @@
 ---
 publishDate: 2024-03-22
 title: 'How we make sod installation in Windsor EASY'
-excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
-categories:
+excerpt: "Transform your yard instantly with professional sod installation! Legacy Exteriors Inc. delivers lush Kentucky Bluegrass lawns in Windsor with expert soil preparation and guaranteed results."
+tags:
   - 'Sod'
 image: '~/assets/images/blogs/how-we-make-sod-installation-in-windsor-easy/how-we-make-sod-installation-blog-main.png'
 ---

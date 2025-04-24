@@ -1,8 +1,8 @@
 ---
 publishDate: 2023-07-06
 title: 'Choosing the Perfect Driveway: Concrete vs. Gravel'
-excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
-categories:
+excerpt: "Concrete or gravel? Legacy Exteriors Inc. helps you choose the perfect driveway. Compare durability, design options, and cost-effectiveness to make the right choice for your budget and style."
+tags:
   - "Driveways"
 image: '~/assets/images/blogs/choosing-the-perfect-driveway-concrete-vs-gravel/choosing-the-perfect-driveway-main.png'
 ---

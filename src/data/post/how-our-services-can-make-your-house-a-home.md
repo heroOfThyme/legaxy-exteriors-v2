@@ -1,8 +1,8 @@
 ---
 publishDate: 2024-06-10
 title: 'How Our Services Can Make Your House a Home'
-excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
-categories:
+excerpt: 'Transform your property with Legacy Exteriors comprehensive removal and replacement services, from driveways to landscaping, with eco-friendly waste disposal.'
+tags:
   - "Drainage"
   - "Driveways"
   - "Excavation"

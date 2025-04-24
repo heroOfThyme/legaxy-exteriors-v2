@@ -18,7 +18,9 @@ const image = await findImage(post.image);
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
 ---
 
-<article class="flex flex-col h-full overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 dark:bg-transparent border border-gray-800 group intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+<article
+  class="flex flex-col h-full overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 dark:bg-transparent border border-gray-800 group intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+>
   <!-- Image container -->
   <div class="relative overflow-hidden">
     {
@@ -27,10 +29,10 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
           <Image
             src={image}
             class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
-            widths={[400, 900]}
-            width={900}
-            height={506}
-            sizes="(max-width: 900px) 400px, 900px"
+            widths={[600, 1200]}
+            width={1200}
+            height={675}
+            sizes="(max-width: 900px) 600px, 1200px"
             alt={post.title}
             loading="lazy"
             decoding="async"
@@ -38,37 +40,43 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
         </div>
       )
     }
-    
+
     <!-- Category badge -->
-    {post.category && (
-      <div class="absolute top-3 right-3">
-        <span class="inline-block py-1 px-3 text-xs font-medium text-white bg-primary rounded shadow-lg">
-          {post.category.title}
-        </span>
-      </div>
-    )}
+    {
+      post.category && (
+        <div class="absolute top-3 right-3">
+          <span class="inline-block py-1 px-3 text-xs font-medium text-white bg-primary rounded shadow-lg">
+            {post.category.title}
+          </span>
+        </div>
+      )
+    }
   </div>
-  
+
   <!-- Content area -->
   <div class="flex flex-col flex-grow p-5">
     <!-- Publication info -->
     <div class="flex items-center text-xs text-muted mb-3">
       <Icon name="tabler:calendar" class="w-4 h-4 inline-block mr-1 text-primary" />
       <time datetime={String(post.publishDate)}>
-        {new Date(post.publishDate).toLocaleDateString('en-US', { 
-          year: 'numeric', 
-          month: 'short', 
-          day: 'numeric' 
-        })}
+        {
+          new Date(post.publishDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })
+        }
       </time>
-      
-      {post.readingTime && (
-        <>
-          <span class="mx-2">•</span>
-          <Icon name="tabler:clock" class="w-4 h-4 inline-block mr-1 text-primary" />
-          <span>{post.readingTime} min read</span>
-        </>
-      )}
+
+      {
+        post.readingTime && (
+          <>
+            <span class="mx-2">•</span>
+            <Icon name="tabler:clock" class="w-4 h-4 inline-block mr-1 text-primary" />
+            <span>{post.readingTime} min read</span>
+          </>
+        )
+      }
     </div>
 
     <!-- Title -->
@@ -86,44 +94,54 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
 
     <!-- Excerpt -->
     <p class="text-muted text-sm mb-4">{post.excerpt}</p>
-    
+
     <!-- Tags -->
-    {post.tags && post.tags.length > 0 && (
-      <div class="flex flex-wrap gap-2 mb-4 mt-auto">
-        {post.tags.slice(0, 3).map((tag) => (
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-gray-100 text-primary dark:bg-slate-700 dark:text-slate-300">
-            {tag.title}
-          </span>
-        ))}
-        {post.tags.length > 3 && (
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-slate-700 dark:text-slate-300">
-            +{post.tags.length - 3} more
-          </span>
-        )}
-      </div>
-    )}
-    
+    {
+      post.tags && post.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4 mt-auto">
+          {post.tags.slice(0, 3).map((tag) => (
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-gray-100 text-primary dark:bg-primary dark:text-slate-300">
+              {tag.title}
+            </span>
+          ))}
+          {post.tags.length > 3 && (
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-primary dark:text-slate-300">
+              +{post.tags.length - 3} more
+            </span>
+          )}
+        </div>
+      )
+    }
+
     <!-- Author and read more -->
     <div class="mt-auto pt-4 flex items-center justify-between border-t border-gray-100 dark:border-gray-700">
-      {post.author && (
-        <div class="flex items-center">
-          <Icon name="tabler:user" class="w-4 h-4 mr-1 text-primary" />
-          <span class="text-sm text-gray-700 dark:text-gray-300">{post.author}</span>
-        </div>
-      )}
-      
-      {link && (
-        <a 
-          href={link} 
-          class="inline-flex items-center text-sm font-medium text-primary hover:text-accent transition-colors"
-          aria-label={`Read more about ${post.title}`}
-        >
-          Read more <Icon name="tabler:arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-        </a>
-      )}
+      {
+        post.author && (
+          <div class="flex items-center">
+            <Icon name="tabler:user" class="w-4 h-4 mr-1 text-primary" />
+            <span class="text-sm text-gray-700 dark:text-gray-300">{post.author}</span>
+          </div>
+        )
+      }
+
+      {
+        link && (
+          <a
+            href={link}
+            class="inline-flex items-center text-sm font-medium text-primary transition-colors"
+            aria-label={`Read more about ${post.title}`}
+          >
+            Read more{' '}
+            <Icon
+              name="tabler:arrow-right"
+              class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
+            />
+          </a>
+        )
+      }
     </div>
   </div>
-  
+
   <!-- Hover effect - primary color line at the bottom that grows on hover -->
   <div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-300 ease-in-out"></div>
 </article>

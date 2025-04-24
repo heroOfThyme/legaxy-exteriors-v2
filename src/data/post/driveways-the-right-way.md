@@ -1,8 +1,8 @@
 ---
 publishDate: 2024-05-20
 title: 'Driveways the right way: why should I repair those bumps and cracks?'
-excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
-categories:
+excerpt: "Don't ignore driveway damage! Legacy Exteriors Inc. explains why timely repairs prevent costly replacements and ensure long-term driveway durability."
+tags:
   - "Driveways"
 image: '~/assets/images/blogs/driveways-the-right-way/driveways-the-right-way-blog-main.png'
 ---

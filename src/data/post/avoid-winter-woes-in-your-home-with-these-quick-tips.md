@@ -1,10 +1,9 @@
 ---
 publishDate: 2023-10-04
 title: 'Avoid Winter Woes In Your Home With These Quick Tips'
-excerpt: 'Legacy Exteriors Inc. specializes in the removal and replacement of both concrete and gravel driveways, providing services such as installation, resurfacing, and environmentally friendly waste disposal. With our experienced team and heavy-duty equipment, we handle every step of the process efficiently, saving you time and stress. For reliable driveway services, contact Legacy Exteriors Inc. today.'
+excerpt: "Prepare your driveway for winter with essential fall maintenance! Legacy Exteriors Inc. shares tips on clearing debris, repairing cracks, and regrading to prevent costly winter damage and dangerous ice patches."
 tags:
-  - "Excavation"
-  - "Landscaping"
+  - "Driveways"
 image: '~/assets/images/blogs/avoid-winter-woes-in-your-home-with-these-quick-tips/winter-woes-blog-main.png'
 ---
 
