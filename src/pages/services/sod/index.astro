@@ -24,13 +24,14 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get a Free Quote',
-        href: '/contact?service=sod',
+        text: 'Contact Us Today',
+        href: '/contact',
         icon: 'tabler:message',
       },
-      { 
-        text: 'Learn More', 
-        href: '#benefits',
+      {
+        text: 'See Our Work',
+        href: '/our-work',
+        icon: 'tabler:photo',
       },
     ]}
     image={{
@@ -296,32 +297,26 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Spring Special Offer"
-    backgroundImage="~/assets/images/driveway-blog-concrete-driveway.jpg"
-    overlayOpacity={0.6}
-    showLeaves={true}
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    showLeaves={false}
+    overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Get 15% Off Sod Installation',
-        href: '/contact?promo=spring',
-        icon: 'tabler:garden-cart',
-      },
-      {
-        variant: 'secondary',
-        text: 'Request a Free Quote',
+        text: 'Get Your Free Estimate',
         href: '/contact',
+        icon: 'tabler:bulldozer',
       },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Transform Your Yard This Spring <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">with Premium Sod</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book your sod installation before May 15th and save 15% on projects over 1,000 square feet.
-      <br class="hidden md:inline" />Includes our premium soil preparation and 30-day establishment guarantee.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 

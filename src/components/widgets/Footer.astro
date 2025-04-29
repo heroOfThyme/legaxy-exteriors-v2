@@ -23,37 +23,41 @@ export interface Props {
   theme?: string;
 }
 
-const { socialLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { socialLinks = [], links = [], theme = 'light' } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
+<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-green-900 not-prose']}>
   <div class="dark:bg-page absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div
     class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300 intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
   >
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 pt-8 md:pt-12">
-      <div class="col-span-12 lg:col-span-3">
+    <div class="grid grid-cols-12 gap-4 md:gap-8 lg:gap-12 gap-y-4 py-8 lg:justify-center">
+      <!-- Logo Column -->
+      <div class="col-span-12 lg:col-span-3 mb-8 lg:mb-0">
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>
             <img
               src="/images/legacy-exteriors-main-logo.png"
               alt={SITE?.name || 'Legacy Exteriors'}
-              class="h-52 w-auto"
+              class="h-36 w-auto"
               loading="eager"
             />
           </a>
         </div>
       </div>
-      {
-        links.map(({ title, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
-            {links && Array.isArray(links) && links.length > 0 && (
+
+      <!-- Links Section - 3 small columns side by side with increased spacing between them -->
+      <div class="col-span-12 lg:col-span-6 grid grid-cols-3 gap-2 md:gap-4">
+        <!-- Site Links Column -->
+        <div class="col-span-1">
+          <div class="dark:text-gray-300 font-medium mb-2">Site Links</div>
+          {
+            links.length > 0 && links[0] && links[0].links && (
               <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
-                  <li class="mb-2">
+                {links[0].links.map(({ text, href, ariaLabel }) => (
+                  <li class="mb-1">
                     <a
-                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out inline-block"
                       href={href}
                       aria-label={ariaLabel}
                     >
@@ -62,72 +66,121 @@ const { socialLinks = [], links = [], footNote = '', theme = 'light' } = Astro.p
                   </li>
                 ))}
               </ul>
-            )}
-          </div>
-        ))
-      }
-      
-      <!-- Added Contact Information Column -->
-      <div class="col-span-12 md:col-span-3 lg:col-span-3">
-        <div class="dark:text-gray-300 font-medium mb-2">Contact Us</div>
+            )
+          }
+        </div>
+
+        <!-- Legal Column -->
+        <div class="col-span-1">
+          <div class="dark:text-gray-300 font-medium mb-2">Legal</div>
+          {
+            links.length > 1 && links[1] && links[1].links && (
+              <ul class="text-sm">
+                {links[1].links.map(({ text, href, ariaLabel }) => (
+                  <li class="mb-1">
+                    <a
+                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out inline-block"
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      <Fragment set:html={text} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+
+        <!-- Follow Us Column -->
+        <div class="col-span-1">
+          <div class="dark:text-gray-300 font-medium mb-2">Follow Us</div>
+          {
+            links.length > 2 && links[2] && links[2].links && (
+              <ul class="text-sm">
+                {links[2].links.map(({ text, href, ariaLabel }) => (
+                  <li class="mb-1">
+                    <a
+                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out inline-block"
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      <Fragment set:html={text} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+      </div>
+
+      <!-- Contact Information Column with added spacing -->
+      <div class="col-span-12 lg:col-span-2">
+        <div class="dark:text-gray-300 font-medium mb-3">Contact Us</div>
         <ul class="text-sm">
           <li class="mb-2">
-            <a 
-              href="tel:1-549-791-1506" 
-              class="text-muted hover:text-primary dark:text-gray-400 hover:underline transition duration-150 ease-in-out flex items-center"
+            <a
+              href="tel:1-519-791-1506"
+              class="text-muted hover:text-primary dark:text-gray-400 hover:underline transition duration-150 ease-in-out inline-flex items-center"
             >
               <Icon name="tabler:phone" class="w-5 h-5 mr-2 text-primary" />
               1-519-791-1506
             </a>
           </li>
           <li class="mb-2">
-            <a 
-              href="mailto:info@legacyexteriorsinc.com" 
-              class="text-muted hover:text-primary dark:text-gray-400 hover:underline transition duration-150 ease-in-out flex items-center"
+            <a
+              href="mailto:info@legacyexteriorsinc.com"
+              class="text-muted hover:text-primary dark:text-gray-400 hover:underline transition duration-150 ease-in-out inline-flex items-center"
             >
               <Icon name="tabler:mail" class="w-5 h-5 mr-2 text-primary" />
               info@legacyexteriorsinc.com
             </a>
           </li>
-          <li class="mb-2 flex items-center">
-            <Icon name="tabler:clock" class="w-5 h-5 mr-2 text-primary flex-shrink-0" />
-            <span class="text-muted dark:text-gray-400">
-              Monday – Friday: 8:00 AM – 10:00 PM
-            </span>
+          <li class="mb-2">
+            <div class="inline-flex items-center">
+              <Icon name="tabler:clock" class="w-5 h-5 mr-2 text-primary flex-shrink-0" />
+              <span class="text-muted dark:text-gray-400"> Monday – Friday: <br> 8:00 AM – 10:00 PM </span>
+            </div>
           </li>
-          <li class="mb-2 flex items-center">
-            <Icon name="tabler:calendar" class="w-5 h-5 mr-2 text-primary flex-shrink-0" />
-            <span class="text-muted dark:text-gray-400">
-              Saturday – Sunday: 8:00 AM – 8:00 PM
-            </span>
+          <li class="mb-4">
+            <div class="inline-flex items-center">
+              <Icon name="tabler:calendar" class="w-5 h-5 mr-2 text-primary flex-shrink-0" />
+              <span class="text-muted dark:text-gray-400"> Saturday – Sunday: <br> 8:00 AM – 8:00 PM </span>
+            </div>
           </li>
+
+          <!-- Social Media Icons -->
+          {
+            socialLinks?.length ? (
+              <li>
+                <div class="flex gap-2 mt-2">
+                  {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+                    <a
+                      class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-green-900 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+                      aria-label={ariaLabel}
+                      href={href}
+                    >
+                      {icon && <Icon name={icon} class="w-5 h-5" />}
+                      <Fragment set:html={text} />
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ) : (
+              ''
+            )
+          }
         </ul>
       </div>
     </div>
-    <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
-      {
-        socialLinks?.length ? (
-          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
-                <a
-                  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-green-900 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                  aria-label={ariaLabel}
-                  href={href}
-                >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  <Fragment set:html={text} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ''
-        )
-      }
 
-      <div class="text-sm mr-4 dark:text-muted">
-        <Fragment set:html={footNote} />
+    <!-- Footer Note -->
+    <div class="border-t border-gray-200 dark:border-green-900 pt-6 pb-8 text-center">
+      <div class="text-sm text-muted dark:text-gray-400">
+        All Rights Reserved · © Legacy Exteriors 2025 · Made by <a class="text-[#7776ff] underline hover:text-primary" href="https://rvbcorp.com/"
+        >RVB Data Sciences Corp.</a
+      >
       </div>
     </div>
   </div>

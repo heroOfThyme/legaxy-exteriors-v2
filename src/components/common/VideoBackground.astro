@@ -1,0 +1,71 @@
+---
+import Image from '~/components/common/Image.astro';
+import type { ImageMetadata } from 'astro';
+
+export interface Props {
+  videoSrc?: string;
+  fallbackImage?: string | ImageMetadata;
+  overlay?: boolean;
+  overlayColor?: string;
+  overlayOpacity?: number;
+  objectPosition?: string;
+  class?: string;
+  style?: string;
+}
+
+const {
+  videoSrc,
+  fallbackImage,
+  overlay = true,
+  overlayColor = 'gray-900',
+  overlayOpacity = 0.7,
+  objectPosition = 'center',
+  class: className = '',
+  style = '',
+} = Astro.props;
+
+// Construct the overlay class based on input params
+const overlayClass = `absolute inset-0 bg-${overlayColor}/[${overlayOpacity}] z-10`;
+---
+
+<div class={`relative ${className}`} style={style}>
+  {/* Video Background */}
+  {videoSrc && (
+    <video 
+      class="absolute inset-0 w-full h-full object-cover" 
+      style={`object-position: ${objectPosition};`}
+      autoplay 
+      muted 
+      loop 
+      playsinline
+    >
+      <source src={videoSrc} type="video/mp4" />
+      
+      {/* Fallback image shown if video cannot be played */}
+      {fallbackImage && (
+        <Image 
+          src={fallbackImage} 
+          alt="Background fallback" 
+          class="absolute inset-0 w-full h-full object-cover" 
+          style={`object-position: ${objectPosition};`}
+        />
+      )}
+    </video>
+  )}
+  
+  {/* Fallback image if no video */}
+  {!videoSrc && fallbackImage && (
+    <Image 
+      src={fallbackImage} 
+      alt="Background" 
+      class="absolute inset-0 w-full h-full object-cover" 
+      style={`object-position: ${objectPosition};`}
+    />
+  )}
+  
+  {/* Overlay for better text visibility */}
+  {overlay && <div class={overlayClass}></div>}
+  
+  {/* Slot for any additional content */}
+  <slot />
+</div>

@@ -192,32 +192,26 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Ready to get started?"
-    backgroundImage="https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    showLeaves={false}
     overlayOpacity={0.7}
-    showLeaves={true}
     actions={[
       {
         variant: 'primary',
-        text: 'Contact Us Today',
+        text: 'Get Your Free Estimate',
         href: '/contact',
-        icon: 'tabler:message',
-      },
-      {
-        variant: 'secondary',
-        text: 'View Our Work',
-        href: '/our-work',
+        icon: 'tabler:bulldozer',
       },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Let's Build Your <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Legacy Together</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Whether you're planning a new driveway, need drainage solutions, or are starting a major excavation project,
-      <br class="hidden md:inline" />we're here to help with personalized service and local expertise.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 </Layout>

@@ -40,49 +40,65 @@ const metadata = {
 };
 
 const heroImages = [
-  {
-    src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    alt: 'Business Team',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
-    alt: 'Office Space',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    alt: 'Digital Marketing',
-  },
+{
+  src: '~/assets/images/projects/basement-walkout-finished.png',
+  alt: 'Basement Walkout Completed',
+},
+{
+  src: '~/assets/images/projects/soil-graded-and-levelled-windsor-sod.png',
+  alt: 'Levelled Soil for Sod Installation',
+},
+{
+  src: '~/assets/images/projects/sodded-lawn-complete.png',
+  alt: 'Sodded Lawn Completed',
+}
 ];
 ---
 
 <Layout metadata={metadata}>
   <Hero2
-    tagline="Windsor's Trusted Experts"
-    title="Transform Your Property with Professional Excavation"
-    subtitle="From Sod and landscaping work, to drainage systems, basement walk-outs, driveways, and more, Legacy Exteriors delivers precise excavation solutions that exceed expectations. Serving Windsor-Essex with integrity for over 10 years."
-    showReviews={true}
-    reviewsRating={5}
-    reviewsCount={28}
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get a Free Estimate',
-        href: '/contact',
-      },
-      {
-        variant: 'secondary',
-        text: 'View Our Projects',
-        href: '/work',
-      },
-    ]}
-    images={heroImages}
-  >
-    <!-- Background using slot with imported image -->
-    <div slot="bg" class="absolute inset-0">
-      <Image src="/images/hero-mainv2.png" alt="Background" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black opacity-75"></div>
-    </div>
-  </Hero2>
+  tagline="Windsor's Trusted Excavation Experts"
+  title="Transform Your Property with Professional Excavation"
+  subtitle="From Sod and landscaping work, to drainage systems, basement walk-outs, driveways, and more, Legacy Exteriors delivers precise excavation solutions that exceed expectations. Serving Windsor-Essex with integrity for over 10 years."
+  showReviews={true}
+  reviewsRating={5}
+  reviewsCount={28}
+  actions={[
+    {
+      variant: 'primary',
+      text: 'Get a Free Estimate',
+      href: '/contact',
+    },
+    {
+      variant: 'secondary',
+      text: 'View Our Projects',
+      href: '/work',
+    },
+  ]}
+
+images={heroImages}
+>
+  <!-- Background -->
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+    <video 
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src="/public/images/375622756_9968442169894441_7438767060446748338_n.mp4" type="video/mp4">
+      <!-- Fallback image in case video doesn't load -->
+      <Image 
+        src="/images/hero-mainv2.png" 
+        alt="Excavation services background" 
+        class="absolute inset-0 w-full h-full object-cover" 
+      />
+    </video>
+  </Fragment>
+</Hero2>
+
 
   <!-- Services Widget ******************* -->
   <Services

@@ -11,29 +11,29 @@ export const headerData = {
       href: getPermalink('/services'),
       links: [
         {
-          text: 'Excavation',
-          href: getPermalink('/services/excavation'),
-        },
-        {
-          text: 'Trenching',
-          href: getPermalink('/services/trenching'),
-        },
-        {
           text: 'Drainage',
           href: getPermalink('/services/drainage'),
-        },
-        {
-          text: 'Landscaping',
-          href: getPermalink('/services/landscaping'),
         },
         {
           text: 'Driveways',
           href: getPermalink('/services/driveways'),
         },
         {
+          text: 'Excavation',
+          href: getPermalink('/services/excavation'),
+        },
+        {
+          text: 'Landscaping',
+          href: getPermalink('/services/landscaping'),
+        },
+        {
           text: 'Sod Installation',
           href: getPermalink('/services/sod'),
-        }
+        },
+        {
+          text: 'Trenching',
+          href: getPermalink('/services/trenching'),
+        },
       ],
     },
     {
@@ -88,7 +88,4 @@ export const footerData = {
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/legacy_exteriors_inc' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/LegacyExteriorsIncWindsor' },
   ],
-  footNote: `
-    Made by <a class="text-[#7776ff] underline" href="https://rvbcorp.com/"> RVB Data Sciences Corp.</a> · All rights reserved.
-  `,
 };

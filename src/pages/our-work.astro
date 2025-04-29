@@ -8,7 +8,7 @@ import { Image } from 'astro:assets';
 // Import project data
 import { projectGallery } from '~/data/projects/projects';
 
-import backgroundImage from '~/assets/images/projects/excavator-moving-stone.png';
+import backgroundImage from '~/assets/images/projects/sodded-lawn-complete.png';
 
 const metadata = {
   title: 'Our Work | Legacy Exteriors Projects in Windsor-Essex',
@@ -45,7 +45,7 @@ const initialItemsToShow = 12;
         loading="eager"
       />
       <!-- Optional overlay for better text readability -->
-      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="absolute inset-0 bg-black opacity-70"></div>
     </div>
   </Fragment>
   </Hero>
@@ -114,31 +114,28 @@ const initialItemsToShow = 12;
     </div>
   </div>
 
-  <!-- CallToAction Widget -->
+  <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Ready to start your project?"
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    showLeaves={false}
+    overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Request a Free Quote',
+        text: 'Get Your Free Estimate',
         href: '/contact',
-        icon: 'tabler:message',
-      },
-      {
-        variant: 'secondary',
-        text: 'Explore Our Services',
-        href: '/services',
+        icon: 'tabler:bulldozer',
       },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Let Us Bring Your Vision <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">To Life</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Contact us today to discuss your project needs and get a free, no-obligation quote.
-      <br class="hidden md:inline" />Our team is ready to help transform your property with professional excavation and landscaping services.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 </Layout>
@@ -178,7 +175,7 @@ const initialItemsToShow = 12;
     const loadMoreBtn = document.getElementById('load-more-btn');
     if (!loadMoreBtn) return; // Safety check
     
-    const itemsPerLoad = 6;
+    const itemsPerLoad = 12;
     
     loadMoreBtn.addEventListener('click', () => {
       // Get a fresh NodeList each time to see what's still hidden

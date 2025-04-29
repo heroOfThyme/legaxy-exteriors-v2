@@ -24,13 +24,14 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get a Free Quote',
-        href: '/contact?service=excavation',
+        text: 'Contact Us Today',
+        href: '/contact',
         icon: 'tabler:message',
       },
-      { 
-        text: 'View Services', 
-        href: '#services',
+      {
+        text: 'See Our Work',
+        href: '/our-work',
+        icon: 'tabler:photo',
       },
     ]}
     image={{
@@ -296,32 +297,26 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Spring Site Preparation Special"
-    backgroundImage="https://images.unsplash.com/photo-1566041510639-8d95356b4068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80"
-    overlayOpacity={0.7}
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
     showLeaves={false}
+    overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Schedule a Site Assessment',
-        href: '/contact?service=excavation',
-        icon: 'tabler:clipboard-check',
-      },
-      {
-        variant: 'secondary',
-        text: 'View Our Equipment',
-        href: '/services/excavation/equipment',
+        text: 'Get Your Free Estimate',
+        href: '/contact',
+        icon: 'tabler:bulldozer',
       },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Start Your Project <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">With a Solid Foundation</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book your excavation project before May 31st and receive complimentary site grading.
-      <br class="hidden md:inline" />Professional assessment, detailed quote, and expert recommendations for your property.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 </Layout>

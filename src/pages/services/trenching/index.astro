@@ -25,13 +25,14 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get a Free Quote',
-        href: '/contact?service=trenching',
+        text: 'Contact Us Today',
+        href: '/contact',
         icon: 'tabler:message',
       },
-      { 
-        text: 'View Services', 
-        href: '#services',
+      {
+        text: 'See Our Work',
+        href: '/our-work',
+        icon: 'tabler:photo',
       },
     ]}
     image={{
@@ -301,32 +302,26 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Spring Utility Special"
-    backgroundImage="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-    overlayOpacity={0.7}
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
     showLeaves={false}
+    overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Schedule Your Trenching Project',
-        href: '/contact?service=trenching',
-        icon: 'tabler:line-dashed',
-      },
-      {
-        variant: 'secondary',
-        text: 'Learn More',
-        href: '#services',
+        text: 'Get Your Free Estimate',
+        href: '/contact',
+        icon: 'tabler:bulldozer',
       },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Underground Utility Installation <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Made Simple</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book your trenching project before June 15th and receive complimentary site restoration.
-      <br class="hidden md:inline" />Professional trenching, utility installation, and complete property restoration with expert care.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 </Layout>

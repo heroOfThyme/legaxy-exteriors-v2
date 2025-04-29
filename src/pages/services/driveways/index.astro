@@ -24,13 +24,14 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get a Free Quote',
-        href: '/contact?service=driveways',
+        text: 'Contact Us Today',
+        href: '/contact',
         icon: 'tabler:message',
       },
-      { 
-        text: 'Learn More', 
-        href: '#benefits',
+      {
+        text: 'See Our Work',
+        href: '/our-work',
+        icon: 'tabler:photo',
       },
     ]}
     image={{
@@ -259,32 +260,26 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Spring Special Offer"
-    backgroundImage="https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80"
-    overlayOpacity={0.7}
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
     showLeaves={false}
+    overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Get 10% Off Your New Driveway',
-        href: '/contact?promo=spring-driveway',
-        icon: 'tabler:road',
-      },
-      {
-        variant: 'secondary',
-        text: 'Request a Free Quote',
+        text: 'Get Your Free Estimate',
         href: '/contact',
+        icon: 'tabler:bulldozer',
       },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Upgrade Your Home's Curb Appeal <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">This Spring</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book your driveway project before May 31st and save 10% on new installations.
-      <br class="hidden md:inline" />Includes our premium concrete mix, reinforcement, and 5-year warranty.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 </Layout>

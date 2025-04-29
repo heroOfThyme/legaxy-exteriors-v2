@@ -25,13 +25,14 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get a Free Quote',
-        href: '/contact?service=landscaping',
+        text: 'Contact Us Today',
+        href: '/contact',
         icon: 'tabler:message',
       },
-      { 
-        text: 'View Services', 
-        href: '#services',
+      {
+        text: 'See Our Work',
+        href: '/our-work',
+        icon: 'tabler:photo',
       },
     ]}
     image={{
@@ -338,32 +339,26 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Spring Landscape Special"
-    backgroundImage="https://images.unsplash.com/photo-1558904541-efa843a96f01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    showLeaves={false}
     overlayOpacity={0.7}
-    showLeaves={true}
     actions={[
       {
         variant: 'primary',
-        text: 'Schedule Your Landscape Assessment',
-        href: '/contact?service=landscaping',
-        icon: 'tabler:clipboard-check',
-      },
-      {
-        variant: 'secondary',
-        text: 'View Our Portfolio',
-        href: '/our-work',
+        text: 'Get Your Free Estimate',
+        href: '/contact',
+        icon: 'tabler:bulldozer',
       },
     ]}
     isDark={true}
   >
     <Fragment slot="title">
-      Transform Your Outdoor Space <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">From The Ground Up</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book your landscape grading and preparation project before June 15th and receive a complimentary drainage assessment.
-      <br class="hidden md:inline" />Professional evaluation, detailed quote, and expert recommendations for your property's specific needs.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 </Layout>
