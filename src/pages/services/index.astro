@@ -4,18 +4,24 @@ import Hero from '~/components/widgets/Hero.astro';
 import Services from '~/components/widgets/Services.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import backgroundImage from '~/assets/images/projects/excavator-moving-stone.png';
+import { Image } from 'astro:assets';
+
+
 import Steps from '~/components/widgets/Steps.astro';
 
 const metadata = {
   title: 'Expert Excavation & Landscaping Services | Legacy Exteriors Windsor',
-  description: 'Professional excavation, drainage solutions, landscaping, and driveway services in Windsor-Essex. Trusted contractor since 2022. Quality workmanship guaranteed.',
+  description:
+    'Professional excavation, drainage solutions, landscaping, and driveway services in Windsor-Essex. Trusted contractor since 2022. Quality workmanship guaranteed.',
   openGraph: {
     type: 'website',
     locale: 'en_CA',
     url: 'https://legacyexteriorsinc.com/services',
     siteName: 'Legacy Exteriors',
     title: 'Professional Excavation & Landscaping Services | Legacy Exteriors',
-    description: 'Comprehensive excavation, landscaping, and property improvement services in Windsor-Essex. Expert solutions for residential and commercial projects.',
+    description:
+      'Comprehensive excavation, landscaping, and property improvement services in Windsor-Essex. Expert solutions for residential and commercial projects.',
     images: [
       {
         url: '~/assets/images/services/excavation/excavation-services-main.png',
@@ -38,17 +44,32 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get Your Free Estimate',
+        text: 'Contact Us Today',
         href: '/contact',
         icon: 'tabler:message',
       },
-      { text: 'Explore Services', href: '#services' },
+      { text: 'Why Choose Us', 
+      href: '#features',
+      icon: 'tabler:check',
+      variant: 'secondary',
+      },
     ]}
-    image={{
-      src: '~/assets/images/services/landscaping/landscaping-service-main.png',
-      alt: 'Legacy Exteriors professional services',
-    }}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          src={backgroundImage}
+          alt="Background"
+          class="w-full h-full object-cover"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+        />
+        <!-- Optional overlay for better text readability -->
+        <div class="absolute inset-0 bg-black opacity-80"></div>
+      </div>
+    </Fragment>
+  </Hero>
 
   <!-- Services Widget ************** -->
   <Services
@@ -190,8 +211,7 @@ const metadata = {
     items={[
       {
         title: 'Consultation',
-        description:
-          'We begin with a thorough consultation to understand your needs, preferences, and project goals.',
+        description: 'We begin with a thorough consultation to understand your needs, preferences, and project goals.',
         icon: 'tabler:message',
       },
       {
@@ -226,7 +246,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: '~/assets/images/services/sod/sod-service-main.png',
+      src: '~/assets/images/about/how-we-work-vertical-image.png',
       alt: 'Legacy Exteriors excavation services',
     }}
   />
@@ -234,21 +254,26 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
+    tagline="Limited Time Offer"
+    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    showLeaves={false}
+    overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Request a Free Quote',
+        text: 'Get Your Free Estimate',
         href: '/contact',
-        icon: 'tabler:message',
+        icon: 'tabler:bulldozer',
       },
     ]}
+    isDark={true}
   >
     <Fragment slot="title">
-      Ready to Start Your <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Outdoor Project?</span>
+      Sod Installation Package
     </Fragment>
 
     <Fragment slot="subtitle">
-      Contact us today to schedule a consultation and discover how our professional services can enhance your property.
+      Book consultation before August 31st a free consultation on your property.
     </Fragment>
   </CallToAction>
 </Layout>

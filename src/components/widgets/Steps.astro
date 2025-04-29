@@ -30,6 +30,7 @@ const {
         classes={{
           container: 'text-left rtl:text-right',
           title: 'text-3xl lg:text-4xl',
+          tagline: 'text-lg lg:text-xl special-tagline',
           ...((classes?.headline as object) ?? {}),
         }}
       />
@@ -57,3 +58,10 @@ const {
     }
   </div>
 </WidgetWrapper>
+
+<style>
+  .special-tagline {
+    align-items: start;
+    justify-content: start;
+  }
+</style>

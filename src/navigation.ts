@@ -9,6 +9,32 @@ export const headerData = {
     {
       text: 'Services',
       href: getPermalink('/services'),
+      links: [
+        {
+          text: 'Excavation',
+          href: getPermalink('/services/excavation'),
+        },
+        {
+          text: 'Trenching',
+          href: getPermalink('/services/trenching'),
+        },
+        {
+          text: 'Drainage',
+          href: getPermalink('/services/drainage'),
+        },
+        {
+          text: 'Landscaping',
+          href: getPermalink('/services/landscaping'),
+        },
+        {
+          text: 'Driveways',
+          href: getPermalink('/services/driveways'),
+        },
+        {
+          text: 'Sod Installation',
+          href: getPermalink('/services/sod'),
+        }
+      ],
     },
     {
       text: 'Our Work',
@@ -23,7 +49,7 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
   ],
-  actions: [{ text: 'Lets Get Started', href: '/contact', target: '_blank', variant: 'primary' }],
+  actions: [{ text: 'Lets Get Started', href: '/contact', variant: 'primary' }],
 };
 
 export const footerData = {
@@ -59,11 +85,10 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/legacy_exteriors_inc' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/LegacyExteriorsIncWindsor' },
   ],
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://rvbcorp.com/"> RVB Data Sciences Corp.</a> · All rights reserved.
+    Made by <a class="text-[#7776ff] underline" href="https://rvbcorp.com/"> RVB Data Sciences Corp.</a> · All rights reserved.
   `,
 };

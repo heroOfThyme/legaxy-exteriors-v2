@@ -2,41 +2,21 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import { Icon } from 'astro-icon/components';
-import Image from '~/components/common/Image.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { Image } from 'astro:assets';
 
-import drivewayImage1 from '~/assets/images/services/excavation/excavation-services-main.png';
-import excavationImage1 from '~/assets/images/services/landscaping/landscaping-service-main.png';
+// Import project data
+import { projectGallery } from '~/data/projects/projects';
+
+import backgroundImage from '~/assets/images/projects/excavator-moving-stone.png';
 
 const metadata = {
   title: 'Our Work | Legacy Exteriors Projects in Windsor-Essex',
   description: 'Browse our portfolio of excavation, drainage, driveway, trenching, and landscape preparation projects throughout Windsor and Essex County.',
 };
 
-// Import your images at the top of the file
-// Example:
-
-// Then create your project gallery
-const projectGallery = [
-  // Example project items - replace with your actual projects
-  { 
-    image: drivewayImage1, // Replace with your image path
-    alt: 'Driveway installation project', 
-    title: 'Modern Driveway Installation',
-    description: 'Complete driveway replacement with interlocking pavers', 
-    width: 1200, 
-    height: 800 
-  },
-  { 
-    image: excavationImage1, // Replace with your image path
-    alt: 'Excavation project', 
-    title: 'Residential Excavation',
-    description: 'Preparation for new home construction', 
-    width: 1200, 
-    height: 800 
-  },
-  // Add more projects as needed
-];
+// Initial number of items to show
+const initialItemsToShow = 12;
 ---
 
 <Layout metadata={metadata}>
@@ -54,54 +34,83 @@ const projectGallery = [
       },
     ]}
   >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/80 via-transparent to-gray-900/80"></div>
-    </Fragment>
+  <Fragment slot="bg">
+    <div class="absolute inset-0 overflow-hidden">
+      <Image
+        src={backgroundImage}
+        alt="Background" 
+        class="w-full h-full object-cover"
+        widths={[400, 768, 1024, 2040]}
+        sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+        loading="eager"
+      />
+      <!-- Optional overlay for better text readability -->
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+    </div>
+  </Fragment>
   </Hero>
 
+  <!-- Section Title -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <Headline
+      title="Our Project Portfolio"
+      subtitle="Explore some of our finest work across Windsor and Essex County"
+      classes={{
+        container: 'mb-4 md:mb-8',
+        title: 'text-3xl font-bold',
+        subtitle: 'text-xl text-muted dark:text-slate-400',
+      }}
+    />
+  </div>
+
   <!-- Projects Gallery -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Our Project Gallery</h2>
-      <p class="text-xl text-muted dark:text-slate-400 max-w-3xl mx-auto">
-        View examples of our quality workmanship across Windsor and Essex County
-      </p>
-    </div>
-    
-    <div 
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pswp-gallery" 
-      id="projects-grid"
-    >
-      {projectGallery.map((project, index) => (
-        <figure 
-          class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group aspect-[4/3] bg-gray-200 dark:bg-slate-800"
-          style={{ animationDelay: `${index * 100}ms` }}
-        >
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pswp-gallery" id="gallery-main">
+      {projectGallery.map((project, index) => { 
+        return (
           <a 
-            href={project.image}
-            data-pswp-width={project.width}
-            data-pswp-height={project.height}
-            class="block w-full h-full"
+            href={project.image.src}
+            data-pswp-width={project.image.width}
+            data-pswp-height={project.image.height}
+            data-pswp-srcset={`${project.image.src} 3000w, ${project.image.src} 1500w, ${project.image.src} 800w`}
+            class={`relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group bg-gray-200 dark:bg-slate-800 aspect-[4/3] intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade project-item ${index >= initialItemsToShow ? 'hidden' : ''}`}
+            style={{ animationDelay: `${index * 100}ms` }}
           >
             <Image
               src={project.image}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out gallery-thumbnail"
               alt={project.alt}
               width={800}
               height={600}
-              widths={[400, 800, 1200]}
-              loading="lazy"
+              loading={index < 6 ? "eager" : "lazy"}
               decoding="async"
             />
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
             
             <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
-              <h3 class="text-white text-lg font-semibold">{project.title}</h3>
-              <p class="text-white/80 text-sm">{project.description}</p>
+              <span class="inline-block px-2 py-1 bg-primary text-white text-xs font-medium rounded mb-2">
+                {project.category}
+              </span>
             </div>
           </a>
-        </figure>
-      ))}
+        );
+      })}
+    </div>
+
+    {/* Load More Button */}
+    <div class="flex justify-center mt-12">
+      <button
+        id="load-more-btn"
+        class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300 flex items-center gap-2 font-medium"
+      >
+        Load More Projects
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M12 5l0 14" />
+          <path d="M18 13l-6 6" />
+          <path d="M6 13l6 6" />
+        </svg>
+      </button>
     </div>
   </div>
 
@@ -140,28 +149,81 @@ const projectGallery = [
 
   document.addEventListener('DOMContentLoaded', () => {
     initializePhotoSwipe();
+    setupLoadMore();
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    initializePhotoSwipe();
+    setupLoadMore();
   });
 
   function initializePhotoSwipe() {
     const lightbox = new PhotoSwipeLightbox({
       gallery: '.pswp-gallery',
-      children: 'a',
+      children: 'a:not(.hidden)',
       showHideAnimationType: 'fade',
       bgClickAction: 'close',
       tapAction: 'close',
-      pswpModule: () => import('photoswipe')
+      pswpModule: () => import('photoswipe'),
+      
+      // These options will help with large images
+      maxZoomLevel: 2,
+      initialZoomLevel: 'fit',  // This makes images fit in the viewport
     });
 
     lightbox.init();
   }
+
+  function setupLoadMore() {
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    if (!loadMoreBtn) return; // Safety check
+    
+    const itemsPerLoad = 6;
+    
+    loadMoreBtn.addEventListener('click', () => {
+      // Get a fresh NodeList each time to see what's still hidden
+      const projectItems = document.querySelectorAll('.project-item.hidden');
+      
+      // Hide the button if there are no more items to show
+      if (projectItems.length === 0) {
+        loadMoreBtn.style.display = 'none';
+        return;
+      }
+      
+      // Show the next batch of items
+      let shown = 0;
+      for (const item of projectItems) {
+        if (shown < itemsPerLoad) {
+          item.classList.remove('hidden');
+          shown++;
+        } else {
+          break;
+        }
+      }
+      
+      // Re-initialize PhotoSwipe to include newly visible items
+      initializePhotoSwipe();
+      
+      // Check again after removing classes
+      const remainingHidden = document.querySelectorAll('.project-item.hidden');
+      if (remainingHidden.length === 0) {
+        loadMoreBtn.style.display = 'none';
+      }
+    });
+  }
 </script>
 
+<!-- Add this CSS to control the size of images in the lightbox -->
 <style>
-  .btn-primary {
-    @apply bg-primary text-white;
+  /* Make sure PhotoSwipe controls are visible even on large images */
+  .pswp__top-bar,
+  .pswp__caption,
+  .pswp__button {
+    z-index: 1500;
   }
   
-  .btn-primary:hover {
-    @apply bg-primary;
+  /* This helps with the initial loading of images in the gallery */
+  .gallery-thumbnail {
+    transition: opacity 0.3s ease-in-out;
   }
 </style>

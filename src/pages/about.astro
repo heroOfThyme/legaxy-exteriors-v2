@@ -4,8 +4,10 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Content from '~/components/widgets/Content.astro';
-import CompanyValues from '~/components/widgets/CompanyValues.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Image } from 'astro:assets';
+
+import backgroundImage from '/public/images/about-us-hero-main.png';
 
 const metadata = {
   title: "About Legacy Exteriors | Windsor's Trusted Excavation Experts Since 2022",
@@ -43,9 +45,20 @@ const metadata = {
       alt: 'Legacy Exteriors founder',
     }}
   >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gradient-to-tr from-green-900/70 via-transparent to-green-900/70"></div>
-    </Fragment>
+  <Fragment slot="bg">
+    <div class="absolute inset-0 overflow-hidden">
+      <Image
+        src={backgroundImage}
+        alt="Background" 
+        class="w-full h-full object-cover"
+        widths={[400, 768, 1024, 2040]}
+        sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+        loading="eager"
+      />
+      <!-- Optional overlay for better text readability -->
+      <div class="absolute inset-0 bg-black opacity-70"></div>
+    </div>
+  </Fragment>
   </Hero>
 
   <!-- Content Widget **************** -->
@@ -76,6 +89,10 @@ const metadata = {
           thoroughly enjoy this career path. I enjoy meeting new customers and working with them to assist in their
           visions.
         </p>
+        <p class="mb-4 text-lg">
+          <span class="font-bold">Alexander Orton</span> <br />
+          <span class="font-heading font-light">Owner/Operator</span> <br />
+        </p>
       </div>
     </Fragment>
   </Content>
@@ -90,54 +107,6 @@ const metadata = {
       { title: 'Happy Clients', amount: '100+' },
       { title: 'Communities Served', amount: '5+' },
     ]}
-  />
-
-  <!-- CompanyValues Widget ********** -->
-  <CompanyValues
-    tagline="About Legacy Exteriors"
-    title="Building Trust Since 2022"
-    subtitle="Where precision meets dedication in every excavation project"
-    companyDescription="At Legacy Exteriors, we understand that successful excavation projects require more than just heavy equipment – they demand expertise, precision, and unwavering commitment to quality. Since 2022, we've built our reputation on delivering exceptional results for homeowners and businesses throughout the region.<br><br>Our dedication to excellence extends beyond the job site. We believe in building lasting relationships with our clients through transparent communication, professional service, and the highest standards of workmanship. Every project we undertake reflects our commitment to transforming properties while exceeding expectations."
-    googleRating={{
-      score: 5,
-      count: 28,
-    }}
-    values={[
-      {
-        title: 'Quality Craftsmanship',
-        description:
-          'Excellence is non-negotiable. From initial consultation to project completion, we maintain the highest standards in equipment, materials, and craftsmanship.',
-        icon: 'tabler:premium-rights',
-      },
-      {
-        title: 'Safety First',
-        description:
-          'We prioritize safety above all else. Our team follows strict protocols to protect your property, our workers, and your family throughout every project.',
-        icon: 'tabler:shield-check',
-      },
-      {
-        title: 'Professional Integrity',
-        description:
-          'Honesty and transparency guide every interaction. We provide clear timelines, accurate estimates, and regular updates to keep you informed and confident.',
-        icon: 'tabler:certificate',
-      },
-      {
-        title: 'Precision Execution',
-        description:
-          'Every detail matters. Our experienced operators use advanced equipment and proven techniques to ensure precise results that meet exact specifications.',
-        icon: 'tabler:target',
-      },
-    ]}
-    ownerName="Alexander Orton-Meunier"
-    ownerTitle="Founder & Owner"
-    image="~/assets/images/about/alex-orton-selfie.png"
-    callToAction={{
-      text: 'Learn More About Us',
-      href: '/about',
-      icon: 'tabler:arrow-right',
-      variant: 'secondary',
-    }}
-    bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-950/50'></div>"
   />
 
   <!-- Features Widget ************** -->
