@@ -6,36 +6,52 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+
+import drainageHero from '~/assets/images/services/drainage/drainage-service-main.png';
 
 const metadata = {
-  title: 'Drainage & Septic Services Windsor | French Drains & Erosion Control',
+  title: 'Professional Drainage Solutions Windsor | French Drains & Water Management',
   description:
-    'Legacy Exteriors provides expert drainage solutions and septic system services in Windsor, Tecumseh, and all of Essex County. Solve basement flooding, soggy yards, and septic issues with our local clay soil specialists.',
-  canonical: 'https://legacyexteriors.com/drainage-septic-services-windsor',
+    'Expert residential and commercial drainage solutions in Windsor-Essex. Prevent basement flooding, eliminate standing water, and protect your property with custom drainage systems designed for Windsor\'s clay soil.',
+  canonical: 'https://legacyexteriorsinc.com/services/drainage',
+  openGraph: {
+    title: 'Professional Drainage Solutions in Windsor-Essex | Legacy Exteriors',
+    description: 'Prevent flooding and water damage with expert drainage solutions designed for Windsor\'s unique soil and climate conditions.',
+    type: 'website',
+    images: [
+      {
+        url: '~/assets/images/services/drainage/drainage-service-main.png',
+        width: 1200,
+        height: 630,
+        alt: 'Professional drainage installation in Windsor',
+      },
+    ],
+  },
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
   <Hero
-    tagline="Professional Water Management"
-    title="Expert Drainage & Septic Solutions"
-    subtitle="Protect your property from water damage and ensure efficient waste management with our comprehensive drainage and septic services designed for Windsor's climate."
+    tagline="Professional Drainage Solutions"
+    title="Expert Water Management for Windsor Properties"
+    subtitle="Protect your property investment from water damage with custom drainage systems designed specifically for Windsor-Essex's challenging clay soil and climate conditions."
     actions={[
       {
         variant: 'primary',
-        text: 'Contact Us Today',
+        text: 'Get Started Today',
         href: '/contact',
-        icon: 'tabler:message',
+        icon: 'tabler:clipboard-check',
       },
       {
-        text: 'See Our Work',
+        text: 'View Our Projects',
         href: '/our-work',
         icon: 'tabler:photo',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      src: drainageHero,
       alt: 'Professional drainage installation in Windsor',
     }}
   >
@@ -44,353 +60,267 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <!-- Content Widget -->
-  <Content
-    isReversed={false}
-    title="Windsor-Essex's Trusted Drainage Experts"
-    subtitle="Serving Southwestern Ontario Since 2022"
-    image={{
-      src: 'https://images.unsplash.com/photo-1622560484051-8d0e1c6e5a2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
-      alt: 'Legacy Exteriors team working in Windsor',
-    }}
-  >
-    <Fragment slot="content">
-      <p class="mb-4">
-        Windsor-Essex's unique combination of clay soil, high water tables, and extreme seasonal weather creates
-        significant drainage challenges for property owners. At Legacy Exteriors, we've specialized in solving these
-        local problems since 2005.
-      </p>
-      <p class="mb-4">Our team understands the specific requirements for:</p>
-      <ul class="list-disc list-inside mb-4">
-        <li>Managing the region's heavy clay soil drainage</li>
-        <li>Protecting foundations from seasonal freeze-thaw cycles</li>
-        <li>Designing septic systems for rural Essex County properties</li>
-        <li>Meeting municipal drainage bylaws in Windsor/Tecumseh/LaSalle</li>
-      </ul>
-      <p>We serve all of Windsor-Essex including Amherstburg, Kingsville, Lakeshore, and surrounding areas.</p>
-    </Fragment>
-  </Content>
-
   <!-- Features Widget ************** -->
   <Features
     id="services"
-    tagline="Our Services"
-    title="Comprehensive Water Management"
-    subtitle="From drainage solutions to septic systems, we provide complete services to protect your property and manage waste effectively."
+    tagline="Our Solutions"
+    title="Comprehensive Drainage Services"
+    subtitle="From foundation protection to yard drainage, we offer complete water management solutions tailored to Windsor's unique conditions."
     items={[
       {
-        title: 'Drainage System Design',
+        title: 'French Drain Installation',
         description:
-          'Custom drainage systems designed specifically for your propertys unique topography, soil conditions, and water flow patterns.',
-        icon: 'tabler:dashboard',
-      },
-      {
-        title: 'French Drains',
-        description:
-          'Installation of gravel-filled trenches with perforated pipes to collect and redirect groundwater away from foundations and structures.',
+          'Subsurface drainage systems with proper gravel, pipe, and filter fabric that effectively capture and redirect groundwater away from foundations, even in Windsor\'s dense clay soil.',
         icon: 'tabler:line-dashed',
       },
       {
-        title: 'Surface Drainage',
+        title: 'Surface Water Management',
         description:
-          'Implementation of swales, catch basins, and proper grading to manage rainwater runoff and prevent flooding.',
+          'Strategic grading, swales, and catch basins to collect and direct surface water runoff, preventing pooling and erosion in your yard while protecting your foundation.',
         icon: 'tabler:arrow-guide',
+      },
+      {
+        title: 'Foundation Waterproofing',
+        description:
+          'Comprehensive foundation protection including exterior membrane application, drainage board installation, and foundation drain systems to keep your basement dry year-round.',
+        icon: 'tabler:home-shield',
+      },
+      {
+        title: 'Sump Pump Systems',
+        description:
+          'Professional installation of primary and backup sump pump systems with proper discharge planning to manage underground water and protect your basement during heavy rainfall.',
+        icon: 'tabler:filter',
       },
       {
         title: 'Erosion Control',
         description:
-          'Measures to prevent soil erosion including retaining walls, ground covers, and strategic water management.',
+          'Specialized solutions to prevent soil erosion on slopes and waterfront properties, combining drainage management with stabilization techniques for long-term protection.',
         icon: 'tabler:barrier-block',
       },
       {
-        title: 'Septic Tank Installation',
+        title: 'Yard Drainage Solutions',
         description:
-          'Complete septic system installation with proper sizing, excavation, tank placement, and leach field configuration.',
-        icon: 'tabler:toilet-paper',
-      },
-      {
-        title: 'Septic System Repairs',
-        description:
-          'Expert diagnosis and repair of septic system issues including leaks, clogs, and damaged components.',
-        icon: 'tabler:tools',
-      },
-    ]}
-  />
-
-  <!-- Content Widget -->
-  <Content
-    isReversed={true}
-    title="Essex County Septic System Specialists"
-    subtitle="Meeting the unique needs of rural property owners"
-    items={[
-      {
-        title: 'Soil Percolation Testing',
-        description: 'Required for all new septic systems in Essex County',
-        icon: 'tabler:test-pipe',
-      },
-      {
-        title: 'Mound Systems',
-        description: 'For properties with high water tables or poor soil conditions',
-        icon: 'tabler:mountain',
-      },
-      {
-        title: 'Pump Chamber Installation',
-        description: 'Essential for properties with elevation challenges',
-        icon: 'tabler:arrow-up-right',
-      },
-      {
-        title: 'Alternative Treatment Systems',
-        description: "When conventional systems aren't suitable",
-        icon: 'tabler:recycle',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1617155093730-a8bf47be792d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Septic system installation in Essex County',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Septic System Compliance in Essex County
-      </h3>
-      <p class="mb-4">
-        All septic systems in Essex County must meet strict Ontario Building Code requirements. Our team handles
-        everything from:
-      </p>
-      <ul class="list-disc list-inside mb-4">
-        <li>Initial soil testing and system design</li>
-        <li>Ministry of Environment approvals</li>
-        <li>Proper installation meeting all setback requirements</li>
-        <li>Final inspections and certification</li>
-      </ul>
-      <p class="mb-4">We work with all system types including conventional, mound, and advanced treatment systems.</p>
-      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 dark:bg-yellow-800/30 dark:border-yellow-600">
-        <p class="font-medium">
-          Important: New provincial regulations (Ontario Regulation 41/24) may affect requirements for septic systems
-          near vulnerable areas. Ask us about compliance for your property.
-        </p>
-      </div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget -->
-  <Steps2
-    title="Year-Round Drainage Solutions"
-    subtitle="Addressing Windsor's seasonal drainage challenges"
-    items={[
-      {
-        title: 'Spring Thaw',
-        description: 'Solutions for basement flooding from snowmelt and saturated ground',
-        icon: 'tabler:droplet-heart',
-      },
-      {
-        title: 'Summer Storms',
-        description: 'Managing heavy rainfall and potential flash flooding',
-        icon: 'tabler:cloud-storm',
-      },
-      {
-        title: 'Fall Preparation',
-        description: 'Gutter and drainage maintenance before winter',
-        icon: 'tabler:leaf',
-      },
-      {
-        title: 'Winter Concerns',
-        description: 'Preventing ice dams and frozen drainage systems',
-        icon: 'tabler:ice-skating',
-      },
-    ]}
-    bg="bg-blue-50 dark:bg-slate-800"
-  />
-
-  <!-- CallToAction Widget -->
-  <CallToAction
-    tagline="Windsor Drainage Specialists"
-    backgroundImage="~/assets/images/about/legacy-exteriors-equipment-line.png"
-    showLeaves={false}
-    overlayOpacity={0.7}
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get Your Free Drainage Assessment',
-        href: '/contact',
-        icon: 'tabler:clipboard-check',
-      },
-      {
-        variant: 'secondary',
-        text: 'Call (519) 555-1234',
-        href: 'tel:5195551234',
-        icon: 'tabler:phone-call',
-      },
-    ]}
-    isDark={true}
-  >
-    <Fragment slot="title"> Serving All of Windsor-Essex County </Fragment>
-    <Fragment slot="subtitle">
-      Residential and commercial drainage solutions for: Windsor • Tecumseh • LaSalle • Amherstburg • Kingsville •
-      Lakeshore • Essex • and surrounding areas
-    </Fragment>
-  </CallToAction>
-
-  <!-- Content Widget **************** -->
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Prevent Costly Damage',
-        description:
-          'Our drainage solutions protect your foundation, basement, and landscape from water damage that can cost thousands to repair.',
-        icon: 'tabler:home-shield',
-      },
-      {
-        title: 'Environmental Protection',
-        description:
-          'Proper drainage and septic systems prevent pollutants from entering groundwater and local waterways.',
-        icon: 'tabler:world',
-      },
-      {
-        title: 'Long-Term Solutions',
-        description:
-          'We design and install systems built to last through Windsors seasonal changes and weather patterns.',
-        icon: 'tabler:calendar',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1620578603763-11312fe4inaugurating?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80',
-      alt: 'Drainage system installation',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Water Management Experts</h3>
-      <p>
-        At Legacy Exteriors, we understand the unique water management challenges faced by Windsor-Essex property
-        owners. Our approach includes:
-      </p>
-      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
-        <li>Comprehensive property assessment to identify problem areas</li>
-        <li>Custom solutions tailored to your specific drainage issues</li>
-        <li>Integration with existing landscape and hardscape features</li>
-        <li>Attention to soil composition and groundwater patterns</li>
-        <li>Systems designed to handle Windsor's heavy seasonal rainfall</li>
-      </ul>
-      <p class="mb-5">
-        We address both immediate drainage problems and implement preventative measures to protect your property for
-        years to come.
-      </p>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-  <Content
-    isReversed
-    title="Septic System Services"
-    subtitle="Professional installation and repair of residential and commercial septic systems"
-    items={[
-      {
-        title: 'Complete System Installation',
-        description:
-          'Comprehensive septic system installation including tank placement, drain field configuration, and all necessary connections.',
-        icon: 'tabler:tool',
-      },
-      {
-        title: 'System Design',
-        description:
-          'Custom septic system design based on property size, soil conditions, household size, and usage requirements.',
-        icon: 'tabler:dashboard',
-      },
-      {
-        title: 'Excavation & Site Prep',
-        description:
-          'Professional excavation with proper depth, dimensions, and preparation for septic tank and leach field installation.',
-        icon: 'tabler:bulldozer',
-      },
-      {
-        title: 'Repairs & Troubleshooting',
-        description:
-          'Expert diagnosis and repair of septic system issues including leaks, clogs, broken pipes, and tank problems.',
-        icon: 'tabler:tools',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1617155093730-a8bf47be792d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Septic system installation',
-    }}
-  />
-
-  <!-- Steps2 Widget ****************** -->
-  <Steps2
-    title="Our Drainage Solution Process"
-    subtitle="We follow a systematic approach to identify and resolve your property's water management challenges."
-    items={[
-      {
-        title: 'Property Assessment',
-        description:
-          'We thoroughly evaluate your property, identify problem areas, and analyze water flow patterns and soil conditions.',
-        icon: 'tabler:clipboard-check',
-      },
-      {
-        title: 'Custom Solution Design',
-        description:
-          'Based on our assessment, we design a drainage system tailored to your specific needs and property conditions.',
-        icon: 'tabler:dashboard',
-      },
-      {
-        title: 'Excavation & Preparation',
-        description:
-          'We carefully excavate the necessary areas with minimal disruption to your property and prepare for system installation.',
-        icon: 'tabler:shovel',
-      },
-      {
-        title: 'System Installation',
-        description:
-          'Our team installs drainage components including pipes, aggregate, fabric, catch basins, and other necessary elements.',
-        icon: 'tabler:droplet-cog',
-      },
-      {
-        title: 'Final Grading & Restoration',
-        description:
-          'We complete the project with proper grading and restore your landscape to its original condition or better.',
+          'Custom yard drainage systems including channel drains, dry creeks, and rain gardens designed to eliminate standing water while enhancing your landscape\'s beauty.',
         icon: 'tabler:garden-cart',
       },
     ]}
   />
 
+  <!-- Content Widget -->
+  <Content
+    isReversed={false}
+    title="Windsor-Essex Drainage Specialists"
+    subtitle="Local experts with solutions for local problems"
+    image={{
+      src: '~/assets/images/services/drainage/drainage-service-main.png',
+      alt: 'French drain installation in Windsor clay soil',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Clay Soil Drainage Expertise</h3>
+      <p class="mb-4">
+        Windsor-Essex's notorious clay soil creates unique drainage challenges that require specialized knowledge and techniques. Our team has extensive experience working with the region's dense clay soil, known for its poor drainage and tendency to retain water.
+      </p>
+      <p class="mb-4">Our Windsor-specific approach includes:</p>
+      <ul class="list-disc list-inside mb-4 text-muted">
+        <li>Custom aggregate selection that works specifically with local clay soil</li>
+        <li>Proper filter fabric selection to prevent system clogging</li>
+        <li>Strategic drain placement based on Windsor's typical water table levels</li>
+        <li>Larger capacity systems designed for our region's heavy spring rainfall</li>
+        <li>Integration with municipal drainage systems when available</li>
+      </ul>
+      <p>We've successfully resolved drainage issues for hundreds of Windsor-Essex properties, from historic Walkerville homes to new builds in LaSalle, Tecumseh, and throughout Essex County.</p>
+    </Fragment>
+  </Content>
+
+  <!-- Steps2 Widget ****************** -->
+  <Steps2
+    title="Our Drainage Solution Process"
+    subtitle="We follow a systematic approach to resolve your water management challenges"
+    items={[
+      {
+        title: 'Comprehensive Site Assessment',
+        description:
+          'We conduct a thorough evaluation of your property, identifying problem areas, analyzing water flow patterns, and assessing soil conditions specific to your Windsor property.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Customized System Design',
+        description:
+          'Based on our assessment, we design a drainage solution tailored to your property\'s unique conditions and water management needs, considering Windsor\'s clay soil and seasonal factors.',
+        icon: 'tabler:dashboard',
+      },
+      {
+        title: 'Professional Installation',
+        description:
+          'Our experienced team installs your drainage system using proper materials, techniques, and equipment, ensuring optimal function even in Windsor\'s challenging soil conditions.',
+        icon: 'tabler:shovel',
+      },
+      {
+        title: 'Municipal Compliance',
+        description:
+          'We ensure all work meets Windsor-Essex building codes and drainage requirements, handling any necessary permits and approvals for a worry-free installation process.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'System Testing & Verification',
+        description:
+          'We thoroughly test your new drainage system to confirm proper function, making any necessary adjustments to ensure optimal performance during Windsor\'s heavy rainfall events.',
+        icon: 'tabler:droplet-check',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/services/drainage/drainage-service-main.png',
+      alt: 'Drainage installation process in Windsor',
+    }}
+  />
+
+  <!-- Content Widget -->
+  <Content
+    isReversed={true}
+    title="French Drain Installation Experts"
+    subtitle="The effective solution for Windsor's water management challenges"
+    items={[
+      {
+        title: 'Proper Depth & Grade',
+        description: 'Installed at the optimal depth and with precise slope calculations to ensure proper water flow in Windsor\'s clay soil',
+        icon: 'tabler:ruler-measure',
+      },
+      {
+        title: 'Quality Materials',
+        description: 'Premium drainage pipe, clean stone aggregate, and high-grade filter fabric that won\'t clog or deteriorate over time',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Strategic Placement',
+        description: 'Positioned to intercept and redirect groundwater before it reaches your foundation or problem areas',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Proper Discharge Planning',
+        description: 'Thoughtful water discharge solutions that comply with Windsor bylaws and respect neighboring properties',
+        icon: 'tabler:arrow-guide',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/services/drainage/french-drain-diagram.png',
+      alt: 'French drain system diagram',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        The French Drain Advantage
+      </h3>
+      <p class="mb-4">
+        French drains are particularly effective in Windsor's challenging soil conditions. These subsurface drainage systems intercept groundwater and direct it away from your foundation, preventing basement moisture and structural damage.
+      </p>
+      <p class="mb-4">
+        Our French drain installations include these Windsor-specific enhancements:
+      </p>
+      <ul class="list-disc list-inside mb-4 text-muted">
+        <li>Deeper installation to account for Windsor's frost line</li>
+        <li>Specialized aggregate mix that works effectively with local clay soil</li>
+        <li>Heavy-duty filter fabric to prevent system clogging</li>
+        <li>Proper connections to existing drainage systems when available</li>
+      </ul>
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 dark:bg-blue-900/30 dark:border-blue-700 mt-6">
+        <p class="font-medium">
+          <strong>Local Knowledge:</strong> Windsor's clay soil requires French drains with larger diameter pipes and more substantial gravel beds than typical installations. Our systems are designed specifically for these local conditions.
+        </p>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What Windsor Homeowners Say"
+    subtitle="Hear from local residents who have resolved their drainage issues with our solutions"
+    testimonials={[
+      {
+        testimonial:
+          "After years of dealing with a wet basement every spring, Legacy Exteriors installed a comprehensive drainage system that has kept our South Windsor home completely dry. They understood exactly how to address our clay soil issues and designed a solution that works perfectly with our property's layout.",
+        name: 'Michael Thompson',
+        job: 'South Windsor Homeowner',
+        rating: 5,
+      },
+      {
+        testimonial:
+          "I can't believe I waited so long to fix my yard's drainage problems. Legacy installed French drains and regraded my Riverside property, eliminating the standing water that used to make my backyard unusable after rain. Their knowledge of Windsor's drainage challenges was impressive.",
+        name: 'Jennifer Wilson',
+        job: 'Riverside Property Owner',
+        rating: 5,
+      },
+      {
+        testimonial:
+          "When we built our new home in LaSalle, we experienced significant water issues that our builder couldn't resolve. Legacy Exteriors designed and installed a complete drainage system that addressed our high water table and clay soil challenges. They knew exactly what our property needed.",
+        name: 'Robert Davis',
+        job: 'LaSalle Resident',
+        rating: 5,
+      },
+    ]}
+    callToAction={{
+      text: 'Read more testimonials',
+      href: '/testimonials',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
   <!-- FAQs Widget ******************* -->
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Find answers to common questions about our drainage and septic services in Windsor-Essex."
+    subtitle="Common questions about drainage in Windsor-Essex"
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'What are the warning signs of drainage problems on my property?',
+        title: 'Why do Windsor properties have so many drainage problems?',
         description:
-          "Common indicators of drainage issues include: standing water that doesn't dissipate within 24 hours after rainfall, water pooling near your foundation, basement dampness or flooding, eroding soil in your yard, water stains on basement walls, mold or mildew growth, and damaged or dying grass in consistently wet areas. If you notice any of these signs on your Windsor property, it's best to address them promptly before they lead to costly structural damage.",
+          "Windsor-Essex properties face unique drainage challenges due to several factors: heavy clay soil that doesn't drain well naturally, relatively flat topography that doesn't promote natural water movement, high water tables in many areas, and significant seasonal rainfall. Additionally, many older Windsor neighborhoods were built without modern drainage considerations. These combined factors make proper drainage solutions essential for protecting property values and preventing water damage.",
       },
       {
-        title: 'What type of drainage solution is best for Windsors clay soil?',
+        title: 'How do I know if I need drainage work on my Windsor property?',
         description:
-          "Windsor's heavy clay soil presents unique drainage challenges because it doesn't allow water to percolate easily. For these conditions, we typically recommend a combination approach: French drains with proper filtration fabric to prevent clogging, strategic surface grading, and sometimes subsurface drainage layers using coarse aggregates. In severe cases, we may install sump systems in conjunction with foundation drains. Each property requires a custom solution based on specific conditions and the severity of water issues.",
+          "Common signs of drainage problems in Windsor include: standing water that persists 24+ hours after rainfall, water pooling against your foundation, wet basement walls or floors, mold or mildew odors, eroded soil in your yard, dying grass in consistently wet areas, and ice buildup in winter from poor drainage. If you notice any of these warning signs, it's best to address them promptly before they lead to more serious structural issues.",
       },
       {
-        title: 'How do you determine if my property needs a French drain?',
+        title: 'What drainage solutions work best in Windsor\'s clay soil?',
         description:
-          "We assess several factors to determine if a French drain is appropriate: persistent standing water issues, water flowing toward your foundation, basement water infiltration, soil composition, property slope, and the source of excess water. French drains are particularly effective in Windsor's clay soil when installed with the correct aggregate, drainage pipe, and proper slope. During our free assessment, we'll evaluate these factors and recommend whether a French drain is the right solution for your specific drainage issues.",
+          "For Windsor's challenging clay soil, we typically recommend a comprehensive approach combining: French drains with specialized aggregate and filter fabric, strategic surface grading to create proper slopes, catch basins in low areas, foundation waterproofing systems, and in severe cases, sump pump systems. The exact combination depends on your specific property conditions. Our solutions are engineered specifically for Windsor's soil composition and rainfall patterns.",
       },
       {
-        title: 'Whats involved in septic system installation?',
+        title: 'Do you need permits for drainage work in Windsor?',
         description:
-          'A complete septic system installation includes: site evaluation and soil testing, system design and permitting, excavation of the tank area and drain field, tank placement and connection, installation of the drain field pipes and aggregate, backfilling and initial compaction, and final grading of the surface. In Windsor-Essex, we must also account for the high water table in some areas and clay soil considerations. Most residential installations take 2-5 days depending on system size and site conditions.',
+          "In Windsor-Essex, permits are typically required for drainage work that: alters the natural flow of water, connects to municipal systems, affects neighboring properties, or involves significant excavation. Our team handles all necessary permit applications and ensures compliance with Windsor's drainage bylaws, which include specific requirements about where water can be discharged. We manage this entire process for you.",
       },
       {
-        title: 'How do I know if my septic system needs repair?',
+        title: 'How long do drainage systems last in Windsor\'s climate?',
         description:
-          "Signs that your septic system needs attention include: slow drains throughout your home, gurgling sounds in the plumbing, sewage backups, unusually lush or green grass over the drain field, standing water or soggy ground near the tank or drain field, strong sewage odors around your property, and septic alarm activation (if your system has one). If you notice any of these warning signs, it's important to have your system professionally inspected right away to prevent more serious failures.",
+          "Properly installed drainage systems in Windsor should last 15-25+ years depending on the system type and materials used. Our drainage solutions are built with premium materials and designed specifically for Windsor's freeze-thaw cycles, clay soil, and rainfall patterns. We provide maintenance recommendations to maximize system lifespan, including periodic inspection and cleaning of key components.",
       },
       {
-        title: 'Do you handle drainage permits and approvals in Windsor?',
+        title: 'What makes your drainage solutions different from other Windsor contractors?',
         description:
-          'Yes, we manage all necessary permits and approvals for both drainage and septic work. In Windsor-Essex, significant drainage modifications that alter natural water flow patterns or connect to municipal systems require permits. Septic systems always require permits and must meet specific codes. Our team handles the entire permitting process, including applications, drawings, inspections, and final approvals, ensuring your project complies with all local regulations.',
+          "Unlike general landscapers or contractors who offer drainage as a secondary service, we specialize in water management solutions specifically engineered for Windsor-Essex properties. Our difference includes: comprehensive site assessment using proper diagnostic techniques, custom system design rather than one-size-fits-all approaches, specialized knowledge of Windsor's soil conditions, proper materials selection for our local climate, and installation techniques that account for seasonal changes. We solve drainage problems permanently, not temporarily.",
       },
     ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    tagline="Protect Your Windsor Property"
+    title="Stop Water Damage Before It Starts"
+    subtitle="Schedule your free drainage assessment today and discover how we can help you eliminate standing water, prevent basement flooding, and protect your property's value."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Your Free Assessment',
+        href: '/contact',
+        icon: 'tabler:clipboard-check',
+      },
+    ]}
+    backgroundImage='~/assets/images/services/drainage/drainage-cta-background.png'
+    showLeaves={false}
+    overlayOpacity={0.7}
+    isDark={true}
   />
 </Layout>

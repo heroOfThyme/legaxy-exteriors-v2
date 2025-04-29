@@ -8,10 +8,31 @@ import Steps2 from '~/components/widgets/Steps2.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import BeforeAfter from '~/components/widgets/BeforeAfter.astro';
+
+import drivewayHero from '~/assets/images/services/driveways/driveway-service-main.png';
+import completedDriveway from '~/assets/images/projects/completed-concrete-driveway-windsor-2024.png';
+import drivewayBefore from '~/assets/images/projects/et-house-driveway-work.png';
+import drivewayAfter from '~/assets/images/projects/completed-concrete-driveway-corner-view-windsor-2024.png';
 
 const metadata = {
-  title: 'Professional Driveway Installation in Windsor | Legacy Exteriors',
-  description: 'Expert driveway installation, repair, and maintenance services in Windsor and Essex County. Custom designs, quality materials, and superior craftsmanship for a durable and attractive surface.',
+  title: 'Professional Driveway Installation & Repair | Legacy Exteriors',
+  description:
+    'Expert driveway installation, repair, and replacement services in Windsor-Essex. Quality concrete and gravel driveways built to withstand Canadian seasons with proper drainage and foundation.',
+  canonical: 'https://legacyexteriorsinc.com/services/driveways',
+  openGraph: {
+    title: 'Professional Driveway Installation & Repair | Legacy Exteriors',
+    description: 'Transform your property with a custom-designed, professionally installed driveway built to withstand local weather conditions.',
+    type: 'website',
+    images: [
+      {
+        url: '~/assets/images/services/driveways/driveway-service-main.png',
+        width: 1200,
+        height: 630,
+        alt: 'Professional driveway installation',
+      },
+    ],
+  },
 };
 ---
 
@@ -19,24 +40,24 @@ const metadata = {
   <!-- Hero Widget ******************* -->
   <Hero
     tagline="Professional Driveway Services"
-    title="Expert Driveway Installation in Windsor"
-    subtitle="Enhance your property's curb appeal and value with a custom-designed, professionally installed driveway built to last through Windsor's challenging seasons."
+    title="Custom Driveway Solutions That Last"
+    subtitle="Transform your property's entrance with a durable, attractive driveway designed to enhance curb appeal and withstand our local weather conditions."
     actions={[
       {
         variant: 'primary',
-        text: 'Contact Us Today',
+        text: 'Request a Free Quote',
         href: '/contact',
         icon: 'tabler:message',
       },
       {
-        text: 'See Our Work',
+        text: 'View Our Projects',
         href: '/our-work',
         icon: 'tabler:photo',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1597047084897-51e81819a499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80',
-      alt: 'Professional driveway installation in Windsor',
+      src: drivewayHero,
+      alt: 'Professional driveway installation',
     }}
   >
     <Fragment slot="bg">
@@ -44,61 +65,80 @@ const metadata = {
     </Fragment>
   </Hero>
 
+  <!-- BeforeAfter Widget ************** -->
+  <BeforeAfter
+    title="See the Transformation"
+    subtitle="Before and after driveway transformation"
+    beforeImage={{
+      src: drivewayBefore,
+      alt: "Damaged driveway before replacement",
+      label: "Before"
+    }}
+    afterImage={{
+      src: drivewayAfter,
+      alt: "Beautiful new concrete driveway installation",
+      label: "After"
+    }}
+    imageAspect="16:9"
+  >
+    <p class="text-center mt-6 text-muted">Swipe or click to compare the before and after results of our professional driveway installation.</p>
+  </BeforeAfter>
+
   <!-- Stats Widget ****************** -->
   <Stats
-    title="Why Choose Our Driveway Services"
-    subtitle="Professional expertise and premium materials for lasting results"
+    title="Building Better Driveways"
+    subtitle="Quality materials and expert craftsmanship for lasting results"
     stats={[
-      { title: 'Years Experience', amount: '18+' },
-      { title: 'Driveways Completed', amount: '500+' },
-      { title: 'Customer Satisfaction', amount: '99%' },
-      { title: 'Warranty', amount: '5-Yr' },
+      { title: 'Projects Completed', amount: '250+' },
+      { title: 'Years of Experience', amount: '18+' },
+      { title: 'Customer Satisfaction', amount: '98%' },
+      { title: 'Warranty Coverage', amount: '5-Yr' },
     ]}
     bg="bg-blue-50 dark:bg-slate-800"
   />
 
   <!-- Features Widget ************** -->
   <Features
-    id="benefits"
+    id="services"
     tagline="Our Services"
-    title="Comprehensive Driveway Solutions"
-    subtitle="From design and installation to repair and maintenance, we provide complete driveway services for Windsor homeowners."
+    title="Complete Driveway Solutions"
+    subtitle="From design and installation to repair and maintenance, we provide comprehensive driveway services for residential and commercial properties."
     items={[
       {
-        title: 'Custom Driveway Design',
+        title: 'Concrete Driveway Installation',
         description:
-          'We work closely with you to design a driveway that suits your unique needs, style preferences, and budget.',
-        icon: 'tabler:ruler',
-      },
-      {
-        title: 'Driveway Installation',
-        description:
-          'Our team specializes in installing gravel and concrete driveways with proper preparation, grading, and installation.',
+          'Premium concrete driveways with proper foundation preparation, reinforcement, and finishing techniques that ensure longevity and crack resistance in our seasonal climate.',
         icon: 'tabler:road',
       },
       {
-        title: 'Repair & Resurfacing',
+        title: 'Gravel Driveway Installation',
         description:
-          'We address issues such as cracks, potholes, and wear and tear, restoring appearance and functionality.',
+          'Quality gravel driveways with proper base construction, professional grading, and expert installation that provides excellent drainage and minimal maintenance.',
+        icon: 'tabler:grain',
+      },
+      {
+        title: 'Driveway Replacement',
+        description:
+          'Complete removal and replacement of deteriorated or damaged driveways, correcting underlying issues for a fresh start with improved appearance and functionality.',
+        icon: 'tabler:replace',
+      },
+      {
+        title: 'Driveway Repair & Resurfacing',
+        description:
+          'Professional solutions for cracks, settling, drainage issues and surface deterioration, extending your driveway\'s lifespan and enhancing its appearance.',
         icon: 'tabler:tools',
       },
       {
-        title: 'Sealcoating & Maintenance',
+        title: 'Custom Design Options',
         description:
-          'Regular sealcoating and maintenance significantly extend the lifespan of your driveway, protecting from damage.',
-        icon: 'tabler:brush',
+          'Personalized driveway designs including decorative concrete finishes, borders, patterns, and color options to complement your home\'s architecture and landscape.',
+        icon: 'tabler:palette',
       },
       {
-        title: 'Drainage Solutions',
+        title: 'Driveway Extensions & Expansions',
         description:
-          'We assess and address drainage issues, ensuring your driveway remains stable and free from water damage.',
-        icon: 'tabler:droplet',
-      },
-      {
-        title: 'Environmentally Friendly Options',
-        description:
-          'We offer eco-friendly solutions, such as permeable pavers, that reduce stormwater runoff and environmental impact.',
-        icon: 'tabler:leaf',
+          'Expert widening and lengthening of existing driveways to accommodate additional vehicles or create more functional space with seamless integration.',
+        icon: 'tabler:arrows-maximize',
       },
     ]}
   />
@@ -108,43 +148,43 @@ const metadata = {
     isAfterContent
     items={[
       {
-        title: 'Built to Last',
+        title: 'Superior Drainage',
         description:
-          'Our driveways are designed to withstand Windsors freeze-thaw cycles, heavy rainfall, and temperature fluctuations.',
+          'Every driveway we install includes proper grading and drainage planning to prevent water pooling and protect your foundation from water damage.',
+        icon: 'tabler:droplet-off',
+      },
+      {
+        title: 'Frost Resistance',
+        description:
+          'Our installation techniques account for freeze-thaw cycles with adequate base depth and proper materials to prevent seasonal heaving and cracking.',
+        icon: 'tabler:snowflake',
+      },
+      {
+        title: 'Structural Integrity',
+        description:
+          'We use premium concrete mixes with fiber reinforcement and proper control joints to ensure durability and minimize cracking over time.',
         icon: 'tabler:shield',
-      },
-      {
-        title: 'Superior Materials',
-        description:
-          'We use only high-quality concrete mixes, aggregates, and finishes to ensure durability and aesthetic appeal.',
-        icon: 'tabler:certificate',
-      },
-      {
-        title: 'Complete Project Management',
-        description:
-          'From permits to final inspection, we handle every aspect of your driveway project for a stress-free experience.',
-        icon: 'tabler:checklist',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1622905810727-b91c89e054da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
+      src: completedDriveway,
       alt: 'Concrete driveway installation',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Quality Craftsmanship</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Built to Withstand Our Seasons</h3>
       <p>
-        At Legacy Exteriors, we pride ourselves on delivering exceptional driveway installations that stand the test of time. Our approach includes:
+        At Legacy Exteriors, we understand the importance of building driveways that can handle our unique weather conditions - from summer heat to winter freezes.
       </p>
       <ul class="list-disc list-inside mt-3 mb-3 text-muted">
-        <li>Proper site preparation and grading</li>
-        <li>Reinforced concrete for superior strength</li>
-        <li>Precise finishing techniques</li>
-        <li>Expansion joints to prevent cracking</li>
-        <li>Sealed surfaces for weather protection</li>
+        <li>Deeper base preparation (12"-16") for better stability</li>
+        <li>Strategic control joint placement to manage natural expansion</li>
+        <li>Proper curing techniques for maximum concrete strength</li>
+        <li>Careful attention to slope and drainage to prevent ice buildup</li>
+        <li>Premium finishing methods that resist salt and chemical damage</li>
       </ul>
       <p class="mb-5">
-        We understand Windsor's unique climate challenges and design our driveways to withstand freeze-thaw cycles, heavy rains, and seasonal temperature variations.
+        These techniques ensure your driveway remains attractive and functional through years of seasonal changes, requiring minimal maintenance while maintaining its appearance.
       </p>
     </Fragment>
   </Content>
@@ -152,103 +192,116 @@ const metadata = {
   <!-- Steps2 Widget ****************** -->
   <Steps2
     title="Our Driveway Installation Process"
-    subtitle="We follow a comprehensive process to ensure your new driveway is built to last."
+    subtitle="We follow a comprehensive approach to ensure your driveway is built right from the ground up."
     items={[
       {
-        title: 'Initial Consultation & Design',
+        title: 'Detailed Assessment & Planning',
         description:
-          'We assess your property, discuss your needs and preferences, and create a custom driveway design that complements your home.',
-        icon: 'tabler:ruler-measure',
+          'We evaluate your property, discuss your needs and preferences, and create a custom driveway design that considers aesthetics, functionality, and proper drainage.',
+        icon: 'tabler:clipboard-check',
       },
       {
-        title: 'Site Preparation',
+        title: 'Professional Excavation & Base Preparation',
         description:
-          'We remove existing materials, excavate to the proper depth, and ensure proper grading and drainage to create a solid foundation.',
+          'We remove existing materials, excavate to the proper depth, and install a compacted gravel base that provides essential drainage and structural support.',
         icon: 'tabler:bulldozer',
       },
       {
-        title: 'Base Installation',
+        title: 'Form Setting & Reinforcement',
         description:
-          'We install and compact a strong gravel base layer to provide stability and proper drainage for your new driveway.',
-        icon: 'tabler:stack',
+          'Precise form placement establishes clean edges and proper height, while steel reinforcement and expansion joints ensure structural integrity.',
+        icon: 'tabler:layout-grid',
       },
       {
-        title: 'Concrete Pouring & Finishing',
+        title: 'Quality Concrete Pouring & Finishing',
         description:
-          'Our team pours high-quality concrete, ensuring proper thickness, reinforcement, and finishing techniques for a durable, attractive surface.',
+          'We use premium concrete mixed to exacting standards, applied with professional techniques and finished with your chosen texture and design elements.',
         icon: 'tabler:arrow-bar-to-down',
       },
       {
         title: 'Curing & Sealing',
         description:
-          'We allow proper curing time and apply high-quality sealants to protect your driveway from weather, stains, and wear.',
+          'Proper curing ensures maximum strength development, followed by application of high-quality sealants to protect your investment from weather and wear.',
         icon: 'tabler:shield-check',
       },
     ]}
   />
 
-  <!-- FAQs Widget ******************* -->
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Find answers to common questions about our driveway services in Windsor."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+  <!-- Content Widget **************** -->
+  <Content
+    isReversed
+    title="Concrete vs. Gravel: Finding Your Perfect Match"
+    subtitle="Comparing the benefits of our most popular driveway options"
     items={[
       {
-        title: 'How long does a new driveway installation take?',
-        description:
-          "A typical driveway installation takes 3-5 days, depending on size, complexity, and weather conditions. This includes 1-2 days for removal and preparation, 1 day for pouring concrete, and 1-2 days for finishing and curing. However, the concrete will need approximately 7 days before it can handle vehicle traffic.",
+        title: 'Longevity & Durability',
+        description: 'Concrete driveways typically last 25-30+ years with minimal maintenance, while properly installed gravel driveways can last 5-10 years before needing significant refreshing.',
+        icon: 'tabler:clock',
       },
       {
-        title: 'How much does a new concrete driveway cost in Windsor?',
-        description:
-          "Concrete driveway costs in Windsor typically range from $10-$15 per square foot, depending on size, design complexity, finish options, and site conditions. For an average single-car driveway (12' x 25'), you might expect to pay between $3,000-$4,500. We provide detailed quotes after a site assessment.",
+        title: 'Maintenance Requirements',
+        description: 'Concrete requires occasional cleaning and resealing every few years. Gravel needs more frequent maintenance including regrading and adding fresh stone periodically.',
+        icon: 'tabler:tools',
       },
       {
-        title: 'How long will my concrete driveway last?',
-        description:
-          "With proper installation and maintenance, a concrete driveway in Windsor should last 25-30 years or more. Factors affecting lifespan include installation quality, concrete mix strength, proper drainage, regular sealing, and how well it's maintained. Our reinforced concrete driveways are designed specifically to withstand Windsor's climate.",
+        title: 'Cost Considerations',
+        description: 'While concrete has a higher upfront cost, its longevity often provides better long-term value. Gravel offers a more budget-friendly initial investment.',
+        icon: 'tabler:coin',
       },
       {
-        title: 'How soon can I use my new driveway?',
-        description:
-          "While concrete begins to harden within hours, we recommend waiting at least 24-48 hours before walking on your new driveway and 7 days before driving or parking vehicles on it. Complete curing takes about 28 days, at which point the concrete reaches its full strength.",
-      },
-      {
-        title: 'Do you handle permits for driveway installation?',
-        description:
-          "Yes, we handle all necessary permits required by Windsor and Essex County municipalities for driveway installations. This includes permits for excavation, easement considerations, and any required inspections. We ensure your project complies with all local regulations and bylaws.",
-      },
-      {
-        title: 'How do you prevent cracking in Windsors freeze-thaw conditions?',
-        description:
-          "We use several techniques to minimize cracking: properly prepared base, fiber-reinforced concrete mixtures, strategic placement of control joints, proper concrete finishing techniques, adequate curing time, and applying high-quality sealants. Our driveways are specifically designed to withstand Windsor's seasonal temperature fluctuations.",
+        title: 'Environmental Impact',
+        description: 'Gravel provides better natural drainage, while concrete can be installed with permeable options. Both can be environmentally friendly with proper installation.',
+        icon: 'tabler:leaf',
       },
     ]}
-  />
+    image={{
+      src: '~/assets/images/projects/levelled-gravel-driveway-windsor-2024.png',
+      alt: 'Comparing concrete and gravel driveways',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Making the Right Choice for Your Property
+      </h3>
+      <p class="mb-4">
+        The best driveway material depends on your specific needs, budget, and property characteristics. Our team will help you evaluate these factors to make the optimal choice:
+      </p>
+      <ul class="list-disc list-inside mb-4 text-muted">
+        <li>Your budget for both installation and long-term maintenance</li>
+        <li>The style of your home and neighborhood context</li>
+        <li>Your property's terrain and drainage characteristics</li>
+        <li>How long you plan to remain in your home</li>
+        <li>Your tolerance for maintenance tasks</li>
+      </ul>
+      <p>During your free consultation, we'll discuss these considerations to help you select the perfect driveway material for your specific situation.</p>
+    </Fragment>
+  </Content>
 
   <!-- Testimonials Widget *********** -->
   <Testimonials
     title="What Our Customers Say"
-    subtitle="Hear from homeowners throughout Windsor who have enhanced their properties with our driveway services."
+    subtitle="Hear from homeowners who have transformed their properties with our driveway services"
     testimonials={[
       {
         testimonial:
-          "Legacy Exteriors transformed our cracked, uneven driveway into a beautiful, smooth surface that has significantly improved our home's curb appeal. Their attention to detail and excellent drainage solutions have eliminated the puddles we used to have. Professional from start to finish!",
-        name: 'Robert Mitchell',
-        job: 'Riverside Homeowner',
+          "Legacy Exteriors replaced our old cracked driveway with a beautiful stamped concrete design. Their attention to drainage issues we'd been having for years was impressive - for the first time, we don't have pooling water by our garage during heavy rains. The crew was professional, on-time, and left our property spotless.",
+        name: 'Jennifer Roberts',
+        job: 'Homeowner in Riverside',
+        rating: 5,
       },
       {
         testimonial:
-          "After getting quotes from several companies, we chose Legacy Exteriors for their expertise and fair pricing. They replaced our old asphalt driveway with a stunning stamped concrete one, and the results exceeded our expectations. Their crew was respectful, tidy, and finished right on schedule.",
-        name: 'Linda Patterson',
+          "After getting quotes from several contractors, we chose Legacy for our new gravel driveway. Their knowledge and attention to detail with the base preparation made all the difference. The proper grading solved our drainage issues, and nearly two years later, it still looks great with minimal maintenance.",
+        name: 'Michael Wilson',
+        job: 'Rural Property Owner',
+        rating: 5,
+      },
+      {
+        testimonial:
+          "Our concrete driveway had serious cracks and settling issues that made parking difficult. Legacy's team identified the drainage problems causing the damage and completely rebuilt our driveway with proper reinforcement and drainage. The finish is beautiful, and their warranty gives us complete peace of mind.",
+        name: 'David Thompson',
         job: 'South Windsor Resident',
-      },
-      {
-        testimonial:
-          "We had major issues with our driveway cracking and settling due to poor drainage. The team at Legacy Exteriors not only installed a beautiful new driveway but solved all our water problems with their innovative drainage solutions. It's been through two winters now with no issues at all.",
-        name: 'James Wilson',
-        job: 'LaSalle Property Owner',
+        rating: 5,
       },
     ]}
     callToAction={{
@@ -258,28 +311,62 @@ const metadata = {
     }}
   />
 
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about our driveway services"
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'How long does a driveway installation typically take?',
+        description:
+          "For an average residential concrete driveway, the complete process takes about 5-7 days: 1-2 days for removal and preparation, 1 day for forming and pouring, and 3-4 days for curing before light use. Gravel driveways can be completed in 2-3 days. Weather conditions may affect this timeline. While you can walk on a new concrete driveway after 24-48 hours, we recommend waiting 7 days before driving on it to allow proper curing and strength development.",
+      },
+      {
+        title: 'What causes concrete driveways to crack, and how do you prevent it?',
+        description:
+          "Cracking typically results from improper base preparation, inadequate concrete thickness, missing control joints, improper curing, or seasonal freeze-thaw cycles. We prevent these issues with thorough base compaction, appropriate concrete thickness (minimum 4-6 inches for residential driveways), strategic control joint placement, proper reinforcement, premium concrete mixes, appropriate curing techniques, and quality sealing. While some hairline cracks may develop naturally, our techniques minimize significant structural cracking.",
+      },
+      {
+        title: 'What maintenance does a concrete driveway require?',
+        description:
+          "Concrete driveways require minimal maintenance compared to other materials. We recommend: regular cleaning with a pressure washer or stiff broom to remove debris and prevent staining, resealing every 2-3 years to protect against moisture and salt damage, prompt removal of oil or chemical spills to prevent staining, and filling any small cracks that develop to prevent water infiltration. With these simple steps, your concrete driveway should provide decades of service with minimal upkeep.",
+      },
+      {
+        title: 'How do you ensure proper drainage for driveways?',
+        description:
+          "Proper drainage is essential for driveway longevity. Our approach includes: accurate slope calculation (typically 1/8 inch per foot minimum) to direct water away from your home, strategic grading of surrounding landscape to prevent water flow onto the driveway, installation of channel drains or catch basins in problem areas, and proper tie-ins to existing drainage systems where available. During our initial assessment, we'll identify potential drainage concerns and incorporate appropriate solutions into your driveway design.",
+      },
+      {
+        title: 'What type of warranty do you offer on new driveways?',
+        description:
+          "We stand behind our workmanship with a comprehensive 5-year warranty on all new concrete driveway installations. This covers structural issues, significant cracking (beyond normal hairline cracks), and drainage problems resulting from improper installation. For gravel driveways, we provide a 2-year warranty on base stability and drainage. Our warranty reflects our confidence in our quality standards and installation techniques.",
+      },
+      {
+        title: 'Is it better to repair my existing driveway or replace it completely?',
+        description:
+          "This depends on several factors we'll evaluate during our inspection: the age of your current driveway, the extent and type of damage, underlying issues like poor drainage or base failure, and cost considerations. Generally, if your driveway is over 20 years old with multiple cracks, significant settling, or drainage problems, replacement often provides better long-term value. For newer driveways with isolated issues, repairs may be more economical. We'll provide honest recommendations based on your specific situation.",
+      },
+    ]}
+  />
+
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Limited Time Offer"
-    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
-    showLeaves={false}
-    overlayOpacity={0.7}
+    tagline="Ready for a Beautiful New Driveway?"
+    title="Transform Your Property's Entrance"
+    subtitle="Take the first step toward enhancing your home's curb appeal with a durable, professionally installed driveway that will serve you for years to come."
     actions={[
       {
         variant: 'primary',
-        text: 'Get Your Free Estimate',
+        text: 'Get Your Free Quote',
         href: '/contact',
-        icon: 'tabler:bulldozer',
+        icon: 'tabler:message',
       },
     ]}
+    backgroundImage='~/assets/images/services/driveways/driveways-cta-background.png'
+    showLeaves={false}
+    overlayOpacity={0.7}
     isDark={true}
-  >
-    <Fragment slot="title">
-      Sod Installation Package
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Book consultation before August 31st a free consultation on your property.
-    </Fragment>
-  </CallToAction>
+  />
 </Layout>

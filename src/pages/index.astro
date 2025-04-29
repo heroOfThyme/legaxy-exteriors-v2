@@ -10,12 +10,6 @@ import CompanyValues from '~/components/widgets/CompanyValues.astro';
 import OurWork from '~/components/widgets/OurWork.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 
-import drivewayImage from '~/assets/images/services/driveways/driveway-service-main.png';
-import excavationImage from '~/assets/images/services/excavation/excavation-services-main.png';
-import landscapingImage from '~/assets/images/services/landscaping/landscaping-service-main.png';
-import sodImage from '~/assets/images/services/sod/sod-service-main.png';
-import drainageImage from '~/assets/images/services/drainage/drainage-service-main.png';
-
 const metadata = {
   title: 'Legacy Exteriors | Professional Excavation Services in Windsor, Ontario',
   ignoreTitleTemplate: true,
@@ -242,57 +236,6 @@ images={heroImages}
     tagline="Portfolio"
     title="Our Recent Projects"
     subtitle="Explore some of our finest landscaping and excavation work."
-    displayType="grid"
-    projects={[
-      {
-        image:
-          drivewayImage,
-        alt: 'Backyard landscape design with garden beds and stone pathway',
-        category: 'Landscape Design',
-      },
-      {
-        image:
-          excavationImage,
-        alt: 'Patio with stone fire pit and outdoor seating',
-        category: 'Outdoor Living',
-      },
-      {
-        image:
-          landscapingImage,
-        alt: 'Garden planting with colorful perennials',
-        category: 'Garden & Planting',
-      },
-      {
-        image:
-          sodImage,
-        alt: 'Excavation work for new home construction',
-        category: 'Excavation',
-      },
-      {
-        image:
-          landscapingImage,
-        alt: 'Retaining wall with integrated lighting',
-        category: 'Hardscape',
-      },
-      {
-        image:
-          drivewayImage,
-        alt: 'New concrete driveway installation',
-        category: 'Driveways',
-      },
-      {
-        image:
-          drainageImage,
-        alt: 'Irrigation system installation for large property',
-        category: 'Irrigation Systems',
-      },
-      {
-        image:
-          landscapingImage,
-        alt: 'Decorative stone pathway with night lighting',
-        category: 'Outdoor Lighting',
-      },
-    ]}
     callToAction={{
       text: 'View All Projects',
       href: '/our-work',
