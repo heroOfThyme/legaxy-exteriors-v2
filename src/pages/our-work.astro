@@ -1,0 +1,167 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Icon } from 'astro-icon/components';
+import Image from '~/components/common/Image.astro';
+
+import drivewayImage1 from '~/assets/images/services/excavation/excavation-services-main.png';
+import excavationImage1 from '~/assets/images/services/landscaping/landscaping-service-main.png';
+
+const metadata = {
+  title: 'Our Work | Legacy Exteriors Projects in Windsor-Essex',
+  description: 'Browse our portfolio of excavation, drainage, driveway, trenching, and landscape preparation projects throughout Windsor and Essex County.',
+};
+
+// Import your images at the top of the file
+// Example:
+
+// Then create your project gallery
+const projectGallery = [
+  // Example project items - replace with your actual projects
+  { 
+    image: drivewayImage1, // Replace with your image path
+    alt: 'Driveway installation project', 
+    title: 'Modern Driveway Installation',
+    description: 'Complete driveway replacement with interlocking pavers', 
+    width: 1200, 
+    height: 800 
+  },
+  { 
+    image: excavationImage1, // Replace with your image path
+    alt: 'Excavation project', 
+    title: 'Residential Excavation',
+    description: 'Preparation for new home construction', 
+    width: 1200, 
+    height: 800 
+  },
+  // Add more projects as needed
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget -->
+  <Hero
+    tagline="Our Portfolio"
+    title="Transforming Windsor-Essex"
+    subtitle="Browse our collection of excavation, drainage, driveway, trenching, and landscaping projects throughout Windsor and Essex County."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Contact Us For Your Project',
+        href: '/contact',
+        icon: 'tabler:message',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/80 via-transparent to-gray-900/80"></div>
+    </Fragment>
+  </Hero>
+
+  <!-- Projects Gallery -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Our Project Gallery</h2>
+      <p class="text-xl text-muted dark:text-slate-400 max-w-3xl mx-auto">
+        View examples of our quality workmanship across Windsor and Essex County
+      </p>
+    </div>
+    
+    <div 
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pswp-gallery" 
+      id="projects-grid"
+    >
+      {projectGallery.map((project, index) => (
+        <figure 
+          class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group aspect-[4/3] bg-gray-200 dark:bg-slate-800"
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
+          <a 
+            href={project.image}
+            data-pswp-width={project.width}
+            data-pswp-height={project.height}
+            class="block w-full h-full"
+          >
+            <Image
+              src={project.image}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+              alt={project.alt}
+              width={800}
+              height={600}
+              widths={[400, 800, 1200]}
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
+            
+            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
+              <h3 class="text-white text-lg font-semibold">{project.title}</h3>
+              <p class="text-white/80 text-sm">{project.description}</p>
+            </div>
+          </a>
+        </figure>
+      ))}
+    </div>
+  </div>
+
+  <!-- CallToAction Widget -->
+  <CallToAction
+    tagline="Ready to start your project?"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request a Free Quote',
+        href: '/contact',
+        icon: 'tabler:message',
+      },
+      {
+        variant: 'secondary',
+        text: 'Explore Our Services',
+        href: '/services',
+      },
+    ]}
+    isDark={true}
+  >
+    <Fragment slot="title">
+      Let Us Bring Your Vision <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">To Life</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Contact us today to discuss your project needs and get a free, no-obligation quote.
+      <br class="hidden md:inline" />Our team is ready to help transform your property with professional excavation and landscaping services.
+    </Fragment>
+  </CallToAction>
+</Layout>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initializePhotoSwipe();
+  });
+
+  function initializePhotoSwipe() {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.pswp-gallery',
+      children: 'a',
+      showHideAnimationType: 'fade',
+      bgClickAction: 'close',
+      tapAction: 'close',
+      pswpModule: () => import('photoswipe')
+    });
+
+    lightbox.init();
+  }
+</script>
+
+<style>
+  .btn-primary {
+    @apply bg-primary text-white;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-primary;
+  }
+</style>

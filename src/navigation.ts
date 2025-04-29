@@ -12,7 +12,7 @@ export const headerData = {
     },
     {
       text: 'Our Work',
-      href: getPermalink('/work'),
+      href: getPermalink('/our-work'),
     },
     {
       text: 'Blog',
