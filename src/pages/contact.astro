@@ -1,12 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Content from '~/components/widgets/Content.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import { Icon } from 'astro-icon/components';
+import ContactUs from '~/components/widgets/Contact.astro';
 import GoogleMap from '~/components/widgets/GoogleMap.astro';
 
 const metadata = {
@@ -16,245 +11,297 @@ const metadata = {
 };
 
 // Service areas - Windsor-Essex region cities and towns
-const serviceAreas = ['Windsor', 'Tecumseh', 'LaSalle', 'Essex', 'Lakeshore'];
+const serviceAreas = ['Windsor', 'Tecumseh', 'LaSalle', 'Essex', 'Lakeshore', 'Amherstburg', 'Kingsville'];
+
+// Contact methods with enhanced visuals
+const contactMethods = [
+  {
+    title: 'Call Us',
+    value: '519-791-1506',
+    href: 'tel:+15197911506',
+    icon: 'tabler:phone',
+    description: 'Speak directly with our team',
+  },
+  {
+    title: 'Email Us',
+    value: 'info@legacyexteriorsinc.com',
+    href: 'mailto:info@legacyexteriorsinc.com',
+    icon: 'tabler:mail',
+    description: 'Send us your inquiry anytime',
+  },
+  {
+    title: 'Weekday Hours',
+    value: 'Monday – Friday: 8:00 AM – 10:00 PM',
+    icon: 'tabler:clock',
+    description: 'Our standard business hours',
+  },
+  {
+    title: 'Weekend Hours',
+    value: 'Saturday – Sunday: 8:00 AM – 8:00 PM',
+    icon: 'tabler:calendar',
+    description: 'Were available on weekends too',
+  },
+];
+
+// Social media links
+const socialLinks = [
+  { name: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/LegacyExteriorsIncWindsor' },
+  { name: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/legacy_exteriors_inc' },
+  { name: 'Google Business', icon: 'tabler:brand-google', href: '#' },
+];
+
+// FAQ items specific to contact
+const faqItems = [
+  {
+    question: 'How quickly will I receive a response to my inquiry?',
+    answer: 'We typically respond to all inquiries within 24 business hours. For urgent matters, we recommend calling us directly at 519-791-1506.'
+  },
+  {
+    question: 'Do you provide free estimates?',
+    answer: 'Yes, we offer free, no-obligation estimates for all our services throughout Windsor-Essex County. After submitting your inquiry, we\'ll schedule a time to assess your project needs.'
+  },
+  {
+    question: 'What information should I include in my message?',
+    answer: 'To help us provide the most accurate response, please include details about your project type, location, timeline, and any specific requirements or challenges. Photos are also helpful when applicable.'
+  }
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-  <HeroText
-    tagline="Contact Us"
-    title="Let's Get to Work"
-    subtitle="Fill out the form below, send us an email, or call and get answers to your home needs straight away!"
-  />
+  <!-- Hero Section with Animated Background -->
+  <section class="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-[#050505]">
+    <div class="absolute inset-0 z-0">
+      <!-- Animated background elements -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-green-900/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-green-800/10 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-green-700/5 rounded-full blur-2xl"></div>
+      
+      <!-- Grid pattern overlay -->
+      <div class="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-5"></div>
+    </div>
 
-  <!-- Contact Form Widget ************** -->
-  <ContactUs
-    id="form"
-    title="Send Us a Message"
-    subtitle="We're here to help with your project needs. Fill out the form and we'll get back to you promptly."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-      {
-        type: 'tel',
-        name: 'phone',
-        label: 'Phone',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    button="Send Message"
-    description="We typically respond within 24 business hours."
-  />
-
-  <!-- Content Widget for Business Info *** -->
-  <Content
-    isReversed
-    title="Company Information"
-    items={[
-      {
-        title: 'Phone',
-        description: '<a href="tel:+15197911506" class="hover:text-primary">1-519-791-1506</a>',
-        icon: 'tabler:phone',
-      },
-      {
-        title: 'Email',
-        description:
-          '<a href="mailto:info@legacyexteriorsinc.com" class="hover:text-primary">info@legacyexteriorsinc.com</a>',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Weekday Hours',
-        description: 'Monday – Friday: 8:00 AM – 10:00 PM',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Weekend Hours',
-        description: 'Saturday – Sunday: 8:00 AM – 8:00 PM',
-        icon: 'tabler:calendar',
-      },
-    ]}
-  >
-    <Fragment slot="content">
-      <div class="mt-4 mb-8">
-        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Follow Us on Social Media</h3>
-        <div class="flex space-x-4 mt-5">
-          <a
-            href="#"
-            aria-label="Facebook"
-            class="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary/10 transition-colors"
-          >
-            <Icon name="tabler:brand-facebook" class="w-6 h-6 text-primary" />
-          </a>
-          <a
-            href="#"
-            aria-label="Instagram"
-            class="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary/10 transition-colors"
-          >
-            <Icon name="tabler:brand-instagram" class="w-6 h-6 text-primary" />
-          </a>
-          <a
-            href="#"
-            aria-label="Twitter"
-            class="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary/10 transition-colors"
-          >
-            <Icon name="tabler:brand-x" class="w-6 h-6 text-primary" />
-          </a>
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-12 relative">
+        <div class="inline-block mb-4 px-3 py-1 border border-green-700/30 rounded-full bg-green-900/10 text-green-400 text-sm font-medium">
+          Get In Touch With Our Team
         </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-heading">Let's Build Your <span class="text-green-500">Legacy</span></h1>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Transform your property with Windsor's premier excavation and landscaping experts. We're ready to bring your vision to life.
+        </p>
       </div>
-    </Fragment>
 
-    <Fragment slot="image">
-      <div class="relative h-full">
-        <!-- Google Maps Component -->
-        <GoogleMap
-          apiKey="AIzaSyCI4V6NhZ-cRpflyhPVPpUe4cNtbEUiPeo"
-          center="42.25,-82.85"
-          zoom={10}
-          width={600}
-          height={400}
-          region="ca"
-          markerLocations={[
-            'Windsor,Ontario,Canada',
-            'Tecumseh,Ontario,Canada',
-            'LaSalle,Ontario,Canada',
-            'Oldcastle,Ontario,Canada',
-            'Essex,Ontario,Canada',
-            'Lakeshore,Ontario,Canada',
-          ]}
-          className="h-full w-full mb-6"
-          fallbackImage="/images/windsor-map-fallback.jpg"
-        />
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <!-- Contact Form Column -->
+        <div class="order-2 lg:order-1">
+          <ContactUs
+            id="form"
+            title="Send Us a Message"
+            subtitle="We're here to help with your project needs."
+            inputs={[
+              {
+                type: 'text',
+                name: 'name',
+                label: 'Name',
+                placeholder: 'Your name',
+              },
+              {
+                type: 'email',
+                name: 'email',
+                label: 'Email',
+                placeholder: 'your.email@example.com',
+              },
+              {
+                type: 'tel',
+                name: 'phone',
+                label: 'Phone',
+                placeholder: '(xxx) xxx-xxxx',
+              },
+            ]}
+            textarea={{
+              label: 'Project Details',
+              placeholder: 'Tell us about your project needs and timeline...',
+              rows: 5,
+            }}
+            disclaimer={{
+              label:
+                'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+            }}
+            button="Send Message"
+            description="We typically respond within 24 business hours."
+          />
+        </div>
 
-        <!-- Service Areas List -->
-        <div class="mt-6">
-          <h4 class="font-bold text-lg mb-3">Communities We Serve:</h4>
-          <div class="flex flex-wrap gap-2">
-            {
-              serviceAreas.map((area) => (
-                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-medium">{area}</span>
-              ))
-            }
+        <!-- Contact Information Column -->
+        <div class="order-1 lg:order-2">
+          <div class="relative p-8 rounded-lg shadow-2xl border border-green-800/50 bg-[#050505] overflow-hidden mb-10">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 w-40 h-40 bg-green-900/20 rounded-full -mt-20 -mr-20 z-0"></div>
+            <div class="absolute bottom-0 left-0 w-40 h-40 bg-green-900/10 rounded-full -mb-20 -ml-20 z-0"></div>
+            
+            <h2 class="text-2xl font-bold text-white mb-6 font-heading relative z-10">Contact Information</h2>
+            
+            <!-- Contact Methods Grid -->
+            <div class="grid gap-6 relative z-10">
+              {contactMethods.map((method) => (
+                <div class="flex items-start group transition-all duration-300 hover:translate-x-2">
+                  <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4 group-hover:bg-green-800/40 transition-colors duration-300">
+                    <Icon name={method.icon} class="w-6 h-6 text-green-500" />
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-medium text-green-400">{method.title}</h3>
+                    {method.href ? (
+                      <a href={method.href} class="text-white text-lg hover:text-green-400 transition-colors duration-300">
+                        {method.value}
+                      </a>
+                    ) : (
+                      <p class="text-white text-lg">{method.value}</p>
+                    )}
+                    <p class="text-gray-500 text-sm mt-1">{method.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <!-- Social Media Links -->
+            <div class="mt-8 relative z-10">
+              <h3 class="text-lg font-medium text-green-400 mb-4">Follow Us</h3>
+              <div class="flex space-x-4">
+                {socialLinks.map((social) => (
+                  <a 
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center text-white hover:bg-green-800 hover:text-green-400 transition-all duration-300 hover:-translate-y-1"
+                    title={social.name}
+                  >
+                    <Icon name={social.icon} class="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Service Areas -->
+          <div class="relative p-8 rounded-lg shadow-2xl border border-green-800/50 bg-[#050505] overflow-hidden">
+            <h2 class="text-2xl font-bold text-white mb-4 font-heading relative z-10">Areas We Serve</h2>
+            <p class="text-gray-400 mb-4 relative z-10">Proudly serving Windsor and Essex County with professional excavation and landscaping services.</p>
+            
+            <div class="flex flex-wrap gap-2 relative z-10">
+              {serviceAreas.map((area) => (
+                <span class="px-3 py-1.5 bg-green-900/30 text-green-400 rounded-full text-sm hover:bg-green-800/40 transition-colors duration-300">
+                  {area}
+                </span>
+              ))}
+            </div>
+            
+            <!-- Map Component -->
+            <div class="mt-6 relative z-10">
+              <GoogleMap
+                apiKey=""
+                center="42.25,-82.85"
+                zoom={10}
+                width={600}
+                height={250}
+                region="ca"
+                markerLocations={[
+                  'Windsor,Ontario,Canada',
+                  'Tecumseh,Ontario,Canada',
+                  'LaSalle,Ontario,Canada',
+                  'Essex,Ontario,Canada',
+                  'Lakeshore,Ontario,Canada',
+                ]}
+                className="rounded-lg border border-green-900/50 overflow-hidden w-full h-[250px]"
+                useFallback={true}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </Fragment>
-  </Content>
-
-  <!-- Features2 Widget for Contact Categories -->
-  <Features2
-    title="We're Here to Help!"
-    subtitle="Whether you have questions, need a quote, or want to schedule a consultation, we're ready to assist you."
-    items={[
-      {
-        title: 'General Information',
-        description:
-          'Questions about our services, coverage area, or company? Were happy to provide all the information you need to make informed decisions about your property.',
-        icon: 'tabler:info-circle',
-      },
-      {
-        title: 'Request a Quote',
-        description:
-          'Ready to start your project? Contact us for a comprehensive, no-obligation quote tailored to your specific needs and property conditions.',
-        icon: 'tabler:calculator',
-      },
-      {
-        title: 'Schedule a Consultation',
-        description:
-          'Not sure exactly what you need? Schedule an on-site consultation with our experts to assess your property and discuss potential solutions.',
-        icon: 'tabler:calendar',
-      },
-      {
-        title: 'Emergency Services',
-        description:
-          'Dealing with urgent drainage issues or other time-sensitive problems? Contact us right away for prompt assistance.',
-        icon: 'tabler:alert-triangle',
-      },
-    ]}
-    classes={{ container: 'max-w-6xl' }}
-  />
-
-  <!-- Testimonials Widget *********** -->
-  <Testimonials
-    title="What Our Customers Say"
-    subtitle="Don't just take our word for it - hear from homeowners throughout Windsor-Essex who have worked with Legacy Exteriors."
-    testimonials={[
-      {
-        testimonial:
-          'We had major drainage issues after heavy rains and Legacy Exteriors provided a comprehensive solution that completely solved the problem. Their response time was quick and the work was completed professionally and on schedule.',
-        name: 'Michael Wilson',
-        job: 'South Windsor Homeowner',
-      },
-      {
-        testimonial:
-          'Alex and his team installed our driveway with incredible attention to detail. The preparation work was thorough and the finished product looks amazing. Communication throughout the project was excellent.',
-        name: 'Jennifer Davis',
-        job: 'Tecumseh Resident',
-      },
-      {
-        testimonial:
-          "After getting multiple quotes for our excavation project, we chose Legacy Exteriors based on their knowledge and fair pricing. They navigated our property's challenges expertly and left everything clean and properly graded.",
-        name: 'Robert Thompson',
-        job: 'LaSalle Property Owner',
-      },
-    ]}
-    callToAction={{
-      text: 'Read more testimonials',
-      href: '/testimonials',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
-  <!-- FAQs Widget ******************* -->
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Find answers to common questions about working with Legacy Exteriors."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'How do I request a quote for my project?',
-        description:
-          "You can request a quote by filling out our contact form above, calling us directly at 519-791-1506, or sending an email to info@legacyexteriorsinc.com. For most projects, we'll need to schedule a site visit to assess your specific needs and provide an accurate estimate.",
-      },
-      {
-        title: 'What areas do you service in Windsor-Essex?',
-        description:
-          "We provide service throughout Windsor and all of Essex County, including Tecumseh, LaSalle, Amherstburg, Essex, Kingsville, Lakeshore, Leamington, and surrounding communities. If you're unsure if we service your area, please contact us.",
-      },
-      {
-        title: 'How quickly can you start on my project?',
-        description:
-          'Our schedule varies depending on the season and current workload. For smaller projects, we can often begin within 1-2 weeks of quote approval. Larger projects typically require 2-4 weeks of lead time. We prioritize emergency drainage issues and will make every effort to address urgent situations promptly.',
-      },
-      {
-        title: 'Do you provide written estimates?',
-        description:
-          'Yes, we provide detailed written estimates for all projects. Our estimates include a breakdown of costs, timeline expectations, and the scope of work to be performed. We believe in transparency throughout the process so you know exactly what to expect.',
-      },
-      {
-        title: 'What payment methods do you accept?',
-        description:
-          'We accept several payment methods including cheques, e-transfers, and cash. For larger projects, we typically work with a payment schedule that includes a deposit to secure your place in our schedule and milestone payments as the project progresses.',
-      },
-      {
-        title: 'Do you offer warranties on your work?',
-        description:
-          "Yes, we stand behind our work with warranties that vary by service type. Our excavation, drainage, and driveway installations all come with workmanship warranties. We're happy to discuss the specific warranty terms for your project during the quote process.",
-      },
-    ]}
-  />
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-16 bg-[#030303]">
+    <div class="container max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-white text-center mb-10 font-heading">Frequently Asked Questions</h2>
+      
+      <div class="grid gap-6">
+        {faqItems.map((item, index) => (
+          <div class="relative p-6 rounded-lg bg-[#050505] border border-green-900/30 transition-all duration-300 hover:border-green-800/50 group">
+            <h3 class="text-xl font-medium text-white mb-2 group-hover:text-green-400 transition-colors duration-300">
+              {item.question}
+            </h3>
+            <p class="text-gray-400">{item.answer}</p>
+            
+            <!-- Decorative element -->
+            <div class="absolute top-6 right-6 w-8 h-8 rounded-full bg-green-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="relative py-16 bg-[#050505] overflow-hidden">
+    <!-- Background effects -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-[url('/images/excavator-bg.jpg')] bg-cover bg-center opacity-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]"></div>
+    </div>
+    
+    <div class="container max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Ready to Transform Your Property?</h2>
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          Contact us today for a free, no-obligation consultation. Let's discuss your vision and how we can bring it to life.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="tel:+15197911506" 
+            class="px-8 py-3.5 bg-green-700 hover:bg-green-800 text-white rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+          >
+            <Icon name="tabler:phone" class="w-5 h-5 mr-2" />
+            Call Now
+          </a>
+          <a 
+            href="#form" 
+            class="px-8 py-3.5 bg-[#0a0a0a] border-2 border-green-800 hover:border-green-700 text-white rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+          >
+            <Icon name="tabler:message" class="w-5 h-5 mr-2" />
+            Message Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  /* Custom animations for added flair */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+  
+  /* Add a grid pattern background - create this SVG or use one from your assets */
+  @media (prefers-reduced-motion: no-preference) {
+    section > div:first-child > div:first-child {
+      animation: pulse 10s ease-in-out infinite;
+    }
+    
+    section > div:first-child > div:nth-child(2) {
+      animation: pulse 15s ease-in-out infinite;
+    }
+    
+    section > div:first-child > div:nth-child(3) {
+      animation: pulse 20s ease-in-out infinite;
+    }
+  }
+</style>
