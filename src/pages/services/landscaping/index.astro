@@ -6,7 +6,6 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
   title: 'Landscape Grading & Preparation Services in Windsor | Legacy Exteriors',
@@ -42,19 +41,6 @@ const metadata = {
       <div class="absolute inset-0 bg-gradient-to-tr from-green-900/70 via-transparent to-green-900/70"></div>
     </Fragment>
   </Hero>
-
-  <!-- Stats Widget ****************** -->
-  <Stats
-    title="Transforming Windsor's Landscapes"
-    subtitle="Creating the perfect foundation for beautiful, functional outdoor spaces"
-    stats={[
-      { title: 'Years Experience', amount: '18+' },
-      { title: 'Projects Completed', amount: '550+' },
-      { title: 'Square Feet Graded', amount: '1.5M+' },
-      { title: 'Customer Satisfaction', amount: '99%' },
-    ]}
-    bg="bg-green-50 dark:bg-slate-800"
-  />
 
   <!-- Features Widget ************** -->
   <Features

@@ -282,6 +282,16 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
   });
 </script>
 
+<script is:inline>
+  document.addEventListener('astro:after-swap', () => {
+    const video = document.querySelector('video');
+    if (video) {
+      video.currentTime = 0;
+      video.play().catch(e => console.log('Video play prevented:', e));
+    }
+  });
+</script>
+
 <style>
   .hero-slider-wrapper {
     width: 100%;

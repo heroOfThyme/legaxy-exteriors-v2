@@ -6,9 +6,6 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import OurWork from '~/components/widgets/OurWork.astro';
 
 const metadata = {
   title: 'Professional Trenching Services in Windsor | Legacy Exteriors',
@@ -36,7 +33,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      src: '~/assets/images/services/trenching/trenching-services-main.png',
       alt: 'Professional trenching equipment in Windsor',
     }}
   >
@@ -44,19 +41,6 @@ const metadata = {
       <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/70 via-transparent to-gray-900/70"></div>
     </Fragment>
   </Hero>
-
-  <!-- Stats Widget ****************** -->
-  <Stats
-    title="Trusted Trenching Experts"
-    subtitle="Experienced professionals with specialized equipment for precision results"
-    stats={[
-      { title: 'Years Experience', amount: '18+' },
-      { title: 'Linear Feet Trenched', amount: '50K+' },
-      { title: 'Projects Completed', amount: '400+' },
-      { title: 'Customer Satisfaction', amount: '99%' },
-    ]}
-    bg="bg-blue-50 dark:bg-slate-800"
-  />
 
   <!-- Features Widget ************** -->
   <Features
@@ -128,12 +112,12 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1563341591-ad0a969037c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      src: '~/assets/images/services/trenching/trenching-services-main.png',
       alt: 'Trenching machinery in operation',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Precise Execution</h3>
+      <h3 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">Precise Execution</h3>
       <p>
         At Legacy Exteriors, our trenching services combine technical expertise with careful execution to ensure optimal results for your project.
       </p>
@@ -149,47 +133,6 @@ const metadata = {
       </p>
     </Fragment>
   </Content>
-
-  <!-- OurWork Widget **************** -->
-  <OurWork
-    tagline="Portfolio"
-    title="Our Trenching Projects"
-    subtitle="View some of our recent trenching work across Windsor and Essex County"
-    displayType="grid"
-    projects={[
-      {
-        image:
-          'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-        alt: 'Utility trenching for new subdivision',
-        category: 'Utility Trenching',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-        alt: 'French drain installation trenching',
-        category: 'Drainage Solutions',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1563341591-ad0a969037c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-        alt: 'Irrigation system trenching for commercial property',
-        category: 'Irrigation Trenching',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1581026537053-aaba91a931a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-        alt: 'Electrical conduit trenching',
-        category: 'Utility Trenching',
-      },
-    ]}
-    callToAction={{
-      text: 'View All Projects',
-      href: '/our-work',
-      icon: 'tabler:arrow-right',
-      variant: 'secondary',
-    }}
-    bg="<div class='absolute inset-0 bg-blue-50 dark:bg-slate-900/30'></div>"
-  />
 
   <!-- Steps2 Widget ****************** -->
   <Steps2
@@ -269,59 +212,33 @@ const metadata = {
     ]}
   />
 
-  <!-- Testimonials Widget *********** -->
-  <Testimonials
-    title="What Our Customers Say"
-    subtitle="Hear from property owners throughout Windsor-Essex who have benefited from our professional trenching services."
-    testimonials={[
-      {
-        testimonial:
-          "Legacy Exteriors did an outstanding job trenching for our irrigation system installation. They worked around our extensive landscaping with minimal disruption, and their cleanup was thorough. The entire system works perfectly thanks to their precise trenching and attention to detail.",
-        name: 'Jennifer Davis',
-        job: 'South Windsor Homeowner',
-      },
-      {
-        testimonial:
-          "We had serious drainage issues on our property that required extensive French drain installation. The trenching team at Legacy was efficient and knowledgeable, working through our heavy clay soil with ease. They maintained perfect grade for proper water flow, and the restoration was excellent.",
-        name: 'Robert Thompson',
-        job: 'LaSalle Resident',
-      },
-      {
-        testimonial:
-          "As a contractor, I've worked with many trenching companies, and Legacy Exteriors consistently delivers the best results. Their utility trenching for our housing development was precise, on schedule, and properly documented. Their team works safely and efficiently, making my job easier.",
-        name: 'Michael Wilson',
-        job: 'Local Building Contractor',
-      },
-    ]}
-    callToAction={{
-      text: 'Read more testimonials',
-      href: '/testimonials',
-      icon: 'tabler:chevron-right',
-    }}
-  />
+<!-- CallToAction Widget *********** -->
+<CallToAction
+  tagline="Limited Time Offer"
+  backgroundImage='~/assets/images/services/trenching/trenching-services-main.png'
+  showLeaves={false}
+  overlayOpacity={0.8}
+  actions={[
+    {
+      variant: 'primary',
+      text: 'Contact Us Now',
+      href: '/contact',
+      icon: 'tabler:message',
+    },
+    {
+      text: 'View Our Projects',
+      href: '/our-work',
+      icon: 'tabler:photo',
+    },
+  ]}
+  isDark={true}
+>
+  <Fragment slot="title">
+    Professional Trenching Services
+  </Fragment>
 
-  <!-- CallToAction Widget *********** -->
-  <CallToAction
-    tagline="Limited Time Offer"
-    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
-    showLeaves={false}
-    overlayOpacity={0.7}
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get Your Free Estimate',
-        href: '/contact',
-        icon: 'tabler:bulldozer',
-      },
-    ]}
-    isDark={true}
-  >
-    <Fragment slot="title">
-      Sod Installation Package
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Book consultation before August 31st a free consultation on your property.
-    </Fragment>
-  </CallToAction>
+  <Fragment slot="subtitle">
+    Book before August 31st for a free consultation and 10% discount on your trenching project.
+  </Fragment>
+</CallToAction>
 </Layout>
