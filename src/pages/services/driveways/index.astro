@@ -6,8 +6,6 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import BeforeAfter from '~/components/widgets/BeforeAfter.astro';
 
 import drivewayHero from '~/assets/images/services/driveways/driveway-service-main.png';
@@ -22,7 +20,8 @@ const metadata = {
   canonical: 'https://legacyexteriorsinc.com/services/driveways',
   openGraph: {
     title: 'Professional Driveway Installation & Repair | Legacy Exteriors',
-    description: 'Transform your property with a custom-designed, professionally installed driveway built to withstand local weather conditions.',
+    description:
+      'Transform your property with a custom-designed, professionally installed driveway built to withstand local weather conditions.',
     type: 'website',
     images: [
       {
@@ -45,7 +44,7 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Request a Free Quote',
+        text: 'Contact Us Today',
         href: '/contact',
         icon: 'tabler:message',
       },
@@ -71,30 +70,15 @@ const metadata = {
     subtitle="Before and after driveway transformation"
     beforeImage={{
       src: drivewayBefore,
-      alt: "Damaged driveway before replacement",
-      label: "Before"
+      alt: 'Damaged driveway before replacement',
+      label: 'Before',
     }}
     afterImage={{
       src: drivewayAfter,
-      alt: "Beautiful new concrete driveway installation",
-      label: "After"
+      alt: 'Beautiful new concrete driveway installation',
+      label: 'After',
     }}
     imageAspect="16:9"
-  >
-    <p class="text-center mt-6 text-muted">Swipe or click to compare the before and after results of our professional driveway installation.</p>
-  </BeforeAfter>
-
-  <!-- Stats Widget ****************** -->
-  <Stats
-    title="Building Better Driveways"
-    subtitle="Quality materials and expert craftsmanship for lasting results"
-    stats={[
-      { title: 'Projects Completed', amount: '250+' },
-      { title: 'Years of Experience', amount: '18+' },
-      { title: 'Customer Satisfaction', amount: '98%' },
-      { title: 'Warranty Coverage', amount: '5-Yr' },
-    ]}
-    bg="bg-blue-50 dark:bg-slate-800"
   />
 
   <!-- Features Widget ************** -->
@@ -125,13 +109,13 @@ const metadata = {
       {
         title: 'Driveway Repair & Resurfacing',
         description:
-          'Professional solutions for cracks, settling, drainage issues and surface deterioration, extending your driveway\'s lifespan and enhancing its appearance.',
+          "Professional solutions for cracks, settling, drainage issues and surface deterioration, extending your driveway's lifespan and enhancing its appearance.",
         icon: 'tabler:tools',
       },
       {
         title: 'Custom Design Options',
         description:
-          'Personalized driveway designs including decorative concrete finishes, borders, patterns, and color options to complement your home\'s architecture and landscape.',
+          "Personalized driveway designs including decorative concrete finishes, borders, patterns, and color options to complement your home's architecture and landscape.",
         icon: 'tabler:palette',
       },
       {
@@ -172,9 +156,10 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Built to Withstand Our Seasons</h3>
+      <h3 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">Built to Withstand Our Seasons</h3>
       <p>
-        At Legacy Exteriors, we understand the importance of building driveways that can handle our unique weather conditions - from summer heat to winter freezes.
+        At Legacy Exteriors, we understand the importance of building driveways that can handle our unique weather
+        conditions - from summer heat to winter freezes.
       </p>
       <ul class="list-disc list-inside mt-3 mb-3 text-muted">
         <li>Deeper base preparation (12"-16") for better stability</li>
@@ -184,7 +169,8 @@ const metadata = {
         <li>Premium finishing methods that resist salt and chemical damage</li>
       </ul>
       <p class="mb-5">
-        These techniques ensure your driveway remains attractive and functional through years of seasonal changes, requiring minimal maintenance while maintaining its appearance.
+        These techniques ensure your driveway remains attractive and functional through years of seasonal changes,
+        requiring minimal maintenance while maintaining its appearance.
       </p>
     </Fragment>
   </Content>
@@ -235,22 +221,26 @@ const metadata = {
     items={[
       {
         title: 'Longevity & Durability',
-        description: 'Concrete driveways typically last 25-30+ years with minimal maintenance, while properly installed gravel driveways can last 5-10 years before needing significant refreshing.',
+        description:
+          'Concrete driveways typically last 25-30+ years with minimal maintenance, while properly installed gravel driveways can last 5-10 years before needing significant refreshing.',
         icon: 'tabler:clock',
       },
       {
         title: 'Maintenance Requirements',
-        description: 'Concrete requires occasional cleaning and resealing every few years. Gravel needs more frequent maintenance including regrading and adding fresh stone periodically.',
+        description:
+          'Concrete requires occasional cleaning and resealing every few years. Gravel needs more frequent maintenance including regrading and adding fresh stone periodically.',
         icon: 'tabler:tools',
       },
       {
         title: 'Cost Considerations',
-        description: 'While concrete has a higher upfront cost, its longevity often provides better long-term value. Gravel offers a more budget-friendly initial investment.',
+        description:
+          'While concrete has a higher upfront cost, its longevity often provides better long-term value. Gravel offers a more budget-friendly initial investment.',
         icon: 'tabler:coin',
       },
       {
         title: 'Environmental Impact',
-        description: 'Gravel provides better natural drainage, while concrete can be installed with permeable options. Both can be environmentally friendly with proper installation.',
+        description:
+          'Gravel provides better natural drainage, while concrete can be installed with permeable options. Both can be environmentally friendly with proper installation.',
         icon: 'tabler:leaf',
       },
     ]}
@@ -260,11 +250,12 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+      <h3 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">
         Making the Right Choice for Your Property
       </h3>
       <p class="mb-4">
-        The best driveway material depends on your specific needs, budget, and property characteristics. Our team will help you evaluate these factors to make the optimal choice:
+        The best driveway material depends on your specific needs, budget, and property characteristics. Our team will
+        help you evaluate these factors to make the optimal choice:
       </p>
       <ul class="list-disc list-inside mb-4 text-muted">
         <li>Your budget for both installation and long-term maintenance</li>
@@ -273,43 +264,12 @@ const metadata = {
         <li>How long you plan to remain in your home</li>
         <li>Your tolerance for maintenance tasks</li>
       </ul>
-      <p>During your free consultation, we'll discuss these considerations to help you select the perfect driveway material for your specific situation.</p>
+      <p>
+        During your free consultation, we'll discuss these considerations to help you select the perfect driveway
+        material for your specific situation.
+      </p>
     </Fragment>
   </Content>
-
-  <!-- Testimonials Widget *********** -->
-  <Testimonials
-    title="What Our Customers Say"
-    subtitle="Hear from homeowners who have transformed their properties with our driveway services"
-    testimonials={[
-      {
-        testimonial:
-          "Legacy Exteriors replaced our old cracked driveway with a beautiful stamped concrete design. Their attention to drainage issues we'd been having for years was impressive - for the first time, we don't have pooling water by our garage during heavy rains. The crew was professional, on-time, and left our property spotless.",
-        name: 'Jennifer Roberts',
-        job: 'Homeowner in Riverside',
-        rating: 5,
-      },
-      {
-        testimonial:
-          "After getting quotes from several contractors, we chose Legacy for our new gravel driveway. Their knowledge and attention to detail with the base preparation made all the difference. The proper grading solved our drainage issues, and nearly two years later, it still looks great with minimal maintenance.",
-        name: 'Michael Wilson',
-        job: 'Rural Property Owner',
-        rating: 5,
-      },
-      {
-        testimonial:
-          "Our concrete driveway had serious cracks and settling issues that made parking difficult. Legacy's team identified the drainage problems causing the damage and completely rebuilt our driveway with proper reinforcement and drainage. The finish is beautiful, and their warranty gives us complete peace of mind.",
-        name: 'David Thompson',
-        job: 'South Windsor Resident',
-        rating: 5,
-      },
-    ]}
-    callToAction={{
-      text: 'Read more testimonials',
-      href: '/testimonials',
-      icon: 'tabler:chevron-right',
-    }}
-  />
 
   <!-- FAQs Widget ******************* -->
   <FAQs
@@ -321,17 +281,17 @@ const metadata = {
       {
         title: 'How long does a driveway installation typically take?',
         description:
-          "For an average residential concrete driveway, the complete process takes about 5-7 days: 1-2 days for removal and preparation, 1 day for forming and pouring, and 3-4 days for curing before light use. Gravel driveways can be completed in 2-3 days. Weather conditions may affect this timeline. While you can walk on a new concrete driveway after 24-48 hours, we recommend waiting 7 days before driving on it to allow proper curing and strength development.",
+          'For an average residential concrete driveway, the complete process takes about 5-7 days: 1-2 days for removal and preparation, 1 day for forming and pouring, and 3-4 days for curing before light use. Gravel driveways can be completed in 2-3 days. Weather conditions may affect this timeline. While you can walk on a new concrete driveway after 24-48 hours, we recommend waiting 7 days before driving on it to allow proper curing and strength development.',
       },
       {
         title: 'What causes concrete driveways to crack, and how do you prevent it?',
         description:
-          "Cracking typically results from improper base preparation, inadequate concrete thickness, missing control joints, improper curing, or seasonal freeze-thaw cycles. We prevent these issues with thorough base compaction, appropriate concrete thickness (minimum 4-6 inches for residential driveways), strategic control joint placement, proper reinforcement, premium concrete mixes, appropriate curing techniques, and quality sealing. While some hairline cracks may develop naturally, our techniques minimize significant structural cracking.",
+          'Cracking typically results from improper base preparation, inadequate concrete thickness, missing control joints, improper curing, or seasonal freeze-thaw cycles. We prevent these issues with thorough base compaction, appropriate concrete thickness (minimum 4-6 inches for residential driveways), strategic control joint placement, proper reinforcement, premium concrete mixes, appropriate curing techniques, and quality sealing. While some hairline cracks may develop naturally, our techniques minimize significant structural cracking.',
       },
       {
         title: 'What maintenance does a concrete driveway require?',
         description:
-          "Concrete driveways require minimal maintenance compared to other materials. We recommend: regular cleaning with a pressure washer or stiff broom to remove debris and prevent staining, resealing every 2-3 years to protect against moisture and salt damage, prompt removal of oil or chemical spills to prevent staining, and filling any small cracks that develop to prevent water infiltration. With these simple steps, your concrete driveway should provide decades of service with minimal upkeep.",
+          'Concrete driveways require minimal maintenance compared to other materials. We recommend: regular cleaning with a pressure washer or stiff broom to remove debris and prevent staining, resealing every 2-3 years to protect against moisture and salt damage, prompt removal of oil or chemical spills to prevent staining, and filling any small cracks that develop to prevent water infiltration. With these simple steps, your concrete driveway should provide decades of service with minimal upkeep.',
       },
       {
         title: 'How do you ensure proper drainage for driveways?',
@@ -341,7 +301,7 @@ const metadata = {
       {
         title: 'What type of warranty do you offer on new driveways?',
         description:
-          "We stand behind our workmanship with a comprehensive 5-year warranty on all new concrete driveway installations. This covers structural issues, significant cracking (beyond normal hairline cracks), and drainage problems resulting from improper installation. For gravel driveways, we provide a 2-year warranty on base stability and drainage. Our warranty reflects our confidence in our quality standards and installation techniques.",
+          'We stand behind our workmanship with a comprehensive 5-year warranty on all new concrete driveway installations. This covers structural issues, significant cracking (beyond normal hairline cracks), and drainage problems resulting from improper installation. For gravel driveways, we provide a 2-year warranty on base stability and drainage. Our warranty reflects our confidence in our quality standards and installation techniques.',
       },
       {
         title: 'Is it better to repair my existing driveway or replace it completely?',
@@ -364,7 +324,7 @@ const metadata = {
         icon: 'tabler:message',
       },
     ]}
-    backgroundImage='~/assets/images/services/driveways/driveways-cta-background.png'
+    backgroundImage="~/assets/images/services/driveways/driveway-service-main.png"
     showLeaves={false}
     overlayOpacity={0.7}
     isDark={true}

@@ -7,8 +7,6 @@ import Content from '~/components/widgets/Content.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import OurWork from '~/components/widgets/OurWork.astro';
 
 const metadata = {
   title: 'Landscape Grading & Preparation Services in Windsor | Legacy Exteriors',
@@ -150,46 +148,6 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- OurWork Widget **************** -->
-  <OurWork
-    tagline="Portfolio"
-    title="Our Landscape Projects"
-    subtitle="View examples of our professional landscape preparation, grading, and hardscaping work across Windsor-Essex"
-    displayType="grid"
-    projects={[
-      {
-        image:
-          'https://images.unsplash.com/photo-1604014091681-901e7dc7a5f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-        alt: 'Backyard grading and preparation',
-        category: 'Landscape Grading',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
-        alt: 'Stone patio installation',
-        category: 'Hardscaping',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1599076480850-ac4094e95374?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-        alt: 'Sod installation after grading',
-        category: 'Sod Installation',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1605059910848-7cf6dabd96ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-        alt: 'French drain installation',
-        category: 'Drainage Solutions',
-      },
-    ]}
-    callToAction={{
-      text: 'View All Projects',
-      href: '/our-work',
-      icon: 'tabler:arrow-right',
-      variant: 'secondary',
-    }}
-    bg="<div class='absolute inset-0 bg-green-50 dark:bg-slate-900/30'></div>"
-  />
 
   <!-- Steps2 Widget ****************** -->
   <Steps2
@@ -305,38 +263,6 @@ const metadata = {
       },
     ]}
   />
-
-  <!-- Testimonials Widget *********** -->
-  <Testimonials
-    title="What Our Customers Say"
-    subtitle="Hear from homeowners throughout Windsor-Essex who have transformed their properties with our landscape services."
-    testimonials={[
-      {
-        testimonial:
-          "Legacy Exteriors solved serious drainage issues that had plagued our backyard for years. Their expert grading and drainage installation has kept our basement dry through several major storms. They also installed a beautiful paver patio that hasn't shifted a bit despite our clay soil.",
-        name: 'Jennifer Wilson',
-        job: 'South Windsor Resident',
-      },
-      {
-        testimonial:
-          "After buying a new construction home with a completely bare yard, I hired Legacy to handle the grading and hardscaping. Their work provided the perfect foundation for my landscape. The sod installation was flawless, and the retaining wall they built to manage my sloped backyard is both functional and attractive.",
-        name: 'Michael Johnson',
-        job: 'LaSalle Homeowner',
-      },
-      {
-        testimonial:
-          "As a contractor, I've partnered with Legacy Exteriors on numerous projects. Their landscape preparation and grading work is exceptional. They understand Windsor's unique soil and drainage challenges, and their attention to detail in creating proper foundations for landscapes saves my clients headaches down the road.",
-        name: 'David Thompson',
-        job: 'Local Building Contractor',
-      },
-    ]}
-    callToAction={{
-      text: 'Read more testimonials',
-      href: '/testimonials',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
   <!-- CallToAction Widget *********** -->
   <CallToAction
     tagline="Limited Time Offer"
