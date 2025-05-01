@@ -87,7 +87,7 @@ const {
       <div class="flex flex-col sm:flex-row gap-6 mb-6">
         <!-- Google Rating Badge -->
         {googleRating &&
-          <div class="flex-1 bg-white dark:bg-transparent rounded-lg shadow-md p-4 border border-gray-100 dark:border-gray-700">
+          <div class="flex-1 bg-white dark:bg-transparent rounded-lg shadow-md p-4 legacy-card">
             <div class="flex items-center">
               <div class="bg-white p-2 rounded-full shadow-sm mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="w-6 h-6">
@@ -117,7 +117,7 @@ const {
         }
         
         <!-- Licensed & Insured Badge -->
-        <div class="flex-1 bg-white dark:bg-transparent rounded-lg shadow-md p-4 border border-gray-100 dark:border-gray-700">
+        <div class="flex-1 legacy-card bg-white dark:bg-transparent rounded-lg shadow-md p-4 ">
           <div class="flex items-center mb-2">
             <div class="bg-green-100 dark:bg-green-800/30 p-2 rounded-full mr-3">
               <Icon name="tabler:certificate" class="w-6 h-6 text-green-600 dark:text-green-400" />
@@ -166,7 +166,7 @@ const {
       <h3 class="text-2xl md:text-3xl font-heading font-bold text-center mb-8 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">Our Core Values</h3>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {values.map((value, index) => (
-          <div class={`bg-white dark:bg-transparent rounded-lg p-6 shadow-md border border-gray-100 dark:border-gray-800 text-center flex flex-col items-center intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade`} style={{ animationDelay: `${index * 150}ms` }}>
+          <div class={`bg-white dark:bg-transparent rounded-lg p-6 shadow-md legacy-card text-center flex flex-col items-center intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade`} style={{ animationDelay: `${index * 150}ms` }}>
             {value.icon && 
               <div class="bg-green-100 dark:bg-green-800/30 rounded-full p-4 text-green-600 dark:text-green-400 mb-4">
                 <Icon name={value.icon} class="w-8 h-8" />

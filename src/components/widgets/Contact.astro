@@ -4,6 +4,10 @@ import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Contact as Props } from '~/types';
 
+interface ExtendedContactProps extends Props {
+  web3FormsAccessKey?: string;
+}
+
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
@@ -13,12 +17,13 @@ const {
   disclaimer,
   button,
   description,
+  web3FormsAccessKey = '928584ff-8a35-4f6e-88c9-c1a78ad2c298', // Add your Web3Forms access key here
 
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props;
+} = Astro.props as ExtendedContactProps;
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -33,6 +38,7 @@ const {
           disclaimer={disclaimer}
           button={button}
           description={description}
+          web3FormsAccessKey={web3FormsAccessKey}
         />
       </div>
     )

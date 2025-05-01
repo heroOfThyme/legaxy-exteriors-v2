@@ -21,20 +21,30 @@
 }
 
 @layer components {
+  /* Button Styles */
   .btn {
-    @apply inline-flex items-center justify-center rounded-md border border-transparent bg-transparent font-medium text-center text-base leading-snug transition py-3 px-8 ease-in duration-200 focus:ring-emerald-500 focus:ring-offset-emerald-200 focus:ring-2 focus:ring-offset-2 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-md border border-transparent font-medium text-center text-base leading-snug transition py-3 px-8 ease-in duration-200 focus:ring-green-500 focus:ring-offset-green-200 focus:ring-2 focus:ring-offset-2 cursor-pointer;
   }
-  
+
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary dark:text-white dark:bg-primary dark:border-primary dark:hover:bg-secondary shadow-sm hover:shadow-md;
+    @apply btn font-semibold bg-primary text-white border-primary relative overflow-hidden shadow-md hover:shadow-lg;
   }
-  
+
+  /* Add subtle shine animation on hover */
+  .btn-primary::before {
+    @apply absolute inset-0 w-0 bg-white/5 transition-all duration-500 ease-out content-[''];
+  }
+
+  .btn-primary:hover::before {
+    @apply w-full;
+  }
+
   .btn-secondary {
-    @apply btn font-medium bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50 dark:bg-transparent dark:text-gray-200 dark:border-green-600 dark:hover:bg-green-600 shadow-sm;
+    @apply btn font-medium bg-transparent text-white border-2 border-green-800 hover:border-green-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300;
   }
-  
+
   .btn-tertiary {
-    @apply btn font-medium text-primary hover:text-secondary hover:bg-gray-50 dark:text-primary dark:hover:text-secondary dark:hover:bg-slate-800;
+    @apply btn font-medium text-primary hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/10 transition-colors;
   }
 }
 
@@ -90,3 +100,81 @@
 .dd *:first-child {
   margin-top: 0;
 }
+
+/* Card Styles with Green Glow Effect */
+.legacy-card {
+  @apply relative flex flex-col rounded-lg border border-green-800/50 bg-[#050505] overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg;
+}
+
+.legacy-card:hover {
+  @apply border-green-700/60 -translate-y-1;
+}
+
+/* Add subtle glow effect on hover */
+.legacy-card::before {
+  @apply absolute -inset-0.5 bg-gradient-to-t from-green-700/20 via-transparent to-green-950/20 rounded-lg blur-lg opacity-0 transition-opacity duration-300 z-0 content-[''];
+}
+
+.legacy-card:hover::before {
+  @apply opacity-100;
+  animation: cardGlow 1s ease-in-out infinite alternate;
+}
+
+/* Card Content */
+.legacy-card-content {
+  @apply relative z-10 flex flex-col p-6 flex-grow;
+}
+
+/* Card Image Container */
+.legacy-card-image {
+  @apply relative h-52 overflow-hidden;
+}
+
+/* Card Image */
+.legacy-card-image img {
+  @apply w-full h-full object-cover transition-transform duration-700 ease-in-out;
+}
+
+.legacy-card:hover .legacy-card-image img {
+  @apply scale-105;
+}
+
+/* Icon Badge */
+.legacy-icon-badge {
+  @apply absolute right-4 top-4 bg-green-900/80 text-white p-3 rounded-full shadow-md z-10;
+}
+
+/* Legacy Exteriors Decorative Elements */
+.legacy-decorative-corner {
+  @apply absolute -z-10 w-40 h-40 bg-green-900/20 rounded-full blur-xl;
+}
+
+/* Header styles */
+.legacy-heading {
+  @apply text-xl font-heading font-bold mb-2 text-white group-hover:text-green-400 transition-colors duration-300;
+}
+
+/* Subtle hover animations for lists and links */
+.legacy-hover-item {
+  @apply transition-all duration-300 hover:translate-x-2;
+}
+  
+  /* Pulsing animations for background elements (only if motion is allowed) */
+  @media (prefers-reduced-motion: no-preference) {
+    .legacy-pulse-slow {
+      animation: legacyPulse 15s ease-in-out infinite;
+    }
+    
+    .legacy-pulse-medium {
+      animation: legacyPulse 10s ease-in-out infinite;
+    }
+    
+    .legacy-pulse-fast {
+      animation: legacyPulse 7s ease-in-out infinite;
+    }
+    
+    @keyframes legacyPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+  }

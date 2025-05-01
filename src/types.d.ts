@@ -211,6 +211,7 @@ export interface Form {
   button?: string;
   description?: string;
   services?: Array<string>;
+  web3FormsAccessKey?: string;
 }
 
 // WIDGETS

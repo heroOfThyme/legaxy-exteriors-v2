@@ -68,6 +68,7 @@ const {
     }}
   />
 
+  <!-- Services Grid with Enhanced Legacy Exteriors Styling -->
   <div
     class={twMerge(
       `grid gap-6 md:gap-8 ${
@@ -83,20 +84,25 @@ const {
     )}
   >
     {
-      services.map((service) => (
+      services.map((service, index) => (
         <div
           class={twMerge(
-            'relative flex flex-col p-0 rounded-md hover:shadow-lg border border-green-700/20 shadow-md overflow-hidden group transition-all duration-300 dark:bg-transparent h-full intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
+            'legacy-card group h-full intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
             classes?.card,
             service.classes?.card
           )}
+          style={{ animationDelay: `${index * 100}ms` }}
         >
+          {/* Decorative background elements with improved animations */}
+          <div class="absolute top-0 right-0 w-20 h-20 bg-green-900/20 -mr-10 -mt-10 rounded-full z-0 transition-all duration-700 group-hover:bg-green-800/30"></div>
+          <div class="absolute bottom-0 left-0 w-16 h-16 bg-green-900/10 -ml-8 -mb-8 rounded-full z-0 transition-all duration-700 group-hover:bg-green-700/20"></div>
+          
           {service.image && (
-            <div class="relative h-52 overflow-hidden">
+            <div class="legacy-card-image overflow-hidden">
               <Image
                 src={service.image}
                 class={twMerge(
-                  'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out',
+                  'w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110',
                   classes?.image,
                   service.classes?.image
                 )}
@@ -109,24 +115,28 @@ const {
                 loading="lazy"
                 decoding="async"
               />
-              {highlight && <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20" />}
+              {highlight && (
+                <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20 transition-opacity duration-500 group-hover:opacity-0" />
+              )}
+              {/* Add a subtle gradient overlay that appears on hover */}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90"></div>
               {service.icon && (
-                <div class="absolute right-4 top-4 bg-white dark:bg-slate-900 p-3 rounded-full shadow-md">
+                <div class="legacy-icon-badge transform transition-transform duration-500 group-hover:scale-110 group-hover:bg-green-700/90">
                   <Icon
                     name={service.icon}
-                    class={twMerge('w-6 h-6 text-primary', service.classes?.icon)}
+                    class={twMerge('w-6 h-6 transition-transform duration-500 group-hover:scale-110', service.classes?.icon)}
                   />
                 </div>
               )}
             </div>
           )}
           
-          <div class={twMerge('flex flex-col p-6 flex-grow', classes?.cardContent, service.classes?.cardContent)}>
-            <h3 class="text-xl font-heading font-bold mb-2">{service.title}</h3>
-            <p class="text-muted flex-grow mb-4">{service.description}</p>
+          <div class={twMerge('legacy-card-content transition-all duration-300 group-hover:translate-y-1', classes?.cardContent, service.classes?.cardContent)}>
+            <h3 class="legacy-heading">{service.title}</h3>
+            <p class="text-gray-400 flex-grow mb-4 transition-colors duration-500 group-hover:text-gray-300">{service.description}</p>
             
             {service.callToAction && (
-              <div class="pt-2 mt-auto">
+              <div class="pt-2 mt-auto transform transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 <Button 
                   variant="primary" 
                   href={service.callToAction.href} 
@@ -142,8 +152,9 @@ const {
     }
   </div>
 
+  {/* View All Button with Enhanced Styling */}
   {viewAllButton.enabled && (
-    <div class="flex justify-center mt-8">
+    <div class="flex justify-center mt-10">
       <Button
         variant="secondary"
         href={viewAllButton.href}
@@ -153,3 +164,21 @@ const {
     </div>
   )}
 </WidgetWrapper>
+s
+<style>
+  /* Additional card styling that can be moved to global styles later */
+  @keyframes subtlePulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.7; }
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .legacy-card > div:first-child {
+      animation: subtlePulse 8s ease-in-out infinite;
+    }
+    
+    .legacy-card > div:nth-child(2) {
+      animation: subtlePulse 12s ease-in-out infinite;
+    }
+  }
+</style>

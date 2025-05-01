@@ -16,7 +16,7 @@ const {
 const variants = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
-  tertiary: 'btn btn-tertiary',
+  tertiary: 'btn-tertiary',
   link: 'cursor-pointer hover:text-primary',
 };
 ---
@@ -24,17 +24,21 @@ const variants = {
 {
   type === 'button' || type === 'submit' || type === 'reset' ? (
     <button type={type} class={twMerge(variants[variant] || '', className)} {...rest}>
-      <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      <span class="relative z-10 flex items-center justify-center">
+        <Fragment set:html={text} />
+        {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block group-hover:translate-x-1 transition-transform duration-300" />}
+      </span>
     </button>
   ) : (
     <a
-      class={twMerge(variants[variant] || '', className)}
+      class={twMerge(variants[variant] || '', 'group', className)}
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}
     >
-      <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      <span class="relative z-10 flex items-center justify-center">
+        <Fragment set:html={text} />
+        {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block group-hover:translate-x-1 transition-transform duration-300" />}
+      </span>
     </a>
   )
 }
