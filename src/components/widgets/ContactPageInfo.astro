@@ -1,0 +1,165 @@
+---
+import { Icon } from 'astro-icon/components';
+import GoogleMap from '~/components/widgets/GoogleMap.astro';
+import type { Widget } from '~/types';
+
+export interface Props extends Widget {
+  contactMethods?: Array<{
+    title: string;
+    value: string;
+    description?: string;
+    icon: string;
+    href?: string;
+  }>;
+  socialLinks?: Array<{
+    name: string;
+    href: string;
+    icon: string;
+  }>;
+  serviceAreas?: Array<string>;
+  mapSettings?: {
+    apiKey?: string;
+    center?: string;
+    zoom?: number;
+    markerLocations?: string[];
+    useFallback?: boolean;
+  };
+  classes?: {
+    container?: string;
+    cardContainer?: string;
+    card?: string;
+  };
+}
+
+const {
+  contactMethods = [
+    {
+      title: 'Phone',
+      value: '(519) 791-1506',
+      description: 'Monday-Friday 8AM-10PM, Weekends 8AM-8PM',
+      icon: 'tabler:phone',
+      href: 'tel:+15197911506',
+    },
+    {
+      title: 'Email',
+      value: 'info@legacyexteriorsinc.com',
+      description: "We'll respond within 24 hours",
+      icon: 'tabler:mail',
+      href: 'mailto:info@legacyexteriorsinc.com',
+    },
+    {
+      title: 'Office',
+      value: 'Windsor, Ontario',
+      description: 'Serving all of Essex County',
+      icon: 'tabler:map-pin',
+    },
+  ],
+  socialLinks = [
+    {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/legacy_exteriors_inc',
+      icon: 'tabler:brand-instagram',
+    },
+    {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/LegacyExteriorsIncWindsor',
+      icon: 'tabler:brand-facebook',
+    },
+  ],
+  serviceAreas = ['Windsor', 'Tecumseh', 'LaSalle', 'Essex', 'Lakeshore', 'Amherstburg', 'Kingsville'],
+  mapSettings = {
+    apiKey: 'AIzaSyCI4V6NhZ-cRpflyhPVPpUe4cNtbEUiPeo',
+    center: '42.25,-82.85',
+    zoom: 10,
+    markerLocations: [
+      'Windsor,Ontario,Canada',
+      'Tecumseh,Ontario,Canada',
+      'LaSalle,Ontario,Canada',
+      'Essex,Ontario,Canada',
+      'Lakeshore,Ontario,Canada',
+    ],
+    useFallback: false,
+  },
+  classes = {},
+} = Astro.props;
+---
+
+<div class={`${classes?.container ?? ''}`}>
+  <!-- Contact Information Card -->
+  <div class="relative p-8 rounded-lg shadow-2xl border border-green-800/50 bg-[#050505] overflow-hidden mb-10 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 right-0 w-40 h-40 bg-green-900/20 rounded-full -mt-20 -mr-20 z-0"></div>
+    <div class="absolute bottom-0 left-0 w-40 h-40 bg-green-900/10 rounded-full -mb-20 -ml-20 z-0"></div>
+    
+    <h2 class="text-2xl font-bold text-white mb-6 font-heading relative z-10">Contact Information</h2>
+    
+    <!-- Contact Methods Grid -->
+    <div class="grid gap-6 relative z-10">
+      {contactMethods.map((method) => (
+        <div class="flex items-start group transition-all duration-300 hover:translate-x-2">
+          <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4 group-hover:bg-green-800/40 transition-colors duration-300">
+            <Icon name={method.icon} class="w-6 h-6 text-green-500" />
+          </div>
+          <div>
+            <h3 class="text-lg font-medium text-green-400">{method.title}</h3>
+            {method.href ? (
+              <a href={method.href} class="text-white text-lg hover:text-green-400 transition-colors duration-300">
+                {method.value}
+              </a>
+            ) : (
+              <p class="text-white text-lg">{method.value}</p>
+            )}
+            {method.description && <p class="text-gray-500 text-sm mt-1">{method.description}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Social Media Links -->
+    <div class="mt-8 relative z-10">
+      <h3 class="text-lg font-medium text-green-400 mb-4">Follow Us</h3>
+      <div class="flex space-x-4">
+        {socialLinks.map((social) => (
+          <a 
+            href={social.href} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center text-white hover:bg-green-800 hover:text-green-400 transition-all duration-300 hover:-translate-y-1"
+            title={social.name}
+          >
+            <Icon name={social.icon} class="w-5 h-5" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+  
+  <!-- Service Areas Card -->
+  <div class="relative p-8 rounded-lg shadow-2xl border border-green-800/50 bg-[#050505] overflow-hidden intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <h2 class="text-2xl font-bold text-white mb-4 font-heading relative z-10">Areas We Serve</h2>
+    <p class="text-gray-400 mb-4 relative z-10">Proudly serving Windsor and Essex County with professional excavation and landscaping services.</p>
+    
+    <div class="flex flex-wrap gap-2 relative z-10">
+      {serviceAreas.map((area) => (
+        <span class="px-3 py-1.5 bg-green-900/30 text-green-400 rounded-full text-sm hover:bg-green-800/40 transition-colors duration-300">
+          {area}
+        </span>
+      ))}
+    </div>
+    
+    <!-- Map Component -->
+    <div class="mt-6 relative z-10">
+      <GoogleMap
+        apiKey={mapSettings.apiKey}
+        center={mapSettings.center}
+        zoom={mapSettings.zoom}
+        width={600}
+        height={250}
+        region="ca"
+        markerLocations={mapSettings.markerLocations}
+        className="rounded-lg border border-green-900/50 overflow-hidden w-full h-[250px]"
+        useFallback={mapSettings.useFallback}
+      />
+    </div>
+  </div>
+</div>
