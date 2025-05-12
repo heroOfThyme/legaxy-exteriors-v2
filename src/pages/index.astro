@@ -13,14 +13,16 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 const metadata = {
   title: 'Legacy Exteriors | Professional Excavation Services in Windsor, Ontario',
   ignoreTitleTemplate: true,
-  description: 'Expert excavation, trenching, drainage, and site preparation services in Windsor-Essex. Trusted contractor since 2022. Free estimates available.',
+  description:
+    'Expert excavation, trenching, drainage, and site preparation services in Windsor-Essex. Trusted contractor since 2022. Free estimates available.',
   openGraph: {
     type: 'website',
     locale: 'en_CA',
     url: 'https://legacyexteriors.ca',
     siteName: 'Legacy Exteriors',
     title: 'Legacy Exteriors | Professional Excavation Services in Windsor, Ontario',
-    description: 'Expert excavation, trenching, drainage, and site preparation services. Trusted Windsor contractor since 2022. Free estimates available.',
+    description:
+      'Expert excavation, trenching, drainage, and site preparation services. Trusted Windsor contractor since 2022. Free estimates available.',
     images: [
       {
         url: '~/assets/images/about/legacy-exteriors-equipment-line.png',
@@ -34,65 +36,57 @@ const metadata = {
 };
 
 const heroImages = [
-{
-  src: '~/assets/images/projects/basement-walkout-finished.png',
-  alt: 'Basement Walkout Completed',
-},
-{
-  src: '~/assets/images/projects/soil-graded-and-levelled-windsor-sod.png',
-  alt: 'Levelled Soil for Sod Installation',
-},
-{
-  src: '~/assets/images/projects/sodded-lawn-complete.png',
-  alt: 'Sodded Lawn Completed',
-}
+  {
+    src: '~/assets/images/projects/basement-walkout-finished.png',
+    alt: 'Basement Walkout Completed',
+  },
+  {
+    src: '~/assets/images/projects/soil-graded-and-levelled-windsor-sod.png',
+    alt: 'Levelled Soil for Sod Installation',
+  },
+  {
+    src: '~/assets/images/projects/sodded-lawn-complete.png',
+    alt: 'Sodded Lawn Completed',
+  },
 ];
 ---
 
 <Layout metadata={metadata}>
   <Hero2
-  tagline="Windsor's Excavation Experts"
-  title="Transform Your Property with Professional Excavation"
-  subtitle="From Sod and landscaping work, to drainage systems, basement walk-outs, driveways, and more, Legacy Exteriors delivers precise excavation solutions that exceed expectations. Serving Windsor-Essex with integrity and quality."
-  showReviews={true}
-  reviewsRating={5}
-  reviewsCount={28}
-  actions={[
-    {
-      variant: 'primary',
-      text: 'Get a Free Estimate',
-      href: '/contact',
-    },
-    {
-      variant: 'secondary',
-      text: 'View Our Projects',
-      href: '/work',
-    },
-  ]}
-
-images={heroImages}
->
-  <!-- Background -->
-  <Fragment slot="bg">
-    <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
-    <video 
-      class="absolute inset-0 w-full h-full object-cover"
-      autoplay
-      muted
-      loop
-      playsinline
-    >
-      <source src="/images/375622756_9968442169894441_7438767060446748338_n_1.mp4" type="video/mp4">
-      <!-- Fallback image in case video doesn't load -->
-      <Image 
-        src="/images/hero-mainv2.png" 
-        alt="Excavation services background" 
-        class="absolute inset-0 w-full h-full object-cover" 
-      />
-    </video>
-  </Fragment>
-</Hero2>
-
+    tagline="Windsor's Excavation Experts"
+    title="Transform Your Property with <span class='text-primary'>Professional</span> Excavation"
+    subtitle="From sod installation and landscaping, to drainage systems, basement walk-outs, driveways, and more, Legacy Exteriors delivers precise excavation solutions that exceed expectations. Serving Windsor-Essex with integrity and quality."
+    showReviews={true}
+    reviewsRating={5}
+    reviewsCount={28}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Estimate',
+        href: '/contact',
+      },
+      {
+        variant: 'secondary',
+        text: 'View Our Projects',
+        href: '/work',
+      },
+    ]}
+    images={heroImages}
+  >
+    <!-- Background -->
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-black opacity-70 z-10"></div>
+      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+        <source src="/images/375622756_9968442169894441_7438767060446748338_n_1.mp4" type="video/mp4" />
+        <!-- Fallback image in case video doesn't load -->
+        <Image
+          src="/images/hero-mainv2.png"
+          alt="Excavation services background"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      </video>
+    </Fragment>
+  </Hero2>
 
   <!-- Services Widget ******************* -->
   <Services
@@ -186,9 +180,9 @@ images={heroImages}
   <!-- Company Values Widget ********** -->
   <CompanyValues
     tagline="About Legacy Exteriors"
-    title="Building Trust Since 2022"
+    title="Built on 30 Years of Family Expertise"
     subtitle="Where precision meets dedication in every excavation project."
-    companyDescription="At Legacy Exteriors, we understand that successful excavation projects require more than just heavy equipment – they demand expertise, precision, and unwavering commitment to quality. Since 2022, we've built our reputation on delivering exceptional results for homeowners and businesses throughout the region.<br><br>Our dedication to excellence extends beyond the job site. We believe in building lasting relationships with our clients through transparent communication, professional service, and the highest standards of workmanship. Every project we undertake reflects our commitment to transforming properties while exceeding expectations."
+    companyDescription="At Legacy Exteriors, excavation runs in the family. What began over 30 years ago  a fathers commitment to hard work and quality craftsmanship has evolved into a trusted name for excavation solutions across Windsor-Essex. Today, Legacy Exteriors carries that tradition forward-combining decades of experience with modern precision to deliver outstanding results for homeowners and businesses alike.<br><br>Our dedication to excellence goes beyond the job site. We build lasting relationships through clear communication, professional service, and top-tier workmanship. Every project is a reflection of our family's commitment to doing the job right-and exceeding expectations."
     googleRating={{
       score: 5,
       count: 28,
@@ -228,7 +222,7 @@ images={heroImages}
       icon: 'tabler:arrow-right',
       variant: 'secondary',
     }}
-    bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-950/50'></div>"
+    bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/20 via-transparent to-green-900/20'></div>"
   />
 
   <!-- OurWork Widget -->
@@ -246,9 +240,7 @@ images={heroImages}
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-  />
+  <BlogLatestPosts title="Find out more content in our Blog" />
 
   <!-- Testimonials Widget ********* -->
   <Testimonials
@@ -301,7 +293,7 @@ images={heroImages}
       {
         name: 'Ashley Emans',
         testimonial:
-          'Excellent service! Very accomodating. Positives: Responsiveness, Punctuality, Quality, Professionalism, Value',
+          'Excellent service! Very accommodating. Positives: Responsiveness, Punctuality, Quality, Professionalism, Value',
         rating: 5,
         date: 'August 29, 2022',
         verifiedCustomer: true,
@@ -310,20 +302,20 @@ images={heroImages}
         name: 'Nick Kelly',
         job: 'Homeowner',
         testimonial:
-          "Alex went out of his way to make sure I was happy with his services and I was very impressed by his workmanship. He made the process simple and painless from start to finish. Would definitely recommend.",
+          'Alex went out of his way to make sure I was happy with his services and I was very impressed by his workmanship. He made the process simple and painless from start to finish. Would definitely recommend.',
         rating: 5,
         date: 'Jun 13, 2023',
         highlight: true,
         verifiedCustomer: true,
       },
     ]}
-    bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-950/50'></div>"
+    bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/20 via-transparent to-green-900/20'></div>"
   />
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
     tagline="Limited Time Offer"
-    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    backgroundImage="~/assets/images/about/legacy-exteriors-equipment-line.png"
     showLeaves={false}
     overlayOpacity={0.7}
     actions={[
@@ -336,12 +328,8 @@ images={heroImages}
     ]}
     isDark={true}
   >
-    <Fragment slot="title">
-      Sod Installation Package
-    </Fragment>
+    <Fragment slot="title"> Sod Installation Package </Fragment>
 
-    <Fragment slot="subtitle">
-      Book consultation before August 31st a free consultation on your property.
-    </Fragment>
+    <Fragment slot="subtitle"> Book consultation before August 31st a free consultation on your property. </Fragment>
   </CallToAction>
 </Layout>

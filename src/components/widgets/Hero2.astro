@@ -11,8 +11,8 @@ const {
   tagline,
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
-  images = [], // New prop for multiple images
-  image = await Astro.slots.render('image'), // Keep original image prop for backward compatibility
+  images = [],
+  image = await Astro.slots.render('image'),
   
   // Reviews options
   showReviews = false,
@@ -23,7 +23,6 @@ const {
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 
-// Prepare images for slider - use images array if provided, otherwise use single image
 const sliderImages = images.length > 0 ? images : (image ? [image] : []);
 ---
 
@@ -120,17 +119,15 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
         {/* Image display - either slider or single image */}
         <div class="relative m-auto max-w-5xl intersect-once intercept-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
           {sliderImages.length > 0 ? (
-            <div class="hero-slider-container relative overflow-hidden rounded-md">
-              <div class="hero-slider-wrapper flex transition-transform duration-500 ease-in-out">
+            <div class="hero-slider-container relative overflow-hidden rounded-md shadow-lg h-full">
+              <div class="hero-slider-wrapper flex">
                 {sliderImages.map((img, index) => (
                   <div class="hero-slide w-full flex-shrink-0">
                     <Image
-                      class="mx-auto rounded-md w-full"
+                      class="mx-auto w-full h-full object-cover"
                       widths={[400, 768, 1024, 2040]}
                       sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
                       loading={index === 0 ? "eager" : "lazy"}
-                      width={600}
-                      height={600}
                       {...img}
                     />
                   </div>
@@ -139,25 +136,23 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
               
               {sliderImages.length > 1 && (
                 <>
-                  <!-- Navigation Arrows -->
                   <button 
-                    class="slider-nav-btn slider-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 dark:bg-gray-800/70 rounded-full p-2 shadow-lg hover:bg-white dark:hover:bg-gray-800 focus:outline-none z-10"
+                    class="slider-nav-btn slider-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-green-800/80 rounded-full p-2 shadow-lg transition-all duration-300 focus:outline-none z-10 opacity-0 group-hover:opacity-100"
                     aria-label="Previous slide"
                   >
-                    <Icon name="tabler:chevron-left" class="w-6 h-6" />
+                    <Icon name="tabler:chevron-left" class="w-6 h-6 text-primary dark:text-gray-200" />
                   </button>
                   <button 
-                    class="slider-nav-btn slider-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 dark:bg-gray-800/70 rounded-full p-2 shadow-lg hover:bg-white dark:hover:bg-gray-800 focus:outline-none z-10"
+                    class="slider-nav-btn slider-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-green-800/80 rounded-full p-2 shadow-lg transition-all duration-300 focus:outline-none z-10 opacity-0 group-hover:opacity-100"
                     aria-label="Next slide"
                   >
-                    <Icon name="tabler:chevron-right" class="w-6 h-6" />
+                    <Icon name="tabler:chevron-right" class="w-6 h-6 text-primary dark:text-gray-200" />
                   </button>
                   
-                  <!-- Pagination Dots -->
-                  <div class="slider-pagination absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                  <div class="slider-pagination absolute -bottom-2 left-0 right-0 flex justify-center gap-2 py-4">
                     {sliderImages.map((_, index) => (
                       <button 
-                        class={`slider-dot w-3 h-3 rounded-full ${index === 0 ? 'bg-white scale-125' : 'bg-white/50'} hover:bg-white focus:outline-none`}
+                        class="slider-dot w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 hover:bg-primary dark:hover:bg-green-600 transition-all duration-300 focus:outline-none"
                         data-index={index}
                         aria-label={`Go to slide ${index + 1}`}
                       ></button>
@@ -167,7 +162,6 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
               )}
             </div>
           ) : (
-            /* Fallback if no images */
             <div class="bg-gray-200 dark:bg-gray-700 rounded-md w-full h-full min-h-[300px] flex items-center justify-center">
               <p class="text-gray-500 dark:text-gray-400">No image provided</p>
             </div>
@@ -178,34 +172,36 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
   </div>
 </section>
 
-{/* Add the slider script for all instances */}
 <script>
-  // Hero Slider Functionality
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', initSliders);
+  document.addEventListener('DOMContentLoaded', initSliders);
+
+  function initSliders() {
     try {
-      const sliderContainers = document.querySelectorAll('.hero-slider-container');
+      const sliderContainers = document.querySelectorAll<HTMLElement>('.hero-slider-container');
       
-      sliderContainers.forEach(container => {
-        const wrapper = container.querySelector('.hero-slider-wrapper');
+      sliderContainers.forEach((container) => {
+        const wrapper = container.querySelector<HTMLElement>('.hero-slider-wrapper');
         if (!wrapper) return; // Early return if wrapper not found
         
-        const slides = container.querySelectorAll('.hero-slide');
-        const prevBtn = container.querySelector('.slider-prev');
-        const nextBtn = container.querySelector('.slider-next');
-        const dots = container.querySelectorAll('.slider-dot');
+        const slides = container.querySelectorAll<HTMLElement>('.hero-slide');
+        const prevBtn = container.querySelector<HTMLButtonElement>('.slider-prev');
+        const nextBtn = container.querySelector<HTMLButtonElement>('.slider-next');
+        const dots = container.querySelectorAll<HTMLButtonElement>('.slider-dot');
         
         if (slides.length <= 1) return;
         
         let currentIndex = 0;
         let autoAdvanceInterval: number | undefined;
+        let touchStartX = 0;
+        let touchEndX = 0;
         
-        // Set initial active state
+        container.classList.add('group');
+        
         updateSlider();
         
-        // Start auto-advance
         startAutoAdvance();
         
-        // Event listeners for navigation
         if (prevBtn) {
           prevBtn.addEventListener('click', () => {
             goToSlide((currentIndex - 1 + slides.length) % slides.length);
@@ -218,29 +214,49 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
           });
         }
         
-        // Event listeners for pagination dots
         dots.forEach((dot, index) => {
           dot.addEventListener('click', () => {
             goToSlide(index);
           });
         });
         
-        // Pause auto-advance when user interacts with the slider
         container.addEventListener('mouseenter', () => {
           stopAutoAdvance();
         });
         
-        // Resume auto-advance when user leaves the slider
         container.addEventListener('mouseleave', () => {
           startAutoAdvance();
         });
+
+        container.addEventListener('touchstart', (e: TouchEvent) => {
+          if (e.changedTouches[0]) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoAdvance();
+          }
+        }, { passive: true });
         
-        // Helper functions
+        container.addEventListener('touchend', (e: TouchEvent) => {
+          if (e.changedTouches[0]) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoAdvance();
+          }
+        }, { passive: true });
+
+        container.setAttribute('tabindex', '0');
+        container.addEventListener('keydown', (e: KeyboardEvent) => {
+          if (e.key === 'ArrowLeft') {
+            goToSlide((currentIndex - 1 + slides.length) % slides.length);
+          } else if (e.key === 'ArrowRight') {
+            goToSlide((currentIndex + 1) % slides.length);
+          }
+        });
+        
         function startAutoAdvance() {
-          stopAutoAdvance(); // Clear any existing interval
+          stopAutoAdvance(); 
           autoAdvanceInterval = window.setInterval(() => {
             goToSlide((currentIndex + 1) % slides.length);
-          }, 5000); // Fixed 5 second interval
+          }, 4000);
         }
         
         function stopAutoAdvance() {
@@ -250,28 +266,42 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
         }
         
         function goToSlide(index: number) {
+          if (index === currentIndex) return;
+          
+          if (wrapper) {
+            wrapper.classList.add('transition-transform', 'duration-500', 'ease-in-out');
+          }
+          
           currentIndex = index;
           updateSlider();
-          // Reset the timer when manually changing slides
+          
           if (autoAdvanceInterval) {
             stopAutoAdvance();
             startAutoAdvance();
           }
         }
+
+        function handleSwipe() {
+          const threshold = 50;
+          if (touchStartX - touchEndX > threshold) {
+            goToSlide((currentIndex + 1) % slides.length);
+          } else if (touchEndX - touchStartX > threshold) {
+            goToSlide((currentIndex - 1 + slides.length) % slides.length);
+          }
+        }
         
-        // Update the slider's position and active states
         function updateSlider() {
-          // Update slide position - using type assertion to tell TypeScript this element has style
-          (wrapper as HTMLElement).style.transform = `translateX(-${currentIndex * 100}%)`;
+          if (wrapper && wrapper.style) {
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+          }
           
-          // Update active dot
           dots.forEach((dot, index) => {
             if (index === currentIndex) {
-              dot.classList.add('bg-white', 'scale-125');
-              dot.classList.remove('bg-white/50');
+              dot.classList.add('bg-primary', 'scale-125');
+              dot.classList.remove('bg-gray-300', 'dark:bg-gray-600');
             } else {
-              dot.classList.remove('bg-white', 'scale-125');
-              dot.classList.add('bg-white/50');
+              dot.classList.remove('bg-primary', 'scale-125');
+              dot.classList.add('bg-gray-300', 'dark:bg-gray-600');
             }
           });
         }
@@ -279,27 +309,42 @@ const sliderImages = images.length > 0 ? images : (image ? [image] : []);
     } catch (error) {
       console.error('Error initializing hero slider:', error);
     }
-  });
-</script>
+  }
 
-<script is:inline>
-  document.addEventListener('astro:after-swap', () => {
-    const video = document.querySelector('video');
-    if (video) {
-      video.currentTime = 0;
-      video.play().catch(e => console.log('Video play prevented:', e));
-    }
-  });
+  document.addEventListener('astro:after-swap', initSliders);
 </script>
 
 <style>
-  .hero-slider-wrapper {
+  .hero-slider-container {
     width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .hero-slider-wrapper {
     display: flex;
+    transition: transform 0.5s ease-in-out;
   }
   
   .hero-slide {
     width: 100%;
     flex-shrink: 0;
+  }
+
+  @media (hover: hover) {
+    .slider-nav-btn {
+      opacity: 0;
+      transition: opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .hero-slider-container:hover .slider-nav-btn {
+      opacity: 1;
+    }
+  }
+
+  @media (hover: none) {
+    .slider-nav-btn {
+      opacity: 0.8;
+    }
   }
 </style>

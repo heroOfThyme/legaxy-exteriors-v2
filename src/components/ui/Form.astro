@@ -209,6 +209,11 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     display: block;
   }
 
+  /* Show feedback for manually marked invalid fields too */
+  .is-invalid ~ .empty-feedback {
+    display: block;
+  }
+
   .is-invalid,
   .was-validated :invalid {
     border-color: #dc3545;
@@ -276,8 +281,29 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     form.classList.add("was-validated");
     
-    if (!form.checkValidity()) {
-      const invalidInputs = form.querySelectorAll(":invalid");
+    // Enhanced validation - check all required fields
+    let isValid = true;
+    const requiredFields = form.querySelectorAll('[required]');
+    
+    requiredFields.forEach((field) => {
+      const inputField = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+      
+      // Check if the field is empty or (for selects) has an empty value
+      if (!inputField.value || inputField.value.trim() === '') {
+        isValid = false;
+        inputField.classList.add('is-invalid');
+        // Find the nearest feedback element
+        const feedback = inputField.parentElement?.querySelector('.empty-feedback');
+        if (feedback) {
+          feedback.setAttribute('style', 'display: block;');
+        }
+      } else {
+        inputField.classList.remove('is-invalid');
+      }
+    });
+    
+    if (!isValid || !form.checkValidity()) {
+      const invalidInputs = form.querySelectorAll(".is-invalid, :invalid");
       if (invalidInputs.length > 0) {
         (invalidInputs[0] as HTMLElement).focus();
       }
@@ -306,8 +332,24 @@ document.addEventListener("DOMContentLoaded", () => {
     function submitForm() {
       if (!form || !result) return;
       
+      // Perform one final check to prevent empty submissions
+      const requiredFields = form.querySelectorAll('[required]');
+      let hasEmptyFields = false;
+      
+      requiredFields.forEach((field) => {
+        const inputField = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+        if (!inputField.value || inputField.value.trim() === '') {
+          hasEmptyFields = true;
+        }
+      });
+      
+      if (hasEmptyFields) {
+        result.innerHTML = '<span class="text-red-500">Please fill in all required fields</span>';
+        return;
+      }
+      
       const formData = new FormData(form);
-      const object: Record<string, unknown> = {};
+      const object: Record<string, unknown> = {}; // Using unknown instead of any
       formData.forEach((value, key) => {
         object[key] = value;
       });
