@@ -38,11 +38,10 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
   method="POST"
   id="contact-form"
   class="relative p-4 rounded-lg border border-green-800/50 bg-[#050505] overflow-hidden needs-validation"
-  data-astro-reload
   novalidate
 >
   <!-- Web3Forms required fields -->
-  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+  <input type="hidden" name="access_key" value="928584ff-8a35-4f6e-88c9-c1a78ad2c298" />
   <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
   <!-- reCAPTCHA token will be set here -->
   <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
@@ -347,3 +346,5 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
   });
 })();
 </script>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
