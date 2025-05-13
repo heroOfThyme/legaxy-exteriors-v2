@@ -14,6 +14,7 @@ const {
 
 // Add your keys directly here
 const WEB3FORMS_ACCESS_KEY = '928584ff-8a35-4f6e-88c9-c1a78ad2c298';
+const RECAPTCHA_SITE_KEY = '6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ';
 
 // Default services if none provided
 const defaultServices = [
@@ -29,20 +30,22 @@ const defaultServices = [
 const serviceOptions = services.length > 0 ? services : defaultServices;
 ---
 
-<!-- Add reCAPTCHA v3 script with your new site key -->
-<script src="https://www.google.com/recaptcha/api.js?render=6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ"></script>
+<!-- Load reCAPTCHA v3 -->
+<script src=`https://www.google.com/recaptcha/api.js?render=6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ`></script>
 
 <form
   action="https://api.web3forms.com/submit"
   method="POST"
   id="contact-form"
   class="relative p-4 rounded-lg border border-green-800/50 bg-[#050505] overflow-hidden needs-validation"
+  data-astro-reload
   novalidate
 >
   <!-- Web3Forms required fields -->
   <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-  <input type="hidden" name="botcheck" class="hidden" style="display:none" />
-  <input type="hidden" name="recaptcha_response" id="recaptcha_response" />
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+  <!-- reCAPTCHA token will be set here -->
+  <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
   
   <!-- Decorative elements -->
   <div class="absolute top-0 right-0 w-40 h-40 bg-green-900/20 rounded-full -mt-20 -mr-20 z-0"></div>
@@ -69,7 +72,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
                     {name === 'name' && <Icon name="tabler:user" class="w-4 h-4 mr-2 inline-block" />}
                     {name === 'email' && <Icon name="tabler:mail" class="w-4 h-4 mr-2 inline-block" />}
                     {name === 'phone' && <Icon name="tabler:phone" class="w-4 h-4 mr-2 inline-block" />}
-                    {label}
+                    {label} *
                   </label>
                 )}
                 <input
@@ -81,11 +84,8 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
                   required
                   class="py-3 px-4 block w-full text-md rounded-lg border-2 border-gray-800 hover:border-green-900 bg-[#0a0a0a] text-white placeholder-gray-500 focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/50 transition-all duration-300"
                 />
-                <div class="empty-feedback text-red-400 text-sm mt-1">
+                <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
                   Please provide your {label.toLowerCase() || name}.
-                </div>
-                <div class="invalid-feedback text-red-400 text-sm mt-1">
-                  Please provide a valid {label.toLowerCase() || name}.
                 </div>
               </div>
             )
@@ -96,7 +96,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     <div class="mb-6 group transition-all duration-300 hover:translate-x-1">
       <label for="service" class="flex items-center text-sm font-medium text-green-400 mb-2">
         <Icon name="tabler:list-check" class="w-4 h-4 mr-2 inline-block" />
-        Service Needed
+        Service Needed *
       </label>
       <div class="relative">
         <select
@@ -114,7 +114,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
           <Icon name="tabler:chevron-down" class="w-5 h-5 group-hover:text-green-500 transition-colors duration-300" />
         </div>
       </div>
-      <div class="empty-feedback text-red-400 text-sm mt-1">
+      <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
         Please select a service.
       </div>
     </div>
@@ -124,7 +124,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
         <div class="mb-6 transition-all duration-300 hover:translate-x-1">
           <label for="textarea" class="flex items-center text-sm font-medium text-green-400 mb-2">
             <Icon name="tabler:message" class="w-4 h-4 mr-2 inline-block" />
-            {textarea.label}
+            {textarea.label} *
           </label>
           <textarea
             id="textarea"
@@ -134,7 +134,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
             required
             class="py-3 px-4 block w-full text-md rounded-lg border-2 border-gray-800 hover:border-green-900 bg-[#0a0a0a] text-white placeholder-gray-500 focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600/50 resize-none transition-all duration-300"
           ></textarea>
-          <div class="empty-feedback text-red-400 text-sm mt-1">
+          <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
             Please enter your message.
           </div>
         </div>
@@ -160,7 +160,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
               </label>
             </div>
           </div>
-          <div class="empty-feedback text-red-400 text-sm mt-1 ml-8">
+          <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1 ml-8">
             Please accept the terms.
           </div>
         </div>
@@ -211,21 +211,15 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     display: block;
   }
 
-  /* Show invalid state for select when empty */
-  .was-validated select:invalid ~ .empty-feedback {
+  /* Show select invalid state */
+  .was-validated select:invalid ~ .empty-feedback,
+  .was-validated select:invalid ~ .invalid-feedback {
     display: block;
   }
 
   /* Show checkbox invalid state */
-  .was-validated input[type="checkbox"]:not(:checked):invalid {
-    border-color: #dc3545;
-  }
-  
-  .was-validated input[type="checkbox"]:not(:checked):invalid ~ .empty-feedback {
-    display: block;
-  }
-
-  .is-invalid ~ .empty-feedback {
+  .was-validated input[type="checkbox"]:not(:checked):invalid ~ .empty-feedback,
+  .was-validated input[type="checkbox"]:not(:checked):invalid ~ .invalid-feedback {
     display: block;
   }
 
@@ -268,117 +262,88 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
   }
 </style>
 
-<script>
-// Define grecaptcha type
-interface GRecaptcha {
-  ready: (callback: () => void) => void;
-  execute: (siteKey: string, options: {action: string}) => Promise<string>;
-}
-
-declare global {
-  interface Window {
-    grecaptcha: GRecaptcha;
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const result = document.getElementById("result") as HTMLDivElement;
-
-  if (!form || !result) {
-    console.error("Required form elements not found");
-    return;
-  }
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    form.classList.add("was-validated");
+<script is:inline data-site-key={RECAPTCHA_SITE_KEY}>
+(function () {
+  "use strict";
+  
+  // Get the site key from the script tag
+  const scriptElement = document.currentScript;
+  const siteKey = scriptElement.getAttribute('data-site-key');
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const forms = document.querySelectorAll(".needs-validation");
+    const result = document.getElementById("result");
     
-    // Check if form is valid
-    if (!form.checkValidity()) {
-      e.stopPropagation();
-      // Focus on first invalid element
-      const firstInvalid = form.querySelector(":invalid") as HTMLElement;
-      if (firstInvalid) {
-        firstInvalid.focus();
-      }
-      return;
-    }
-    
-    // Show loading state
-    result.innerHTML = '<span class="text-green-400">Sending...</span>';
-    
-    // Check if grecaptcha is loaded
-    if (typeof window.grecaptcha === 'undefined') {
-      console.error("reCAPTCHA not loaded");
-      result.innerHTML = '<span class="text-red-500">reCAPTCHA failed to load. Please refresh the page.</span>';
-      return;
-    }
-    
-    // Execute reCAPTCHA
-    window.grecaptcha.ready(function() {
-      window.grecaptcha.execute('6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ', { action: 'submit' })
-        .then(function(token: string) {
-          // Add the token to the form
-          const recaptchaInput = document.getElementById('recaptcha_response') as HTMLInputElement;
-          if (recaptchaInput) {
-            recaptchaInput.value = token;
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          
+          if (!form.checkValidity()) {
+            form.classList.add("was-validated");
+            form.querySelectorAll(":invalid")[0].focus();
+            return;
           }
           
-          // Submit the form
-          submitForm();
-        })
-        .catch(function(error: Error) {
-          console.error("reCAPTCHA error:", error);
-          result.innerHTML = '<span class="text-red-500">reCAPTCHA verification failed. Please try again.</span>';
-          result.classList.add("text-red-500");
-        });
+          form.classList.add("was-validated");
+          result.innerHTML = '<span class="text-green-400">Please wait...</span>';
+          
+          // Execute reCAPTCHA v3
+          grecaptcha.ready(function() {
+            grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
+              // Add token to the form
+              document.getElementById('g-recaptcha-response').value = token;
+              
+              // Submit the form
+              const formData = new FormData(form);
+              const object = Object.fromEntries(formData);
+              const json = JSON.stringify(object);
+              
+              fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: json,
+              })
+                .then(async (response) => {
+                  const json = await response.json();
+                  if (response.status == 200) {
+                    result.innerHTML = json.message || "Thank you! Your message has been sent.";
+                    result.classList.remove("text-gray-500");
+                    result.classList.add("text-green-500");
+                    form.reset();
+                    form.classList.remove("was-validated");
+                  } else {
+                    console.log(response);
+                    result.innerHTML = json.message || "Something went wrong!";
+                    result.classList.remove("text-gray-500");
+                    result.classList.add("text-red-500");
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                  result.innerHTML = "Something went wrong!";
+                  result.classList.add("text-red-500");
+                })
+                .finally(function () {
+                  setTimeout(() => {
+                    result.style.display = "none";
+                  }, 5000);
+                });
+            }).catch(function(error) {
+              console.error("reCAPTCHA error:", error);
+              result.innerHTML = "reCAPTCHA verification failed. Please try again.";
+              result.classList.add("text-red-500");
+            });
+          });
+        },
+        false
+      );
     });
   });
-
-  function submitForm() {
-    const formData = new FormData(form);
-    const object: Record<string, FormDataEntryValue> = {};
-    formData.forEach((value, key) => {
-      object[key] = value;
-    });
-    const json = JSON.stringify(object);
-
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    })
-      .then(async (response) => {
-        const jsonResponse = await response.json();
-        if (response.status === 200) {
-          result.innerHTML = '';
-          result.classList.add("text-green-500");
-          result.innerHTML = jsonResponse.message || "Thank you! Your message has been sent.";
-          form.reset();
-          form.classList.remove("was-validated");
-        } else {
-          result.innerHTML = '';
-          result.classList.add("text-red-500");
-          result.innerHTML = jsonResponse.message || "Something went wrong!";
-        }
-      })
-      .catch((error) => {
-        console.error("Form submission error:", error);
-        result.innerHTML = '';
-        result.classList.add("text-red-500");
-        result.innerHTML = "Something went wrong! Please try again.";
-      })
-      .finally(() => {
-        // Clear the message after 5 seconds
-        setTimeout(() => {
-          result.innerHTML = "";
-          result.className = "mt-4 text-center";
-        }, 5000);
-      });
-  }
-});
+})();
 </script>
