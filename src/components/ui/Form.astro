@@ -29,8 +29,8 @@ const defaultServices = [
 const serviceOptions = services.length > 0 ? services : defaultServices;
 ---
 
-<!-- Add reCAPTCHA v3 script with hardcoded site key -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LcFIE4pAAAAAJgE-F1xkQJU9MF0PNrjoXRfz9FA"></script>
+<!-- Add reCAPTCHA v3 script with your new site key -->
+<script src="https://www.google.com/recaptcha/api.js?render=6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ"></script>
 
 <form
   action="https://api.web3forms.com/submit"
@@ -41,8 +41,8 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
 >
   <!-- Web3Forms required fields -->
   <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-  <input type="hidden" name="botcheck" style="display:none" />
-  <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
+  <input type="hidden" name="botcheck" class="hidden" style="display:none" />
+  <input type="hidden" name="recaptcha_response" id="recaptcha_response" />
   
   <!-- Decorative elements -->
   <div class="absolute top-0 right-0 w-40 h-40 bg-green-900/20 rounded-full -mt-20 -mr-20 z-0"></div>
@@ -143,22 +143,24 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
 
     {
       disclaimer && (
-        <div class="mt-6 flex items-start group transition-opacity duration-300 hover:opacity-90">
-          <div class="flex items-center h-5">
-            <input
-              id="disclaimer"
-              name="disclaimer"
-              type="checkbox"
-              required
-              class="w-5 h-5 rounded text-green-600 border-gray-800 bg-[#0a0a0a] focus:ring-green-500 focus:ring-offset-0 transition-colors duration-300"
-            />
+        <div class="mt-6">
+          <div class="flex items-start group transition-opacity duration-300 hover:opacity-90">
+            <div class="flex items-center h-5">
+              <input
+                id="disclaimer"
+                name="disclaimer"
+                type="checkbox"
+                required
+                class="w-5 h-5 rounded text-green-600 border-gray-800 bg-[#0a0a0a] focus:ring-green-500 focus:ring-offset-0 transition-colors duration-300"
+              />
+            </div>
+            <div class="ml-3">
+              <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                {disclaimer.label}
+              </label>
+            </div>
           </div>
-          <div class="ml-3">
-            <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-              {disclaimer.label}
-            </label>
-          </div>
-          <div class="empty-feedback text-red-400 text-sm mt-1">
+          <div class="empty-feedback text-red-400 text-sm mt-1 ml-8">
             Please accept the terms.
           </div>
         </div>
@@ -209,7 +211,20 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     display: block;
   }
 
-  /* Show feedback for manually marked invalid fields too */
+  /* Show invalid state for select when empty */
+  .was-validated select:invalid ~ .empty-feedback {
+    display: block;
+  }
+
+  /* Show checkbox invalid state */
+  .was-validated input[type="checkbox"]:not(:checked):invalid {
+    border-color: #dc3545;
+  }
+  
+  .was-validated input[type="checkbox"]:not(:checked):invalid ~ .empty-feedback {
+    display: block;
+  }
+
   .is-invalid ~ .empty-feedback {
     display: block;
   }
@@ -254,23 +269,21 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
 </style>
 
 <script>
-// Add grecaptcha to global window interface to prevent TypeScript errors
+// Define grecaptcha type
+interface GRecaptcha {
+  ready: (callback: () => void) => void;
+  execute: (siteKey: string, options: {action: string}) => Promise<string>;
+}
+
 declare global {
   interface Window {
-    grecaptcha: {
-      ready: (callback: () => void) => void;
-      execute: (siteKey: string, options: {action: string}) => Promise<string>;
-    };
-    fs: {
-      readFile: (path: string, options?: {encoding?: string}) => Promise<unknown>;
-    };
+    grecaptcha: GRecaptcha;
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Get form and result elements with type assertions and proper null checks
   const form = document.getElementById("contact-form") as HTMLFormElement;
-  const result = document.getElementById("result");
+  const result = document.getElementById("result") as HTMLDivElement;
 
   if (!form || !result) {
     console.error("Required form elements not found");
@@ -281,123 +294,91 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     form.classList.add("was-validated");
     
-    // Enhanced validation - check all required fields
-    let isValid = true;
-    const requiredFields = form.querySelectorAll('[required]');
-    
-    requiredFields.forEach((field) => {
-      const inputField = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-      
-      // Check if the field is empty or (for selects) has an empty value
-      if (!inputField.value || inputField.value.trim() === '') {
-        isValid = false;
-        inputField.classList.add('is-invalid');
-        // Find the nearest feedback element
-        const feedback = inputField.parentElement?.querySelector('.empty-feedback');
-        if (feedback) {
-          feedback.setAttribute('style', 'display: block;');
-        }
-      } else {
-        inputField.classList.remove('is-invalid');
-      }
-    });
-    
-    if (!isValid || !form.checkValidity()) {
-      const invalidInputs = form.querySelectorAll(".is-invalid, :invalid");
-      if (invalidInputs.length > 0) {
-        (invalidInputs[0] as HTMLElement).focus();
+    // Check if form is valid
+    if (!form.checkValidity()) {
+      e.stopPropagation();
+      // Focus on first invalid element
+      const firstInvalid = form.querySelector(":invalid") as HTMLElement;
+      if (firstInvalid) {
+        firstInvalid.focus();
       }
       return;
     }
     
-    // Execute reCAPTCHA verification with hardcoded site key
+    // Show loading state
+    result.innerHTML = '<span class="text-green-400">Sending...</span>';
+    
+    // Check if grecaptcha is loaded
+    if (typeof window.grecaptcha === 'undefined') {
+      console.error("reCAPTCHA not loaded");
+      result.innerHTML = '<span class="text-red-500">reCAPTCHA failed to load. Please refresh the page.</span>';
+      return;
+    }
+    
+    // Execute reCAPTCHA
     window.grecaptcha.ready(function() {
-      window.grecaptcha.execute('6LcFIE4pAAAAAJgE-F1xkQJU9MF0PNrjoXRfz9FA', {action: 'submit'})
+      window.grecaptcha.execute('6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ', { action: 'submit' })
         .then(function(token: string) {
           // Add the token to the form
-          const recaptchaInput = document.getElementById('g-recaptcha-response') as HTMLInputElement;
+          const recaptchaInput = document.getElementById('recaptcha_response') as HTMLInputElement;
           if (recaptchaInput) {
             recaptchaInput.value = token;
           }
           
-          // Continue with form submission
+          // Submit the form
           submitForm();
         })
-        .catch(error => {
+        .catch(function(error: Error) {
           console.error("reCAPTCHA error:", error);
-          result.innerHTML = '<span class="text-red-500">reCAPTCHA verification failed</span>';
+          result.innerHTML = '<span class="text-red-500">reCAPTCHA verification failed. Please try again.</span>';
+          result.classList.add("text-red-500");
         });
     });
-    
-    function submitForm() {
-      if (!form || !result) return;
-      
-      // Perform one final check to prevent empty submissions
-      const requiredFields = form.querySelectorAll('[required]');
-      let hasEmptyFields = false;
-      
-      requiredFields.forEach((field) => {
-        const inputField = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-        if (!inputField.value || inputField.value.trim() === '') {
-          hasEmptyFields = true;
-        }
-      });
-      
-      if (hasEmptyFields) {
-        result.innerHTML = '<span class="text-red-500">Please fill in all required fields</span>';
-        return;
-      }
-      
-      const formData = new FormData(form);
-      const object: Record<string, unknown> = {}; // Using unknown instead of any
-      formData.forEach((value, key) => {
-        object[key] = value;
-      });
-      const jsonData = JSON.stringify(object);
+  });
 
-      result.innerHTML = '<span class="text-white">Sending...</span>';
+  function submitForm() {
+    const formData = new FormData(form);
+    const object: Record<string, FormDataEntryValue> = {};
+    formData.forEach((value, key) => {
+      object[key] = value;
+    });
+    const json = JSON.stringify(object);
 
-      fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: jsonData,
-      })
-        .then(async (response) => {
-          if (!result) return;
-          
-          const jsonResponse = await response.json();
-          if (response.status == 200) {
-            result.classList.add("text-green-500");
-            result.innerHTML = jsonResponse.message;
-          } else {
-            console.log(response);
-            result.classList.add("text-red-500");
-            result.innerHTML = jsonResponse.message || "Something went wrong!";
-          }
-        })
-        .catch((error) => {
-          if (!result) return;
-          
-          console.log(error);
-          result.classList.add("text-red-500");
-          result.innerHTML = "Something went wrong!";
-        })
-        .finally(function () {
-          if (!form || !result) return;
-          
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        const jsonResponse = await response.json();
+        if (response.status === 200) {
+          result.innerHTML = '';
+          result.classList.add("text-green-500");
+          result.innerHTML = jsonResponse.message || "Thank you! Your message has been sent.";
           form.reset();
           form.classList.remove("was-validated");
-          setTimeout(() => {
-            if (result) {
-              result.innerHTML = "";
-              result.className = "mt-4 text-center"; // Reset classes
-            }
-          }, 5000);
-        });
-    }
-  });
+        } else {
+          result.innerHTML = '';
+          result.classList.add("text-red-500");
+          result.innerHTML = jsonResponse.message || "Something went wrong!";
+        }
+      })
+      .catch((error) => {
+        console.error("Form submission error:", error);
+        result.innerHTML = '';
+        result.classList.add("text-red-500");
+        result.innerHTML = "Something went wrong! Please try again.";
+      })
+      .finally(() => {
+        // Clear the message after 5 seconds
+        setTimeout(() => {
+          result.innerHTML = "";
+          result.className = "mt-4 text-center";
+        }, 5000);
+      });
+  }
 });
 </script>

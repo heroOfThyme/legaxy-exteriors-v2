@@ -312,24 +312,31 @@ const heroImages = [
     bg="<div class='absolute inset-0 bg-gradient-to-br from-green-900/20 via-transparent to-green-900/20'></div>"
   />
 
-  <!-- CallToAction Widget *********** -->
-  <CallToAction
-    tagline="Limited Time Offer"
-    backgroundImage="~/assets/images/about/legacy-exteriors-equipment-line.png"
-    showLeaves={false}
-    overlayOpacity={0.7}
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get Your Free Estimate',
-        href: '/contact',
-        icon: 'tabler:bulldozer',
-      },
-    ]}
-    isDark={true}
-  >
-    <Fragment slot="title"> Sod Installation Package </Fragment>
-
-    <Fragment slot="subtitle"> Book consultation before August 31st a free consultation on your property. </Fragment>
-  </CallToAction>
+<!-- CallToAction Widget - Service Range -->
+<CallToAction
+  tagline="Complete Solutions"
+  backgroundImage="~/assets/images/projects/concrete-foundation-home-excavation.png"
+  showLeaves={false}
+  overlayOpacity={0.7}
+  actions={[
+    {
+      variant: 'primary',
+      text: 'Explore Our Services',
+      href: '/services',
+      icon: 'tabler:list-check',
+    },
+    {
+      variant: 'secondary',
+      text: 'Free Consultation',
+      href: '/contact',
+      icon: 'tabler:message',
+    },
+  ]}
+  isDark={true}
+>
+  <Fragment slot="title">Excavation • Drainage • Grading • Site Prep</Fragment>
+  <Fragment slot="subtitle">
+    One contractor for all your groundwork needs. From foundation excavation to complete landscape transformation, Legacy Exteriors delivers comprehensive solutions with 5-star service.
+  </Fragment>
+</CallToAction>
 </Layout>
