@@ -3,21 +3,24 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import Content from '~/components/widgets/Content.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import TwoColumnContent from '~/components/widgets/TwoColumnContent.astro';
+import { Icon } from 'astro-icon/components';
+import Image from 'astro/components/Image.astro';
 
 import drainageHero from '~/assets/images/services/drainage/drainage-service-main.png';
 
 const metadata = {
   title: 'Professional Drainage Solutions Windsor | French Drains & Water Management',
   description:
-    'Expert residential and commercial drainage solutions in Windsor-Essex. Prevent basement flooding, eliminate standing water, and protect your property with custom drainage systems designed for Windsor\'s clay soil.',
+    "Expert residential and commercial drainage solutions in Windsor-Essex. Prevent basement flooding, eliminate standing water, and protect your property with custom drainage systems designed for Windsor's clay soil.",
   canonical: 'https://legacyexteriorsinc.com/services/drainage',
   openGraph: {
     title: 'Professional Drainage Solutions in Windsor-Essex | Legacy Exteriors',
-    description: 'Prevent flooding and water damage with expert drainage solutions designed for Windsor\'s unique soil and climate conditions.',
+    description:
+      "Prevent flooding and water damage with expert drainage solutions designed for Windsor's unique soil and climate conditions.",
     type: 'website',
     images: [
       {
@@ -50,13 +53,20 @@ const metadata = {
         icon: 'tabler:photo',
       },
     ]}
-    image={{
-      src: drainageHero,
-      alt: 'Professional drainage installation in Windsor',
-    }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/70 via-transparent to-blue-900/70"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          src={drainageHero}
+          alt="Background"
+          class="w-full h-full object-cover"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+        />
+        <!-- Optional overlay for better text readability -->
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+      </div>
     </Fragment>
   </Hero>
 
@@ -70,7 +80,7 @@ const metadata = {
       {
         title: 'French Drain Installation',
         description:
-          'Subsurface drainage systems with proper gravel, pipe, and filter fabric that effectively capture and redirect groundwater away from foundations, even in Windsor\'s dense clay soil.',
+          "Subsurface drainage systems with proper gravel, pipe, and filter fabric that effectively capture and redirect groundwater away from foundations, even in Windsor's dense clay soil.",
         icon: 'tabler:line-dashed',
       },
       {
@@ -80,16 +90,16 @@ const metadata = {
         icon: 'tabler:arrow-guide',
       },
       {
-        title: 'Foundation Waterproofing',
+        title: 'Eavestroughs & Pop-up Valves',
         description:
-          'Comprehensive foundation protection including exterior membrane application, drainage board installation, and foundation drain systems to keep your basement dry year-round.',
-        icon: 'tabler:home-shield',
+          'Professional installation of eavestrough systems with underground connections to pop-up emitter valves. These systems efficiently move roof water away from your foundation, preventing pooling and erosion.',
+        icon: 'tabler:home-down',
       },
       {
-        title: 'Sump Pump Systems',
+        title: 'Foundation Waterproofing',
         description:
-          'Professional installation of primary and backup sump pump systems with proper discharge planning to manage underground water and protect your basement during heavy rainfall.',
-        icon: 'tabler:filter',
+          'Comprehensive waterproofing solutions including interior and exterior membranes, drainage boards, and sump pump systems to protect your basement from water intrusion.',
+        icon: 'tabler:shield-check',
       },
       {
         title: 'Erosion Control',
@@ -100,41 +110,85 @@ const metadata = {
       {
         title: 'Yard Drainage Solutions',
         description:
-          'Custom yard drainage systems including channel drains, dry creeks, and rain gardens designed to eliminate standing water while enhancing your landscape\'s beauty.',
+          "Custom yard drainage systems including channel drains, dry creeks, and rain gardens designed to eliminate standing water while enhancing your landscape's beauty.",
         icon: 'tabler:garden-cart',
       },
     ]}
   />
 
   <!-- Content Widget -->
-  <Content
-    isReversed={false}
-    title="Windsor-Essex Drainage Specialists"
-    subtitle="Local experts with solutions for local problems"
-    image={{
-      src: '~/assets/images/services/drainage/drainage-service-main.png',
-      alt: 'French drain installation in Windsor clay soil',
+  <TwoColumnContent
+    title="Year-Round Drainage Concerns"
+    subtitle="How Windsor's seasons create different water challenges."
+    leftColumn={{
+      title: 'Spring & Summer',
+      items: [
+        {
+          icon: 'tabler:cloud-rain',
+          color: 'blue',
+          title: 'Heavy Rainfall',
+          description: 'April-June brings 250mm+ of rain, overwhelming systems',
+        },
+        {
+          icon: 'tabler:temperature-plus',
+          color: 'red',
+          title: 'Rapid Snow Melt',
+          description: "March thaw releases winter's accumulated moisture quickly",
+        },
+        {
+          icon: 'tabler:bug',
+          color: 'orange',
+          title: 'Mosquito Breeding',
+          description: 'Standing water creates perfect conditions for pests',
+        },
+        {
+          icon: 'tabler:plant',
+          color: 'green',
+          title: 'Growth Season Stress',
+          description: 'Waterlogged roots prevent healthy lawn development',
+        },
+      ],
+    }}
+    rightColumn={{
+      title: 'Fall & Winter',
+      items: [
+        {
+          icon: 'tabler:leaf',
+          color: 'orange',
+          title: 'Clogged Systems',
+          description: 'Fallen leaves block drains and downspouts',
+        },
+        {
+          icon: 'tabler:snowflake',
+          color: 'blue',
+          title: 'Freeze-Thaw Damage',
+          description: 'Ice formation in saturated soil damages foundations',
+        },
+        {
+          icon: 'tabler:temperature-minus',
+          color: 'blue',
+          title: 'Ice Dams',
+          description: 'Poor drainage creates dangerous ice buildup',
+        },
+        {
+          icon: 'tabler:home-shield',
+          color: 'red',
+          title: 'Foundation Stress',
+          description: 'Frost heaving from trapped moisture cracks concrete',
+        },
+      ],
     }}
   >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Clay Soil Drainage Expertise</h3>
-      <p class="mb-4">
-        Windsor-Essex's notorious clay soil creates unique drainage challenges that require specialized knowledge and techniques. Our team has extensive experience working with the region's dense clay soil, known for its poor drainage and tendency to retain water.
+    <div class="mt-8 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+      <p class="text-green-900 dark:text-green-100 font-medium text-center">
+        <Icon name="tabler:calendar-check" class="inline w-5 h-5 mr-2" />
+        <strong>Best Solution:</strong> Year-round drainage systems designed for Windsor's unique seasonal challenges
       </p>
-      <p class="mb-4">Our Windsor-specific approach includes:</p>
-      <ul class="list-disc list-inside mb-4 text-muted">
-        <li>Custom aggregate selection that works specifically with local clay soil</li>
-        <li>Proper filter fabric selection to prevent system clogging</li>
-        <li>Strategic drain placement based on Windsor's typical water table levels</li>
-        <li>Larger capacity systems designed for our region's heavy spring rainfall</li>
-        <li>Integration with municipal drainage systems when available</li>
-      </ul>
-      <p>We've successfully resolved drainage issues for hundreds of Windsor-Essex properties, from historic Walkerville homes to new builds in LaSalle, Tecumseh, and throughout Essex County.</p>
-    </Fragment>
-  </Content>
+    </div>
+  </TwoColumnContent>
 
   <!-- Steps2 Widget ****************** -->
-  <Steps2
+  <Steps
     title="Our Drainage Solution Process"
     subtitle="We follow a systematic approach to resolve your water management challenges"
     items={[
@@ -147,13 +201,13 @@ const metadata = {
       {
         title: 'Customized System Design',
         description:
-          'Based on our assessment, we design a drainage solution tailored to your property\'s unique conditions and water management needs, considering Windsor\'s clay soil and seasonal factors.',
+          "Based on our assessment, we design a drainage solution tailored to your property's unique conditions and water management needs, considering Windsor's clay soil and seasonal factors.",
         icon: 'tabler:dashboard',
       },
       {
         title: 'Professional Installation',
         description:
-          'Our experienced team installs your drainage system using proper materials, techniques, and equipment, ensuring optimal function even in Windsor\'s challenging soil conditions.',
+          "Our experienced team installs your drainage system using proper materials, techniques, and equipment, ensuring optimal function even in Windsor's challenging soil conditions.",
         icon: 'tabler:shovel',
       },
       {
@@ -165,7 +219,7 @@ const metadata = {
       {
         title: 'System Testing & Verification',
         description:
-          'We thoroughly test your new drainage system to confirm proper function, making any necessary adjustments to ensure optimal performance during Windsor\'s heavy rainfall events.',
+          "We thoroughly test your new drainage system to confirm proper function, making any necessary adjustments to ensure optimal performance during Windsor's heavy rainfall events.",
         icon: 'tabler:droplet-check',
       },
     ]}
@@ -175,61 +229,88 @@ const metadata = {
     }}
   />
 
-  <!-- Content Widget -->
-  <Content
-    isReversed={true}
+  <!-- Content Widget **************** -->
+  <TwoColumnContent
     title="French Drain Installation Experts"
     subtitle="The effective solution for Windsor's water management challenges"
-    items={[
-      {
-        title: 'Proper Depth & Grade',
-        description: 'Installed at the optimal depth and with precise slope calculations to ensure proper water flow in Windsor\'s clay soil',
-        icon: 'tabler:ruler-measure',
-      },
-      {
-        title: 'Quality Materials',
-        description: 'Premium drainage pipe, clean stone aggregate, and high-grade filter fabric that won\'t clog or deteriorate over time',
-        icon: 'tabler:certificate',
-      },
-      {
-        title: 'Strategic Placement',
-        description: 'Positioned to intercept and redirect groundwater before it reaches your foundation or problem areas',
-        icon: 'tabler:target',
-      },
-      {
-        title: 'Proper Discharge Planning',
-        description: 'Thoughtful water discharge solutions that comply with Windsor bylaws and respect neighboring properties',
-        icon: 'tabler:arrow-guide',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/services/drainage/french-drain-diagram.png',
-      alt: 'French drain system diagram',
+    leftColumn={{
+      title: 'System Components',
+      items: [
+        {
+          icon: 'tabler:ruler-measure',
+          color: 'blue',
+          title: 'Proper Depth & Grade',
+          description: "Installed at optimal depth with precise slope for Windsor's clay soil",
+        },
+        {
+          icon: 'tabler:certificate',
+          color: 'green',
+          title: 'Quality Materials',
+          description: 'Premium pipe, clean aggregate, and high-grade filter fabric that lasts',
+        },
+        {
+          icon: 'tabler:target',
+          color: 'orange',
+          title: 'Strategic Placement',
+          description: 'Positioned to intercept groundwater before it reaches foundations',
+        },
+        {
+          icon: 'tabler:arrow-guide',
+          color: 'green',
+          title: 'Proper Discharge',
+          description: 'Compliant water discharge that respects Windsor bylaws and neighbors',
+        },
+      ],
+    }}
+    rightColumn={{
+      title: 'Windsor-Specific Features',
+      items: [
+        {
+          icon: 'tabler:snowflake',
+          color: 'blue',
+          title: 'Frost Line Depth',
+          description: '42-48" installation depth accounts for Windsor\'s deep frost penetration',
+        },
+        {
+          icon: 'tabler:wall',
+          color: 'orange',
+          title: 'Clay Soil Adaptation',
+          description: 'Specialized aggregate mix designed for our heavy clay conditions',
+        },
+        {
+          icon: 'tabler:filter',
+          color: 'green',
+          title: 'Clog Prevention',
+          description: 'Heavy-duty geotextile fabric prevents clay infiltration',
+        },
+        {
+          icon: 'tabler:filter',
+          color: 'blue',
+          title: 'Oversized Systems',
+          description: "Larger pipes and gravel beds handle Windsor's spring deluges",
+        },
+      ],
     }}
   >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+    <div class="mt-8 max-w-3xl mx-auto">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4 text-center">
         The French Drain Advantage
       </h3>
-      <p class="mb-4">
-        French drains are particularly effective in Windsor's challenging soil conditions. These subsurface drainage systems intercept groundwater and direct it away from your foundation, preventing basement moisture and structural damage.
+      <p class="text-center mb-6 text-gray-700 dark:text-gray-300">
+        French drains are particularly effective in Windsor's challenging soil conditions. These subsurface drainage
+        systems intercept groundwater and direct it away from your foundation, preventing basement moisture and
+        structural damage.
       </p>
-      <p class="mb-4">
-        Our French drain installations include these Windsor-specific enhancements:
-      </p>
-      <ul class="list-disc list-inside mb-4 text-muted">
-        <li>Deeper installation to account for Windsor's frost line</li>
-        <li>Specialized aggregate mix that works effectively with local clay soil</li>
-        <li>Heavy-duty filter fabric to prevent system clogging</li>
-        <li>Proper connections to existing drainage systems when available</li>
-      </ul>
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 dark:bg-blue-900/30 dark:border-blue-700 mt-6">
-        <p class="font-medium">
-          <strong>Local Knowledge:</strong> Windsor's clay soil requires French drains with larger diameter pipes and more substantial gravel beds than typical installations. Our systems are designed specifically for these local conditions.
+
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 dark:bg-blue-900/30 dark:border-blue-700">
+        <p class="font-medium text-blue-900 dark:text-blue-100">
+          <Icon name="tabler:info-circle" class="inline w-5 h-5 mr-2" />
+          <strong>Local Knowledge:</strong> Windsor's clay soil requires French drains with larger diameter pipes and more
+          substantial gravel beds than typical installations. Our systems are designed specifically for these conditions.
         </p>
       </div>
-    </Fragment>
-  </Content>
+    </div>
+  </TwoColumnContent>
 
   <!-- Testimonials Widget *********** -->
   <Testimonials
@@ -283,7 +364,7 @@ const metadata = {
           "Common signs of drainage problems in Windsor include: standing water that persists 24+ hours after rainfall, water pooling against your foundation, wet basement walls or floors, mold or mildew odors, eroded soil in your yard, dying grass in consistently wet areas, and ice buildup in winter from poor drainage. If you notice any of these warning signs, it's best to address them promptly before they lead to more serious structural issues.",
       },
       {
-        title: 'What drainage solutions work best in Windsor\'s clay soil?',
+        title: "What drainage solutions work best in Windsor's clay soil?",
         description:
           "For Windsor's challenging clay soil, we typically recommend a comprehensive approach combining: French drains with specialized aggregate and filter fabric, strategic surface grading to create proper slopes, catch basins in low areas, foundation waterproofing systems, and in severe cases, sump pump systems. The exact combination depends on your specific property conditions. Our solutions are engineered specifically for Windsor's soil composition and rainfall patterns.",
       },
@@ -293,7 +374,7 @@ const metadata = {
           "In Windsor-Essex, permits are typically required for drainage work that: alters the natural flow of water, connects to municipal systems, affects neighboring properties, or involves significant excavation. Our team handles all necessary permit applications and ensures compliance with Windsor's drainage bylaws, which include specific requirements about where water can be discharged. We manage this entire process for you.",
       },
       {
-        title: 'How long do drainage systems last in Windsor\'s climate?',
+        title: "How long do drainage systems last in Windsor's climate?",
         description:
           "Properly installed drainage systems in Windsor should last 15-25+ years depending on the system type and materials used. Our drainage solutions are built with premium materials and designed specifically for Windsor's freeze-thaw cycles, clay soil, and rainfall patterns. We provide maintenance recommendations to maximize system lifespan, including periodic inspection and cleaning of key components.",
       },
@@ -318,7 +399,7 @@ const metadata = {
         icon: 'tabler:clipboard-check',
       },
     ]}
-    backgroundImage='~/assets/images/services/drainage/drainage-cta-background.png'
+    backgroundImage="~/assets/images/services/drainage/drainage-cta-background.png"
     showLeaves={false}
     overlayOpacity={0.7}
     isDark={true}

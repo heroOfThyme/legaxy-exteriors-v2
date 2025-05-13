@@ -14,7 +14,6 @@ const {
 
 // Add your keys directly here
 const WEB3FORMS_ACCESS_KEY = '928584ff-8a35-4f6e-88c9-c1a78ad2c298';
-const RECAPTCHA_SITE_KEY = '6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ';
 
 // Default services if none provided
 const defaultServices = [
@@ -30,21 +29,17 @@ const defaultServices = [
 const serviceOptions = services.length > 0 ? services : defaultServices;
 ---
 
-<!-- Load reCAPTCHA v3 -->
-<script src=`https://www.google.com/recaptcha/api.js?render=6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ`></script>
-
 <form
   action="https://api.web3forms.com/submit"
   method="POST"
   id="contact-form"
   class="relative p-4 rounded-lg border border-green-800/50 bg-[#050505] overflow-hidden needs-validation"
+  data-astro-reload
   novalidate
 >
   <!-- Web3Forms required fields -->
-  <input type="hidden" name="access_key" value="928584ff-8a35-4f6e-88c9-c1a78ad2c298" />
+  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
   <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
-  <!-- reCAPTCHA token will be set here -->
-  <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
   
   <!-- Decorative elements -->
   <div class="absolute top-0 right-0 w-40 h-40 bg-green-900/20 rounded-full -mt-20 -mr-20 z-0"></div>
@@ -139,6 +134,14 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
         </div>
       )
     }
+
+    <!-- reCAPTCHA v2 Checkbox (Visible) -->
+    <div class="h-captcha mt-6"
+      data-recaptcha-site-key="6Le_ujcrAAAAAFq2ND6WvduRcnKEg4TqgNEROKhZ"
+      data-captcha="true"
+      data-theme="dark"
+      data-size="normal"
+    ></div>
 
     {
       disclaimer && (
@@ -261,90 +264,79 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
   }
 </style>
 
-<script is:inline data-site-key={RECAPTCHA_SITE_KEY}>
+<script is:inline>
 (function () {
   "use strict";
+  /*
+  * Form Validation
+  */
+
+  // Fetch all the forms we want to apply custom validation styles to
+  const forms = document.querySelectorAll(".needs-validation");
+  const result = document.getElementById("result");
   
-  // Get the site key from the script tag
-  const scriptElement = document.currentScript;
-  const siteKey = scriptElement.getAttribute('data-site-key');
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    const forms = document.querySelectorAll(".needs-validation");
-    const result = document.getElementById("result");
-    
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          form.querySelectorAll(":invalid")[0].focus();
+        } else {
+          /*
+          * Form Submission using fetch()
+          */
           event.preventDefault();
           event.stopPropagation();
           
-          if (!form.checkValidity()) {
-            form.classList.add("was-validated");
-            form.querySelectorAll(":invalid")[0].focus();
-            return;
-          }
-          
-          form.classList.add("was-validated");
-          result.innerHTML = '<span class="text-green-400">Please wait...</span>';
-          
-          // Execute reCAPTCHA v3
-          grecaptcha.ready(function() {
-            grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
-              // Add token to the form
-              document.getElementById('g-recaptcha-response').value = token;
-              
-              // Submit the form
-              const formData = new FormData(form);
-              const object = Object.fromEntries(formData);
-              const json = JSON.stringify(object);
-              
-              fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                },
-                body: json,
-              })
-                .then(async (response) => {
-                  const json = await response.json();
-                  if (response.status == 200) {
-                    result.innerHTML = json.message || "Thank you! Your message has been sent.";
-                    result.classList.remove("text-gray-500");
-                    result.classList.add("text-green-500");
-                    form.reset();
-                    form.classList.remove("was-validated");
-                  } else {
-                    console.log(response);
-                    result.innerHTML = json.message || "Something went wrong!";
-                    result.classList.remove("text-gray-500");
-                    result.classList.add("text-red-500");
-                  }
-                })
-                .catch((error) => {
-                  console.log(error);
-                  result.innerHTML = "Something went wrong!";
-                  result.classList.add("text-red-500");
-                })
-                .finally(function () {
-                  setTimeout(() => {
-                    result.style.display = "none";
-                  }, 5000);
-                });
-            }).catch(function(error) {
-              console.error("reCAPTCHA error:", error);
-              result.innerHTML = "reCAPTCHA verification failed. Please try again.";
-              result.classList.add("text-red-500");
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+          result.innerHTML = "Please wait...";
+
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: json,
+          })
+            .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                result.innerHTML = json.message;
+                result.classList.remove("text-gray-500");
+                result.classList.add("text-green-500");
+              } else {
+                console.log(response);
+                result.innerHTML = json.message;
+                result.classList.remove("text-gray-500");
+                result.classList.add("text-red-500");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              result.innerHTML = "Something went wrong!";
+            })
+            .then(function () {
+              form.reset();
+              form.classList.remove("was-validated");
+              setTimeout(() => {
+                result.style.display = "none";
+              }, 5000);
             });
-          });
-        },
-        false
-      );
-    });
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
   });
 })();
 </script>
 
+<!-- Web3Forms client script that handles reCAPTCHA -->
 <script src="https://web3forms.com/client/script.js" async defer></script>
