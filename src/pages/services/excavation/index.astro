@@ -5,11 +5,11 @@ import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Timeline from '~/components/ui/Timeline.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Image from 'astro/components/Image.astro';
+import TwoColumnContent from '~/components/widgets/TwoColumnContent.astro';
 
 import excavationHero from '~/assets/images/services/excavation/excavation-services-main.png';
-import excavatorEquipment from '~/assets/images/projects/excavator-moving-stone.png';
-import basePreparation from '~/assets/images/projects/bobcat-grading-jobsite.png';
 
 const metadata = {
   title: 'Professional Excavation Services | Legacy Exteriors Windsor',
@@ -18,7 +18,8 @@ const metadata = {
   canonical: 'https://legacyexteriorsinc.com/services/excavation',
   openGraph: {
     title: 'Professional Excavation Services | Legacy Exteriors Windsor',
-    description: 'Transform your property with expert excavation, grading, and site preparation services designed for residential and commercial projects.',
+    description:
+      'Transform your property with expert excavation, grading, and site preparation services designed for residential and commercial projects.',
     type: 'website',
     images: [
       {
@@ -51,43 +52,22 @@ const metadata = {
         icon: 'tabler:photo',
       },
     ]}
-    image={{
-      src: excavationHero,
-      alt: 'Professional excavation equipment at work',
-    }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/70 via-transparent to-gray-900/70"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          src={excavationHero}
+          alt="Background"
+          class="w-full h-full object-cover"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+        />
+        <!-- Optional overlay for better text readability -->
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+      </div>
     </Fragment>
   </Hero>
-
-  <!-- Content Widget **************** -->
-  <Content
-    isReversed={false}
-    title="Expert Equipment & Skilled Operators"
-    subtitle="The right tools in the right hands for superior results."
-    image={{
-      src: excavatorEquipment,
-      alt: 'Our excavation equipment fleet',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2 font-heading">Modern Equipment Fleet</h3>
-      <p class="mb-4 text-muted">
-        At Legacy Exteriors, we maintain a versatile fleet of well-maintained excavation equipment that allows us to handle projects of any size with precision and efficiency. Our equipment includes:
-      </p>
-      <ul class="list-disc list-inside mb-4 text-muted">
-        <li>Mini excavators for tight access and precision work</li>
-        <li>Full-sized excavators for larger earthmoving projects</li>
-        <li>Skid steers with various attachments for versatile applications</li>
-        <li>Bulldozers for efficient grading and site preparation</li>
-        <li>Dump trucks for material hauling and removal</li>
-      </ul>
-      <p class="mb-4 text-muted">
-        What truly sets us apart is the skill of our operators. Each team member has extensive training and hands-on experience, allowing them to work efficiently while prioritizing safety and precision. This combination of quality equipment and expert operators ensures your excavation project is completed to the highest standards.
-      </p>
-    </Fragment>
-  </Content>
 
   <!-- Features Widget ************** -->
   <Features
@@ -135,102 +115,155 @@ const metadata = {
     ]}
   />
 
-  <!-- Timeline Widget **************** -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-4 font-heading">Our Excavation Process</h2>
-      <p class="text-xl max-w-3xl mx-auto text-muted">We follow a systematic approach to ensure your excavation project is completed safely, efficiently, and to exact specifications.</p>
-    </div>
-    
-    <Timeline
-      items={[
-        {
-          title: 'Initial Consultation & Site Assessment',
-          description:
-            'We begin with a thorough evaluation of your site, assessing soil conditions, access points, utility locations, and project requirements to develop a comprehensive plan.',
-          icon: 'tabler:clipboard-check',
-        },
-        {
-          title: 'Project Planning & Preparation',
-          description:
-            'We create a detailed excavation plan, including scheduling, equipment selection, and logistics, while obtaining necessary permits and marking utilities to ensure safety.',
-          icon: 'tabler:chart-dots',
-        },
-        {
-          title: 'Site Setup & Safety Measures',
-          description:
-            'Prior to excavation, we establish safety perimeters, erosion controls, and access routes while protecting existing structures, landscaping, and utilities.',
-          icon: 'tabler:shield',
-        },
-        {
-          title: 'Precision Excavation & Material Management',
-          description:
-            'Our skilled operators execute the plan with precision, carefully removing and managing soil and materials while maintaining clean job sites throughout the process.',
-          icon: 'tabler:bulldozer',
-        },
-        {
-          title: 'Grading & Compaction',
-          description:
-            'We ensure proper slopes for drainage and structural stability, compacting soil to specifications, and preparing the site for the next phase of construction.',
-          icon: 'tabler:arrow-guide',
-        },
-        {
-          title: 'Final Inspection & Site Cleanup',
-          description:
-            'Upon completion, we conduct a thorough inspection, ensure all specifications have been met, remove equipment and debris, and leave your site clean and ready for the next phase.',
-          icon: 'tabler:checkup-list',
-        },
-      ]}
-    />
-  </div>
-
   <!-- Content Widget **************** -->
   <Content
-    isAfterContent
-    title="Residential Excavation Experts"
-    subtitle="Services tailored for homeowners and residential projects"
+    title="Our Equipment & Capabilities"
+    subtitle="Professional-grade machinery operated with precision and expertise"
     items={[
       {
-        title: 'Pool Installation Preparation',
+        title: 'Modern Fleet',
         description:
-          'Specialized excavation for in-ground pools with precise dimensions and careful attention to access and drainage requirements.',
-        icon: 'tabler:pool',
+          'Well-maintained excavators, skid steers, dozers, and specialized equipment for projects of all sizes.',
+        icon: 'tabler:tractor',
       },
       {
-        title: 'Landscape Transformation',
+        title: 'Experienced Operators',
         description:
-          'Excavation and grading to reshape your property for new landscape features, solving drainage issues and creating usable outdoor spaces.',
-        icon: 'tabler:shovel',
+          'Skilled equipment operators with years of experience handling challenging terrain and complex requirements.',
+        icon: 'tabler:user-check',
       },
       {
-        title: 'Septic System Installation',
+        title: 'Versatile Applications',
         description:
-          'Complete excavation for septic tanks, leach fields, and related components with proper dimensions and elevations for optimal system function.',
-        icon: 'tabler:home',
+          'Capable of handling everything from precise residential work to larger commercial and agricultural projects.',
+        icon: 'tabler:adjustments',
+      },
+      {
+        title: 'Safety Focus',
+        description: 'Strict adherence to safety protocols and best practices to protect your property and our team.',
+        icon: 'tabler:shield-check',
       },
     ]}
     image={{
-      src: basePreparation,
-      alt: 'Residential excavation project',
+      src: '~/assets/images/about/legacy-exteriors-equipment-line.png',
+      alt: 'Legacy Exteriors equipment',
     }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2 font-heading">Transforming Residential Properties</h3>
-      <p class="text-muted">
-        Whether you're building a new home, adding a pool, or solving drainage issues, our residential excavation services can help transform your property safely and efficiently.
-      </p>
-      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
-        <li>Low-impact equipment options for established properties</li>
-        <li>Careful protection of existing landscaping and structures</li>
-        <li>Clean job sites with minimal disruption to your daily life</li>
-        <li>Proper soil management and erosion control throughout the process</li>
-        <li>Coordination with other contractors for seamless project flow</li>
-      </ul>
-      <p class="mb-5 text-muted">
-        Our residential clients appreciate our attention to detail, clean work practices, and consideration for their property throughout the excavation process. We treat your home with respect while delivering professional results.
-      </p>
-    </Fragment>
-  </Content>
+  />
+  <!-- Two Column Content Widget ***** -->
+  <TwoColumnContent
+    title="When You Need Professional Excavation"
+    subtitle="Recognize these signs that require expert excavation services"
+    image={{
+      src: "~/assets/images/services/excavation/sunken-driveway.png",
+      alt: 'Excavation and grading work in progress',
+    }}
+    leftColumn={{
+      title: 'Property Issues',
+      items: [
+        {
+          icon: 'tabler:arrow-down',
+          color: 'orange',
+          title: 'Sunken Areas',
+          description: 'Depressions in your yard, especially near foundations',
+        },
+        {
+          icon: 'tabler:droplets',
+          color: 'blue',
+          title: 'Poor Drainage',
+          description: 'Water flowing toward your home instead of away',
+        },
+        {
+          icon: 'tabler:ruler',
+          color: 'red',
+          title: 'Uneven Surfaces',
+          description: 'Sloping driveways, patios, or walkways needing correction',
+        },
+        {
+          icon: 'tabler:droplet',
+          color: 'blue',
+          title: 'Standing Water',
+          description: 'Persistent puddles after rainfall indicate grading issues',
+        },
+      ],
+    }}
+    rightColumn={{
+      title: 'Project Needs',
+      items: [
+        {
+          icon: 'tabler:building',
+          color: 'green',
+          title: 'New Construction',
+          description: 'Planning an addition, pool, or outbuilding',
+        },
+        {
+          icon: 'tabler:garden-cart',
+          color: 'green',
+          title: 'Landscape Changes',
+          description: 'Major yard renovations or hardscape installations',
+        },
+        {
+          icon: 'tabler:filter',
+          color: 'yellow',
+          title: 'Utility Installation',
+          description: 'Underground services requiring proper trenching',
+        },
+        {
+          icon: 'tabler:home-shield',
+          color: 'green',
+          title: 'Foundation Work',
+          description: 'Basement additions or foundation repairs',
+        },
+      ],
+    }}
+  />
+
+  <!-- Steps Widget ****************** -->
+  <Steps
+  title="Our Excavation Process"
+  subtitle="We follow a systematic approach to ensure your excavation project is completed safely, efficiently, and to exact specifications."
+  items={[
+    {
+      title: 'Initial Consultation & Site Assessment',
+      description:
+        'We begin with a thorough evaluation of your site, assessing soil conditions, access points, utility locations, and project requirements to develop a comprehensive plan.',
+      icon: 'tabler:clipboard-check',
+    },
+    {
+      title: 'Project Planning & Preparation',
+      description:
+        'We create a detailed excavation plan, including scheduling, equipment selection, and logistics, while obtaining necessary permits and marking utilities to ensure safety.',
+      icon: 'tabler:chart-dots',
+    },
+    {
+      title: 'Site Setup & Safety Measures',
+      description:
+        'Prior to excavation, we establish safety perimeters, erosion controls, and access routes while protecting existing structures, landscaping, and utilities.',
+      icon: 'tabler:shield',
+    },
+    {
+      title: 'Precision Excavation & Material Management',
+      description:
+        'Our skilled operators execute the plan with precision, carefully removing and managing soil and materials while maintaining clean job sites throughout the process.',
+      icon: 'tabler:bulldozer',
+    },
+    {
+      title: 'Grading & Compaction',
+      description:
+        'We ensure proper slopes for drainage and structural stability, compacting soil to specifications, and preparing the site for the next phase of construction.',
+      icon: 'tabler:arrow-guide',
+    },
+    {
+      title: 'Final Inspection & Site Cleanup',
+      description:
+        'Upon completion, we conduct a thorough inspection, ensure all specifications have been met, remove equipment and debris, and leave your site clean and ready for the next phase.',
+      icon: 'tabler:checkup-list',
+    },
+  ]}
+  image={{
+    src: '~/assets/images/services/excavation/excavation-services-main.png',
+    alt: 'Excavation process overview',
+  }}
+/>
 
   <!-- FAQs Widget ******************* -->
   <FAQs
@@ -247,7 +280,7 @@ const metadata = {
       {
         title: 'Do you handle the permit process for excavation work?',
         description:
-          "Yes, we can assist with the permitting process for most excavation projects. Depending on your location and project scope, permits may be required for significant excavation work, especially when it involves structural foundations, significant grading changes, or work near property lines. Our team is familiar with local permitting requirements and can either handle the entire process on your behalf or work alongside your general contractor to ensure all necessary approvals are obtained before work begins.",
+          'Yes, we can assist with the permitting process for most excavation projects. Depending on your location and project scope, permits may be required for significant excavation work, especially when it involves structural foundations, significant grading changes, or work near property lines. Our team is familiar with local permitting requirements and can either handle the entire process on your behalf or work alongside your general contractor to ensure all necessary approvals are obtained before work begins.',
       },
       {
         title: 'How do you protect my property during excavation?',
@@ -257,12 +290,12 @@ const metadata = {
       {
         title: 'What considerations are made for soil conditions and drainage?',
         description:
-          "Every excavation project begins with an assessment of your soil conditions. We evaluate soil composition, stability, drainage characteristics, and compaction requirements for your specific project. Based on this assessment, we develop appropriate strategies for excavation, material management, and erosion control. For foundation work, we ensure proper base preparation with appropriate materials. For grading projects, we create slopes that direct water away from structures. When necessary, we can incorporate additional drainage solutions to address specific site challenges.",
+          'Every excavation project begins with an assessment of your soil conditions. We evaluate soil composition, stability, drainage characteristics, and compaction requirements for your specific project. Based on this assessment, we develop appropriate strategies for excavation, material management, and erosion control. For foundation work, we ensure proper base preparation with appropriate materials. For grading projects, we create slopes that direct water away from structures. When necessary, we can incorporate additional drainage solutions to address specific site challenges.',
       },
       {
         title: 'How deep can you excavate, and what size projects can you handle?',
         description:
-          "Our equipment capabilities allow us to excavate to depths suitable for standard residential foundations (typically 4-8 feet) as well as deeper excavations for full basements, pools, and commercial foundations. For specialty deep excavation needs, we have partnerships with companies that specialize in those services. In terms of project size, we regularly handle everything from small residential projects like driveway preparations and drainage corrections to large-scale commercial site preparation and subdivision development. Our diverse equipment fleet allows us to scale our approach to match your specific project requirements.",
+          'Our equipment capabilities allow us to excavate to depths suitable for standard residential foundations (typically 4-8 feet) as well as deeper excavations for full basements, pools, and commercial foundations. For specialty deep excavation needs, we have partnerships with companies that specialize in those services. In terms of project size, we regularly handle everything from small residential projects like driveway preparations and drainage corrections to large-scale commercial site preparation and subdivision development. Our diverse equipment fleet allows us to scale our approach to match your specific project requirements.',
       },
       {
         title: 'What happens to the excavated soil and materials?',
@@ -285,7 +318,7 @@ const metadata = {
         icon: 'tabler:message',
       },
     ]}
-    backgroundImage='~/assets/images/services/excavation/excavation-services-main.png'
+    backgroundImage="~/assets/images/services/excavation/excavation-services-main.png"
     showLeaves={false}
     overlayOpacity={0.7}
     isDark={true}

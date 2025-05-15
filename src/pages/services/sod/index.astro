@@ -4,16 +4,17 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import BeforeAfter from '~/components/widgets/BeforeAfter.astro';
+import Image from 'astro/components/Image.astro';
+import TwoColumnContent from '~/components/widgets/TwoColumnContent.astro';
 
 // Import images
 import sodHero from '~/assets/images/services/sod/sod-service-main.png';
-import soddedLawnComplete from '~/assets/images/projects/sodded-lawn-complete.png';
+import sodAfter from '~/assets/images/services/sod/sod-after.png';
 import soddedLawnFrontYard from '~/assets/images/projects/sodded-lawn-front-yard-windsor.png';
-import dugUpTurf from '~/assets/images/projects/dug-up-turf-widsor-sod-installation.png';
-import soilGradedLevelled from '~/assets/images/projects/soil-graded-and-levelled-windsor-sod.png';
+import sodBefore from '~/assets/images/services/sod/sod-before.png';
 
 const metadata = {
   title: 'Professional Sod Installation Services in Windsor | Legacy Exteriors',
@@ -56,13 +57,20 @@ const metadata = {
         icon: 'tabler:photo',
       },
     ]}
-    image={{
-      src: sodHero,
-      alt: 'Professional sod installation in Windsor',
-    }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gradient-to-tr from-green-900/70 via-transparent to-green-900/70"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          src={sodHero}
+          alt="Background"
+          class="w-full h-full object-cover"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+        />
+        <!-- Optional overlay for better text readability -->
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+      </div>
     </Fragment>
   </Hero>
 
@@ -71,12 +79,12 @@ const metadata = {
     title="See the Transformation"
     subtitle="Before and after sod installation"
     beforeImage={{
-      src: soilGradedLevelled,
+      src: sodBefore,
       alt: 'Graded and prepared soil before sod installation',
       label: 'Before',
     }}
     afterImage={{
-      src: soddedLawnComplete,
+      src: sodAfter,
       alt: 'Beautifully installed sod lawn',
       label: 'After',
     }}
@@ -128,6 +136,69 @@ const metadata = {
     ]}
   />
 
+  <TwoColumnContent
+    title="Professional Installation & Care"
+    subtitle="What we do vs what you do for a perfect lawn"
+    leftColumn={{
+      title: 'Our Installation Process',
+      items: [
+        {
+          icon: 'tabler:bulldozer',
+          color: 'orange',
+          title: 'Remove Old Turf',
+          description: 'Clear away dead grass and weeds completely',
+        },
+        {
+          icon: 'tabler:ruler-measure',
+          color: 'blue',
+          title: 'Grade & Level',
+          description: 'Create proper slopes for drainage',
+        },
+        {
+          icon: 'tabler:shovel',
+          color: 'yellow',
+          title: 'Amend Soil',
+          description: 'Add organic matter to improve clay soil',
+        },
+        {
+          icon: 'tabler:garden-cart',
+          color: 'green',
+          title: 'Install Fresh Sod',
+          description: 'Lay premium Kentucky Bluegrass perfectly',
+        },
+      ],
+    }}
+    rightColumn={{
+      title: 'Your Maintenance',
+      items: [
+        {
+          icon: 'tabler:droplet',
+          color: 'blue',
+          title: 'Water Properly',
+          description: 'Daily for 2 weeks, then reduce gradually',
+        },
+        {
+          icon: 'tabler:cut',
+          color: 'green',
+          title: 'First Mowing',
+          description: 'After 2-3 weeks when firmly rooted',
+        },
+        {
+          icon: 'tabler:ban',
+          color: 'red',
+          title: 'Limit Traffic',
+          description: 'Stay off for 3 weeks while rooting',
+        },
+        {
+          icon: 'tabler:calendar-check',
+          color: 'green',
+          title: 'Long-term Care',
+          description: 'Regular mowing and seasonal fertilizing',
+        },
+      ],
+    }}
+  />
+
   <!-- Content Widget **************** -->
   <Content
     isAfterContent
@@ -157,28 +228,16 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Premium Quality Sod</h3>
+      <h3 class="text-2xl font-bold tracking-tight font-heading dark:text-white sm:text-3xl mb-2">Premium Quality Sod</h3>
       <p>
         At Legacy Exteriors, we use only the highest quality Kentucky Bluegrass sod that thrives in Windsor's unique
         climate and soil conditions. Our premium sod is:
-      </p>
-      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
-        <li>Grown by reputable local farms</li>
-        <li>Harvested fresh for your installation</li>
-        <li>Free from weeds and disease</li>
-        <li>Resilient to Windsor's seasonal changes</li>
-        <li>Selected for your specific soil type and sun exposure</li>
-      </ul>
-      <p class="mb-5">
-        Kentucky Bluegrass is the perfect choice for Windsor properties due to its excellent heat tolerance, drought
-        resistance once established, and ability to self-repair from minor damage. This premium grass variety creates a
-        dense, lush lawn with a beautiful deep green color that will be the envy of your neighborhood.
       </p>
     </Fragment>
   </Content>
 
   <!-- Steps2 Widget ****************** -->
-  <Steps2
+  <Steps
     title="Our Professional Sod Installation Process"
     subtitle="We follow a meticulous process to ensure your new lawn establishes quickly and remains healthy for years to come."
     items={[
@@ -218,69 +277,6 @@ const metadata = {
       alt: 'Sod installation process',
     }}
   />
-
-  <!-- Content Widget **************** -->
-  <Content
-    isReversed
-    title="Sod vs. Seed: Why Choose Sod?"
-    subtitle="Understanding the advantages of sod installation over traditional seeding"
-    items={[
-      {
-        title: 'Immediate Results',
-        description:
-          'While seeding takes 8-12 weeks to establish, sod gives you an instant lawn you can enjoy right away.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Higher Success Rate',
-        description:
-          'Seed can be washed away by rain, eaten by birds, or fail to germinate. Sod has already survived these vulnerable stages.',
-        icon: 'tabler:chart-bar',
-      },
-      {
-        title: 'Less Maintenance',
-        description:
-          'New seed requires constant attention and precise watering. Sod needs less initial maintenance and establishes more reliably.',
-        icon: 'tabler:tools',
-      },
-      {
-        title: 'Weed Prevention',
-        description:
-          'Sod creates an instant dense carpet that prevents weeds, while seeded lawns are vulnerable to weed invasion during establishment.',
-        icon: 'tabler:plant-off',
-      },
-    ]}
-    image={{
-      src: dugUpTurf,
-      alt: 'Soil preparation for sod installation',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        The Smart Choice for Windsor Properties
-      </h3>
-      <p class="mb-4">
-        When comparing sod to seed for Windsor properties, sod offers significant advantages that make it the preferred
-        choice for most homeowners:
-      </p>
-      <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
-        <h4 class="font-bold mb-2">Cost Comparison</h4>
-        <p class="mb-2">While sod has a higher upfront cost, the overall value is often better when you consider:</p>
-        <ul class="list-disc list-inside text-muted">
-          <li>No need to reseed patchy areas</li>
-          <li>Reduced water usage after initial establishment</li>
-          <li>Fewer weed treatments required</li>
-          <li>Immediate increase in property value</li>
-        </ul>
-      </div>
-      <p>
-        For Windsor's clay-heavy soil conditions, sod also provides better initial stability and helps improve soil
-        structure more quickly than seeded lawns. Our customers consistently report that the instant transformation and
-        reliable results make sod well worth the investment.
-      </p>
-    </Fragment>
-  </Content>
-
 
   <!-- FAQs Widget ******************* -->
   <FAQs
@@ -324,25 +320,25 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Ready for a Beautiful Lawn?"
-    backgroundImage="~/assets/images/projects/installed-sod-windsor-2024.png"
+    tagline="Premium Kentucky Bluegrass"
+    backgroundImage="~/assets/images/projects/sodded-lawn-complete.png"
     showLeaves={false}
-    overlayOpacity={0.7}
+    overlayOpacity={0.75}
     actions={[
       {
         variant: 'primary',
-        text: 'Get Your Free Estimate',
-        href: '/contact',
-        icon: 'tabler:bulldozer',
+        text: 'Call Us Today',
+        href: 'tel:+15192555555',
+        icon: 'tabler:phone',
       },
     ]}
     isDark={true}
   >
-    <Fragment slot="title"> Transform Your Property with Professional Sod Installation </Fragment>
+    <Fragment slot="title">Not All Sod is Equal - We Install Only the Best</Fragment>
 
     <Fragment slot="subtitle">
-      Take the first step toward a lush, green lawn that will enhance your home's curb appeal and provide years of
-      enjoyment.
+      Premium Kentucky Bluegrass from local farms, grown specifically for Windsor's climate. Disease-resistant,
+      drought-tolerant once established, and guaranteed to thrive. See the difference quality makes.
     </Fragment>
   </CallToAction>
 </Layout>

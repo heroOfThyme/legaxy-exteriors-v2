@@ -45,20 +45,20 @@ const metadata = {
       alt: 'Legacy Exteriors founder',
     }}
   >
-  <Fragment slot="bg">
-    <div class="absolute inset-0 overflow-hidden">
-      <Image
-        src={backgroundImage}
-        alt="Background" 
-        class="w-full h-full object-cover"
-        widths={[400, 768, 1024, 2040]}
-        sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-        loading="eager"
-      />
-      <!-- Optional overlay for better text readability -->
-      <div class="absolute inset-0 bg-black opacity-70"></div>
-    </div>
-  </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          src={backgroundImage}
+          alt="Background"
+          class="w-full h-full object-cover"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+        />
+        <!-- Optional overlay for better text readability -->
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+      </div>
+    </Fragment>
   </Hero>
 
   <!-- Content Widget **************** -->
@@ -90,8 +90,10 @@ const metadata = {
           visions.
         </p>
         <p class="mb-4 text-lg">
-          <span class="font-bold">Alexander Orton</span> <br />
-          <span class="font-heading font-light">Owner/Operator</span> <br />
+          <span class="font-bold">Alexander Orton</span>
+          <br />
+          <span class="font-heading font-light">Owner/Operator</span>
+          <br />
         </p>
       </div>
     </Fragment>
@@ -192,26 +194,24 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
   <CallToAction
-    tagline="Limited Time Offer"
-    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    tagline="Windsor's Trusted Excavation Experts"
+    backgroundImage="~/assets/images/about/legacy-exteriors-equipment-line.png"
     showLeaves={false}
     overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Get Your Free Estimate',
+        text: 'Call Today',
         href: '/contact',
-        icon: 'tabler:bulldozer',
+        icon: 'tabler:phone',
       },
     ]}
     isDark={true}
   >
-    <Fragment slot="title">
-      Sod Installation Package
-    </Fragment>
-
+    <Fragment slot="title">30+ Years of Family Expertise. Your Property Deserves the Best.</Fragment>
     <Fragment slot="subtitle">
-      Book consultation before August 31st a free consultation on your property.
+      Join 200+ satisfied Windsor homeowners who trust Legacy Exteriors for professional excavation, drainage solutions,
+      and site preparation. Licensed, insured, and committed to excellence.
     </Fragment>
   </CallToAction>
 </Layout>

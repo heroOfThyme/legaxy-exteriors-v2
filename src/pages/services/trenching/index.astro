@@ -4,12 +4,18 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+import TwoColumnContent from '~/components/widgets/TwoColumnContent.astro';
+import Image from 'astro/components/Image.astro';
+import { Icon } from 'astro-icon/components';
+
+import trenchingHero from '~/assets/images/services/trenching/trenching-services-main.png';
 
 const metadata = {
   title: 'Professional Trenching Services in Windsor | Legacy Exteriors',
-  description: 'Expert utility, drainage, and irrigation trenching services in Windsor and Essex County. Precise, safe, and efficient underground installations with minimal property disruption.',
+  description:
+    'Expert utility, drainage, and irrigation trenching services in Windsor and Essex County. Precise, safe, and efficient underground installations with minimal property disruption.',
 };
 ---
 
@@ -32,13 +38,20 @@ const metadata = {
         icon: 'tabler:photo',
       },
     ]}
-    image={{
-      src: '~/assets/images/services/trenching/trenching-services-main.png',
-      alt: 'Professional trenching equipment in Windsor',
-    }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/70 via-transparent to-gray-900/70"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          src={trenchingHero}
+          alt="Background"
+          class="w-full h-full object-cover"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+        />
+        <!-- Optional overlay for better text readability -->
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+      </div>
     </Fragment>
   </Hero>
 
@@ -81,12 +94,81 @@ const metadata = {
       },
       {
         title: 'Custom Solutions',
-        description:
-          'Tailored trenching services for unique project requirements and challenging site conditions.',
+        description: 'Tailored trenching services for unique project requirements and challenging site conditions.',
         icon: 'tabler:adjustments',
       },
     ]}
   />
+
+  <TwoColumnContent
+    title="Safe & Compliant Trenching"
+    subtitle="Following Ontario regulations and best practices"
+    leftColumn={{
+      title: 'Safety Measures',
+      items: [
+        {
+          icon: 'tabler:radar',
+          color: 'red',
+          title: 'Utility Locates',
+          description: 'Ontario One Call marking before any digging',
+        },
+        {
+          icon: 'tabler:barrier-block',
+          color: 'orange',
+          title: 'Site Protection',
+          description: 'Barriers and signage for public safety',
+        },
+        {
+          icon: 'tabler:shield-check',
+          color: 'yellow',
+          title: 'Trench Shoring',
+          description: 'Support systems for deep excavations',
+        },
+        {
+          icon: 'tabler:users',
+          color: 'green',
+          title: 'Trained Operators',
+          description: 'Certified equipment operators only',
+        },
+      ],
+    }}
+    rightColumn={{
+      title: 'Code Compliance',
+      items: [
+        {
+          icon: 'tabler:certificate',
+          color: 'blue',
+          title: 'Municipal Permits',
+          description: 'All required Windsor/Essex permits secured',
+        },
+        {
+          icon: 'tabler:ruler-measure',
+          color: 'green',
+          title: 'Depth Requirements',
+          description: 'Meet or exceed Ontario Building Code',
+        },
+        {
+          icon: 'tabler:clipboard-check',
+          color: 'blue',
+          title: 'Inspections',
+          description: 'Coordinate with local inspectors',
+        },
+        {
+          icon: 'tabler:file-text',
+          color: 'green',
+          title: 'Documentation',
+          description: 'Complete records for your files',
+        },
+      ],
+    }}
+  >
+    <div class="mt-8 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border-l-4 border-red-500 text-center w-fit mx-auto">
+      <p class="text-red-900 dark:text-red-100 font-medium">
+        <Icon name="tabler:alert-triangle" class="inline w-5 h-5 mr-2" />
+        <strong>Critical:</strong> Digging has a lot of risks and legislation. Leave it to the professionals!
+      </p>
+    </div>
+  </TwoColumnContent>
 
   <!-- Content Widget **************** -->
   <Content
@@ -112,30 +194,21 @@ const metadata = {
       },
     ]}
     image={{
-      src: '~/assets/images/services/trenching/trenching-services-main.png',
+      src: '~/assets/images/services/trenching/trenching-measuring-depth.png',
       alt: 'Trenching machinery in operation',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">Precise Execution</h3>
-      <p>
-        At Legacy Exteriors, our trenching services combine technical expertise with careful execution to ensure optimal results for your project.
-      </p>
-      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
-        <li>Precise depth and width measurements</li>
-        <li>Proper slope calculations for drainage</li>
-        <li>Clean, straight trenches for utilities</li>
-        <li>Careful soil management and handling</li>
-        <li>Compliance with all safety regulations</li>
-      </ul>
-      <p class="mb-5">
-        Our attention to detail during trenching ensures proper installation of utilities and drainage systems, preventing future problems and costly repairs.
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+        Our team is trained to execute trenching with precision, ensuring the correct depth and width for all utilities.
+        We follow all local regulations and best practices to ensure safety and compliance.
       </p>
     </Fragment>
   </Content>
 
   <!-- Steps2 Widget ****************** -->
-  <Steps2
+  <Steps
     title="Our Trenching Process"
     subtitle="We follow a systematic approach to ensure safe, efficient, and precise trenching for your project."
     items={[
@@ -170,6 +243,10 @@ const metadata = {
         icon: 'tabler:arrow-back-up',
       },
     ]}
+    image={{
+      src: '~/assets/images/services/trenching/trenching-services-main.png',
+      alt: 'Trenching machinery in operation',
+    }}
   />
 
   <!-- FAQs Widget ******************* -->
@@ -182,12 +259,12 @@ const metadata = {
       {
         title: 'How deep do you typically trench for different utilities?',
         description:
-          "Trenching depth varies by utility type and local code requirements. In Windsor-Essex, water lines are typically installed 4-5 feet deep to protect from freezing. Electrical conduits require at least 24 inches of cover, while irrigation lines are usually 12-18 inches deep. Gas and sewer lines have their own specific requirements. We ensure all trenching meets or exceeds local building codes.",
+          'Trenching depth varies by utility type and local code requirements. In Windsor-Essex, water lines are typically installed 4-5 feet deep to protect from freezing. Electrical conduits require at least 24 inches of cover, while irrigation lines are usually 12-18 inches deep. Gas and sewer lines have their own specific requirements. We ensure all trenching meets or exceeds local building codes.',
       },
       {
         title: 'Will trenching damage my lawn or landscaping?',
         description:
-          "While trenching does disturb the soil in the immediate path, we take steps to minimize impact on your property. We carefully remove and preserve sod where possible, use the appropriate sized equipment for your job, and fully restore the area after completion. This includes proper soil compaction, grading, and either replacing saved sod or providing new seed/sod as needed.",
+          'While trenching does disturb the soil in the immediate path, we take steps to minimize impact on your property. We carefully remove and preserve sod where possible, use the appropriate sized equipment for your job, and fully restore the area after completion. This includes proper soil compaction, grading, and either replacing saved sod or providing new seed/sod as needed.',
       },
       {
         title: 'How long does a typical residential trenching project take?',
@@ -202,43 +279,37 @@ const metadata = {
       {
         title: 'Do I need permits for trenching on my property?',
         description:
-          "In most cases, trenching that involves utility installations requires permits from Windsor or Essex County municipalities. This is particularly true for water, sewer, and gas connections. Our team handles the permit application process for you, ensuring all work is properly documented and compliant with local regulations.",
+          'In most cases, trenching that involves utility installations requires permits from Windsor or Essex County municipalities. This is particularly true for water, sewer, and gas connections. Our team handles the permit application process for you, ensuring all work is properly documented and compliant with local regulations.',
       },
       {
         title: 'Can you trench through difficult areas like driveways or walkways?',
         description:
-          "Yes, we have techniques for trenching through or under hardscaped areas. When possible, we use boring equipment to tunnel beneath driveways and walkways without disturbing the surface. When trenching across these areas is necessary, we use precision cutting equipment to create clean lines that can be properly restored after the utility installation is complete.",
+          'Yes, we have techniques for trenching through or under hardscaped areas. When possible, we use boring equipment to tunnel beneath driveways and walkways without disturbing the surface. When trenching across these areas is necessary, we use precision cutting equipment to create clean lines that can be properly restored after the utility installation is complete.',
       },
     ]}
   />
 
-<!-- CallToAction Widget *********** -->
-<CallToAction
-  tagline="Limited Time Offer"
-  backgroundImage='~/assets/images/services/trenching/trenching-services-main.png'
-  showLeaves={false}
-  overlayOpacity={0.8}
-  actions={[
-    {
-      variant: 'primary',
-      text: 'Contact Us Now',
-      href: '/contact',
-      icon: 'tabler:message',
-    },
-    {
-      text: 'View Our Projects',
-      href: '/our-work',
-      icon: 'tabler:photo',
-    },
-  ]}
-  isDark={true}
->
-  <Fragment slot="title">
-    Professional Trenching Services
-  </Fragment>
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    tagline="Underground Utility Experts"
+    backgroundImage="~/assets/images/services/trenching/trenching-services-main.png"
+    showLeaves={false}
+    overlayOpacity={0.8}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Call Us Now',
+        href: 'tel:+15192555555',
+        icon: 'tabler:phone',
+      },
+    ]}
+    isDark={true}
+  >
+    <Fragment slot="title">Water • Sewer • Gas • Electric • Irrigation</Fragment>
 
-  <Fragment slot="subtitle">
-    Book before August 31st for a free consultation and 10% discount on your trenching project.
-  </Fragment>
-</CallToAction>
+    <Fragment slot="subtitle">
+      Professional trenching at the correct depths for all utilities. We handle permits, locates, and municipal
+      inspections. Minimal disruption to your property with complete restoration included.
+    </Fragment>
+  </CallToAction>
 </Layout>

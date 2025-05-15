@@ -19,10 +19,6 @@ export interface Props extends Widget {
     alt: string;
     label?: string;
   };
-  layout?: 'side-by-side' | 'slider'; // For future expansion
-  variant?: 'full-width' | 'contained' | 'blog-full'; // Display variants
-  imageWidth?: number;
-  imageHeight?: number;
   imageAspect?: string;
   classes?: {
     container?: string;
@@ -38,28 +34,18 @@ const {
   tagline = await Astro.slots.render('tagline'),
   beforeImage,
   afterImage,
-  layout = 'side-by-side',
-  variant = 'contained',
-  imageWidth = 900,
-  imageHeight = 600,
-  imageAspect = '3:2',
+  imageAspect = '16:9',
   classes = {},
   id,
   isDark = false,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
-
-// Set container class based on variant
-const containerClass = 
-  variant === 'full-width' ? 'max-w-7xl mx-auto px-4 sm:px-6' :
-  variant === 'blog-full' ? 'w-full px-4 sm:px-6' :
-  'max-w-3xl mx-auto';
 ---
 
-<WidgetWrapper 
-  id={id} 
-  isDark={isDark} 
-  containerClass={`${containerClass} ${classes?.container ?? ''}`} 
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-7xl mx-auto px-4 sm:px-6 ${classes?.container ?? ''}`}
   bg={bg}
 >
   <Headline
@@ -72,51 +58,55 @@ const containerClass =
       subtitle: 'max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400',
     }}
   />
-  
-  <div class="grid md:grid-cols-2 gap-4 md:gap-8 items-start">
+
+  <div class="grid md:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
     <!-- Before Image -->
-    <div class={`relative group ${classes?.imageWrapper ?? ''}`}>
+    <div class={`relative overflow-hidden rounded-lg shadow-lg ${classes?.imageWrapper ?? ''}`}>
       {beforeImage.label && (
-        <div class={`absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-md font-medium z-10 ${classes?.label ?? ''}`}>
+        <div class={`absolute top-4 left-4 bg-green-500 backdrop-blur-sm text-white px-3 py-1.5 rounded-md font-medium z-10 ${classes?.label ?? ''}`}>
           {beforeImage.label || 'Before'}
         </div>
       )}
-      <Image
-        src={beforeImage.src}
-        alt={beforeImage.alt}
-        width={imageWidth}
-        height={imageHeight}
-        widths={[400, 768, 900]}
-        aspectRatio={imageAspect}
-        layout="cover"
-        class={`rounded-lg shadow-lg w-full ${classes?.image ?? ''}`}
-        loading="lazy"
-        decoding="async"
-      />
+      <div class="aspect-[16/9] w-full overflow-hidden">
+        <Image
+          src={beforeImage.src}
+          alt={beforeImage.alt}
+          width={1200}
+          height={675}
+          widths={[400, 768, 1200]}
+          aspectRatio={imageAspect}
+          layout="cover"
+          class={`w-full h-full object-cover ${classes?.image ?? ''}`}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
     </div>
-    
+
     <!-- After Image -->
-    <div class={`relative group ${classes?.imageWrapper ?? ''}`}>
+    <div class={`relative overflow-hidden rounded-lg shadow-lg ${classes?.imageWrapper ?? ''}`}>
       {afterImage.label && (
-        <div class={`absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-md font-medium z-10 ${classes?.label ?? ''}`}>
+        <div class={`absolute top-4 left-4 bg-green-500 backdrop-blur-sm text-white px-3 py-1.5 rounded-md font-medium z-10 ${classes?.label ?? ''}`}>
           {afterImage.label || 'After'}
         </div>
       )}
-      <Image
-        src={afterImage.src}
-        alt={afterImage.alt}
-        width={imageWidth}
-        height={imageHeight}
-        widths={[400, 768, 900]}
-        aspectRatio={imageAspect}
-        layout="cover"
-        class={`rounded-lg shadow-lg w-full ${classes?.image ?? ''}`}
-        loading="lazy"
-        decoding="async"
-      />
+      <div class="aspect-[16/9] w-full overflow-hidden">
+        <Image
+          src={afterImage.src}
+          alt={afterImage.alt}
+          width={1200}
+          height={675}
+          widths={[400, 768, 1200]}
+          aspectRatio={imageAspect}
+          layout="cover"
+          class={`w-full h-full object-cover ${classes?.image ?? ''}`}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
     </div>
   </div>
-  
+
   <!-- Optional content slot for description -->
   <slot />
 </WidgetWrapper>

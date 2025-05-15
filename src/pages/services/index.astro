@@ -7,7 +7,6 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import backgroundImage from '~/assets/images/projects/excavator-moving-stone.png';
 import { Image } from 'astro:assets';
 
-
 import Steps from '~/components/widgets/Steps.astro';
 
 const metadata = {
@@ -48,11 +47,7 @@ const metadata = {
         href: '/contact',
         icon: 'tabler:message',
       },
-      { text: 'Why Choose Us', 
-      href: '#features',
-      icon: 'tabler:check',
-      variant: 'secondary',
-      },
+      { text: 'Why Choose Us', href: '#features', icon: 'tabler:check', variant: 'secondary' },
     ]}
   >
     <Fragment slot="bg">
@@ -251,28 +246,26 @@ const metadata = {
   />
   <!-- Testimonials Widget ********** -->
 
-  <!-- CallToAction Widget *********** -->
+  <!-- CallToAction Widget - Trust Builder -->
   <CallToAction
-    tagline="Limited Time Offer"
-    backgroundImage='~/assets/images/about/legacy-exteriors-equipment-line.png'
+    tagline="Windsor's Trusted Excavation Experts"
+    backgroundImage="~/assets/images/about/legacy-exteriors-equipment-line.png"
     showLeaves={false}
     overlayOpacity={0.7}
     actions={[
       {
         variant: 'primary',
-        text: 'Contact Us Today',
-        href: '/contact',
-        icon: 'tabler:bulldozer',
+        text: 'Call Us Today',
+        href: 'tel:+15192520000',
+        icon: 'tabler:phone',
       },
     ]}
     isDark={true}
   >
-    <Fragment slot="title">
-      Sod Installation Package
-    </Fragment>
-
+    <Fragment slot="title">30+ Years of Family Expertise. Your Property Deserves the Best.</Fragment>
     <Fragment slot="subtitle">
-      Book consultation before August 31st a free consultation on your property.
+      Join 200+ satisfied Windsor homeowners who trust Legacy Exteriors for professional excavation, drainage solutions,
+      and site preparation. Licensed, insured, and committed to excellence.
     </Fragment>
   </CallToAction>
 </Layout>

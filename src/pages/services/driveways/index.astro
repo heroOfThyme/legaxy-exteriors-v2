@@ -4,14 +4,16 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import BeforeAfter from '~/components/widgets/BeforeAfter.astro';
+import TwoColumnContent from '~/components/widgets/TwoColumnContent.astro';
+import Image from 'astro/components/Image.astro';
 
-import drivewayHero from '~/assets/images/services/driveways/driveway-service-main.png';
+import drivewayHero from '~/assets/images/projects/concrete-walkway-windsor-2024.png';
 import completedDriveway from '~/assets/images/projects/completed-concrete-driveway-windsor-2024.png';
-import drivewayBefore from '~/assets/images/projects/et-house-driveway-work.png';
-import drivewayAfter from '~/assets/images/projects/completed-concrete-driveway-corner-view-windsor-2024.png';
+import drivewayBefore from '~/assets/images/services/driveways/driveway-before.png';
+import drivewayAfter from '~/assets/images/services/driveways/driveway-service-main.png';
 
 const metadata = {
   title: 'Professional Driveway Installation & Repair | Legacy Exteriors',
@@ -54,13 +56,20 @@ const metadata = {
         icon: 'tabler:photo',
       },
     ]}
-    image={{
-      src: drivewayHero,
-      alt: 'Professional driveway installation',
-    }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/70 via-transparent to-gray-900/70"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          src={drivewayHero}
+          alt="Background"
+          class="w-full h-full object-cover"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+        />
+        <!-- Optional overlay for better text readability -->
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+      </div>
     </Fragment>
   </Hero>
 
@@ -156,27 +165,85 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">Built to Withstand Our Seasons</h3>
+      <h3 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">
+        Built to Withstand Our Seasons
+      </h3>
       <p>
         At Legacy Exteriors, we understand the importance of building driveways that can handle our unique weather
         conditions - from summer heat to winter freezes.
       </p>
-      <ul class="list-disc list-inside mt-3 mb-3 text-muted">
-        <li>Deeper base preparation (12"-16") for better stability</li>
-        <li>Strategic control joint placement to manage natural expansion</li>
-        <li>Proper curing techniques for maximum concrete strength</li>
-        <li>Careful attention to slope and drainage to prevent ice buildup</li>
-        <li>Premium finishing methods that resist salt and chemical damage</li>
-      </ul>
-      <p class="mb-5">
-        These techniques ensure your driveway remains attractive and functional through years of seasonal changes,
-        requiring minimal maintenance while maintaining its appearance.
-      </p>
     </Fragment>
   </Content>
 
+  <TwoColumnContent
+    title="Is Your Driveway Telling You Something?"
+    subtitle="Recognize these signs that indicate you need professional driveway services"
+    image={{
+      src: '~/assets/images/services/driveways/damaged-cracked-driveway.png',
+      alt: 'Driveway issues',
+    }}
+    leftColumn={{
+      title: 'Surface Issues',
+      items: [
+        {
+          icon: 'tabler:road-off',
+          color: 'red',
+          title: 'Visible Cracks',
+          description: 'Spider web cracking or large fissures that worsen each season',
+        },
+        {
+          icon: 'tabler:arrow-down',
+          color: 'orange',
+          title: 'Sinking Areas',
+          description: 'Depressions where vehicles park or uneven settling patterns',
+        },
+        {
+          icon: 'tabler:texture',
+          color: 'yellow',
+          title: 'Surface Deterioration',
+          description: "Pitting, scaling, or spalling concrete that's breaking apart",
+        },
+        {
+          icon: 'tabler:palette-off',
+          color: 'orange',
+          title: 'Discoloration',
+          description: "Oil stains, rust marks, or fading that won't clean off",
+        },
+      ],
+    }}
+    rightColumn={{
+      title: 'Structural Concerns',
+      items: [
+        {
+          icon: 'tabler:droplet',
+          color: 'blue',
+          title: 'Water Pooling',
+          description: 'Standing water indicates improper slope or settling issues',
+        },
+        {
+          icon: 'tabler:snowflake',
+          color: 'blue',
+          title: 'Frost Heaving',
+          description: 'Sections lifting or shifting due to freeze-thaw cycles',
+        },
+        {
+          icon: 'tabler:alert-triangle',
+          color: 'red',
+          title: 'Edge Crumbling',
+          description: 'Deteriorating edges that break off under vehicle weight',
+        },
+        {
+          icon: 'tabler:trending-down',
+          color: 'red',
+          title: 'Base Failure',
+          description: 'Major settling indicating compromised foundation',
+        },
+      ],
+    }}
+  />
+
   <!-- Steps2 Widget ****************** -->
-  <Steps2
+  <Steps
     title="Our Driveway Installation Process"
     subtitle="We follow a comprehensive approach to ensure your driveway is built right from the ground up."
     items={[
@@ -211,65 +278,75 @@ const metadata = {
         icon: 'tabler:shield-check',
       },
     ]}
+    image={{
+      src: '~/assets/images/projects/completed-concrete-driveway-corner-view-windsor-2024.png',
+      alt: 'Driveway installation process',
+    }}
   />
 
   <!-- Content Widget **************** -->
-  <Content
-    isReversed
-    title="Concrete vs. Gravel: Finding Your Perfect Match"
-    subtitle="Comparing the benefits of our most popular driveway options"
-    items={[
-      {
-        title: 'Longevity & Durability',
-        description:
-          'Concrete driveways typically last 25-30+ years with minimal maintenance, while properly installed gravel driveways can last 5-10 years before needing significant refreshing.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Maintenance Requirements',
-        description:
-          'Concrete requires occasional cleaning and resealing every few years. Gravel needs more frequent maintenance including regrading and adding fresh stone periodically.',
-        icon: 'tabler:tools',
-      },
-      {
-        title: 'Cost Considerations',
-        description:
-          'While concrete has a higher upfront cost, its longevity often provides better long-term value. Gravel offers a more budget-friendly initial investment.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Environmental Impact',
-        description:
-          'Gravel provides better natural drainage, while concrete can be installed with permeable options. Both can be environmentally friendly with proper installation.',
-        icon: 'tabler:leaf',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/projects/levelled-gravel-driveway-windsor-2024.png',
-      alt: 'Comparing concrete and gravel driveways',
+  <TwoColumnContent
+    title="Choosing the Right Driveway Material"
+    subtitle="Compare concrete and gravel options for Windsor properties"
+    leftColumn={{
+      title: 'Concrete Driveways',
+      items: [
+        {
+          icon: 'tabler:check',
+          color: 'green',
+          title: '25-30 Year Lifespan',
+          description: 'Exceptional durability with minimal maintenance required',
+        },
+        {
+          icon: 'tabler:brush',
+          color: 'blue',
+          title: 'Low Maintenance',
+          description: 'Occasional cleaning and resealing every 2-3 years',
+        },
+        {
+          icon: 'tabler:home-up',
+          color: 'green',
+          title: 'Increases Home Value',
+          description: 'Premium appearance enhances curb appeal significantly',
+        },
+        {
+          icon: 'tabler:palette',
+          color: 'blue',
+          title: 'Design Options',
+          description: 'Stamped patterns, colors, and decorative finishes available',
+        },
+      ],
     }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">
-        Making the Right Choice for Your Property
-      </h3>
-      <p class="mb-4">
-        The best driveway material depends on your specific needs, budget, and property characteristics. Our team will
-        help you evaluate these factors to make the optimal choice:
-      </p>
-      <ul class="list-disc list-inside mb-4 text-muted">
-        <li>Your budget for both installation and long-term maintenance</li>
-        <li>The style of your home and neighborhood context</li>
-        <li>Your property's terrain and drainage characteristics</li>
-        <li>How long you plan to remain in your home</li>
-        <li>Your tolerance for maintenance tasks</li>
-      </ul>
-      <p>
-        During your free consultation, we'll discuss these considerations to help you select the perfect driveway
-        material for your specific situation.
-      </p>
-    </Fragment>
-  </Content>
+    rightColumn={{
+      title: 'Gravel Driveways',
+      items: [
+        {
+          icon: 'tabler:coin',
+          color: 'green',
+          title: 'Lower Initial Cost',
+          description: 'Budget-friendly option with immediate results',
+        },
+        {
+          icon: 'tabler:droplet-check',
+          color: 'blue',
+          title: 'Excellent Drainage',
+          description: 'Natural permeability prevents water pooling',
+        },
+        {
+          icon: 'tabler:refresh',
+          color: 'orange',
+          title: 'Regular Maintenance',
+          description: 'Needs regrading and fresh stone every few years',
+        },
+        {
+          icon: 'tabler:snowflake-off',
+          color: 'yellow',
+          title: 'Snow Removal Challenges',
+          description: 'Requires careful plowing to avoid displacing stones',
+        },
+      ],
+    }}
+  />
 
   <!-- FAQs Widget ******************* -->
   <FAQs
@@ -319,9 +396,9 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get Your Free Quote',
-        href: '/contact',
-        icon: 'tabler:message',
+        text: 'Call Us Today',
+        href: 'tel:+15192555555',
+        icon: 'tabler:phone',
       },
     ]}
     backgroundImage="~/assets/images/services/driveways/driveway-service-main.png"
