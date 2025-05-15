@@ -15,9 +15,8 @@ const metadata = {
     "Learn about Legacy Exteriors, Windsor's premier excavation contractor. With nearly 20 years of experience, we deliver quality excavation, drainage, and site preparation services throughout Windsor-Essex.",
   openGraph: {
     type: 'website',
-    locale: 'en_CA',
-    url: 'https://legacyexteriors.ca/about',
-    siteName: 'Legacy Exteriors',
+    url: 'https://legacyexteriorsinc.com/about',
+    siteName: 'Legacy Exteriors Inc.',
     title: "About Legacy Exteriors | Windsor's Trusted Excavation Experts",
     description:
       'Discover our story, values, and commitment to excellence. Legacy Exteriors has been serving Windsor-Essex with professional excavation services since 2022.',
@@ -26,7 +25,7 @@ const metadata = {
         url: '~/assets/images/about/alex-orton-selfie.png',
         width: 1200,
         height: 630,
-        alt: 'Legacy Exteriors Team - Professional Excavation Services',
+        alt: 'Legacy Exteriors Owner - Professional Excavation Services',
       },
     ],
   },
@@ -73,7 +72,7 @@ const metadata = {
     </Fragment>
     <Fragment slot="content">
       <div class="max-w-3xl mx-auto">
-        <h3 class="text-3xl font-heading font-bold tracking-tight sm:text-4xl mb-4">Our Journey</h3>
+        <h3 class="text-3xl font-heading font-bold text-primary tracking-tight sm:text-4xl mb-4">Our Journey</h3>
         <p class="mb-4 text-lg">
           After years of working for my father in the industry and running equipment from the age of 7, I decided to
           embark on a new chapter and founded Legacy Exteriors Inc. in January 2022. Growing up in Windsor-Essex gave me
@@ -90,7 +89,7 @@ const metadata = {
           visions.
         </p>
         <p class="mb-4 text-lg">
-          <span class="font-bold">Alexander Orton</span>
+          <span class="font-bold text-white">Alexander Orton</span>
           <br />
           <span class="font-heading font-light">Owner/Operator</span>
           <br />
@@ -101,13 +100,25 @@ const metadata = {
 
   <!-- Stats Widget ****************** -->
   <Stats
-    title="Our Growth Since 2022"
+    title="We Are Proud of Our Legacy"
     subtitle="From humble beginnings to becoming a trusted name in Windsor-Essex"
     stats={[
-      { title: 'Projects Completed', amount: '100+' },
-      { title: 'Equipment Units', amount: '10+' },
-      { title: 'Happy Clients', amount: '100+' },
-      { title: 'Communities Served', amount: '5+' },
+      {
+        title: '200+ Projects Completed',
+        icon: 'tabler:check',
+      },
+      {
+        title: '30+ Years of Combined Experience',
+        icon: 'tabler:user-check',
+      },
+      {
+        title: '100% Customer Satisfaction',
+        icon: 'tabler:heart',
+      },
+      {
+        title: '5-Star Reviews on Google',
+        icon: 'tabler:star-filled',
+      },
     ]}
   />
 
@@ -197,7 +208,7 @@ const metadata = {
     tagline="Windsor's Trusted Excavation Experts"
     backgroundImage="~/assets/images/about/legacy-exteriors-equipment-line.png"
     showLeaves={false}
-    overlayOpacity={0.7}
+    overlayOpacity={0.8}
     actions={[
       {
         variant: 'primary',

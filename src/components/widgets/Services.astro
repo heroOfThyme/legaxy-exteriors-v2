@@ -138,7 +138,7 @@ const {
             {service.callToAction && (
               <div class="pt-2 mt-auto transform transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 <Button 
-                  variant="primary" 
+                  variant="secondary" 
                   href={service.callToAction.href} 
                   text={service.callToAction.text} 
                   icon={service.callToAction.icon || "tabler:arrow-right"}
@@ -156,7 +156,7 @@ const {
   {viewAllButton.enabled && (
     <div class="flex justify-center mt-10">
       <Button
-        variant="secondary"
+        variant="primary"
         href={viewAllButton.href}
         text={viewAllButton.text || "View All Services"}
         icon={viewAllButton.icon || "tabler:arrow-right"}
