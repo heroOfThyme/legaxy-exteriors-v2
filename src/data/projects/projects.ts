@@ -21,7 +21,6 @@ import concreteWalkwayDrivewayWindsor from '~/assets/images/projects/concrete-wa
 import concreteWalkwayWindsor from '~/assets/images/projects/concrete-walkway-windsor-2024.png';
 import dugUpTurfWindsorSodInstallation from '~/assets/images/projects/dug-up-turf-widsor-sod-installation.png';
 import etHouseDrivewayWork from '~/assets/images/projects/et-house-driveway-work.png';
-import excavationTrenchingJobsite from '~/assets/images/projects/excavation-trenching-jobsite.png';
 import excavatorMovingStone from '~/assets/images/projects/excavator-moving-stone.png';
 import installedSodWindsor from '~/assets/images/projects/installed-sod-windsor-2024.png';
 import levelledGravelDrivewayWindsor from '~/assets/images/projects/levelled-gravel-driveway-windsor-2024.png';
@@ -140,12 +139,6 @@ export const projectGallery: Project[] = [
     image: etHouseDrivewayWork,
     alt: 'Driveway construction for residential property',
     category: 'Driveways'
-  },
-  { 
-    image: excavationTrenchingJobsite,
-    alt: 'Excavation and trenching work at construction site',
-    category: 'Trenching',
-    featured: true
   },
   { 
     image: excavatorMovingStone,
