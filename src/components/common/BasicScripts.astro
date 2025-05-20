@@ -253,3 +253,30 @@ import { UI } from 'astrowind:config';
     Observer.start();
   });
 </script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Form validation for the contact form with disclaimer
+    const contactForms = document.querySelectorAll('#contact-form');
+    if (contactForms.length) {
+      contactForms.forEach((form) => {
+        form.addEventListener('submit', function (event) {
+          // Apply validation class immediately to show errors
+          form.classList.add('was-validated');
+
+          // Check if the form is valid (including the disclaimer checkbox)
+          if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            // Focus on the first invalid field
+            const firstInvalid = this.querySelector(':invalid');
+            if (firstInvalid) firstInvalid.focus();
+
+            return false;
+          }
+        });
+      });
+    }
+  });
+</script>

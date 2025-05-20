@@ -6,7 +6,7 @@ tags:
   - "Excavation"
   - "Pool Removal"
   - "Landscaping"
-image: '~/assets/images/projects/excavator-moving-stone.png'  
+image: '~/assets/images/projects/excavator-moving-stone.png'
 ---  
 
 ## When Your Pool Becomes a Burden
@@ -35,18 +35,7 @@ Our clients throughout Windsor-Essex have various reasons for removing their poo
 
 Whatever your reason, professional excavation ensures the job is done right.
 
-## Professional Pool Removal: Two Approaches
-
-### Partial Pool Removal
-
-This method involves:
-- Removing the upper portion of the pool structure
-- Creating proper drainage in the pool bottom
-- Filling the cavity with appropriate materials
-- Professional compaction and grading
-- Preparing the surface for its next use
-
-### Complete Pool Removal
+## Professional Pool Removal
 
 This comprehensive approach includes:
 - Total excavation of all pool materials
