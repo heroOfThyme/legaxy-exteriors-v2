@@ -28,7 +28,7 @@ export const headerData = {
         },
         {
           text: 'Sod Installation',
-          href: getPermalink('/services/sod'),
+          href: getPermalink('/services/sod-installation'),
         },
         {
           text: 'Trenching',
@@ -49,7 +49,7 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
   ],
-  actions: [{ text: 'Lets Get Started', href: '/contact', variant: 'primary' }],
+  actions: [{ text: 'Contact Us', href: '/contact', variant: 'primary' }],
 };
 
 export const footerData = {
@@ -75,8 +75,8 @@ export const footerData = {
     {
       title: 'Follow Us',
       links: [
-        { text: 'Instagram', href: '#' },
-        { text: 'Facebook', href: '#' },
+        { text: 'Facebook', href: 'https://www.facebook.com/LegacyExteriorsIncWindsor' },
+        { text: 'Instagram', href: 'https://www.instagram.com/legacy_exteriors_inc' },
       ],
     },
   ],
@@ -85,7 +85,7 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/legacy_exteriors_inc' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/LegacyExteriorsIncWindsor' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/legacy_exteriors_inc' },
   ],
 };

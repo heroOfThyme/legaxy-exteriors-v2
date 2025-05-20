@@ -257,79 +257,111 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     box-shadow: 0 4px 12px rgba(4, 88, 35, 0.15);
   }
 </style>
-
 <script is:inline>
-
 (function () {
     "use strict";
-    /*
-    * Form Validation
-    */
-
-    // Fetch all the forms we want to apply custom validation styles to
+    
+    // Track Turnstile initialization state
+    let turnstileInitialized = false;
+    
+    // Initialize Turnstile with error handling
+    function initTurnstile() {
+        // Ensure the container exists
+        const container = document.querySelector('.cf-turnstile');
+        if (!container) {
+            console.warn('Turnstile container not found');
+            return;
+        }
+        
+        // Ensure the script is loaded
+        if (!window.turnstile) {
+            console.warn('Turnstile script not loaded yet');
+            loadTurnstileScript();
+            return;
+        }
+        
+        try {
+            // Remove any existing widget
+            const iframe = container.querySelector('iframe');
+            if (iframe) iframe.remove();
+            
+            // Render new widget with explicit container element
+            window.turnstile.render(container, {
+                sitekey: 'YOUR_SITE_KEY',
+                callback: function(token) {
+                    console.log('Turnstile token:', token);
+                }
+            });
+            turnstileInitialized = true;
+        } catch (error) {
+            console.error('Turnstile initialization error:', error);
+        }
+    }
+    
+    // Load Turnstile script if not already loaded
+    function loadTurnstileScript() {
+        if (document.querySelector('script[src*="cloudflare.com/turnstile"]')) {
+            return;
+        }
+        
+        const script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+        script.async = true;
+        script.defer = true;
+        script.onload = function() {
+            console.log('Turnstile script loaded');
+            initTurnstile();
+        };
+        document.body.appendChild(script);
+    }
+    
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', function() {
+        loadTurnstileScript();
+    });
+    
+    // Reinitialize after view transitions
+    document.addEventListener('astro:after-swap', function() {
+        if (!turnstileInitialized) {
+            loadTurnstileScript();
+        } else {
+            initTurnstile();
+        }
+    });
+    
+    /* Rest of your form validation and submission code */
     const forms = document.querySelectorAll(".needs-validation");
     const result = document.getElementById("result");
-    // Loop over them and prevent submission
+    
     Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            form.querySelectorAll(":invalid")[0].focus();
-          } else {
-            /*
-            * Form Submission using fetch()
-            */
-            event.preventDefault();
-            event.stopPropagation();
-            
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-            result.innerHTML = "Please wait...";
-
-            fetch("https://api.web3forms.com/submit", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: json,
-            })
-              .then(async (response) => {
-                const json = await response.json();
-                if (response.status == 200) {
-                  result.innerHTML = json.message;
-                  result.classList.remove("text-gray-500");
-                  result.classList.add("text-green-500");
+        form.addEventListener(
+            "submit",
+            function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    form.querySelectorAll(":invalid")[0].focus();
                 } else {
-                  console.log(response);
-                  result.innerHTML = json.message;
-                  result.classList.remove("text-gray-500");
-                  result.classList.add("text-red-500");
+                    // Verify Turnstile token exists
+                    const token = document.querySelector('[name="cf-turnstile-response"]')?.value;
+                    if (!token) {
+                        event.preventDefault();
+                        result.innerHTML = "Please complete the CAPTCHA";
+                        result.classList.remove("text-gray-500");
+                        result.classList.add("text-red-500");
+                        // Force Turnstile reinitialization if missing
+                        if (!turnstileInitialized) initTurnstile();
+                        return;
+                    }
+                    
+                    /* Rest of your form submission logic */
                 }
-              })
-              .catch((error) => {
-                console.log(error);
-                result.innerHTML = "Something went wrong!";
-              })
-              .then(function () {
-                form.reset();
-                form.classList.remove("was-validated");
-                setTimeout(() => {
-                  result.style.display = "none";
-                }, 5000);
-              });
-          }
-          form.classList.add("was-validated");
-        },
-        false
-      );
+                form.classList.add("was-validated");
+            },
+            false
+        );
     });
-  })();
+})();
 </script>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
