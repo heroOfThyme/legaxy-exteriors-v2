@@ -13,7 +13,7 @@ import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
 // Comment the line below to disable View Transitions
-import { ClientRouter } from 'astro:transitions';
+// import { ClientRouter } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
 
@@ -28,6 +28,7 @@ const { language, textDirection } = I18N;
 <!doctype html>
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
+    <script src="https://cmp.osano.com/LG9kLsATIp/bcec45ac-b261-4b25-9eed-f075844b0e14/osano.js"></script>
     <CommonMeta />
     <Favicons />
     <CustomStyles />

@@ -3,14 +3,14 @@ site:
   site: 'https://legacyexteriorsinc.com'
   base: '/'
   trailingSlash: false
-  googleSiteVerificationId: ''
+  googleSiteVerificationId: 'MAyQZwaHRJ4O598ZwvRPuzzjrabd9jAECY89nRoG6dA'
 
 # Default SEO metadata
 metadata:
   title:
     default: 'Legacy Exteriors Inc'
     template: '%s — Legacy Exteriors Inc'
-  description: 'Professional excavation, drainage, driveway, and landscape services in Windsor-Essex County. Trusted local experts since 2022.'
+  description: 'Professional excavation, drainage, driveway, sod installation, and landscape services in Windsor-Essex County. Trusted local experts since 2022.'
   robots:
     index: false
     follow: false
@@ -56,7 +56,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: "G-BESF54QPL1" # Google Analytics ID
 
 ui:
   theme: 'dark:only' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

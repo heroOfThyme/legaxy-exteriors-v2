@@ -3,174 +3,212 @@ title: 'Privacy Policy'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
-_Last updated_: May 11, 2025
-
-# Privacy Policy
-
-## Contents
-- [Introduction](#introduction)
-- [Personal Data We Collect](#personal-data-we-collect)
-- [Cookies](#cookies)
-- [Retention and Deletion](#retention-and-deletion)
-- [Merger or Acquisition](#merger-or-acquisition)
-- [How We Keep Your Data Safe](#how-we-keep-your-data-safe)
-- [Your Rights for Your Personal Data](#your-rights-for-your-personal-data)
-- [Changes](#changes)
-- [Contact Us](#contact-us)
-
-## Introduction
-At Legacy Exteriors Inc. ("us", "we", "our" or the "Company") we value your privacy and the importance of safeguarding your data. This Privacy Policy (the "Policy") describes our privacy practices for the activities set out below. As per your rights, we inform you how we collect, store, access, and otherwise process information relating to individuals. In this Policy, personal data ("Personal Data") refers to any information that on its own, or in combination with other available information, can identify an individual.
-
-We are committed to protecting your privacy in accordance with the highest level of privacy regulation. As such, we follow the obligations under the below regulations:
-
--   Canada's Personal Information Protection and Electronic Documents Act (PIPEDA) and the applicable provincial legislations
--   Quebec Law 25
--   the EU's General Data Protection Regulation (GDPR)
--   Brazil's Data Protection Legislation (LGPD)
--   California's Consumer Privacy Act (CCPA) / California Privacy Rights Act (CPRA) and California Online Privacy Protection Act (CalOPPA)
--   Colorado Privacy Act (CPA)
--   Utah Consumer Privacy Act (UCPA)
--   Connecticut Data Privacy Act (CTDPA)
--   Virginia Consumer Data Protection Act (VCDPA)
--   Texas Data Privacy and Security Act (TDPSA)
--   Oregon Consumer Privacy Act (OCPA)
--   Montana Consumer Data Privacy Act
--   Delaware Personal Data Privacy Act
--   Nebraska Data Privacy Law
--   New Hampshire Data Privacy Act
--   New Jersey Data Privacy Act
--   Minnesota Consumer Data Privacy Act
--   Maryland Online Consumer Protection Act
--   South Africa's Protection of Personal Information Act (POPIA)
-
-### Scope
-This policy applies to the Legacy Exteriors Inc. websites, domains, applications, services, and products.
-
-This Policy does not apply to third-party applications, websites, products, services or platforms that may be accessed through (non-Legacy Exteriors Inc.) links that we may provide to you. These sites are owned and operated independently from us, and they have their own separate privacy and data collection practices. Any Personal Data that you provide to these websites will be governed by the third-party's own privacy policy. We cannot accept liability for the actions or policies of these independent sites, and we are not responsible for the content or privacy practices of such sites.
-
-### Processing Activities
-This Policy applies when you interact with us by doing any of the following:
--   Make use of our application and services as an authorized user
--   Visit any of our websites that link to this Privacy Statement
-
-## Personal Data We Collect
-### What Personal Data We Collect
-When you make a purchase, or attempt to make a purchase, we collect the following types of Personal Data:
-
-This includes:
--   Account Information such as your name, email address, and password
--   Payment Information such as your billing address, phone number, credit card, debit card or other payment method
-
-When you use our products and/or features, we collect the following types of Personal Data:
--   Account Information such as your name, email address, and password
--   Payment Information such as your billing address, phone number, credit card, debit card or other payment method
-
-### How We Collect Your Personal Data
-We collect Personal Data from the following sources:
-
-**From You.** You may give us your Account Information, Payment Information, Financial Information, Demographic Data, Purchase Information, Content, Feedback, Product Information, by filling in forms, using our products or services, entering information online or by corresponding with us by post, phone, email or otherwise. This includes Personal Data you provide, for example, when you:
--   Create an account or purchase products on our website;
--   Use our products or services;
--   Create content through our products or services;
--   Express interest in our products or services;
--   Downloading software and/or our mobile application;
--   Subscribe to our newsletter;
--   Complete a voluntary market research survey;
--   Contact us with an inquiry or to report a problem (by phone, email, social media, or messaging service);
--   When you log in to our website via social media;
-
-**Automated technologies or interactions:** As you interact with our website, we may automatically collect the following types of data (all as described above): Device Data about your equipment, Usage Data about your browsing actions and patterns, and Contact Data where tasks carried out via our website remain uncompleted, such as incomplete orders or abandoned baskets. We collect this data by using cookies, server logs and other similar technologies. Please see our Cookie section (below) for further details.
-
-**Third parties:** We may receive Personal Data about you from various third parties, including:
--   Account Information and Payment Information from another individual when they purchase a gift for you on our website;
--   Device and Usage Data from third parties, including analytics providers such as Google;
--   Account Information and Payment Data from social media platforms when you log in to our website using such social media platforms;
--   Content from communication services, including email providers and social networks, when you give us permission to access your data on such third-party services or networks;
--   Account Information and Payment Data from third parties, including organizations (such as law enforcement agencies), associations and groups, who share data for the purposes of fraud prevention and detection and credit risk reduction; and
--   Account Information, Payment Data, and Financial Data from providers of technical, payment and delivery services.
-
-If you provide us, or our service providers, with any Personal Data relating to other individuals, you represent that you have the authority to do so and acknowledge that it will be used in accordance with this Policy. If you believe that your Personal Data has been provided to us improperly, or to otherwise exercise your rights relating to your Personal Data, please contact us by using the information set out in the "Contact us" section below.
-
-### Device and Usage Data
-When you visit a Legacy Exteriors Inc. website, we automatically collect and store information about your visit using browser cookies (files which are sent by us to your computer), or similar technology. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. The Help Feature on most browsers will provide information on how to accept cookies, disable cookies or to notify you when receiving a new cookie. If you do not accept cookies, you may not be able to use some features of our Service and we recommend that you leave them turned on.
-
-### Data we collect from third parties
-We may receive your Personal Data from third parties such as companies subscribing to Legacy Exteriors Inc. services, partners and other sources. This Personal Data is not collected by us but by a third party and is subject to the relevant third party's own separate privacy and data collection policies. We do not have any control or input on how your Personal Data is handled by third parties. As always, you have the right to review and rectify this information. If you have any questions you should first contact the relevant third party for further information about your Personal Data. Where that third party is unresponsive to your rights, you may contact the Data Protection Officer at Legacy Exteriors Inc. (contact details below).
-
-Our websites and services may contain links to other websites, applications and services maintained by third parties. The information practices of such other services, or of social media networks that host our branded social media pages, are governed by third parties' privacy statements, which you should review to better understand those third parties' privacy practices.
-
-### Purpose and Legal Basis for the Processing of Personal Data
-We collect and use your Personal Data with your consent to provide, maintain, and develop our products and services and understand how to improve them.
-
-These purposes include:
--   Providing, Developing, and Improving our Products and Services
--   Deliver, maintain, debug and improve our products and services.
--   Enable you to access Legacy Exteriors Inc. services and set up accounts.
--   Provide you with technical and customer support
--   Organize and Deliver Advertising and Marketing
--   Send you newsletters and other marketing communications about current and future products, programs and services, events, competitions, surveys and promotions held by us or hosted on our behalf; and
--   Organize events or register attendees and schedule meetings for events.
-
-Where we process your Personal Data to provide a product or service, we do so because it is necessary to perform contractual obligations. All of the above processing is necessary in our legitimate interests to provide products and services and to maintain our relationship with you and to protect our business for example against fraud. Consent will be required to initiate services with you. New consent will be required if any changes are made to the type of data collected. Within our contract, if you fail to provide consent, some services may not be available to you.
-
-### Third Party Tools
-We use these third party tools to store your information:
-
--   WordPress
-
-### International Data Transfer and Storage
-Where possible, we store and process data on servers within the general geographical region where you reside (note: this may not be within the country in which you reside). Your Personal Data may also be transferred to, and maintained on, servers residing outside of your state, province, country or other governmental jurisdiction where the data laws may differ from those in your jurisdiction. We will take appropriate steps to ensure that your Personal Data is treated securely and in accordance with this Policy as well as applicable data protection law. More information about these clauses can be found here: <https://eur-lex.europa.eu/legal-content/en/TXT/?uri=CELEX%3A32021D0914>
-
-### Sharing and Disclosure
-We will share your Personal Data with third parties only in the ways set out in this Policy or set out at the point when the Personal Data is collected.
-
-We also use Google Analytics to help us understand how our customers use the site. You can read more about how Google uses your Personal Data here: <https://www.google.com/intl/en/policies/privacy/>
-
-You can also opt-out of Google Analytics here: <https://tools.google.com/dlpage/gaoptout?hl=en>
-
-### Legal Requirement
-We may use or disclose your Personal Data in order to comply with a legal obligation, in connection with a request from a public or government authority, or in connection with court or tribunal proceedings, to prevent loss of life or injury, or to protect our rights or property. Where possible and practical to do so, we will tell you in advance of such disclosure.
-
-### Service Providers and Other Third Parties
-We may use a third party service provider, independent contractors, agencies, or consultants to deliver and help us improve our products and services. We may share your Personal Data with marketing agencies, database service providers, backup and disaster recovery service providers, email service providers and others but only to maintain and improve our products and services. For further information on the recipients of your Personal Data, please contact us by using the information in the "Contacting us" section below.
-
-## Cookies
-
-### What are Cookies?
-A cookie is a small file with information that your browser stores on your device. Information in this file is typically shared with the owner of the site in addition to potential partners and third parties to that business. The collection of this information may be used in the function of the site and/or to improve your experience. 
-
-### How we use cookies
-* To give you the best experience possible, we use the following types of cookies:
-* Strictly Necessary. As a web application, we require certain necessary cookies to run our service.
-* Preference.
-  - We use preference cookies to help us remember the way you like to use our service.
-  - Some cookies are used to personalize content and present you with a tailored experience. For example, location could be used to give you services and offers in your area.
-* Analytics. We collect analytics about the types of people who visit our site to improve our service and product.
-
-## Retention and Deletion
-We will only retain your Personal Data for as long as necessary for the purpose for which that data was collected and to the extent required by applicable law. When we no longer need Personal Data, we will remove it from our systems and/or take steps to anonymize it.
-
-## Merger or Acquisition
-If we are involved in a merger, acquisition or asset sale, your personal information may be transferred. We will provide notice before your personal information is transferred and becomes subject to a different Privacy Policy. Under certain circumstances, we may be required to disclose your personal information if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).
-
-## How We Keep Your Data Safe
-We have appropriate organizational safeguards and security measures in place to protect your Personal Data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed.
-
-The communication between your browser and our website uses a secure encrypted connection wherever your Personal Data is involved.
-
-We require any third party who is contracted to process your Personal Data on our behalf to have security measures in place to protect your data and to treat such data in accordance with the law.
-
-In the unfortunate event of a Personal Data breach, we will notify you and any applicable regulator when we are legally required to do so.
-
-## Your Rights for Your Personal Data
-
-## Changes
-We may modify this Policy at any time. If we make changes to this Policy then we will post an updated version of this Policy at this website. When using our services, you will be asked to review and accept our Privacy Policy. In this manner, we may record your acceptance and notify you of any future changes to this Policy.
-
-## Contact Us
-To request a copy for your information, unsubscribe from our email list, request for your data to be deleted, or ask a question about your data privacy, we've made the process simple, please email [info@legacyexteriorsinc.com ](mailto:info@legacyexteriorsinc.com)
-
-**Write to us at:**
-
-Data Privacy Officer of Legacy Exteriors Inc.
-330 Country Road 27E, Cottom, Ontario, N0R 1B0 
+<p>Last updated: May 20, 2025</p>
+<p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+<p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
+<h2>Interpretation and Definitions</h2>
+<h3>Interpretation</h3>
+<p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+<h3>Definitions</h3>
+<p>For the purposes of this Privacy Policy:</p>
+<ul>
+<li>
+<p><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</p>
+</li>
+<li>
+<p><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</p>
+</li>
+<li>
+<p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Legacy Exteriors Inc., 330 Country Road 27E, Cottom, Ontario, N0R 1B0.</p>
+</li>
+<li>
+<p><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</p>
+</li>
+<li>
+<p><strong>Country</strong> refers to: Ontario,  Canada</p>
+</li>
+<li>
+<p><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</p>
+</li>
+<li>
+<p><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</p>
+</li>
+<li>
+<p><strong>Service</strong> refers to the Website.</p>
+</li>
+<li>
+<p><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</p>
+</li>
+<li>
+<p><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
+</li>
+<li>
+<p><strong>Website</strong> refers to Legacy Exteriors Inc, accessible from <a href="https://www.legacyexteriorsinc.com/" rel="external nofollow noopener" target="_blank">https://www.legacyexteriorsinc.com/</a></p>
+</li>
+<li>
+<p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
+</li>
+</ul>
+<h2>Collecting and Using Your Personal Data</h2>
+<h3>Types of Data Collected</h3>
+<h4>Personal Data</h4>
+<p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+<ul>
+<li>
+<p>Email address</p>
+</li>
+<li>
+<p>First name and last name</p>
+</li>
+<li>
+<p>Phone number</p>
+</li>
+<li>
+<p>Usage Data</p>
+</li>
+</ul>
+<h4>Usage Data</h4>
+<p>Usage Data is collected automatically when using the Service.</p>
+<p>Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+<p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
+<p>We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>
+<h4>Tracking Technologies and Cookies</h4>
+<p>We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:</p>
+<ul>
+<li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted Your browser setting so that it will refuse Cookies, our Service may use Cookies.</li>
+<li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).</li>
+</ul>
+<p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser. You can learn more about cookies on <a href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies" target="_blank">TermsFeed website</a> article.</p>
+<p>We use both Session and Persistent Cookies for the purposes set out below:</p>
+<ul>
+<li>
+<p><strong>Necessary / Essential Cookies</strong></p>
+<p>Type: Session Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</p>
+</li>
+<li>
+<p><strong>Cookies Policy / Notice Acceptance Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies identify if users have accepted the use of cookies on the Website.</p>
+</li>
+<li>
+<p><strong>Functionality Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.</p>
+</li>
+<li>
+<p><strong>Tracking and Performance Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Third-Parties</p>
+<p>Purpose: These Cookies are used to track information about traffic to the Website and how users use the Website. The information gathered via these Cookies may directly or indirectly identify you as an individual visitor. This is because the information collected is typically linked to a pseudonymous identifier associated with the device you use to access the Website. We may also use these Cookies to test new pages, features or new functionality of the Website to see how our users react to them.</p>
+</li>
+</ul>
+<p>For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy.</p>
+<h3>Use of Your Personal Data</h3>
+<p>The Company may use Personal Data for the following purposes:</p>
+<ul>
+<li>
+<p><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</p>
+</li>
+<li>
+<p><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</p>
+</li>
+<li>
+<p><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</p>
+</li>
+<li>
+<p><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</p>
+</li>
+<li>
+<p><strong>To provide You</strong> with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</p>
+</li>
+<li>
+<p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
+</li>
+<li>
+<p><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.</p>
+</li>
+<li>
+<p><strong>For other purposes</strong>: We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience.</p>
+</li>
+</ul>
+<p>We may share Your personal information in the following situations:</p>
+<ul>
+<li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers to monitor and analyze the use of our Service,  to contact You.</li>
+<li><strong>For business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>
+<li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
+<li><strong>With business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</li>
+<li><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.</li>
+<li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with Your consent.</li>
+</ul>
+<h3>Retention of Your Personal Data</h3>
+<p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+<p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>
+<h3>Transfer of Your Personal Data</h3>
+<p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.</p>
+<p>Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.</p>
+<p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.</p>
+<h3>Delete Your Personal Data</h3>
+<p>You have the right to delete or request that We assist in deleting the Personal Data that We have collected about You.</p>
+<p>Our Service may give You the ability to delete certain information about You from within the Service.</p>
+<p>You may update, amend, or delete Your information at any time by signing in to Your Account, if you have one, and visiting the account settings section that allows you to manage Your personal information. You may also contact Us to request access to, correct, or delete any personal information that You have provided to Us.</p>
+<p>Please note, however, that We may need to retain certain information when we have a legal obligation or lawful basis to do so.</p>
+<h3>Disclosure of Your Personal Data</h3>
+<h4>Business Transactions</h4>
+<p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
+<h4>Law enforcement</h4>
+<p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
+<h4>Other legal requirements</h4>
+<p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
+<ul>
+<li>Comply with a legal obligation</li>
+<li>Protect and defend the rights or property of the Company</li>
+<li>Prevent or investigate possible wrongdoing in connection with the Service</li>
+<li>Protect the personal safety of Users of the Service or the public</li>
+<li>Protect against legal liability</li>
+</ul>
+<h3>Security of Your Personal Data</h3>
+<p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+<h2>Detailed Information on the Processing of Your Personal Data</h2>
+<p>The Service Providers We use may have access to Your Personal Data. These third-party vendors collect, store, use, process and transfer information about Your activity on Our Service in accordance with their Privacy Policies.</p>
+<h3>Analytics</h3>
+<p>We may use third-party Service providers to monitor and analyze the use of our Service.</p>
+<ul>
+<li>
+<p><strong>Google Analytics</strong></p>
+<p>Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its own advertising network.</p>
+<p>You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js, analytics.js and dc.js) from sharing information with Google Analytics about visits activity.</p>
+<p>For more information on the privacy practices of Google, please visit the Google Privacy &amp; Terms web page: <a href="https://policies.google.com/privacy" rel="external nofollow noopener" target="_blank">https://policies.google.com/privacy</a></p>
+</li>
+</ul>
+<h3>Usage, Performance and Miscellaneous</h3>
+<p>We may use third-party Service Providers to maintain and improve our Service.</p>
+<ul>
+<li>
+<p><strong>CloudFlare Turnstile</strong></p>
+<p>Their Privacy Policy can be viewed at <a href="https://www.cloudflare.com/en-ca/privacypolicy/" rel="external nofollow noopener" target="_blank">https://www.cloudflare.com/en-ca/privacypolicy/</a></p>
+</li>
+</ul>
+<h2>Children's Privacy</h2>
+<p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>
+<p>If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.</p>
+<h2>Links to Other Websites</h2>
+<p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
+<p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+<h2>Changes to this Privacy Policy</h2>
+<p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
+<p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the &quot;Last updated&quot; date at the top of this Privacy Policy.</p>
+<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+<h2>Contact Us</h2>
+<p>If you have any questions about this Privacy Policy, You can contact us:</p>
+<ul>
+<li>
+<p>By email: info@legacyexteriorsinc.com</p>
+</li>
+<li>
+<p>By visiting this page on our website: <a href="https://www.legacyexteriorsinc.com/contact" rel="external nofollow noopener" target="_blank">https://www.legacyexteriorsinc.com/contact</a></p>
+</li>
+</ul>

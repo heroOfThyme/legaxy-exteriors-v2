@@ -65,6 +65,8 @@ const faqItems = [
     answer: 'To help us provide the most accurate response, please include details about your project type, location, timeline, and any specific requirements or challenges. Photos are also helpful when applicable.'
   }
 ];
+
+const apiKey = 'AIzaSyCI4V6NhZ-cRpflyhPVPpUe4cNtbEUiPeo';
 ---
 
 <Layout metadata={metadata} >
@@ -96,7 +98,7 @@ const faqItems = [
             socialLinks={socialLinks}
             serviceAreas={serviceAreas}
             mapSettings={{
-              apiKey: "AIzaSyCI4V6NhZ-cRpflyhPVPpUe4cNtbEUiPeo",
+              apiKey: apiKey,
               center: "42.25,-82.85",
               zoom: 10,
               markerLocations: [

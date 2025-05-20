@@ -117,7 +117,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     }
 
     <!-- Cloudflare Turnstile Widget -->
-    <div class="cf-turnstile mb-6" data-sitekey="0x4AAAAAABd9Keugc-Mc3KxL" data-theme="dark" data-size="compact"></div>
+    <div class="cf-turnstile mb-6" data-sitekey="0x4AAAAAABd9Keugc-Mc3KxL" data-theme="dark"></div>
 
     {
       disclaimer && (
@@ -136,7 +136,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
           <div class="absolute inset-0 bg-gradient-to-r from-green-600/20 to-green-900/20 blur-lg transform group-hover:scale-105 transition-all duration-300" />
           <button
             type="submit"
-            class="relative w-full px-6 py-3.5 bg-gradient-to-r from-green-700 to-green-900 text-white font-medium rounded-lg overflow-hidden transition-all duration-500 hover:from-green-600 hover:to-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-[#050505] group"
+            class="relative w-full px-6 py-3.5 text-white font-medium rounded-lg overflow-hidden bg-primary focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-[#050505] group"
           >
             <div class="absolute inset-0 w-0 bg-white/10 transition-all duration-500 ease-out group-hover:w-full" />
             <div class="relative flex items-center justify-center">
@@ -318,15 +318,6 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     // Initialize on DOM ready
     document.addEventListener('DOMContentLoaded', function() {
         loadTurnstileScript();
-    });
-    
-    // Reinitialize after view transitions
-    document.addEventListener('astro:after-swap', function() {
-        if (!turnstileInitialized) {
-            loadTurnstileScript();
-        } else {
-            initTurnstile();
-        }
     });
     
     /* Rest of your form validation and submission code */
