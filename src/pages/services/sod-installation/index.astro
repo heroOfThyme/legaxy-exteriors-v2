@@ -26,14 +26,12 @@ const metadata = {
     description:
       'Create an instant, beautiful lawn with expert sod installation. Premium quality Kentucky Bluegrass with professional soil preparation for lasting results.',
     type: 'website',
-    images: [
-      {
-        url: '~/assets/images/services/sod/sod-service-main.png',
-        width: 1200,
-        height: 630,
-        alt: 'Professional sod installation in Windsor',
-      },
-    ],
+    image: {
+      url: '~/assets/images/services/sod/sod-service-main.png',
+      width: 1200,
+      height: 630,
+      alt: 'Professional sod installation in Windsor',
+    },
   },
 };
 ---
@@ -228,7 +226,9 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight font-heading dark:text-white sm:text-3xl mb-2">Premium Quality Sod</h3>
+      <h3 class="text-2xl font-bold tracking-tight font-heading dark:text-white sm:text-3xl mb-2">
+        Premium Quality Sod
+      </h3>
       <p>
         At Legacy Exteriors, we use only the highest quality Kentucky Bluegrass sod that thrives in Windsor's unique
         climate and soil conditions. Our premium sod is:
@@ -328,7 +328,7 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Call Us Today',
-        href: 'tel:+15192555555',
+        href: 'tel:+15197911506',
         icon: 'tabler:phone',
       },
     ]}

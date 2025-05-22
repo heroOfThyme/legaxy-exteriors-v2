@@ -21,14 +21,12 @@ const metadata = {
     description:
       'Transform your property with expert excavation, grading, and site preparation services designed for residential and commercial projects.',
     type: 'website',
-    images: [
-      {
-        url: '~/assets/images/services/excavation/excavation-services-main.png',
-        width: 1200,
-        height: 630,
-        alt: 'Professional excavation services in Windsor',
-      },
-    ],
+    image: {
+      url: '~/assets/images/services/excavation/excavation-services-main.png',
+      width: 1200,
+      height: 630,
+      alt: 'Professional excavation services in Windsor',
+    },
   },
 };
 ---
@@ -154,7 +152,7 @@ const metadata = {
     title="When You Need Professional Excavation"
     subtitle="Recognize these signs that require expert excavation services"
     image={{
-      src: "~/assets/images/services/excavation/sunken-driveway.png",
+      src: '~/assets/images/services/excavation/sunken-driveway.png',
       alt: 'Excavation and grading work in progress',
     }}
     leftColumn={{
@@ -219,51 +217,51 @@ const metadata = {
 
   <!-- Steps Widget ****************** -->
   <Steps
-  title="Our Excavation Process"
-  subtitle="We follow a systematic approach to ensure your excavation project is completed safely, efficiently, and to exact specifications."
-  items={[
-    {
-      title: 'Initial Consultation & Site Assessment',
-      description:
-        'We begin with a thorough evaluation of your site, assessing soil conditions, access points, utility locations, and project requirements to develop a comprehensive plan.',
-      icon: 'tabler:clipboard-check',
-    },
-    {
-      title: 'Project Planning & Preparation',
-      description:
-        'We create a detailed excavation plan, including scheduling, equipment selection, and logistics, while obtaining necessary permits and marking utilities to ensure safety.',
-      icon: 'tabler:chart-dots',
-    },
-    {
-      title: 'Site Setup & Safety Measures',
-      description:
-        'Prior to excavation, we establish safety perimeters, erosion controls, and access routes while protecting existing structures, landscaping, and utilities.',
-      icon: 'tabler:shield',
-    },
-    {
-      title: 'Precision Excavation & Material Management',
-      description:
-        'Our skilled operators execute the plan with precision, carefully removing and managing soil and materials while maintaining clean job sites throughout the process.',
-      icon: 'tabler:bulldozer',
-    },
-    {
-      title: 'Grading & Compaction',
-      description:
-        'We ensure proper slopes for drainage and structural stability, compacting soil to specifications, and preparing the site for the next phase of construction.',
-      icon: 'tabler:arrow-guide',
-    },
-    {
-      title: 'Final Inspection & Site Cleanup',
-      description:
-        'Upon completion, we conduct a thorough inspection, ensure all specifications have been met, remove equipment and debris, and leave your site clean and ready for the next phase.',
-      icon: 'tabler:checkup-list',
-    },
-  ]}
-  image={{
-    src: '~/assets/images/services/excavation/excavation-services-main.png',
-    alt: 'Excavation process overview',
-  }}
-/>
+    title="Our Excavation Process"
+    subtitle="We follow a systematic approach to ensure your excavation project is completed safely, efficiently, and to exact specifications."
+    items={[
+      {
+        title: 'Initial Consultation & Site Assessment',
+        description:
+          'We begin with a thorough evaluation of your site, assessing soil conditions, access points, utility locations, and project requirements to develop a comprehensive plan.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Project Planning & Preparation',
+        description:
+          'We create a detailed excavation plan, including scheduling, equipment selection, and logistics, while obtaining necessary permits and marking utilities to ensure safety.',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Site Setup & Safety Measures',
+        description:
+          'Prior to excavation, we establish safety perimeters, erosion controls, and access routes while protecting existing structures, landscaping, and utilities.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Precision Excavation & Material Management',
+        description:
+          'Our skilled operators execute the plan with precision, carefully removing and managing soil and materials while maintaining clean job sites throughout the process.',
+        icon: 'tabler:bulldozer',
+      },
+      {
+        title: 'Grading & Compaction',
+        description:
+          'We ensure proper slopes for drainage and structural stability, compacting soil to specifications, and preparing the site for the next phase of construction.',
+        icon: 'tabler:arrow-guide',
+      },
+      {
+        title: 'Final Inspection & Site Cleanup',
+        description:
+          'Upon completion, we conduct a thorough inspection, ensure all specifications have been met, remove equipment and debris, and leave your site clean and ready for the next phase.',
+        icon: 'tabler:checkup-list',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/services/excavation/excavation-services-main.png',
+      alt: 'Excavation process overview',
+    }}
+  />
 
   <!-- FAQs Widget ******************* -->
   <FAQs
