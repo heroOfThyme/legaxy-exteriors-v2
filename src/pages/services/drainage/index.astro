@@ -5,7 +5,6 @@ import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import TwoColumnContent from '~/components/widgets/TwoColumnContent.astro';
 import { Icon } from 'astro-icon/components';
 import Image from 'astro/components/Image.astro';
@@ -94,12 +93,6 @@ const metadata = {
         description:
           'Professional installation of eavestrough systems with underground connections to pop-up emitter valves. These systems efficiently move roof water away from your foundation, preventing pooling and erosion.',
         icon: 'tabler:home-down',
-      },
-      {
-        title: 'Foundation Waterproofing',
-        description:
-          'Comprehensive waterproofing solutions including interior and exterior membranes, drainage boards, and sump pump systems to protect your basement from water intrusion.',
-        icon: 'tabler:shield-check',
       },
       {
         title: 'Erosion Control',
@@ -294,40 +287,6 @@ const metadata = {
   >
   </TwoColumnContent>
 
-  <!-- Testimonials Widget *********** -->
-  <Testimonials
-    title="What Windsor Homeowners Say"
-    subtitle="Hear from local residents who have resolved their drainage issues with our solutions"
-    testimonials={[
-      {
-        testimonial:
-          "After years of dealing with a wet basement every spring, Legacy Exteriors installed a comprehensive drainage system that has kept our South Windsor home completely dry. They understood exactly how to address our clay soil issues and designed a solution that works perfectly with our property's layout.",
-        name: 'Michael Thompson',
-        job: 'South Windsor Homeowner',
-        rating: 5,
-      },
-      {
-        testimonial:
-          "I can't believe I waited so long to fix my yard's drainage problems. Legacy installed French drains and regraded my Riverside property, eliminating the standing water that used to make my backyard unusable after rain. Their knowledge of Windsor's drainage challenges was impressive.",
-        name: 'Jennifer Wilson',
-        job: 'Riverside Property Owner',
-        rating: 5,
-      },
-      {
-        testimonial:
-          "When we built our new home in LaSalle, we experienced significant water issues that our builder couldn't resolve. Legacy Exteriors designed and installed a complete drainage system that addressed our high water table and clay soil challenges. They knew exactly what our property needed.",
-        name: 'Robert Davis',
-        job: 'LaSalle Resident',
-        rating: 5,
-      },
-    ]}
-    callToAction={{
-      text: 'Read more testimonials',
-      href: '/testimonials',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
   <!-- FAQs Widget ******************* -->
   <FAQs
     title="Frequently Asked Questions"
@@ -381,9 +340,9 @@ const metadata = {
         icon: 'tabler:clipboard-check',
       },
     ]}
-    backgroundImage="~/assets/images/services/drainage/drainage-cta-background.png"
+    backgroundImage="~/assets/images/services/drainage/drainage-service-main.png"
     showLeaves={false}
-    overlayOpacity={0.7}
+    overlayOpacity={0.8}
     isDark={true}
   />
 </Layout>

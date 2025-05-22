@@ -44,18 +44,18 @@ export const projectGallery: Project[] = [
   { 
     image: basementWalkoutFinished,
     alt: 'Completed basement walkout with landscaping',
-    category: 'Excavation',
+    category: 'Landscaping',
     featured: true
   },
   { 
     image: basementWalkoutPatioExtentionComplete,
     alt: 'Basement walkout with extended patio area completed',
-    category: 'Excavation'
+    category: 'Landscaping'
   },
   { 
     image: basementWalkoutPatioExtention,
     alt: 'In-progress basement walkout with patio extension',
-    category: 'Excavation'
+    category: 'Landscaping'
   },
   { 
     image: basementWalkoutProgressConcretePath,
@@ -65,12 +65,12 @@ export const projectGallery: Project[] = [
   { 
     image: basementWalkoutProgressConcretePouring,
     alt: 'Pouring concrete for basement walkout steps',
-    category: 'Concrete'
+    category: 'Hardscaping'
   },
   { 
     image: basementWalkoutProgressFinishedSteps,
     alt: 'Completed concrete steps for basement walkout',
-    category: 'Concrete',
+    category: 'Hardscaping',
     featured: true
   },
   { 

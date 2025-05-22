@@ -9,7 +9,6 @@ site:
 metadata:
   title:
     default: 'Legacy Exteriors Inc'
-    template: '%s — Legacy Exteriors Inc'
   description: 'Professional excavation, drainage, driveway, sod installation, and landscape services in Windsor-Essex County. Trusted local experts since 2022.'
   robots:
     index: false
