@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components';
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '', services = [] } = Astro.props;
 
 // Add your keys directly here
-const WEB3FORMS_ACCESS_KEY = 'a0ce7ea2-4ebd-49f8-bdc4-ddc760a8f371';
+const WEB3FORMS_ACCESS_KEY = '928584ff-8a35-4f6e-88c9-c1a78ad2c298';
 
 // Default services if none provided
 const defaultServices = [
@@ -117,7 +117,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     }
 
     <!-- Cloudflare Turnstile Widget -->
-    <div class="cf-turnstile mb-6" data-sitekey="0x4AAAAAABd9Keugc-Mc3KxL" data-theme="dark"></div>
+    <!-- <div class="cf-turnstile mb-6" data-sitekey="0x4AAAAAABd9Keugc-Mc3KxL" data-theme="dark"></div> -->
 
     {
       disclaimer && (
@@ -260,11 +260,12 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
 <script is:inline>
 (function () {
     "use strict";
-    
+    /*
     // Track Turnstile initialization state
     let turnstileInitialized = false;
     
     // Initialize Turnstile with error handling
+    
     function initTurnstile() {
         // Ensure the container exists
         const container = document.querySelector('.cf-turnstile');
@@ -303,7 +304,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
     document.addEventListener('DOMContentLoaded', function() {
         loadTurnstileScript();
     });
-    
+    */
     /* Rest of your form validation and submission code */
     const forms = document.querySelectorAll(".needs-validation");
     const result = document.getElementById("result");
@@ -318,6 +319,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
                     form.querySelectorAll(":invalid")[0].focus();
                 } else {
                     // Verify Turnstile token exists
+                    /*
                     const token = document.querySelector('[name="cf-turnstile-response"]')?.value;
                     if (!token) {
                         event.preventDefault();
@@ -327,7 +329,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
                         // Force Turnstile reinitialization if missing
                         if (!turnstileInitialized) initTurnstile();
                         return;
-                    }
+                    } */
                     
                     /* Rest of your form submission logic */
                 }
