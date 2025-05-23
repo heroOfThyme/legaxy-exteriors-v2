@@ -297,23 +297,7 @@ const serviceOptions = services.length > 0 ? services : defaultServices;
             console.error('Turnstile initialization error:', error);
         }
     }
-    
-    // Load Turnstile script if not already loaded
-    function loadTurnstileScript() {
-        if (document.querySelector('script[src*="cloudflare.com/turnstile"]')) {
-            return;
-        }
-        
-        const script = document.createElement('script');
-        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-        script.async = true;
-        script.defer = true;
-        script.onload = function() {
-            console.log('Turnstile script loaded');
-            initTurnstile();
-        };
-        document.body.appendChild(script);
-    }
+  
     
     // Initialize on DOM ready
     document.addEventListener('DOMContentLoaded', function() {
